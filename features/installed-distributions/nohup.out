@@ -1,0 +1,495 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-linux-gtk:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 415, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-linux-gtk-x86_64:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 411, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-macosx-cocoa:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 411, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 408, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-win32:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 407, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.wso2.developerstudio:developer-studio-eclipse-jee-kepler-win64-x86_64:pom:3.6.0
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-antrun-plugin @ line 407, column 14
+[WARNING] The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] WSO2 Developer Studio Installed Eclipse Distributions
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk-x86_64
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win32
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win64-x86_64
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Installed Eclipse Distributions 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ wso2-developer-studio-eclipse-distributions-parent ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ wso2-developer-studio-eclipse-distributions-parent ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/target
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ wso2-developer-studio-eclipse-distributions-parent ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ wso2-developer-studio-eclipse-distributions-parent ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio-eclipse-distributions-parent/3.6.0/wso2-developer-studio-eclipse-distributions-parent-3.6.0.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-linux-gtk:4.3.2:tar.gz
+[INFO] Configured Artifact: org.wso2.eclipse:wso2-developer-studio:?:zip
+[INFO] Expanding /var/home/developerstudio/.m2/repository/org/eclipse/eclipse-jee-kepler-linux-gtk/4.3.2/eclipse-jee-kepler-linux-gtk-4.3.2.tar.gz to /tmp/tmp2478469014363239539.tar
+[INFO] Expanding: /tmp/tmp2478469014363239539.tar into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/target
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/target/p2-repo
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (install-eclipse) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Executing tasks
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.eclipse.bpel.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bps.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.server.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group 3.6.0.
+     [java] Installing org.jboss.tools.smooks.feature.feature.group 1.1.0.v20110215-1231-H25-GA.
+     [java] Installing org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group 1.4.0.
+     [java] Installing org.smooks.edi.editor-feature.feature.group 1.0.1.201105031731.
+     [java] Installing org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appfactory.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group 1.1.0.
+     [java] Installing org.wso2.soapui.feature.feature.group 4.0.1.
+     [java] Installing org.wso2.tcpmon.feature.feature.group 1.0.0.
+     [java] Installing org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group 1.1.0.
+     [java] Operation completed in 79550 ms.
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (default) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-2:attached (1-pre_dist) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Reading assembly descriptor: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/src/assembly/dist.xml
+[INFO] Building zip: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/target/developer-studio-eclipse-jee-kepler-linux-gtk-3.6.0.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ developer-studio-eclipse-jee-kepler-linux-gtk ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-linux-gtk/3.6.0/developer-studio-eclipse-jee-kepler-linux-gtk-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk/target/developer-studio-eclipse-jee-kepler-linux-gtk-3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-linux-gtk/3.6.0/developer-studio-eclipse-jee-kepler-linux-gtk-3.6.0.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-linux-gtk-x86_64:4.3.2:tar.gz
+[INFO] Configured Artifact: org.wso2.eclipse:wso2-developer-studio:?:zip
+[INFO] Expanding /var/home/developerstudio/.m2/repository/org/eclipse/eclipse-jee-kepler-linux-gtk-x86_64/4.3.2/eclipse-jee-kepler-linux-gtk-x86_64-4.3.2.tar.gz to /tmp/tmp3254232936709328211.tar
+[INFO] Expanding: /tmp/tmp3254232936709328211.tar into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/target
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/target/p2-repo
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (install-eclipse) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Executing tasks
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.eclipse.bpel.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bps.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.server.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group 3.6.0.
+     [java] Installing org.jboss.tools.smooks.feature.feature.group 1.1.0.v20110215-1231-H25-GA.
+     [java] Installing org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group 1.4.0.
+     [java] Installing org.smooks.edi.editor-feature.feature.group 1.0.1.201105031731.
+     [java] Installing org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appfactory.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group 1.1.0.
+     [java] Installing org.wso2.soapui.feature.feature.group 4.0.1.
+     [java] Installing org.wso2.tcpmon.feature.feature.group 1.0.0.
+     [java] Installing org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group 1.1.0.
+     [java] Operation completed in 78683 ms.
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (default) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-2:attached (1-pre_dist) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Reading assembly descriptor: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/src/assembly/dist.xml
+[INFO] Building zip: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/target/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64-3.6.0.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ developer-studio-eclipse-jee-kepler-linux-gtk-x86_64 ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/3.6.0/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/target/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64-3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64/3.6.0/developer-studio-eclipse-jee-kepler-linux-gtk-x86_64-3.6.0.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-macosx-cocoa:4.3.2:tar.gz
+[INFO] Configured Artifact: org.wso2.eclipse:wso2-developer-studio:?:zip
+[INFO] Expanding /var/home/developerstudio/.m2/repository/org/eclipse/eclipse-jee-kepler-macosx-cocoa/4.3.2/eclipse-jee-kepler-macosx-cocoa-4.3.2.tar.gz to /tmp/tmp7243683983660848426.tar
+[INFO] Expanding: /tmp/tmp7243683983660848426.tar into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/target
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/target/p2-repo
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (install-eclipse) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Executing tasks
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.eclipse.bpel.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bps.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.server.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group 3.6.0.
+     [java] Installing org.jboss.tools.smooks.feature.feature.group 1.1.0.v20110215-1231-H25-GA.
+     [java] Installing org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group 1.4.0.
+     [java] Installing org.smooks.edi.editor-feature.feature.group 1.0.1.201105031731.
+     [java] Installing org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appfactory.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group 1.1.0.
+     [java] Installing org.wso2.soapui.feature.feature.group 4.0.1.
+     [java] Installing org.wso2.tcpmon.feature.feature.group 1.0.0.
+     [java] Installing org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group 1.1.0.
+     [java] Operation completed in 76217 ms.
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (default) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-2:attached (1-pre_dist) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Reading assembly descriptor: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/src/assembly/dist.xml
+[INFO] Building zip: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/target/developer-studio-eclipse-jee-kepler-macosx-cocoa-3.6.0.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ developer-studio-eclipse-jee-kepler-macosx-cocoa ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-macosx-cocoa/3.6.0/developer-studio-eclipse-jee-kepler-macosx-cocoa-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa/target/developer-studio-eclipse-jee-kepler-macosx-cocoa-3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-macosx-cocoa/3.6.0/developer-studio-eclipse-jee-kepler-macosx-cocoa-3.6.0.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-macosx-cocoa-x86_64:4.3.2:tar.gz
+[INFO] Configured Artifact: org.wso2.eclipse:wso2-developer-studio:?:zip
+[INFO] Expanding /var/home/developerstudio/.m2/repository/org/eclipse/eclipse-jee-kepler-macosx-cocoa-x86_64/4.3.2/eclipse-jee-kepler-macosx-cocoa-x86_64-4.3.2.tar.gz to /tmp/tmp5075314597943795250.tar
+[INFO] Expanding: /tmp/tmp5075314597943795250.tar into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/target
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/target/p2-repo
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (install-eclipse) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Executing tasks
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.eclipse.bpel.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bps.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.server.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group 3.6.0.
+     [java] Installing org.jboss.tools.smooks.feature.feature.group 1.1.0.v20110215-1231-H25-GA.
+     [java] Installing org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group 1.4.0.
+     [java] Installing org.smooks.edi.editor-feature.feature.group 1.0.1.201105031731.
+     [java] Installing org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appfactory.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group 1.1.0.
+     [java] Installing org.wso2.soapui.feature.feature.group 4.0.1.
+     [java] Installing org.wso2.tcpmon.feature.feature.group 1.0.0.
+     [java] Installing org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group 1.1.0.
+     [java] Operation completed in 80636 ms.
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (default) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-2:attached (1-pre_dist) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Reading assembly descriptor: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/src/assembly/dist.xml
+[INFO] Building zip: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/target/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64-3.6.0.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64 ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/3.6.0/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/target/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64-3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64/3.6.0/developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64-3.6.0.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win32 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-win32:4.3.2:zip
+[INFO] Configured Artifact: org.wso2.eclipse:wso2-developer-studio:?:zip
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/eclipse/eclipse-jee-kepler-win32/4.3.2/eclipse-jee-kepler-win32-4.3.2.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/target
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip into /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/target/p2-repo
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (install-eclipse) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Executing tasks
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.eclipse.bpel.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bps.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.server.framework.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.core.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group 3.6.0.
+     [java] Installing org.jboss.tools.smooks.feature.feature.group 1.1.0.v20110215-1231-H25-GA.
+     [java] Installing org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group 3.6.0.
+     [java] Installing org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group 1.4.0.
+     [java] Installing org.smooks.edi.editor-feature.feature.group 1.0.1.201105031731.
+     [java] Installing org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.appfactory.feature.feature.group 1.4.0.
+     [java] Installing org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group 1.1.0.
+     [java] Installing org.wso2.soapui.feature.feature.group 4.0.1.
+     [java] Installing org.wso2.tcpmon.feature.feature.group 1.0.0.
+     [java] Installing org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group 1.1.0.
+     [java] Operation completed in 72714 ms.
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.1:run (default) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Executing tasks
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-2:attached (1-pre_dist) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Reading assembly descriptor: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/src/assembly/dist.xml
+[INFO] Building zip: /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/target/developer-studio-eclipse-jee-kepler-win32-3.6.0.zip
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ developer-studio-eclipse-jee-kepler-win32 ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-win32/3.6.0/developer-studio-eclipse-jee-kepler-win32-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win32/target/developer-studio-eclipse-jee-kepler-win32-3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/developerstudio/developer-studio-eclipse-jee-kepler-win32/3.6.0/developer-studio-eclipse-jee-kepler-win32-3.6.0.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win64-x86_64 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ developer-studio-eclipse-jee-kepler-win64-x86_64 ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ developer-studio-eclipse-jee-kepler-win64-x86_64 ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/installed-distributions/developer-studio-eclipse-jee-kepler-win64-x86_64/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ developer-studio-eclipse-jee-kepler-win64-x86_64 ---
+[INFO] Configured Artifact: org.eclipse:eclipse-jee-kepler-win32-x86_64:4.3.2:zip
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] WSO2 Developer Studio Installed Eclipse Distributions  SUCCESS [0.628s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk  SUCCESS [2:28.980s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-linux-gtk-x86_64  SUCCESS [2:28.518s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa  SUCCESS [2:28.118s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64  SUCCESS [2:34.835s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win32  SUCCESS [2:37.861s]
+[INFO] WSO2 Developer Studio Eclipse distribution - developer-studio-eclipse-jee-kepler-win64-x86_64  FAILURE [0.024s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12:40.623s
+[INFO] Finished at: Wed Mar 05 22:58:57 PST 2014
+[INFO] Final Memory: 15M/1002M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) on project developer-studio-eclipse-jee-kepler-win64-x86_64: Unable to find artifact. Failure to find org.eclipse:eclipse-jee-kepler-win32-x86_64:zip:4.3.2 in http://dist.wso2.org/maven2/ was cached in the local repository, resolution will not be reattempted until the update interval of wso2-maven2-repo has elapsed or updates are forced
+[ERROR] 
+[ERROR] Try downloading the file manually from the project website.
+[ERROR] 
+[ERROR] Then, install it using the command:
+[ERROR] mvn install:install-file -DgroupId=org.eclipse -DartifactId=eclipse-jee-kepler-win32-x86_64 -Dversion=4.3.2 -Dpackaging=zip -Dfile=/path/to/file
+[ERROR] 
+[ERROR] Alternatively, if you host your own repository you can deploy the file there:
+[ERROR] mvn deploy:deploy-file -DgroupId=org.eclipse -DartifactId=eclipse-jee-kepler-win32-x86_64 -Dversion=4.3.2 -Dpackaging=zip -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+[ERROR] 
+[ERROR] 
+[ERROR] org.eclipse:eclipse-jee-kepler-win32-x86_64:zip:4.3.2
+[ERROR] 
+[ERROR] from the specified remote repositories:
+[ERROR] wso2-maven2-repo (http://dist.wso2.org/maven2/, releases=true, snapshots=true),
+[ERROR] Eclipse-p2-repo (http://download.eclipse.org/releases/kepler, releases=false, snapshots=false),
+[ERROR] WSO2-Nexus-Maven-Repository (http://maven.wso2.org/nexus/content/groups/wso2-public/, releases=true, snapshots=true),
+[ERROR] WSO2-Nexus-Maven-SNAPSHOT-Repository (http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/, releases=true, snapshots=true),
+[ERROR] central (http://repo.maven.apache.org/maven2, releases=true, snapshots=false)
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :developer-studio-eclipse-jee-kepler-win64-x86_64

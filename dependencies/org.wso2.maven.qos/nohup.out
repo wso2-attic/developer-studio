@@ -1,0 +1,59 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven QoS Core 1.0.0
+[INFO] ------------------------------------------------------------------------
+Downloading: http://dist.wso2.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+Downloaded: http://dist.wso2.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (0 B at 0.0 KB/sec)
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ org.wso2.maven.qos ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/home/developerstudio/wso2/developer-studio/dependencies/org.wso2.maven.qos/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ org.wso2.maven.qos ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ org.wso2.maven.qos ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/home/developerstudio/wso2/developer-studio/dependencies/org.wso2.maven.qos/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ org.wso2.maven.qos ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ org.wso2.maven.qos ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /var/home/developerstudio/wso2/developer-studio/dependencies/org.wso2.maven.qos/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.2:jar (default-jar) @ org.wso2.maven.qos ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ org.wso2.maven.qos ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/dependencies/org.wso2.maven.qos/target/org.wso2.maven.qos-1.0.0.jar to /var/home/developerstudio/.m2/repository/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.jar
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/dependencies/org.wso2.maven.qos/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ org.wso2.maven.qos ---
+Uploading: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.jar
+Uploaded: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.jar (8 KB at 0.5 KB/sec)
+Uploading: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.pom
+Uploaded: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/1.0.0/org.wso2.maven.qos-1.0.0.pom (4 KB at 0.9 KB/sec)
+Downloading: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/maven-metadata.xml
+Downloaded: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/maven-metadata.xml (312 B at 0.2 KB/sec)
+Uploading: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/maven-metadata.xml
+Uploaded: scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/org/wso2/maven/org.wso2.maven.qos/maven-metadata.xml (312 B at 0.0 KB/sec)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 31.330s
+[INFO] Finished at: Fri Mar 07 01:37:48 PST 2014
+[INFO] Final Memory: 24M/981M
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,166 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Carbon Eclipse - P2 Feature Repository 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ wso2-developer-studio ---
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/repository/target
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ wso2-developer-studio ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/repository/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ wso2-developer-studio ---
+[INFO] Configured Artifact: org.wso2.carbon:wso2-p2-agent:3.2.0:zip
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/carbon/wso2-p2-agent/3.2.0/wso2-p2-agent-3.2.0.zip into /var/home/developerstudio/wso2/developer-studio/features/repository/target/p2-agent
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ wso2-developer-studio ---
+[INFO] 
+[INFO] --- carbon-p2-plugin:1.3.1:p2-repo-gen (2-p2-repo-generation) @ wso2-developer-studio ---
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonstudio.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bps.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.eclipse.bpel.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.capp.framework.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.connector.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.connector.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.core.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.samples.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.30.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.31.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature
+[INFO] Extracting feature org.jboss.tools:org.jboss.tools.smooks.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.distribution.project.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.library.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gadget.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gs.jaggery.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.smooks.edi.editor-feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.cep.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.soapui.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.tcpmon.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature
+[INFO] Copying resources
+[INFO] Running Equinox P2 Publisher Application for Repository Generation
+[INFO] Generating metadata for ..
+[INFO] Generation completed with success [17 seconds].
+[INFO] Running Equinox P2 Category Publisher Application for the Generated Repository
+[INFO] Generating metadata for ..
+[INFO] Generation completed with success [0 seconds].
+[INFO] Generating repository archive...
+[INFO] Repository Archive: /var/home/developerstudio/wso2/developer-studio/features/repository/target/wso2-developer-studio_3.6.0.zip
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.6:attach-artifact (release-distribution) @ wso2-developer-studio ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ wso2-developer-studio ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/repository/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/repository/target/wso2-developer-studio_3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 52.115s
+[INFO] Finished at: Wed Mar 05 21:14:27 PST 2014
+[INFO] Final Memory: 30M/981M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WSO2 Carbon Eclipse - P2 Feature Repository 3.6.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ wso2-developer-studio ---
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/repository/target
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ wso2-developer-studio ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/features/repository/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.0-alpha-4:unpack (1-unpack-p2-agent-distribution) @ wso2-developer-studio ---
+[INFO] Configured Artifact: org.wso2.carbon:wso2-p2-agent:3.2.0:zip
+[INFO] Expanding: /var/home/developerstudio/.m2/repository/org/wso2/carbon/wso2-p2-agent/3.2.0/wso2-p2-agent-3.2.0.zip into /var/home/developerstudio/wso2/developer-studio/features/repository/target/p2-agent
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ wso2-developer-studio ---
+[INFO] 
+[INFO] --- carbon-p2-plugin:1.3.1:p2-repo-gen (2-p2-repo-generation) @ wso2-developer-studio ---
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonstudio.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bps.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.eclipse.bpel.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.capp.framework.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.connector.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.connector.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.core.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.samples.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.30.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.31.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature
+[INFO] Extracting feature org.jboss.tools:org.jboss.tools.smooks.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.distribution.project.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.library.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gadget.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gs.jaggery.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.smooks.edi.editor-feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.cep.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.soapui.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.tcpmon.feature
+[INFO] Extracting feature org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature
+[INFO] Copying resources
+[INFO] Running Equinox P2 Publisher Application for Repository Generation
+[INFO] Generating metadata for ..
+[INFO] Generation completed with success [18 seconds].
+[INFO] Running Equinox P2 Category Publisher Application for the Generated Repository
+[INFO] Generating metadata for ..
+[INFO] Generation completed with success [0 seconds].
+[INFO] Generating repository archive...
+[INFO] Repository Archive: /var/home/developerstudio/wso2/developer-studio/features/repository/target/wso2-developer-studio_3.6.0.zip
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.6:attach-artifact (release-distribution) @ wso2-developer-studio ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ wso2-developer-studio ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/repository/pom.xml to /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/features/repository/target/wso2-developer-studio_3.6.0.zip to /var/home/developerstudio/.m2/repository/org/wso2/eclipse/wso2-developer-studio/3.6.0/wso2-developer-studio-3.6.0.zip
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 51.685s
+[INFO] Finished at: Wed Mar 05 22:44:49 PST 2014
+[INFO] Final Memory: 30M/981M
+[INFO] ------------------------------------------------------------------------

@@ -20,12 +20,12 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>esb-tool-parent</artifactId>
-    	<version>3.6.0-SNAPSHOT</version>
+    	<version>3.6.0</version>
     </parent>     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.gmf.esb.persistence</artifactId>
   	<packaging>eclipse-plugin</packaging>
-  	<version>1.4.0-SNAPSHOT</version>
+  	<version>1.4.0</version>
     <name>Developer Studio ESB Graphical Editor Diagram</name>
 	<build>
 		<plugins>
@@ -259,8 +259,8 @@
 		<version>3.2.2</version>
 	</dependency-->
 
-	<!-- axiom-impl-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
-		<artifactId>axiom-impl</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+	<!-- axiom-impl-1.2.11.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-impl</artifactId> <version>1.2.11</version> </dependency> -->
 
 	<!-- org.wso2.carbon.mediator.smooks-3.2.0.jar>
 	<dependency>
@@ -308,8 +308,8 @@
 	</dependency-->
 
 
-	<!-- woden-impl-commons-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
-		<artifactId>woden-impl-commons</artifactId> <version>1.0-SNAPSHOT</version> 
+	<!-- woden-impl-commons-1.0.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-impl-commons</artifactId> <version>1.0</version> 
 		</dependency> -->
 
 	<!-- spring.framework-2.5.1.wso2v1.jar>
@@ -369,8 +369,8 @@
 		<version>2.1</version>
 	</dependency-->
 
-	<!-- axiom-dom-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
-		<artifactId>axiom-dom</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+	<!-- axiom-dom-1.2.11.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-dom</artifactId> <version>1.2.11</version> </dependency> -->
 
 	<!-- jsr311-api-1.0.jar>
 	<dependency>
@@ -428,7 +428,7 @@
 		<version>1.1.0-wso2v5</version>
 	</dependency-->
 
-	<!-- axis2-mtompolicy-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-mtompolicy.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-mtompolicy</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- geronimo-stax-api_1.0_spec-1.0.1.jar>
@@ -459,8 +459,8 @@
 		<version>1.6</version>
 	</dependency-->
 
-	<!-- axiom-api-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
-		<artifactId>axiom-api</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+	<!-- axiom-api-1.2.11.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-api</artifactId> <version>1.2.11</version> </dependency> -->
 
 	<!-- synapse-extensions-2.1.0.wso2v4.jar>
 	<dependency> <groupId>org.apache.synapse</groupId> 
@@ -510,8 +510,8 @@
 	<!-- synapse-core-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
 		<artifactId>synapse-core</artifactId> <version>2.1.0-wso2v5</version> </dependency> -->
 
-	<!-- woden-api-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
-		<artifactId>woden-api</artifactId> <version>1.0-SNAPSHOT</version> </dependency> -->
+	<!-- woden-api-1.0.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-api</artifactId> <version>1.0</version> </dependency> -->
 
 	<!-- synapse-core-2.1.0-wso2v4.jar>
 	<dependency>
@@ -520,7 +520,7 @@
 		<version>2.1.0-wso2v4</version>
 	</dependency-->
 
-	<!-- sandesha2-core-SNAPSHOT.jar <dependency> <groupId>org.apache.sandesha2</groupId> 
+	<!-- sandesha2-core.jar <dependency> <groupId>org.apache.sandesha2</groupId> 
 		<artifactId>sandesha2-core</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 
@@ -539,7 +539,7 @@
 		<version>2.1.0-wso2v4</version>
 	</dependency-->
 
-	<!-- axis2-saaj-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-saaj.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-saaj</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- synapse-fix-transport-2.1.0.wso2v4.jar>
@@ -555,7 +555,7 @@
 	</dependency-->
 
 
-	<!-- axis2-clustering-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-clustering.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-clustering</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- httpcore-nio-4.1.jar>
@@ -584,7 +584,7 @@
 		</dependency> -->
 
 
-	<!-- axis2-transport-local-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-transport-local.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-transport-local</artifactId> <version>SNAPSHOT</version> 
 		</dependency> -->
 
@@ -609,7 +609,7 @@
 		<version>1.1.0-wso2v5</version>
 	</dependency-->
 
-	<!-- axis2-codegen-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-codegen.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-codegen</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- org.wso2.carbon.rulecep.commons-3.2.0.jar>
@@ -626,8 +626,8 @@
 		<version>2.0</version>
 	</dependency-->
 
-	<!-- woden-impl-dom-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
-		<artifactId>woden-impl-dom</artifactId> <version>1.0-SNAPSHOT</version> </dependency> -->
+	<!-- woden-impl-dom-1.0.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-impl-dom</artifactId> <version>1.0</version> </dependency> -->
 
 	<!-- synapse-commons-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
 		<artifactId>synapse-commons</artifactId> <version>2.1.0-wso2v5</version> 
@@ -641,7 +641,7 @@
 	</dependency-->
 
 
-	<!-- axis2-transport-http-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-transport-http.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-transport-http</artifactId> <version>SNAPSHOT</version> 
 		</dependency> -->
 
@@ -652,7 +652,7 @@
 		<version>3.2.0</version>
 	</dependency-->
 
-	<!-- axis2-kernel-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-kernel.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-kernel</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- synapse-tasks-2.1.0-wso2v4.jar>
@@ -662,7 +662,7 @@
 		<version>2.1.0-wso2v4</version>
 	</dependency-->
 
-	<!-- axis2-adb-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+	<!-- axis2-adb.jar <dependency> <groupId>org.apache.axis2</groupId> 
 		<artifactId>axis2-adb</artifactId> <version>SNAPSHOT</version> </dependency> -->
 
 	<!-- synapse-vfs-transport-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 

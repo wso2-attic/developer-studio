@@ -1,0 +1,96 @@
+[INFO] Scanning for projects...
+[INFO] Computing target platform for MavenProject: org.eclipse.php:org.eclipse.php.mylyn.ui:1.1.0 @ /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/pom.xml
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/ (128B at 0B/s)
+[INFO] Adding repository http://download.eclipse.org/releases/juno
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201303010900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201303010900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201209280900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201209280900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201206270900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/juno/201206270900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/technology/epp/packages/juno/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/technology/epp/packages/juno/ (116B at 0B/s)
+[INFO] Adding repository http://download.eclipse.org/eclipse/updates/4.2/R-4.2-201206081400
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/ (128B at 0B/s)
+[INFO] Adding repository http://download.eclipse.org/releases/kepler
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201402280900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201402280900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201309270900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201309270900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201306260900/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/kepler/201306260900/ (365B at 0B/s)
+[INFO] Fetching p2.index from http://download.eclipse.org/technology/epp/packages/kepler/ (0B at 0B/s)
+[INFO] 1 operation remaining.
+[INFO] Fetching p2.index from http://download.eclipse.org/technology/epp/packages/kepler/ (116B at 0B/s)
+[INFO] Resolving dependencies of MavenProject: org.eclipse.php:org.eclipse.php.mylyn.ui:1.1.0 @ /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/pom.xml
+[WARNING] The following locally built units have been used to resolve project dependencies:
+[WARNING]   org.eclipse.php.mylyn.ui.source/1.1.0
+[WARNING]   org.eclipse.php.mylyn.ui/1.1.0
+[INFO] Resolving class path of MavenProject: org.eclipse.php:org.eclipse.php.mylyn.ui:1.1.0 @ /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/pom.xml
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building org.eclipse.php.mylyn.ui 1.1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ org.eclipse.php.mylyn.ui ---
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.19.0:build-qualifier (default-build-qualifier) @ org.eclipse.php.mylyn.ui ---
+[INFO] The project's OSGi version is 1.1.0
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.19.0:validate-id (default-validate-id) @ org.eclipse.php.mylyn.ui ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.19.0:validate-version (default-validate-version) @ org.eclipse.php.mylyn.ui ---
+[INFO] 
+[INFO] --- incremental-build-plugin:1.3:incremental-build (default) @ org.eclipse.php.mylyn.ui ---
+[INFO] Verifying module descriptor ...
+[INFO] Pom descriptor modification detected.
+[INFO] Deleting /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ org.eclipse.php.mylyn.ui ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/src/main/resources
+[INFO] 
+[INFO] --- tycho-compiler-plugin:0.19.0:compile (default-compile) @ org.eclipse.php.mylyn.ui ---
+[INFO] Compiling 1 source file to /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:testResources (default-testResources) @ org.eclipse.php.mylyn.ui ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/src/test/resources
+[INFO] 
+[INFO] --- tycho-source-plugin:0.19.0:plugin-source (plugin-source) @ org.eclipse.php.mylyn.ui ---
+[WARNING] Bundle-Name header not found in /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/META-INF/MANIFEST.MF, fallback to Bundle-SymbolicName for source bundle
+[WARNING] Bundle-Vendor header not found in /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/META-INF/MANIFEST.MF, fallback to 'unknown' for source bundle
+[INFO] Building jar: /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/org.eclipse.php.mylyn.ui-1.1.0-sources.jar
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.19.0:package-plugin (default-package-plugin) @ org.eclipse.php.mylyn.ui ---
+[INFO] Building jar: /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/org.eclipse.php.mylyn.ui-1.1.0.jar
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.19.0:p2-metadata-default (default-p2-metadata-default) @ org.eclipse.php.mylyn.ui ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ org.eclipse.php.mylyn.ui ---
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/org.eclipse.php.mylyn.ui-1.1.0.jar to /var/home/developerstudio/.m2/repository/org/eclipse/php/org.eclipse.php.mylyn.ui/1.1.0/org.eclipse.php.mylyn.ui-1.1.0.jar
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/pom.xml to /var/home/developerstudio/.m2/repository/org/eclipse/php/org.eclipse.php.mylyn.ui/1.1.0/org.eclipse.php.mylyn.ui-1.1.0.pom
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/org.eclipse.php.mylyn.ui-1.1.0-sources.jar to /var/home/developerstudio/.m2/repository/org/eclipse/php/org.eclipse.php.mylyn.ui/1.1.0/org.eclipse.php.mylyn.ui-1.1.0-sources.jar
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/p2content.xml to /var/home/developerstudio/.m2/repository/org/eclipse/php/org.eclipse.php.mylyn.ui/1.1.0/org.eclipse.php.mylyn.ui-1.1.0-p2metadata.xml
+[INFO] Installing /var/home/developerstudio/wso2/developer-studio/jaggery/org.eclipse.php.mylyn.ui/target/p2artifacts.xml to /var/home/developerstudio/.m2/repository/org/eclipse/php/org.eclipse.php.mylyn.ui/1.1.0/org.eclipse.php.mylyn.ui-1.1.0-p2artifacts.xml
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.19.0:update-local-index (default-update-local-index) @ org.eclipse.php.mylyn.ui ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 46.432s
+[INFO] Finished at: Wed Mar 05 19:30:37 PST 2014
+[INFO] Final Memory: 125M/1284M
+[INFO] ------------------------------------------------------------------------

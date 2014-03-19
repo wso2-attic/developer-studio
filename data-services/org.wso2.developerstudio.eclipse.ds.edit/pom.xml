@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.wso2.developerstudio</groupId>
 		<artifactId>ds-tool-parent</artifactId>
-		<version>3.6.0-SNAPSHOT</version>
+		<version>3.6.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.wso2.developerstudio.eclipse.ds.edit</artifactId>
@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>com.google</groupId>
 			<artifactId>com.google.inject</artifactId>
-			<version>2.1.0-SNAPSHOT.v201003051000</version>
+			<version>2.1.0.v201003051000</version>
 		</dependency>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>
