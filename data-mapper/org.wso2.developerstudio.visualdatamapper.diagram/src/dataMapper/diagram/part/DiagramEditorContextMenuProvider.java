@@ -1,20 +1,32 @@
 package dataMapper.diagram.part;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
+
+import dataMapper.diagram.custom.action.LoadInputSchemaAction;
+import dataMapper.diagram.custom.action.LoadOutputSchemaAction;
+import dataMapper.diagram.edit.parts.InputEditPart;
+import dataMapper.diagram.edit.parts.OutputEditPart;
 
 /**
  * @generated
  */
-public class DiagramEditorContextMenuProvider
-		extends
-			DiagramContextMenuProvider {
+public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
 	/**
 	 * @generated
@@ -25,12 +37,14 @@ public class DiagramEditorContextMenuProvider
 	 * @generated
 	 */
 	private dataMapper.diagram.part.DeleteElementAction deleteAction;
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> contextActions;
+
+	//AddChildFeildAction addAction;
 
 	/**
 	 * @generated
 	 */
-	public DiagramEditorContextMenuProvider(IWorkbenchPart part,
-			EditPartViewer viewer) {
+	public DiagramEditorContextMenuProvider(IWorkbenchPart part, EditPartViewer viewer) {
 		super(part, viewer);
 		this.part = part;
 		deleteAction = new dataMapper.diagram.part.DeleteElementAction(part);
@@ -54,23 +68,19 @@ public class DiagramEditorContextMenuProvider
 	public void buildContextMenu(final IMenuManager menu) {
 		getViewer().flush();
 		try {
-			TransactionUtil.getEditingDomain(
-					(EObject) getViewer().getContents().getModel())
+			TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel())
 					.runExclusive(new Runnable() {
 
 						public void run() {
-							ContributionItemService
-									.getInstance()
-									.contributeToPopupMenu(
-											DiagramEditorContextMenuProvider.this,
-											part);
+							ContributionItemService.getInstance().contributeToPopupMenu(
+									DiagramEditorContextMenuProvider.this, part);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 							menu.appendToGroup("editGroup", deleteAction);
 						}
 					});
 		} catch (Exception e) {
-			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
-					.logError("Error building context menu", e);
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"Error building context menu", e);
 		}
 	}
 }

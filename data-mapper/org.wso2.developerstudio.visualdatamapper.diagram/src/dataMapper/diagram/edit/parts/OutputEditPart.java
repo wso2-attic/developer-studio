@@ -13,6 +13,7 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -31,7 +32,9 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 
 import dataMapper.*;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
@@ -39,6 +42,7 @@ import dataMapper.diagram.tree.generator.TestTreeModel;
 import dataMapper.diagram.tree.generator.TreeFromAVSC;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
 import dataMapper.diagram.tree.model.Tree;
+import dataMapper.impl.InputImpl;
 
 /**
  * @generated
@@ -48,7 +52,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3010;
+	public static final int VISUAL_ID = 2003;
 
 	/**
 	 * @generated
@@ -75,25 +79,48 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	public void activate() {
 
 		super.activate();
-		if (notActivated) {
-			EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
-					.getModel()).getElement();
-			TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		/*		if (notActivated) {
+		 EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+		 .getModel()).getElement();
+		 TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 
-			Tree tree = new Tree();
-			tree = (new TreeFromAVSC()).generateOutputTree();
-			convertTree(tree, treeNode);
+		 Tree tree = new Tree();
+		 tree = (new TreeFromAVSC()).generateOutputTree();
+		 convertTree(tree, treeNode);
 
-			AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(),
-					parentContainer,
-					DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
-			if (addTreeNodeCmd.canExecute()) {
-				getEditingDomain().getCommandStack().execute(addTreeNodeCmd);
+		 AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(), parentContainer,
+		 DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		 if (addTreeNodeCmd.canExecute()) {
+		 getEditingDomain().getCommandStack().execute(addTreeNodeCmd);
 
-			}
-			getPrimaryShape().setPreferredSize(250, 15);
-			notActivated = false;
+		 }
+		 getPrimaryShape().setPreferredSize(250, 15);
+		 notActivated = false;
+		 }*/
+
+	}
+
+	public void resetOutputTreeFromFile(String filePath) {
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+				.getModel()).getElement();
+		Output iip = (Output) parentContainer;
+
+		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
+		if (deleteComand.canExecute()) {
+			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
+
+		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
+		//funcFillTree(tree, element);
+		convertTree(tree, treeNode);
+
+		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		if (addTreeNodeCmd2.canExecute()) {
+			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
+		}
+		getPrimaryShape().setPreferredSize(250, 15);
 
 	}
 
@@ -102,14 +129,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNode.setName(tree.getCount() + "," + tree.getName());
 
 		if (!(tree.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : tree
-					.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : tree.getElements()) {
 				createElement(element, treeNode);
 			}
 		}
 		if (!(tree.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : tree
-					.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : tree.getAttributes()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
@@ -121,21 +146,19 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	}
 
-	private void createElement(dataMapper.diagram.tree.model.Element element,
-			TreeNode treeNode) {
+	private void createElement(dataMapper.diagram.tree.model.Element element, TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		ele.setName(element.getCount() + "," + element.getName());
 		treeNode.getElement().add(ele);
 		if (!(element.getAttribute().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : element
-					.getAttribute()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : element.getAttribute()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
 	}
 
-	private void createAttribute(
-			dataMapper.diagram.tree.model.Attribute attribute, TreeNode treeNode) {
+	private void createAttribute(dataMapper.diagram.tree.model.Attribute attribute,
+			TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
 		treeNode.getAttribute().add(attr);
@@ -147,14 +170,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
 
 		if (!(treeN.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : treeN
-					.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : treeN.getElements()) {
 				createElement(element, treeNodeNew);
 			}
 		}
 		if (!(treeN.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : treeN
-					.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : treeN.getAttributes()) {
 				createAttribute(attribute, treeNodeNew);
 			}
 		}
@@ -169,25 +190,19 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.OutputItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.OutputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		//removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx());
+		//installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -198,8 +213,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -347,13 +361,25 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250),
-					getMapMode().DPtoLP(100)));
-
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
 			this.setOutline(true);
-			this.setFill(false);
 
-			this.setBorder(new TitleBarBorder("Output"));
+			/*			
+			 RectangleFigure figure= new RectangleFigure();
+			 figure.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
+			 this.add(figure);
+			
+			 RectangleFigure figure2= new RectangleFigure();
+			 figure2.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
+			 this.add(figure2);*/
+
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
 
 		}
 

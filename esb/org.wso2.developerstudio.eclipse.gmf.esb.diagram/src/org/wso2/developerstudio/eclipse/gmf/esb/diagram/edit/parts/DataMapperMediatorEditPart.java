@@ -1,12 +1,18 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
-import org.eclipse.draw2d.FlowLayout;
+import java.util.ArrayList;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -14,30 +20,42 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
+import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
 /**
  * @generated NOT
@@ -74,8 +92,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new DataMapperMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -323,5 +342,63 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated
 	 */
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
+	
+	public void openDataMapperDiagram() {
+		
+		NodeImpl eobject = ((NodeImpl)this.getModel());
+		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
+
+		
+		
+		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
+			
+			Shell shell = new Shell(Display.getDefault());
+			final RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+			ArrayList<NamedEntityDescriptor> localNamedEntities = new ArrayList<NamedEntityDescriptor>();
+			RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(shell, SWT.NULL, registryKeyProperty, localNamedEntities);
+			dialog.setTitle("Specify DataMapper configuration.");
+			
+			if (dialog.open() == Dialog.OK) {
+				Display.getDefault().asyncExec(new Runnable() {
+
+					public void run() {
+						
+						TransactionalEditingDomain editingDomain = getEditingDomain();
+					
+						SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
+
+						if (setCmd.canExecute()) {
+						getEditingDomain().getCommandStack().execute(setCmd);
+						}
+						
+						String localPath = ((RegistryKeyPropertyImpl)registryKeyProperty).getLocalPathOfRegistryKey();
+						SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
+						if (setCmd2.canExecute()) {
+							editingDomain.getCommandStack().execute(setCmd2);
+						}
+						
+						openDataMapperEditor(datamapper);
+
+					}
+				});
+			}
+
+		} else {
+			openDataMapperEditor(datamapper);
+		}
+ 
+	}
+
+	private void openDataMapperEditor(final DataMapperMediatorImpl datamapper) {
+		if (!datamapper.getConfiguration().getKeyValue().isEmpty()) {
+			
+			String localPath = datamapper.getConfigurationLocalPath();
+			if (localPath != null && !localPath.isEmpty()) {
+				Path path = new Path(localPath);
+				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+				DataMapperEditor.open(file);
+			}
+		}
+	}
 
 }
