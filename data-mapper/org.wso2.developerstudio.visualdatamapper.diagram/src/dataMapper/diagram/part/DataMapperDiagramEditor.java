@@ -12,10 +12,15 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.gef.KeyHandler;
+import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DirectEditKeyHandler;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentProvider;
@@ -28,6 +33,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
@@ -41,12 +47,12 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 
+import dataMapper.diagram.custom.part.CustomDiagramGraphicalViewerKeyHandler;
+
 /**
  * @generated
  */
-public class DataMapperDiagramEditor extends DiagramDocumentEditor
-		implements
-			IGotoMarker {
+public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
 	private DataMapperMultiPageEditor dataMapperEditor;
 
@@ -87,8 +93,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 	 */
 	protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
 		PaletteRoot root = super.createPaletteRoot(existingPaletteRoot);
-		new dataMapper.diagram.part.DataMapperPaletteFactory()
-				.fillPalette(root);
+		new dataMapper.diagram.part.DataMapperPaletteFactory().fillPalette(root);
 		return root;
 	}
 
@@ -114,7 +119,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 		if (type == IShowInTargetList.class) {
 			return new IShowInTargetList() {
 				public String[] getShowInTargetIds() {
-					return new String[]{ProjectExplorer.VIEW_ID};
+					return new String[] { ProjectExplorer.VIEW_ID };
 				}
 			};
 		}
@@ -125,10 +130,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			return dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-					.getInstance().getDocumentProvider();
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			return dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+					.getDocumentProvider();
 		}
 		return super.getDocumentProvider(input);
 	}
@@ -137,8 +141,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	public TransactionalEditingDomain getEditingDomain() {
-		IDocument document = getEditorInput() != null ? getDocumentProvider()
-				.getDocument(getEditorInput()) : null;
+		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(
+				getEditorInput()) : null;
 		if (document instanceof IDiagramDocument) {
 			return ((IDiagramDocument) document).getEditingDomain();
 		}
@@ -149,10 +153,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 	 * @generated
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			setDocumentProvider(dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-					.getInstance().getDocumentProvider());
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			setDocumentProvider(dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+					.getDocumentProvider());
 		} else {
 			super.setDocumentProvider(input);
 		}
@@ -186,8 +189,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput
-				? ((IFileEditorInput) input).getFile()
+		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile()
 				: null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
@@ -199,9 +201,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 			return;
 		}
 		if (provider.isDeleted(input) && original != null) {
-			String message = NLS
-					.bind(dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SavingDeletedFile,
-							original.getName());
+			String message = NLS.bind(
+					dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SavingDeletedFile,
+					original.getName());
 			dialog.setErrorMessage(null);
 			dialog.setMessage(message, IMessageProvider.WARNING);
 		}
@@ -224,9 +226,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 		// Check if the editor is already open
 		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor()
 				.getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
+		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
 		for (int i = 0; i < editorRefs.length; i++) {
 			if (matchingStrategy.matches(editorRefs[i], newInput)) {
 				MessageDialog
@@ -240,19 +241,16 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 		boolean success = false;
 		try {
 			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor,
-					newInput,
+			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
 					getDocumentProvider().getDocument(getEditorInput()), true);
 			success = true;
 		} catch (CoreException x) {
 			IStatus status = x.getStatus();
 			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog
-						.openError(
-								shell,
-								dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SaveErrorTitle,
-								dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SaveErrorMessage,
-								x.getStatus());
+				ErrorDialog.openError(shell,
+						dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SaveErrorTitle,
+						dataMapper.diagram.part.Messages.DataMapperDiagramEditor_SaveErrorMessage,
+						x.getStatus());
 			}
 		} finally {
 			provider.changed(newInput);
@@ -294,15 +292,26 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
+
+		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
+		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
+
+		viewerKeyHandler.setParent(getKeyHandler());
+		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
+
+		//This enables the property view to be informed of selection changes in our graphical view, 
+		//when our view is the active workbench part.
+		dataMapperEditor.getSite().setSelectionProvider(viewer);
+
 		dataMapper.diagram.part.DiagramEditorContextMenuProvider provider = new dataMapper.diagram.part.DiagramEditorContextMenuProvider(
 				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU,
-				provider, getDiagramGraphicalViewer());
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider,
+				getDiagramGraphicalViewer());
 	}
 
 }

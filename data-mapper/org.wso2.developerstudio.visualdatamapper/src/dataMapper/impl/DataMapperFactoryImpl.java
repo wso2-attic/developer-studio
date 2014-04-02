@@ -37,7 +37,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public static DataMapperFactory init() {
 		try {
-			DataMapperFactory theDataMapperFactory = (DataMapperFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/wso2/developerstudio/eclipse/gmf/datamapper"); 
+			DataMapperFactory theDataMapperFactory = (DataMapperFactory)EPackage.Registry.INSTANCE.getEFactory(DataMapperPackage.eNS_URI);
 			if (theDataMapperFactory != null) {
 				return theDataMapperFactory;
 			}
@@ -71,7 +71,12 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.INPUT: return createInput();
 			case DataMapperPackage.OUTPUT: return createOutput();
-			case DataMapperPackage.OPERATORS: return createOperators();
+			case DataMapperPackage.OPERATOR: return createOperator();
+			case DataMapperPackage.OPERATOR_BASIC_CONTAINER: return createOperatorBasicContainer();
+			case DataMapperPackage.OPERATOR_LEFT_CONTAINER: return createOperatorLeftContainer();
+			case DataMapperPackage.OPERATOR_LEFT_CONNECTOR: return createOperatorLeftConnector();
+			case DataMapperPackage.OPERATOR_RIGHT_CONTAINER: return createOperatorRightContainer();
+			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: return createOperatorRightConnector();
 			case DataMapperPackage.ELEMENT: return createElement();
 			case DataMapperPackage.ATTRIBUTE: return createAttribute();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
@@ -79,7 +84,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
-			case DataMapperPackage.OPERATIONS: return createOperations();
+			case DataMapperPackage.EQUAL: return createEqual();
+			case DataMapperPackage.CONSTANT: return createConstant();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -102,9 +108,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public DataMapperDiagram createDataMapperDiagram() {
 		DataMapperDiagramImpl dataMapperDiagram = new DataMapperDiagramImpl();
-		dataMapperDiagram.setInput(createInput());
-		dataMapperDiagram.setOperations(createOperations());
-		dataMapperDiagram.setOutput(createOutput());
+
 		return dataMapperDiagram;
 	}
 
@@ -115,7 +119,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public DataMapperRoot createDataMapperRoot() {
 		DataMapperRootImpl dataMapperRoot = new DataMapperRootImpl();
-		dataMapperRoot.setDataMapperDiagram(createDataMapperDiagram());
+		dataMapperRoot.setInput(createInput());
+		dataMapperRoot.setOutput(createOutput());
 		return dataMapperRoot;
 	}
 
@@ -144,9 +149,68 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operators createOperators() {
-		OperatorsImpl operators = new OperatorsImpl();
-		return operators;
+	public Operator createOperator() {
+		OperatorImpl operator = new OperatorImpl();
+		return operator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperatorBasicContainer createOperatorBasicContainer() {
+		OperatorBasicContainerImpl operatorBasicContainer = new OperatorBasicContainerImpl();
+		operatorBasicContainer.setLeftContainer(createOperatorLeftContainer());
+		operatorBasicContainer.setRightContainer(createOperatorRightContainer());
+		return operatorBasicContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperatorLeftContainer createOperatorLeftContainer() {
+		OperatorLeftContainerImpl operatorLeftContainer = new OperatorLeftContainerImpl();
+		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
+		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
+		return operatorLeftContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperatorLeftConnector createOperatorLeftConnector() {
+		OperatorLeftConnectorImpl operatorLeftConnector = new OperatorLeftConnectorImpl();
+		operatorLeftConnector.setInNode(createInNode());
+		return operatorLeftConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperatorRightContainer createOperatorRightContainer() {
+		OperatorRightContainerImpl operatorRightContainer = new OperatorRightContainerImpl();
+		operatorRightContainer.getRightConnectors().add(createOperatorRightConnector()); //FIXME these need to be programmaticaly handled not hard coded
+		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
+		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
+		return operatorRightContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OperatorRightConnector createOperatorRightConnector() {
+		OperatorRightConnectorImpl operatorRightConnector = new OperatorRightConnectorImpl();
+		operatorRightConnector.setOutNode(createOutNode());
+		return operatorRightConnector;
 	}
 
 	/**
@@ -168,10 +232,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * @generated NOT
 	 */
 	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		
-		attribute.setInNode(createInNode());
-		attribute.setOutNode(createOutNode());
+		AttributeImpl attribute = new AttributeImpl();		
+		//attribute.setInNode(createInNode());
+		//attribute.setOutNode(createOutNode());
 		return attribute;
 	}
 
@@ -202,6 +265,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public OutNode createOutNode() {
 		OutNodeImpl outNode = new OutNodeImpl();
+		//outNode.getOutgoingLink().add(createDataMapperLink()); //TODO need to add a arrow connector by default ??
 		return outNode;
 	}
 
@@ -222,10 +286,19 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
-		concat.getInNode().add(createInNode());
-		concat.getInNode().add(createInNode());
-		concat.getOutNode().add(createOutNode());
+		concat.setBasicContainer(createOperatorBasicContainer());
 		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Equal createEqual() {
+		EqualImpl equal = new EqualImpl();
+		equal.setBasicContainer(createOperatorBasicContainer());
+		return equal;
 	}
 
 	/**
@@ -233,9 +306,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operations createOperations() {
-		OperationsImpl operations = new OperationsImpl();
-		return operations;
+	public Constant createConstant() {
+		ConstantImpl constant = new ConstantImpl();
+		return constant;
 	}
 
 	/**

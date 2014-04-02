@@ -22,6 +22,7 @@ import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Function;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 import org.wso2.datamapper.engine.models.MappingConfigModel;
@@ -42,35 +43,27 @@ public class FunctionExecuter {
 
 	public GenericRecord execute(String elementId, GenericRecord inRecord) {
 		
-		GenericRecord inputRecord = inRecord;
-		String inElementId = elementId;
-		
+ 
 		GenericRecord resultRecord = null;		
-		MappingConfigModel mappingModel = mappingModelMap.get(inElementId);
+		MappingConfigModel mappingModel = mappingModelMap.get(elementId);
 		
 		if (mappingModel != null) {
 
-			String inputDataType = inElementId;
+		//	String inputDataType = inElementId;
 			String outputDataType = mappingModel.getOutputDataType();
 			String funcType = mappingModel.getMappingFunctionType();
-			
 			Schema outputSchema = outputSchemaMap.get(outputDataType);
-			GenericRecord  outputRecord = null;
-			
-			if(outputSchema.getType() == Schema.Type.ARRAY){
-				outputRecord = new GenericData.Record(outputSchema.getElementType());
-			}else{
-				outputRecord = new GenericData.Record(outputSchema);
-			}
 
-			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inputRecord);
-			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord);
+			GenericRecord  outputRecord = new GenericData.Record(outputSchema);
+			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inRecord,this.scope);
+			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord,this.scope);
 			
-			this.scope.put("input", scope, inputRecordWrapper);
-			this.scope.put("output", scope, outputRecordWrapper);
+			/*Object wrappedOut = Context.javaToJS(System.out, scope);
+	        ScriptableObject.putProperty(scope, "out", wrappedOut);*/
 			
-			StringBuilder configScript = new StringBuilder("map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType+"();");
-			Object resultOb = context.evaluateString(scope, configScript.toString(), "", 1, null);
+			 String fnName = "map_"+funcType+"_"+elementId+"_"+funcType+"_"+outputDataType;
+			 Function fn = (Function)scope.get(fnName, scope);
+			 Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
 
 			if(resultOb != ScriptableObject.NOT_FOUND){
 				resultRecord = outputRecordWrapper.getRecord();

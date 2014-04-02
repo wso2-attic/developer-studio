@@ -3,9 +3,7 @@ package dataMapper.diagram.tree.generator;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.avro.Schema;
@@ -40,9 +38,9 @@ public class TreeFromAVSC{
 	@SuppressWarnings({ "static-access", "deprecation", "null" })
 	public  Tree generateInputTree(){
 		multipleChunk = new ArrayList<String>();
-		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
-		DataFileReader <GenericData> dataFileReader;
+		//DataFileReader <GenericData> dataFileReader;
 		Tree root = new Tree(); //root tree for Tree data struture
 		try {
 
@@ -70,6 +68,81 @@ public class TreeFromAVSC{
 		
 		return root;
 
+	}
+	
+	public static Tree generateInputTreeFromFile(String path) {
+		multipleChunk = new ArrayList<String>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+
+		//DataFileReader <GenericData> dataFileReader;
+		Tree root = new Tree(); //root tree for Tree data struture
+		try {
+
+			File avsc = new File(path);
+			@SuppressWarnings("resource")
+			String entireFileText = new Scanner(avsc).useDelimiter("\\A").next();
+			 
+			
+			Schema schm = Schema.parse(entireFileText);
+
+			root.setName(schm.getName());
+
+			List<Field> fieldsList = schm.getFields();
+
+			for (Field field : fieldsList)
+				fetchToTree(field, root, multipleChunk);
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return root;
+	}
+	
+	private static  void fetchToTree(Field field, Tree parent, List<String>  multipleChunk) {
+//		System.out.println(" Field: " + field.name());
+		Type fieldType = field.schema().getType();
+		if (fieldType.toString().equalsIgnoreCase("RECORD")) {		
+			
+			Tree child = new Tree(parent);
+			child.setName(field.name());
+
+			List<Field> list = field.schema().getFields();
+			
+			for(Field it : list)
+				fetchToTree(it, child, multipleChunk);
+
+			parent.getTrees().add(child);
+		}
+
+		else if(fieldType.getName().equalsIgnoreCase("ARRAY")){
+//				if (field.schema().getElementType().getType().name().toString().equalsIgnoreCase("RECORD")) {
+//					if (!multipleData)
+//						multipleData = true;
+					
+					Schema arraySchema = field.schema().getElementType();
+					Tree childParent = new Tree(parent);
+					List<Field> fieldList = arraySchema.getFields();
+					childParent.setName(arraySchema.getName()); //employee
+					multipleChunk.add(arraySchema.getName());
+//					parent.getTrees().add(childParent);
+//					Tree child = new Tree(childParent);
+//					child.setName(arraySchema.getName());//employeerecord
+
+
+					for (Field fieldOfField: fieldList)
+						fetchToTree(fieldOfField, childParent, multipleChunk);
+
+					parent.getTrees().add(childParent);
+//				}
+		}
+		else{	
+				Element elementNew=new Element(parent);
+			elementNew.setName(field.name());
+			parent.getElements().add(elementNew);
+		}
+//		return parent;
 	}
 
 	/*
@@ -146,9 +219,9 @@ public class TreeFromAVSC{
 	public Tree generateOutputTree(){
 		
 
-		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
-		DataFileReader <GenericData> dataFileReader;
+		//DataFileReader <GenericData> dataFileReader;
 		Tree root = new Tree(); //root tree for Tree data struture
 		try {
 

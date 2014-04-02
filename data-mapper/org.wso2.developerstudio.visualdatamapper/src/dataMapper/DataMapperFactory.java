@@ -67,13 +67,58 @@ public interface DataMapperFactory extends EFactory {
 	Output createOutput();
 
 	/**
-	 * Returns a new object of class '<em>Operators</em>'.
+	 * Returns a new object of class '<em>Operator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operators</em>'.
+	 * @return a new object of class '<em>Operator</em>'.
 	 * @generated
 	 */
-	Operators createOperators();
+	Operator createOperator();
+
+	/**
+	 * Returns a new object of class '<em>Operator Basic Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Basic Container</em>'.
+	 * @generated
+	 */
+	OperatorBasicContainer createOperatorBasicContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Left Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Left Container</em>'.
+	 * @generated
+	 */
+	OperatorLeftContainer createOperatorLeftContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Left Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Left Connector</em>'.
+	 * @generated
+	 */
+	OperatorLeftConnector createOperatorLeftConnector();
+
+	/**
+	 * Returns a new object of class '<em>Operator Right Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Right Container</em>'.
+	 * @generated
+	 */
+	OperatorRightContainer createOperatorRightContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Right Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Right Connector</em>'.
+	 * @generated
+	 */
+	OperatorRightConnector createOperatorRightConnector();
 
 	/**
 	 * Returns a new object of class '<em>Element</em>'.
@@ -139,13 +184,22 @@ public interface DataMapperFactory extends EFactory {
 	Concat createConcat();
 
 	/**
-	 * Returns a new object of class '<em>Operations</em>'.
+	 * Returns a new object of class '<em>Equal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operations</em>'.
+	 * @return a new object of class '<em>Equal</em>'.
 	 * @generated
 	 */
-	Operations createOperations();
+	Equal createEqual();
+
+	/**
+	 * Returns a new object of class '<em>Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constant</em>'.
+	 * @generated
+	 */
+	Constant createConstant();
 
 	/**
 	 * Returns the package supported by this factory.

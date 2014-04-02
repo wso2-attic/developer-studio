@@ -10,26 +10,31 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 /**
  * @generated
  */
-public class DataMapperRootItemSemanticEditPolicy
-		extends
-			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class DataMapperRootItemSemanticEditPolicy extends
+		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public DataMapperRootItemSemanticEditPolicy() {
-		super(
-				dataMapper.diagram.providers.DataMapperElementTypes.DataMapperRoot_1000);
+		super(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperRoot_1000);
 	}
 
 	/**
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperDiagram_2001 == req
-				.getElementType()) {
-			return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperDiagramCreateCommand(
-					req));
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Input_2002 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.InputCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Output_2003 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.OutputCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.EqualCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.ConcatCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -46,18 +51,14 @@ public class DataMapperRootItemSemanticEditPolicy
 	/**
 	 * @generated
 	 */
-	private static class DuplicateAnythingCommand
-			extends
-				DuplicateEObjectsCommand {
+	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
 
 		/**
 		 * @generated
 		 */
-		public DuplicateAnythingCommand(
-				TransactionalEditingDomain editingDomain,
+		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain,
 				DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req
-					.getElementsToBeDuplicated(), req
+			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req
 					.getAllDuplicatedElementsMap());
 		}
 

@@ -15,18 +15,24 @@
  */
 package org.wso2.datamapper.engine.core;
 
+import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Type;
+import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.Scriptable;
+import org.apache.avro.generic.GenericData.Array;
 
 public class ScriptableObjectFactory implements Scriptable{
 	
 	private GenericRecord record;
 	private Scriptable prototype;
+	private Scriptable scope;
 	
 	
-	public ScriptableObjectFactory(GenericRecord record) {	
+	public ScriptableObjectFactory(GenericRecord record,Scriptable scope) {	
 		this.record = record;
+		this.scope = scope;
 	}
 
 	public GenericRecord getRecord() {
@@ -40,9 +46,28 @@ public class ScriptableObjectFactory implements Scriptable{
 
 	public Object get(String name, Scriptable start) {
 		Object resource = this.record.get(name);
-		if(resource != null){
-			return resource;
-		}		
+		Field field = record.getSchema().getField(name);
+		if(resource instanceof GenericRecord){
+			return	new ScriptableObjectFactory((GenericRecord)resource,getScope());
+		} else if (resource instanceof Array){
+			@SuppressWarnings("unchecked")
+			Array<Object> recordArray = (Array<Object>) resource;
+			return new AvroAwareNativeJavaArray(getScope(),recordArray);
+		} else if (resource != null){
+				return resource;
+		} else if(field!=null){
+			if(field.schema().getType().equals(Type.ARRAY)){
+				Array<Object> recordArray = new GenericData.Array<Object>(32,field.schema());
+				record.put(name,recordArray);
+				return  new AvroAwareNativeJavaArray(getScope(),recordArray);
+			} else if(field.schema().getType().equals(Type.RECORD)){
+				GenericRecord subRecord = new GenericData.Record(field.schema());
+				record.put(name,subRecord);
+				return new ScriptableObjectFactory((GenericRecord)record.get(name),getScope());
+			} else{
+				return NOT_FOUND;
+			}
+		} 	
 		return NOT_FOUND;
 	}
 
@@ -111,6 +136,14 @@ public class ScriptableObjectFactory implements Scriptable{
 	public Object[] getIds() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Scriptable getScope() {
+		return scope;
+	}
+
+	public void setScope(Scriptable scope) {
+		this.scope = scope;
 	}
 
 }

@@ -1,14 +1,12 @@
 package dataMapper.diagram.edit.parts;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -16,32 +14,29 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.swt.graphics.Font;
 
-import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class ConcatEditPart extends AbstractBorderedShapeEditPart {
+public class ConcatEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3013;
+	public static final int VISUAL_ID = 2006;
 
 	/**
 	 * @generated
@@ -53,8 +48,6 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	protected IFigure primaryShape;
 
-	boolean added = false;
-
 	/**
 	 * @generated
 	 */
@@ -62,32 +55,21 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 		super(view);
 	}
 
-	/** 
-	 * @generated NOT
+	/**
+	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.ConcatItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.ConcatCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE); //remove small rectangle nodes
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove selection rectangle
-		//
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); //ballon remove
 	}
 
 	/**
@@ -97,15 +79,7 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				View childView = (View) child.getModel();
-				switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getVisualID(childView)) {
-					case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID :
-					case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID :
-						return new BorderItemSelectionEditPolicy();
-				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -124,7 +98,7 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
 		return primaryShape = new ConcatFigure();
@@ -138,10 +112,10 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(80, 80);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -153,7 +127,7 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	 * 
 	 * @generated
 	 */
-	protected NodeFigure createMainFigure() {
+	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
@@ -166,7 +140,7 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.
 	 * @param nodeShape instance of generated figure class
-	 * @generated 
+	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
@@ -222,90 +196,37 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	public class ConcatFigure extends RoundedRectangle {
 
-	@Override
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (childEditPart instanceof InNode3EditPart) {
-			IFigure borderItemFigure = ((InNode3EditPart) childEditPart)
-					.getFigure();
+		public ConcatFigure() {
+			this.setBackgroundColor(THIS_BACK);
 
-			BorderItemLocator locator;
-			if (!added) {
-				locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.2);
-				added = true;
-			} else {
-				locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.8);
-			}
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Concat");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
 
-		} else if (childEditPart instanceof OutNode3EditPart) {
-			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
-
-		} else {
-
+			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			 border.setColor(new Color(null, 255, 0, 0));*/
+			this.setBorder(titleBarBorder);
 		}
+
+		public String getIconPath() {
+			return "icons/ico20/log-mediator.gif";
+		}
+
+		public String getNodeName() {
+			return "Equal";
+		}
+
+		public IFigure getToolTip() {
+			return new Label("Equal Operation");
+		}
+
 	}
 	
-	class ConcatFigure extends RectangleFigure {
-		/**
-		 * @generated NOT
-		 */
-		public ConcatFigure() {
-
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setVertical(false);
-			this.setLayoutManager(layoutThis);
-
-
-			//setBorder(new SimpleRaisedBorder(3));
-
-			createContents();
-
-		}
-
-		/**
-		 * @generated NOT
-		 */
-		private void createContents() {
-
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/concat.png");
-
-			int nodeDimension = 80; // width for connection nodes
-
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
-			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			RectangleFigure mainImageRectangle = new RectangleFigure();
-
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
-					nodeDimension));
-			mainImageRectangle.add(mainImg);
-
-			mainImageRectangle.setFill(false);
-			mainImageRectangle.setOutline(false);
-			//			
-			this.add(mainImageRectangle);
-			this.setOpaque(false);
-			this.setFill(false);
-			this.setOutline(true);
-
-		}
-	}
+	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

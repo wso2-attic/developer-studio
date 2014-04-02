@@ -2,17 +2,11 @@ package dataMapper.diagram.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.EditPart;
@@ -20,28 +14,17 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredLayoutCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
-import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetViewMutabilityCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CanonicalEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
-import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
-import org.eclipse.gmf.runtime.notation.Bounds;
-import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 
 /**
  * @generated
  */
 public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
-
-	/**
-	 * @generated
-	 */
-	private Set<EStructuralFeature> myFeaturesToSynchronize;
 
 	/**
 	 * @generated
@@ -58,15 +41,8 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected Set getFeaturesToSynchronize() {
-		if (myFeaturesToSynchronize == null) {
-			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
-			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
-					.getConcat_InNode());
-			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
-					.getConcat_OutNode());
-		}
-		return myFeaturesToSynchronize;
+	protected EStructuralFeature getFeatureToSynchronize() {
+		return dataMapper.DataMapperPackage.eINSTANCE.getOperator_BasicContainer();
 	}
 
 	/**
@@ -77,7 +53,7 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getConcat_3013SemanticChildren(viewObject);
+				.getConcat_2006SemanticChildren(viewObject);
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -87,20 +63,16 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry
+		return dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID == dataMapper.diagram.part.DataMapperVisualIDRegistry
 				.getVisualID(view);
-		return visualID == dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID;
 	}
 
 	/**
@@ -112,7 +84,7 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getConcat_3013SemanticChildren((View) getHost().getModel());
+				.getConcat_2006SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -128,10 +100,9 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
 		for (Iterator<dataMapper.diagram.part.DataMapperNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
-			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator
-					.next();
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
+			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator.next();
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
 			for (View childView : getViewChildren()) {
 				EObject semanticElement = childView.getElement();
@@ -157,13 +128,12 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor next : childDescriptors) {
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
 			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
+							.getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -172,8 +142,8 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
+					.execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -184,8 +154,8 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
+					createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

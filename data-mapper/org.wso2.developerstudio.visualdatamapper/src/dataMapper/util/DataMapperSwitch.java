@@ -99,10 +99,40 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.OPERATORS: {
-				Operators operators = (Operators)theEObject;
-				T result = caseOperators(operators);
-				if (result == null) result = caseDataMapperNode(operators);
+			case DataMapperPackage.OPERATOR: {
+				Operator operator = (Operator)theEObject;
+				T result = caseOperator(operator);
+				if (result == null) result = caseDataMapperNode(operator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATOR_BASIC_CONTAINER: {
+				OperatorBasicContainer operatorBasicContainer = (OperatorBasicContainer)theEObject;
+				T result = caseOperatorBasicContainer(operatorBasicContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATOR_LEFT_CONTAINER: {
+				OperatorLeftContainer operatorLeftContainer = (OperatorLeftContainer)theEObject;
+				T result = caseOperatorLeftContainer(operatorLeftContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATOR_LEFT_CONNECTOR: {
+				OperatorLeftConnector operatorLeftConnector = (OperatorLeftConnector)theEObject;
+				T result = caseOperatorLeftConnector(operatorLeftConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATOR_RIGHT_CONTAINER: {
+				OperatorRightContainer operatorRightContainer = (OperatorRightContainer)theEObject;
+				T result = caseOperatorRightContainer(operatorRightContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: {
+				OperatorRightConnector operatorRightConnector = (OperatorRightConnector)theEObject;
+				T result = caseOperatorRightConnector(operatorRightConnector);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -145,13 +175,24 @@ public class DataMapperSwitch<T> extends Switch<T> {
 			case DataMapperPackage.CONCAT: {
 				Concat concat = (Concat)theEObject;
 				T result = caseConcat(concat);
+				if (result == null) result = caseOperator(concat);
+				if (result == null) result = caseDataMapperNode(concat);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.OPERATIONS: {
-				Operations operations = (Operations)theEObject;
-				T result = caseOperations(operations);
-				if (result == null) result = caseDataMapperNode(operations);
+			case DataMapperPackage.EQUAL: {
+				Equal equal = (Equal)theEObject;
+				T result = caseEqual(equal);
+				if (result == null) result = caseOperator(equal);
+				if (result == null) result = caseDataMapperNode(equal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.CONSTANT: {
+				Constant constant = (Constant)theEObject;
+				T result = caseConstant(constant);
+				if (result == null) result = caseOperator(constant);
+				if (result == null) result = caseDataMapperNode(constant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -235,17 +276,92 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operators</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Operator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operators</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Operator</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperators(Operators object) {
+	public T caseOperator(Operator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operator Basic Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operator Basic Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperatorBasicContainer(OperatorBasicContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operator Left Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operator Left Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperatorLeftContainer(OperatorLeftContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operator Left Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operator Left Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperatorLeftConnector(OperatorLeftConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operator Right Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operator Right Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperatorRightContainer(OperatorRightContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operator Right Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operator Right Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperatorRightConnector(OperatorRightConnector object) {
 		return null;
 	}
 
@@ -355,17 +471,32 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operations</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Equal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operations</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Equal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperations(Operations object) {
+	public T caseEqual(Equal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstant(Constant object) {
 		return null;
 	}
 

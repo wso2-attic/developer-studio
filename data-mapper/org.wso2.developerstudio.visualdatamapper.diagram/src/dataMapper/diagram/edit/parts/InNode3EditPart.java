@@ -1,9 +1,5 @@
 package dataMapper.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -20,7 +16,6 @@ import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,21 +23,15 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-
-/*
- * concat input connector 
- */
-
-/**
- * @generated
+/** 
+ * @generated NOT
  */
 public class InNode3EditPart extends AbstractBorderItemEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3014;
+	public static final int VISUAL_ID = 3015;
 
 	/**
 	 * @generated
@@ -61,31 +50,17 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		super(view);
 	}
 
-	public NodeFigure figure_;
-
-	public NodeFigure getNodeFigureOutput() {
-		return figure_;
-	}
-
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.InNode3ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let children add reasonable editpolicies
-		//
-		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		//
-		//		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-		//				new CustomNonResizableEditPolicyEx());
-		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
@@ -95,8 +70,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -114,16 +88,6 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		return lep;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#isSelectable()
-	 * 
-	 */
-	@Override
-	public boolean isSelectable() {
-		return false;
-	}
-
 	/**
 	 * @generated NOT
 	 */
@@ -132,7 +96,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public RectangleFigure getPrimaryShape() {
 		return (RectangleFigure) primaryShape;
@@ -142,7 +106,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
 		//FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -155,7 +119,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
@@ -163,7 +127,6 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		IFigure shape = createNodeShape();
 		figure.add(shape);
 		contentPane = setupContentPane(shape);
-		figure_ = figure;
 		return figure;
 	}
 
@@ -223,31 +186,15 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		}
 	}
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		return types;
-	}
+	public class EastPointerFigure extends EastPointerShape {
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
+		public EastPointerFigure() {
+
+			this.setBackgroundColor(THIS_BACK);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
 		}
-		return types;
 	}
 
-	/**
-	 * @generated NOT
-	 */
 	class InNode3Figure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -272,10 +219,8 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 10; // width for connection nodes
 
@@ -283,10 +228,8 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
-					nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
 
 			mainImageRectangle.setFill(false);
@@ -299,5 +242,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 
 		}
 	}
+
+	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

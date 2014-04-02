@@ -30,7 +30,7 @@ public interface InputDataReaderAdapter {
 	public void setInputSchemaMap(Map<String, Schema> inputSchemaMap);
 	public void setRootRecord(GenericRecord rootRecord);
 	public GenericRecord getRootRecord();
-	public GenericRecord getChildRecord();
+	public GenericRecord getChildRecord(Schema input);
 	public List<GenericRecord> getArrayChildList();
 	
 }
