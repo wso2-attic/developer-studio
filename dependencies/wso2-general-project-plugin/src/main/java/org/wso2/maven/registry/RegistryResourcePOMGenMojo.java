@@ -35,11 +35,7 @@ import org.wso2.maven.registry.utils.GeneralProjectMavenUtils;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This is the Maven Mojo used for generating a pom for a sequence artifact 
@@ -241,7 +237,8 @@ public class RegistryResourcePOMGenMojo extends AbstractPOMGenMojo {
 			}
 			
 			if (file.isFile()) {
-				FileUtils.copy(file,
+				File processedFile = processTokenReplacement(file);
+				FileUtils.copy(processedFile,
 				               new File(projectLocation, "resources" + File.separator + file.getName()));
 			} else {
 				FileUtils.copyDirectory(file,
@@ -310,5 +307,23 @@ public class RegistryResourcePOMGenMojo extends AbstractPOMGenMojo {
 		return ARTIFACT_TYPE;
 	}
 
+	/**
+	* Replace all maven placeholders with their specified values from the maven properties in the project model.
+	* @param file tThe file to replace the tokens in.
+	*/
+	protected File processTokenReplacement(File file) throws IOException {
+		if(file.exists()){
+			String fileContent;
+			fileContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils.getContentAsString(file);
+		
+			Properties mavenProperties = getProject().getModel().getProperties();
+
+			String newFileContent = replaceTokens(fileContent, mavenProperties);
+			File tempFile = org.wso2.developerstudio.eclipse.utils.file.FileUtils.createTempFile();
+			org.wso2.developerstudio.eclipse.utils.file.FileUtils.writeContent(tempFile, newFileContent);
+			return tempFile;
+		}
+		return file;
+	}
 	
 }
