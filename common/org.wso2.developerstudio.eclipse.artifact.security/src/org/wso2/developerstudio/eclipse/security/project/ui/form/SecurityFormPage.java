@@ -1647,16 +1647,12 @@ public class SecurityFormPage extends FormPage {
 				}
 				if (StringUtils.isEmpty(eElement.getTextContent())) {
 					if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
-						// carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME,
-						// null);
 						setSave(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 						msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
 						msgBox.open();
 					} else {
-						// carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD,
-						// null);
 						setSave(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
