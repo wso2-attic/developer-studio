@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.carbonserver44.operations;
 
 import org.eclipse.ant.core.AntRunner;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -26,7 +27,6 @@ import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.developerstudio.eclipse.carbonserver.base.exception.CarbonServerNotRunningException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
@@ -196,8 +196,14 @@ public class CarbonOperationsManager44 implements ICarbonOperationManager {
 				case ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE:
 					if (server!=null)
 						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)){
-							IProject project=(IProject)operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
 							ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,server);
+							IResource updatedResource = (IResource) operation.get("resource");
+							serviceModuleOperations.setUpdatedResource(updatedResource);
+							Integer resChangeKind = (Integer) operation.get("resourceChangeKind");
+							if (resChangeKind != null) {
+								serviceModuleOperations.setResourceChngeKind(resChangeKind);
+							}
 							serviceModuleOperations.hotUpdateModule();
 						}
 					break;
