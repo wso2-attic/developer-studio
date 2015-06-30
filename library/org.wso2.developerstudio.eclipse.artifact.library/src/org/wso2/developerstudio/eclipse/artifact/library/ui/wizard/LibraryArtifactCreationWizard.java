@@ -59,6 +59,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class LibraryArtifactCreationWizard extends
 		AbstractWSO2ProjectCreationWizard {
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Library Artifact";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	private LibraryArtifactModel libraryModel;
 	private NewJavaLibraryWizardPage javaLibraryWizardPage;
@@ -68,6 +69,7 @@ public class LibraryArtifactCreationWizard extends
 		libraryModel = new LibraryArtifactModel();
 		setLibraryModel(libraryModel);
 		setModel(getLibraryModel());
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(LibraryImageUtils.getInstance().getImageDescriptor("jar-wizard.png"));
 	}
 

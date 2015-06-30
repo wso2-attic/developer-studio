@@ -67,6 +67,7 @@ import org.eclipse.ui.IWorkbench;
 public class JaxrsCreationWizard  extends AbstractWSO2ProjectCreationWizard{
 	private static final String JAXRS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.jaxrs.project.nature";
 	private static final String CXF_CLASSLOADING_DESCRIPTOR = "webapp-classloading.xml";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New JAX-RS Service";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	private JaxrsProjectModel model;
 	IProject project;
@@ -80,7 +81,7 @@ public class JaxrsCreationWizard  extends AbstractWSO2ProjectCreationWizard{
 	public JaxrsCreationWizard(){
 		setProjectModel(new JaxrsProjectModel());
 		setModel(getProjectModel());
-		setWindowTitle("Create New JAX-RS Service");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(Activator.getImageDescriptor("icons/JAX-RS-wizard.png"));
 	}
 	

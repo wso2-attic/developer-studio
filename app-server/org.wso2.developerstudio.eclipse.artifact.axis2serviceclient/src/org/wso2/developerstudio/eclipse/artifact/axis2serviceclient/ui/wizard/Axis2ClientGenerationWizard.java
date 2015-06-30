@@ -47,6 +47,7 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.wso2.developerstudio.eclipse.artifact.axis2serviceclient.Activator;
 import org.wso2.developerstudio.eclipse.artifact.axis2serviceclient.utils.Axis2ImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.axis2serviceclient.utils.Messages;
 import org.wso2.developerstudio.eclipse.libraries.utils.LibraryUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -64,6 +65,7 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 	private String wsdlFileLocation;
 	private static final int CREATE_CLIENT = 0;
 	private static final int CREATE_SERVICE = 1;
+	
 
 	private int modelGeneratingType;
 	private IPackageFragmentRoot sourceFolder;
@@ -106,21 +108,21 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 				throws InvocationTargetException, InterruptedException {
 			boolean createServicesXML = model.isGenerateServerSideCode();
 			model.setGenerateServicedescriptor(createServicesXML);
-			String operationText = "Generating Client Side Code";
+			String operationText = "Generating Client Side Code"; //$NON-NLS-1$
 			if (model.isGenerateServerSideCode()) {
-				operationText = "Generating Server Side Code";
+				operationText = "Generating Server Side Code"; //$NON-NLS-1$
 			}
 			monitor.beginTask(operationText, 100);
-			monitor.subTask("Processing configuration...");
+			monitor.subTask("Processing configuration..."); //$NON-NLS-1$
 			String[] parameterArray = Axis2ParametersUtils
 					.getParameterArray(Axis2ParametersUtils
 							.getParameterList(model));
 			monitor.worked(10);
 			try {
-				monitor.subTask("Generating code...");
+				monitor.subTask("Generating code..."); //$NON-NLS-1$
 				WSDL2Java.main(parameterArray);
 				monitor.worked(75);
-				monitor.subTask("Adding dependent libraries to the project...");
+				monitor.subTask("Adding dependent libraries to the project..."); //$NON-NLS-1$
 				JavaUtils.addJarLibraryToProject(model.getSelectedProject(),
 						LibraryUtils
 								.getDependencyPath(LibraryUtils.axis2_1_6_1_wso2vXX_jar));
@@ -128,15 +130,15 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 						LibraryUtils
 								.getDependencyPath(LibraryUtils.axiom_1_2_11_wso2vXX_jar));
 				monitor.worked(10);
-				monitor.subTask("Refreshing project...");
+				monitor.subTask("Refreshing project..."); //$NON-NLS-1$
 				model.getSelectedProject().refreshLocal(
 						IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				monitor.worked(5);
 				monitor.done();
 				if (createServicesXML) {
 					if (MessageDialog
-							.openQuestion(getShell(), "Axis2 service",
-									"Do you want to create an axis2 service out of the generated skeleton class?")) {
+							.openQuestion(getShell(), "Axis2 service", //$NON-NLS-1$
+									"Do you want to create an axis2 service out of the generated skeleton class?")) { //$NON-NLS-1$
 						createAxis2Artifact(model, monitor);
 					}
 				}
@@ -156,8 +158,8 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 			progressMonitorDialog.run(false, false, new CodegenJob());
 		} catch (Exception e) {
 			log.error(e);
-			MessageDialog.openError(getShell(), "Generate code",
-					"Error in performing the operations:" + e.getMessage());
+			MessageDialog.openError(getShell(), "Generate code", //$NON-NLS-1$
+					"Error in performing the operations:" + e.getMessage()); //$NON-NLS-1$
 			return false;
 		}
 		return true;
@@ -184,8 +186,8 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 	public void addPages() {
 
 		if (wsdlFileLocation == null) {
-			wsdlPage = new Axis2SelectWSDLPage("Select WSDL", model);
-			wsdlPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+			wsdlPage = new Axis2SelectWSDLPage("Select WSDL", model); //$NON-NLS-1$
+			wsdlPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png")); //$NON-NLS-1$
 			addPage(wsdlPage);
 		} else {
 			model.setWsdlURI(wsdlFileLocation);
@@ -196,16 +198,16 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 			model.setSelectedProject(sourceFolder.getJavaProject().getProject());
 		}
 		// model.addDataEventListener(clientOptionPage);
-		String codeGenOptionPageTitle = "Web Service Client";
-		String clientConfigOptionPageTitle = "Client Configuration";
-		String windowTitle = "Apache Axis2 Web Service Client Wizard";
+		String codeGenOptionPageTitle = "Web Service Client"; //$NON-NLS-1$
+		String clientConfigOptionPageTitle = "Client Configuration"; //$NON-NLS-1$
+		String windowTitle = Messages.CLIENT_AXIS2_WIZARD_WINDOW_TITLE;
 
 		if (getModelGeneratingType() == CREATE_CLIENT) {
 			model.setGenerateServerSideCode(false);
 		} else {
-			codeGenOptionPageTitle = "Web Service Skeleton";
-			clientConfigOptionPageTitle = "Axis2 Service Skeleton Generation";
-			windowTitle = "Apache Axis2 Web Service Skeleton Wizard";
+			codeGenOptionPageTitle = "Web Service Skeleton"; //$NON-NLS-1$
+			clientConfigOptionPageTitle = "Axis2 Service Skeleton Generation"; //$NON-NLS-1$
+			windowTitle = Messages.SKELETON_AXIS2_WIZARD_WINDOW_TITLE;
 
 			model.setGenerateServerSideCode(true);
 		}
@@ -214,11 +216,11 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 		codeGenOptionPage = new Axis2CodeGenerationOptionPage(
 				codeGenOptionPageTitle, sourceFolder, model,
 				modelGeneratingType);
-		codeGenOptionPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+		codeGenOptionPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png")); //$NON-NLS-1$
 
 		clientConfigurationPage = new Axis2ClientConfigurationPage(
 				clientConfigOptionPageTitle, model);
-		clientConfigurationPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+		clientConfigurationPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png")); //$NON-NLS-1$
 
 		addPage(codeGenOptionPage);
 		addPage(clientConfigurationPage);
@@ -229,7 +231,7 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(
 				getShell(), new WorkbenchLabelProvider(),
 				new CAppProjectSelectionDialog());
-		dialog.setTitle("Select Carbon Application project to create the Axis2 Service");
+		dialog.setTitle("Select Carbon Application project to create the Axis2 Service"); //$NON-NLS-1$
 		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
 		dialog.setHelpAvailable(false);
 		while (dialog.open() == Window.OK) {
@@ -240,8 +242,8 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 				// String artifactName = model.getServiceName();
 				// String artifactVersion = "1.0.0";
 
-				monitor.beginTask("Create Axis2 service...", 100);
-				monitor.subTask("Create resources directory...");
+				monitor.beginTask("Create Axis2 service...", 100); //$NON-NLS-1$
+				monitor.subTask("Create resources directory..."); //$NON-NLS-1$
 				// File generatedResourceDir =
 				// model.getSelectedProject().getFolder("resources").getLocation().toFile();
 				// File servicesXML = new
@@ -266,7 +268,7 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 				// axis2Artifact.writeServiceInformation(archiveFile);
 				// String archiveFilePath=archiveFile.toString();
 				monitor.worked(10);
-				monitor.subTask("Generating CApp artifact...");
+				monitor.subTask("Generating CApp artifact..."); //$NON-NLS-1$
 				// IFile file =
 				// project.getFolder(artifactName).getFile("artifact.xml");
 				// Artifact artifact = new Artifact(file);
@@ -333,7 +335,7 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 	public IWizardPage getNextPage(IWizardPage page) {
 		IWizardPage nextPage = super.getNextPage(page);
 		if(nextPage!=null){
-			nextPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+			nextPage.setImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png")); //$NON-NLS-1$
 		}
 		// if (page instanceof Axis2GenerateClientOptionPage){
 		// // if (clientOptionPage.getSourceFolder()==null){
@@ -350,7 +352,7 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 
 	public void setInitializationData(IConfigurationElement arg0, String arg1,
 			Object arg2) throws CoreException {
-		setModelGeneratingType(Integer.parseInt(((Map) arg2).get("type")
+		setModelGeneratingType(Integer.parseInt(((Map) arg2).get("type") //$NON-NLS-1$
 				.toString()));
 	}
 }
