@@ -15,8 +15,8 @@
 	limitations under the License.
 -->
 <wizard>
-	<projectOptions title="Task Artifact Creation Options"
-		description="Select how you would like to create your scheduled task artifact"
+	<projectOptions title="Scheduled Task Artifact"
+		description="Create a new Scheduled Task Artifact"
 		error="Please select a method to create the task">
 		<option id="create.task" default="true">Create A New Scheduled Task Artifact</option>
 		<option id="import.task">Import Scheduled Task Artifact</option>
@@ -58,8 +58,8 @@
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 		</settings>
 		<settings optionId="import.task" 
-				  title="Import Scheduled Task" 
-				  description="Browse the location of a configuration file with Scheduled Task defined" 
+				  title="Scheduled Task Artifact" 
+				  description="Create a new Scheduled Task Artifact using a configuration file with Scheduled Task defined" 
 				  error="Browse and select a Sheduled Task configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController">Scheduled Task Configuration File</data>
 			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController" 

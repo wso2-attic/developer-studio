@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class GadgetCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	private static final String GADGET_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.gadget.project.nature";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Gadget Artifact";
 	private GadgetModel gadgetModel;
     private  IProject project;
     private static final String GADGET_CONF_FILE = "gadget-conf.xml";
@@ -38,7 +39,7 @@ public class GadgetCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	public GadgetCreationWizard() {
 		setGadgetModel(new GadgetModel());
 		setModel(getGadgetModel());
-		setWindowTitle("Create New Gadget ");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(GadgetImageUtils.getInstance().getImageDescriptor("Gadget-wizard.png"));
 	}
 	

@@ -87,6 +87,7 @@ public class RegistryHandlerCreationWizard extends
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	private static final String ACTIVATOR_FQN= "org.osgi.framework.BundleActivator";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Handler Artifact";
 	private NewHandlerClassWizardPage newHandlerClassWizardPage;
 	private ImportHandlerClassWizardPage importHandlerClassWizardPage;
 	private NewFilterClassWizardPage newFilterClassWizardPage;
@@ -129,6 +130,7 @@ public class RegistryHandlerCreationWizard extends
 		regModel = new RegistryHandlerModel();
 		setFilterModel(regModel);
 		setModel(getFilterModel());
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(HandlerImageUtils.getInstance().getImageDescriptor("registry-handler-wizard.png"));
 	}
 

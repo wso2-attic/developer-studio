@@ -47,6 +47,7 @@ import org.wso2.developerstudio.eclipse.artifact.axis2.model.Axis2Model;
 import org.wso2.developerstudio.eclipse.artifact.axis2.model.DataModel;
 import org.wso2.developerstudio.eclipse.artifact.axis2.utils.Axis2ImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.axis2.utils.Axis2ParametersUtils;
+import org.wso2.developerstudio.eclipse.artifact.axis2.utils.Messages;
 import org.wso2.developerstudio.eclipse.libraries.utils.LibraryUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -61,7 +62,8 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWizard {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String AXIS2_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.axis2.project.nature";
+	private static final String AXIS2_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.axis2.project.nature"; //$NON-NLS-1$
+	
 	private Axis2Model axis2Model;
 	private Axis2ConfigurationPage wsdlConfigurationPage;
 	private DataModel dataModel;
@@ -71,8 +73,8 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 		dataModel = new DataModel();
 		setAxis2Model(new Axis2Model());
 		setModel(getAxis2Model());
-		setWindowTitle("Create New Axis2 Service");
-		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+		setWindowTitle(Messages.AXIS2_WIZARD_WINDOW_TITLE);
+		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png")); //$NON-NLS-1$
 	}
 
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -83,10 +85,10 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 		IFile axis2GenServiceXML =null;
 		try {
 			IProject project = createNewProject();
-			IFolder sourceFolder =ProjectUtils.getWorkspaceFolder(project, "src", "main", "java");
+			IFolder sourceFolder =ProjectUtils.getWorkspaceFolder(project, "src", "main", "java"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			JavaUtils.addJavaSupportAndSourceFolder(project, sourceFolder);
-			File pomfile = project.getFile("pom.xml").getLocation().toFile();
-			getModel().getMavenInfo().setPackageName("service/axis2");
+			File pomfile = project.getFile("pom.xml").getLocation().toFile(); //$NON-NLS-1$
+			getModel().getMavenInfo().setPackageName("service/axis2"); //$NON-NLS-1$
 			createPOM(pomfile);
 			getModel().addToWorkingSet(project);
 			ProjectUtils.addNatureToProject(project,
@@ -102,34 +104,34 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-			if (getModel().getSelectedOption().equals("import.Axis2")) {
+			if (getModel().getSelectedOption().equals("import.Axis2")) { //$NON-NLS-1$
 				//TODO: import AAR
 
-			} else if (getModel().getSelectedOption().equals("new.Axis2")) {
+			} else if (getModel().getSelectedOption().equals("new.Axis2")) { //$NON-NLS-1$
 				String className =  axis2Model.getServiceClass();
 				String packageName = axis2Model.getPackageName();
 
 				IJavaProject javaProject = JavaCore.create(project);
-			    IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources");
+			    IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			    if(!resourceFolder.exists()){
 			    	resourceFolder.create(false, true, null);
 			    }
 
-				IFolder metaFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources","META-INF");
+				IFolder metaFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources","META-INF"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 				 if(!metaFolder.exists()){
 					 metaFolder.create(false, true, null);
 				 }
-				IFile serviceXML = metaFolder.getFile("services.xml");
-				createServiceXML(serviceXML,className,packageName.concat(".").concat(className));
+				IFile serviceXML = metaFolder.getFile("services.xml"); //$NON-NLS-1$
+				createServiceXML(serviceXML,className,packageName.concat(".").concat(className)); //$NON-NLS-1$
 				IPackageFragmentRoot root = javaProject.getPackageFragmentRoot(sourceFolder);
 				IPackageFragment sourcePackage = root.createPackageFragment(packageName, false, null);
 				StringBuffer buffer = new StringBuffer();
-				if(!packageName.equalsIgnoreCase("")){
-					buffer.append("package " + packageName + ";\n");
-					buffer.append("\n");
+				if(!packageName.equalsIgnoreCase("")){ //$NON-NLS-1$
+					buffer.append("package " + packageName + ";\n"); //$NON-NLS-1$ //$NON-NLS-2$
+					buffer.append("\n"); //$NON-NLS-1$
 				}
-				buffer.append("public class " + className +"{\n\n}" );
-				ICompilationUnit compilationUnit = sourcePackage.createCompilationUnit(className+".java", buffer.toString(), false, null);
+				buffer.append("public class " + className +"{\n\n}" ); //$NON-NLS-1$ //$NON-NLS-2$
+				ICompilationUnit compilationUnit = sourcePackage.createCompilationUnit(className+".java", buffer.toString(), false, null); //$NON-NLS-1$
 				project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 				IPath path = compilationUnit.getResource().getProjectRelativePath();
 				IFile sourceFile = project.getFile(path);
@@ -137,29 +139,29 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 					refreshDistProjects();
 					IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),sourceFile);
 				} catch (Exception e) {
-					log.error("Cannot open file in editor", e);
+					log.error("Cannot open file in editor", e); //$NON-NLS-1$
 				}
 			}
-			else if (getModel().getSelectedOption().equals("import.Axis2wsdl")) {
+			else if (getModel().getSelectedOption().equals("import.Axis2wsdl")) { //$NON-NLS-1$
 				ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
-				IFolder mainFolder =ProjectUtils.getWorkspaceFolder(project, "src", "main");
-				dataModel.setSourceFolder("java");
+				IFolder mainFolder =ProjectUtils.getWorkspaceFolder(project, "src", "main"); //$NON-NLS-1$ //$NON-NLS-2$
+				dataModel.setSourceFolder("java"); //$NON-NLS-1$
 				dataModel.setGeneratedCodeLocation(mainFolder.getRawLocation().toPortableString());
 				dataModel.setSelectedProject(project);
 				progressMonitorDialog.create();
 				progressMonitorDialog.open();
 				progressMonitorDialog.run(false, false, new CodegenJob());
 
-				IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources");
+				IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
-				IFolder metaFolder = resourceFolder.getFolder("META-INF");
+				IFolder metaFolder = resourceFolder.getFolder("META-INF"); //$NON-NLS-1$
 				if(!metaFolder.exists()){
 					metaFolder.create(false, true, null);
 				}
-				axis2GenServiceXML = resourceFolder.getFile("services.xml");
+				axis2GenServiceXML = resourceFolder.getFile("services.xml"); //$NON-NLS-1$
 				project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 				if(axis2GenServiceXML.exists()){
-					IFile metaServiceXML = metaFolder.getFile("services.xml");
+					IFile metaServiceXML = metaFolder.getFile("services.xml"); //$NON-NLS-1$
 					FileUtils.copy(axis2GenServiceXML.getLocation().toFile(), metaServiceXML.getLocation().toFile());
 					project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 					//axis2GenServiceXML.delete(true, new NullProgressMonitor());
@@ -171,36 +173,36 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
 		} catch (CoreException e) {
-			log.error("CoreException has occurred", e);
+			log.error("CoreException has occurred", e); //$NON-NLS-1$
 		} catch (IOException e) {
-			log.error("I/O error has occurred", e);
+			log.error("I/O error has occurred", e); //$NON-NLS-1$
 		} catch (InvocationTargetException e) {
-			log.error("An error occurred while generating codes", e.getTargetException());
+			log.error("An error occurred while generating codes", e.getTargetException()); //$NON-NLS-1$
 		} catch (Exception e) {
-			log.error("An unexpected error has occurred", e);
+			log.error("An unexpected error has occurred", e); //$NON-NLS-1$
 		}
 
 		return true;
 	}
 
     private void createServiceXML(IFile serviceXML, String serviceName, String serviceClass) {
-        String serviceXMLContent = "<service name=\"" + serviceName + "\">\n" +
-                "\t<description>\n" +
-                "\t\tPlease Type your service description here\n" +
-                "\t</description>\n" +
-                "\t<messageReceivers>\n" +
-                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" " +
-                "mep=\"http://www.w3.org/2004/08/wsdl/in-only\"/>\n" +
-                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\" " +
-                "mep=\"http://www.w3.org/2004/08/wsdl/in-out\"/>\n" +
-                "\t</messageReceivers>\n" +
-                "\t<parameter locked=\"false\" name=\"ServiceClass\">" + serviceClass + "</parameter>\n" +
-                "</service>\n";
+        String serviceXMLContent = "<service name=\"" + serviceName + "\">\n" + //$NON-NLS-1$ //$NON-NLS-2$
+                "\t<description>\n" + //$NON-NLS-1$
+                "\t\tPlease Type your service description here\n" + //$NON-NLS-1$
+                "\t</description>\n" + //$NON-NLS-1$
+                "\t<messageReceivers>\n" + //$NON-NLS-1$
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" " + //$NON-NLS-1$
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-only\"/>\n" + //$NON-NLS-1$
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\" " + //$NON-NLS-1$
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-out\"/>\n" + //$NON-NLS-1$
+                "\t</messageReceivers>\n" + //$NON-NLS-1$
+                "\t<parameter locked=\"false\" name=\"ServiceClass\">" + serviceClass + "</parameter>\n" + //$NON-NLS-1$ //$NON-NLS-2$
+                "</service>\n"; //$NON-NLS-1$
         try {
             serviceXML.create(new ByteArrayInputStream(serviceXMLContent.getBytes()), true, new NullProgressMonitor());
         } catch (CoreException e) {
-            log.error("Error occurred while creating services.xml file for Axis2 service, service name : "
-                    + serviceName + ", service class : " + serviceClass, e);
+            log.error("Error occurred while creating services.xml file for Axis2 service, service name : " //$NON-NLS-1$
+                    + serviceName + ", service class : " + serviceClass, e); //$NON-NLS-1$
         }
     }
 
@@ -209,21 +211,21 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 		public void run(IProgressMonitor monitor)
 				throws InvocationTargetException, InterruptedException {
 			dataModel.setGenerateServicedescriptor(true);
-			String operationText="Generating server side code";
+			String operationText="Generating server side code"; //$NON-NLS-1$
 			monitor.beginTask(operationText, 100);
-			monitor.subTask("Processing configuration...");
+			monitor.subTask("Processing configuration..."); //$NON-NLS-1$
 			String[] parameterArray = Axis2ParametersUtils
 					.getParameterArray(Axis2ParametersUtils.getParameterList(dataModel));
 			monitor.worked(10);
 			try {
-				monitor.subTask("Generating code...");
+				monitor.subTask("Generating code..."); //$NON-NLS-1$
 				WSDL2Java.main(parameterArray);
 				monitor.worked(75);
-				monitor.subTask("Adding dependent libraries to the project...");
+				monitor.subTask("Adding dependent libraries to the project..."); //$NON-NLS-1$
 				JavaUtils.addJarLibraryToProject(dataModel.getSelectedProject(), LibraryUtils.getDependencyPath(LibraryUtils.axis2_1_6_1_wso2vXX_jar));
 				JavaUtils.addJarLibraryToProject(dataModel.getSelectedProject(), LibraryUtils.getDependencyPath(LibraryUtils.axiom_1_2_11_wso2vXX_jar));
 				monitor.worked(10);
-				monitor.subTask("Refreshing project...");
+				monitor.subTask("Refreshing project..."); //$NON-NLS-1$
 				dataModel.getSelectedProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				monitor.worked(5);
 				monitor.done();
@@ -243,7 +245,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 	}
 
 	public void addPages() {
-		wsdlConfigurationPage = new Axis2ConfigurationPage("Axis2 Service Configuration", dataModel);
+		wsdlConfigurationPage = new Axis2ConfigurationPage("Axis2 Service Configuration", dataModel); //$NON-NLS-1$
 		super.addPages();
 		addPage(wsdlConfigurationPage);
 		pages = getPages();
@@ -252,7 +254,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 	public IWizardPage getNextPage(IWizardPage page) {
 		IWizardPage nextPage = super.getNextPage(page);
 		if(page instanceof ProjectOptionsDataPage ){
-			if(getModel().getSelectedOption().equalsIgnoreCase("import.Axis2wsdl")){
+			if(getModel().getSelectedOption().equalsIgnoreCase("import.Axis2wsdl")){ //$NON-NLS-1$
 				dataModel.setWsdlURI(getModel().getImportFile().getAbsolutePath());
 				dataModel.setGenerateServerSideCode(true);
 				nextPage = wsdlConfigurationPage;
