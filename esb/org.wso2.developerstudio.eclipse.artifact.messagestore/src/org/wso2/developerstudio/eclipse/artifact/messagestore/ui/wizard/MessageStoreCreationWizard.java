@@ -73,6 +73,7 @@ import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Message Store";
 	
 	private final MessageStoreModel messageStoreModel;
 	private ESBProjectArtifact esbProjectArtifact;
@@ -85,7 +86,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
 		setModel(messageStoreModel);
-		setWindowTitle("New Message Store");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(MessageStoreImageUtils.getInstance().getImageDescriptor("message-store.png"));
 	}
 

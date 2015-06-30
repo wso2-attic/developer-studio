@@ -57,13 +57,14 @@ public class RegistryFilterCreationWizard extends
 	private IFolder sourceFolder;
 	private IJavaProject javaProject;
 	private IPackageFragmentRoot root;
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Filter Artifact";
 	
 	
 	public RegistryFilterCreationWizard() {
 		filterModel = new RegistryFilterModel();
 		setFilterModel(filterModel);
 		setModel(getFilterModel());
-		setWindowTitle("Registry Filter Artifact Creation Wizard");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(RegistryFilterImageUtils.getInstance().getImageDescriptor("new-registry-filter-wizard.png"));
 	}
 
