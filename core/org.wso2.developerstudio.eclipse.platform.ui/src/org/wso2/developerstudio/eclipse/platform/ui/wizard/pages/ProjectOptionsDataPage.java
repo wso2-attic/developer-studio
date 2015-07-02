@@ -125,7 +125,6 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
             setTitle(projectOptionsInfo.getTitle());
             setDescription(projectOptionsInfo.getDescription());
         }
-        
     }
 
     private void addProjectOptionUI() {
@@ -134,7 +133,6 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
         try {
             doPageValidation(null);
             setPageComplete(true);
-            setDescription(null);
         } catch (FieldValidationException e) {
             //Field validation failed, show proper error message on wizard
             setPageComplete(false);
@@ -1462,7 +1460,6 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
             if (isRequireLocationSection()) {
                 if (locationInfoComposite!=null && locationInfoComposite.isComplete()) {
                     setPageComplete(true);
-                    setDescription(null);
                     setErrorMessage(null);
                 } else {
                     setPageComplete(false);
@@ -1470,7 +1467,6 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
                 }
             } else {
                 setPageComplete(true);
-                setDescription(null);
                 setErrorMessage(null);
             }
         } catch (FieldValidationException e) {
