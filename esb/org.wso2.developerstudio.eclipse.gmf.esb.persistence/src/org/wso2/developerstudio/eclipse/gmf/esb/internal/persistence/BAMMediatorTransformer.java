@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
@@ -26,11 +27,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 
 public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		information.getParentSequence().addChild(
 				createBAMMediator(subject, information));
 
@@ -43,7 +45,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createBAMMediator(subject, information));
 		doTransformWithinSequence(information, ((BAMMediator) subject)
 				.getOutputConnector().getOutgoingLink(), sequence);
@@ -51,7 +53,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 	
 	private org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(
-			EsbNode subject, TransformationInfo information) throws Exception {
+			EsbNode subject, TransformationInfo information) throws TransformerException {
 
 		/*
 		 * Check subject.
@@ -61,14 +63,24 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 
 		org.wso2.carbon.mediator.bam.BamMediator bamMediator = new org.wso2.carbon.mediator.bam.BamMediator();
 		setCommonProperties(bamMediator, visualBAMMediator);
-		
-		bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
-		
-		StreamConfiguration streamConfiguration = new StreamConfiguration();
-		streamConfiguration.setName(visualBAMMediator.getStreamName());
-		streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
-		bamMediator.getStream().setStreamConfiguration(streamConfiguration);
-		
+		if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
+			bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
+		} else {
+			throw new IllegalArgumentException("BAM Mediator Error : Server Profile Name is required");
+		}
+
+		if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
+			if (StringUtils.isNotEmpty(visualBAMMediator.getStreamVersion())) {
+				StreamConfiguration streamConfiguration = new StreamConfiguration();
+				streamConfiguration.setName(visualBAMMediator.getStreamName());
+				streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
+				bamMediator.getStream().setStreamConfiguration(streamConfiguration);
+			} else {
+				throw new IllegalArgumentException("BAM Mediator Error : Stream Version is required");
+			}
+		} else {
+			throw new IllegalArgumentException("BAM Mediator Error : Stream Name is required");
+		}
 		return bamMediator;
 	}
 }

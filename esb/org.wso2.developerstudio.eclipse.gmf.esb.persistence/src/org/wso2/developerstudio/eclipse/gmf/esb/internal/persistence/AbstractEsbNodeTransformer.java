@@ -1,10 +1,21 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
-import java.util.List;
-
 import org.apache.synapse.Mediator;
-import org.apache.synapse.SynapseArtifact;
-import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
@@ -14,13 +25,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequencesInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -36,9 +47,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 	 * @param rootService
 	 * @param parentMediator
 	 * @param outputConnector
+	 * @throws TransformerException 
 	 * @throws Exception
 	 */
-	protected void doTransform(TransformationInfo info, OutputConnector outputConnector) throws Exception {		
+	protected void doTransform(TransformationInfo info, OutputConnector outputConnector) throws TransformerException{		
 		if (null != outputConnector) {
 			EObject previousNode = outputConnector.eContainer();
 			info.setPreviousNode(previousNode);
@@ -63,7 +75,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 			} else {
 				// TODO: Might be better to automatically log the message before dropping. 
 				if (info.getParentSequence()!=null){ //TODO temp					
-				//info.getParentSequence().addChild(new DropMediator());
+				
 				}
 			}
 		} else {
@@ -71,7 +83,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 		}
 	}
 	
-	protected void doTransformWithinSequence(TransformationInfo info, EsbLink outgoingLink,SequenceMediator sequence) throws Exception {
+	protected void doTransformWithinSequence(TransformationInfo info, EsbLink outgoingLink,SequenceMediator sequence) throws TransformerException {
 	
 			if (null != outgoingLink) {
 				EObject previousNode = outgoingLink.getSource().eContainer();
@@ -88,25 +100,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 				Assert.isNotNull(transformer, "No registered transformer for given node.");
 				
 				if(inputConnector instanceof SequencesInputConnector){
-/*					if(info.currentSequence!=null){
-						if(info.currentSequence.getOutputConnector().getOutgoingLink()!=null){
-							EsbNode esbNode=(EsbNode)info.currentSequence.getOutputConnector().getOutgoingLink().getTarget().eContainer();
-							EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(esbNode);					
-							transformer.transform(info, esbNode);
-						}
-					}
-					else{
-						if (info.getParentSequence()!=null){ 
-							info.getParentSequence().addChild(new DropMediator());
-							}
-					}*/
-					
-					info.setParentSequence(sequence);
-					
+					info.setParentSequence(sequence);					
 					// Adding XML comments into synapse config.
 					addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
-					transformer.transform(info, esbNode);
-					
+					transformer.transform(info, esbNode);					
 				}
 				else{
 					// Adding XML comments into synapse config.
@@ -114,20 +111,15 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 					for(CommentMediator mediator:outgoingLink.getSource().getCommentMediators()){
 						commentMediatorTransformer.transformWithinSequence(info, mediator,sequence);
 					}
-
 					transformer.transformWithinSequence(info, esbNode,sequence);
 				}
 			} else {
-				//sequence.addChild(new DropMediator());
-				/*// TODO: Might be better to automatically log the message before dropping. 
-				if (info.getParentSequence()!=null){ //TODO temp
-				info.getParentSequence().addChild(new DropMediator());
-				}*/
+                    // TODO: Might be better to automatically log the message before dropping. 
 			}
 		
 	}
 	
-	protected void doTransformFaultSequence(TransformationInfo info,EsbNode originNode) throws Exception {
+	protected void doTransformFaultSequence(TransformationInfo info,EsbNode originNode) throws TransformerException {
 		if(originNode !=null){
 		EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(originNode);
 		Assert.isNotNull(transformer, "No registered transformer for given node.");
@@ -143,7 +135,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 		((AbstractMediator) mediator).getCommentsList().addAll(visualElement.getCommentsList());
 	}
 	
-	private void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) throws Exception{
+	private void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators){
 		CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
 		for(CommentMediator mediator:commentMediators){
 			commentMediatorTransformer.transform(info, mediator);

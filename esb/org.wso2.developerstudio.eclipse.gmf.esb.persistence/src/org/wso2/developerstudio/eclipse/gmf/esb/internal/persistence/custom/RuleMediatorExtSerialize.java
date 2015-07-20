@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
 import java.util.ArrayList;
@@ -6,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
@@ -19,7 +34,6 @@ import org.wso2.carbon.rule.common.RuleSet;
 import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 import org.wso2.carbon.rule.mediator.config.Source;
 import org.wso2.carbon.rule.mediator.config.Target;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFact;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration;
@@ -28,13 +42,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResult;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleSessionProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleSourceType;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleType;
 
-public class RuleMediatorExtSerialize extends AbstractMediatorSerializer{
-
-  
+public class RuleMediatorExtSerialize extends AbstractMediatorSerializer{  
 
 public String getMediatorClassName() {
 		// TODO Auto-generated method stub
@@ -88,7 +98,6 @@ public String getMediatorClassName() {
 			}
 			
 			fact.setTypeClass(ruleResult.getResultType().getClass());
-			//fact.setXpath(ruleResult.getValueExpression().getPropertyValue());
 			fact.setNamespace(visualRule.getOutputNameSpace());
 			resultfactsList.add(fact);
         }
@@ -113,13 +122,6 @@ public String getMediatorClassName() {
         }
         
         RuleSet ruleSet = new RuleSet();
-        //ruleSet.setBindURI(visualRule.getRuleSetURL());
-        /*Map<String,String> rulesetMap = new HashMap<String, String>();
-        EList<RuleSetCreationProperty> ruleSetProperties = visualRule.getRuleSetProperties();
-        for (RuleSetCreationProperty ruleSetCreationProperty : ruleSetProperties) {
-        	 rulesetMap.put(ruleSetCreationProperty.getPropertyName(),ruleSetCreationProperty.getPropertyValue());
-		}
-        ruleSet.setProperties(rulesetMap);*/
         
         Map<String,String> rulesetMap = new HashMap<String, String>();
         EList<RuleSessionProperty> ruleSetProperties = visualRule.getRuleSessionProperties();

@@ -25,7 +25,6 @@ import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
-import org.apache.synapse.endpoints.FailoverEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.CallMediator;
@@ -33,7 +32,6 @@ import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
@@ -45,7 +43,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
@@ -267,8 +264,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}else if(info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence){			
 			sendMediator=null;
 		} else{
-		//sendMediator = new SendMediator();
-			//info.getParentSequence().addChild(sendMediator);
 		}
 		return sendMediator;
 	}
@@ -298,8 +293,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}else if(info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence){			
 			callMediator=null;
 		} else{
-		//sendMediator = new SendMediator();
-			//info.getParentSequence().addChild(sendMediator);
 		}
 		return callMediator;
 	}

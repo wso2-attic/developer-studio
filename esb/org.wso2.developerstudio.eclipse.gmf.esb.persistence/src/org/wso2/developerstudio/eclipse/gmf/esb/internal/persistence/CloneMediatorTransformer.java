@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
@@ -17,6 +33,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
@@ -39,18 +56,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(
-				createCloneMediator(information, subject));
-		/*
-		 * Transform the mediator output data flow path.
-		 */
-		doTransform(information, ((CloneMediator) subject).getOutputConnector());
-
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(
+					createCloneMediator(information, subject));
+			/*
+			 * Transform the mediator output data flow path.
+			 */
+			doTransform(information, ((CloneMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -58,14 +79,18 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createCloneMediator(information, subject));
-		doTransformWithinSequence(information, ((CloneMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createCloneMediator(information, subject));
+			doTransformWithinSequence(information, ((CloneMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	private org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject) throws TransformerException, JaxenException {
 		/*
 		 * Check subject.
 		 */
@@ -107,9 +132,6 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
 					CloneMediatorTargetOutputConnector outputConnector = visualClone
 							.getTargetsOutputConnector().get(i);
-
-					//ListMediator listMediator = new AnonymousListMediator();
-
 					SequenceMediator targetSequence = new SequenceMediator();
 
 					TransformationInfo newInfo = new TransformationInfo();
@@ -125,7 +147,6 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 					newInfo.setParentSequence(targetSequence);
 					doTransform(newInfo, outputConnector);
 
-					//targetSequence.addAll(listMediator.getList());
 					target.setSequence(targetSequence);
 
 				} else if (visualTarget.getSequenceType().equals(
@@ -133,7 +154,6 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
 					target.setSequenceRef(visualTarget.getSequenceKey()
 							.getKeyValue());
-
 				}
 
 				if (visualTarget.getEndpointType().equals(

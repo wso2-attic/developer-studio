@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
@@ -5,7 +21,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
-import javax.xml.xquery.XQItemType;
 
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.XdmNodeKind;
@@ -17,10 +32,10 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.xquery.MediatorBaseVariable;
 import org.apache.synapse.mediators.xquery.MediatorCustomVariable;
 import org.apache.synapse.mediators.xquery.MediatorVariable;
-import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -29,18 +44,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {		
-		information.getParentSequence().addChild(createXQueryMediator(subject));
-		// Transform the XQuery mediator output data flow path.
-		doTransform(information,
-				((XQueryMediator)subject).getOutputConnector());
-		
-		
-		
+			throws TransformerException {		
+		try {
+			information.getParentSequence().addChild(createXQueryMediator(subject));
+			// Transform the XQuery mediator output data flow path.
+			doTransform(information,
+					((XQueryMediator)subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -51,15 +68,17 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
-		sequence.addChild(createXQueryMediator(subject));
-		doTransformWithinSequence(information,((XQueryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-		
+		try {
+			sequence.addChild(createXQueryMediator(subject));
+			doTransformWithinSequence(information,((XQueryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject) throws JaxenException{
 		Assert.isTrue(subject instanceof XQueryMediator, "Invalid subject.");
 		XQueryMediator visualXQuery = (XQueryMediator)subject;
 		org.apache.synapse.mediators.xquery.XQueryMediator xqueryMediator=new org.apache.synapse.mediators.xquery.XQueryMediator();		
@@ -136,11 +155,7 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 			        	   
 			        	   varBase.setNodeKind(XdmNodeKind.DOCUMENT);
 			        	   
-			           }/*else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
-			        	   
-			        	   varBase.setType(XQItemType.XQITEMKIND_DOCUMENT_ELEMENT);
-			        	   
-			           }*/else if(varType.equals(XQueryVariableType.ELEMENT)){
+			           }else if(varType.equals(XQueryVariableType.ELEMENT)){
 			        	   
 			        	   varBase.setNodeKind(XdmNodeKind.ELEMENT);
 			        	   
@@ -214,11 +229,7 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 				        	   
 				        	   varCustom.setNodeKind(XdmNodeKind.DOCUMENT);
 				        	   
-				           }/*else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
-				        	   
-				        	   varCustom.setType(XQItemType.XQITEMKIND_DOCUMENT_ELEMENT);
-				        	   
-				           }*/else if(varType.equals(XQueryVariableType.ELEMENT)){
+				           }else if(varType.equals(XQueryVariableType.ELEMENT)){
 				        	   
 				        	   varCustom.setNodeKind(XdmNodeKind.ELEMENT);
 				        	   
