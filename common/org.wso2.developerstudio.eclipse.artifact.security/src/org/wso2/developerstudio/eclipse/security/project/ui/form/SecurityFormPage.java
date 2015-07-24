@@ -173,6 +173,9 @@ public class SecurityFormPage extends FormPage {
 	private Combo cmbRampartTimestampStrict;
 	private Combo cmbRampartTimestampPrecision;
 	private Composite rmaportInfComposite;
+	private static Image securityScenarioBalloonBackgroundImage;
+	private static Shell parentShell;
+	private Shell existingShell;
 
 	private static final int NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE = 6;
 
@@ -2066,6 +2069,8 @@ public class SecurityFormPage extends FormPage {
 	private void createSecurityScenarioOptionButtons(final Composite seccomposite, String[] names,
 			IManagedForm managedForm, int securityScenarioNumber, Composite body) throws IOException, JAXBException {
 
+		securityScenarioBalloonBackgroundImage = getBackgroundImage();
+		parentShell = new Shell(Display.getCurrent(), SWT.TITLE | SWT.CLOSE | SWT.BORDER);
 		for (String name : names) {
 			securityScenarioNumber++;
 			setSecuritySenarioDisplayButton(seccomposite,securityScenarioNumber);
@@ -2500,38 +2505,64 @@ public class SecurityFormPage extends FormPage {
 		String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
 		String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
 		String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);
+		if (!isSecurityScenarioBalloonAlreadyExists(shellTitle)) {
+			Shell shell = new Shell(parentShell);
+			Composite parent = new Composite(shell, SWT.NONE);
+			shell.setBackgroundImage(securityScenarioBalloonBackgroundImage);
+			shell.setLayout(new RowLayout());
+			shell.setText(shellTitle);
 
-		Shell shell = new Shell(Display.getCurrent(), SWT.TITLE | SWT.CLOSE | SWT.BORDER);
-		Composite parent = new Composite(shell, SWT.NONE);
-		shell.setBackgroundImage(getBackgroundImage());
-		shell.setLayout(new RowLayout());
-		shell.setText(shellTitle);
+			GridLayout gridLayout = new GridLayout();
+			gridLayout.numColumns = NUMBER_OF_COLUMNS_IN_SHELL;
+			parent.setLayout(gridLayout);
 
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = NUMBER_OF_COLUMNS_IN_SHELL;
-		parent.setLayout(gridLayout);
+			Label scenarioTitle = new Label(parent, SWT.NONE);
+			scenarioTitle.setText(shellTitle + SecurityFormConstants.SECURITY_SCENARIO_TITLE_SEPARATOR
+					+ securityScenarioTitle);
+			GridData textGridData = new GridData();
+			textGridData.horizontalAlignment = SWT.CENTER;
+			scenarioTitle.setLayoutData(textGridData);
 
-		Label scenarioTitle = new Label(parent, SWT.NONE);
-		scenarioTitle.setText(shellTitle + SecurityFormConstants.SECURITY_SCENARIO_TITLE_SEPARATOR
-				+ securityScenarioTitle);
-		GridData textGridData = new GridData();
-		textGridData.horizontalAlignment = SWT.CENTER;
-		scenarioTitle.setLayoutData(textGridData);
+			Label labelImage = new Label(parent, SWT.NONE);
+			Image scenarioImage = getScenarioImage(relativeFilePath);
+			labelImage.setImage(scenarioImage);
+			labelImage.setToolTipText(shellTitle);
+			GridData imageGridData = new GridData();
+			imageGridData.horizontalAlignment = SWT.CENTER;
+			labelImage.setLayoutData(imageGridData);
 
-		Label labelImage = new Label(parent, SWT.NONE);
-		labelImage.setImage(getScenarioImage(relativeFilePath));
-		labelImage.setToolTipText(shellTitle);
-		GridData imageGridData = new GridData();
-		imageGridData.horizontalAlignment = SWT.CENTER;
-		labelImage.setLayoutData(imageGridData);
+			Rectangle monitorBound = Display.getCurrent().getPrimaryMonitor().getBounds();
+			Rectangle shellBound = shell.getBounds();
 
-		Rectangle monitorBound = Display.getCurrent().getPrimaryMonitor().getBounds();
-		Rectangle shellBound = shell.getBounds();
+			shell.setLocation(getXCoordinate(monitorBound, shellBound), getYCoordinate(monitorBound, shellBound));
+			shell.pack();
+			shell.open();
+		} else {
+			existingShell.open();
+		}
 
-		shell.setLocation(getXCoordinate(monitorBound, shellBound), getYCoordinate(monitorBound, shellBound));
-		shell.pack();
-		shell.open();
+	}
 
+	/**
+	 * This method checks whether there is an already opened shell with title @param securityScenarioTitle and returns
+	 * true if it exists or false if it doesn't exist.
+	 * <p>
+	 * If a shell with same title exists, this method also set existingShell variable to that shell.
+	 * 
+	 * @param securityScenarioTitle
+	 * @return
+	 */
+	private boolean isSecurityScenarioBalloonAlreadyExists(String securityScenarioTitle) {
+		int length = parentShell.getShells().length;
+		if (length != 0) {
+			for (Shell shell : parentShell.getShells()) {
+				if (shell.getText().equalsIgnoreCase(securityScenarioTitle)) {
+					existingShell = shell;
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
