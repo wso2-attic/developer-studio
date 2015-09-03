@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.editor.Refreshable;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
+import org.eclipse.ui.internal.dialogs.ImportPage;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
@@ -102,6 +103,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		return map;
 	}
 
+	
 	public void addPages() {
 		URL resource = getWizardManifest();
 		try {
@@ -114,6 +116,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			}
 			addPage(new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
 					isRequireProjectLocationSection(), isRequiredWorkingSet(), isRequiredWorkspaceLocation()));
+			
 			if (isCustomPageRequired()) {
 				addPage(getCustomPage());
 			}
@@ -232,7 +235,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	public IProject createNewProject() throws CoreException {
 
 		IProject project = null;
-		String name = getModel().getProjectName();
+		String name = getModel().getReceiverName();
 		File location = getModel().getLocation();
 		String rootWorkspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
 				+ File.separator + name;
