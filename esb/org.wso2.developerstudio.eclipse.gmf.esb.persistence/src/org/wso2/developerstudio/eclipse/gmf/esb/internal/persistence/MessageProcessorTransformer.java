@@ -98,6 +98,14 @@ public class MessageProcessorTransformer {
 			if (StringUtils.isNotBlank(model.getNonRetryHttpStatusCodes())) {
 				parameters.put("non.retry.status.codes", model.getNonRetryHttpStatusCodes());
 			}
+			
+			EList<MessageProcessorParameter> processorParameters = model.getParameters();
+			for (MessageProcessorParameter param : processorParameters) {
+				if (StringUtils.isNotBlank(param.getParameterName())
+						&& StringUtils.isNotBlank(param.getParameterValue())) {
+					parameters.put(param.getParameterName(), param.getParameterValue());
+				}
+			}
 
 		} else if (model.getProcessorType() == MessageProcessorType.MSG_SAMPLING) {			
 			// Fixing TOOLS-2026.

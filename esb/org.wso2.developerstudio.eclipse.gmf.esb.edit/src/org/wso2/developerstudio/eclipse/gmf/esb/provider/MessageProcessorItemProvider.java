@@ -96,6 +96,7 @@ public class MessageProcessorItemProvider
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addPinnedServersPropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
 			break;
 		}
 		case MSG_SAMPLING: {
@@ -106,6 +107,7 @@ public class MessageProcessorItemProvider
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addPinnedServersPropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
 			break;
 		}
 		case CUSTOM: {

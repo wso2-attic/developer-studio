@@ -39,6 +39,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
@@ -83,7 +84,8 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
 							MessageProcessorType.SCHEDULED_MSG_FORWARDING);
 					Map<String, Object> parameters = dummyMessageProcessor.getParameters();
-
+					Set<String> keySet = parameters.keySet();
+					
 					// Endpoint name.
 					if (StringUtils.isNotBlank(processor.getTargetEndpoint())) {
 						RegistryKeyProperty endpointName = EsbFactory.eINSTANCE
@@ -94,6 +96,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 
 					// Parameters.
 					if (parameters.containsKey("client.retry.interval")) {
+						keySet.remove("client.retry.interval");
 						Object value = parameters.get("client.retry.interval");
 						if (value != null && StringUtils.isNumeric(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__RETRY_INTERVAL, new Long(
@@ -101,6 +104,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("interval")) {
+						keySet.remove("interval");
 						Object value = parameters.get("interval");
 						if (value != null && StringUtils.isNumeric(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
@@ -108,6 +112,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("max.delivery.attempts")) {
+						keySet.remove("max.delivery.attempts");
 						Object value = parameters.get("max.delivery.attempts");
 						if (value != null) {
 							try {
@@ -121,6 +126,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("axis2.repo")) {
+						keySet.remove("axis2.repo");
 						Object value = parameters.get("axis2.repo");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
@@ -128,6 +134,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("axis2.config")) {
+						keySet.remove("axis2.config");
 						Object value = parameters.get("axis2.config");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
@@ -135,6 +142,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("message.processor.reply.sequence")) {
+						keySet.remove("message.processor.reply.sequence");
 						Object value = parameters.get("message.processor.reply.sequence");
 						if (StringUtils.isNotBlank(value.toString())) {
 							RegistryKeyProperty replaySequence = EsbFactory.eINSTANCE
@@ -145,6 +153,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("message.processor.fault.sequence")) {
+						keySet.remove("message.processor.fault.sequence");
 						Object value = parameters.get("message.processor.fault.sequence");
 						if (StringUtils.isNotBlank(value.toString())) {
 							RegistryKeyProperty faultSequence = EsbFactory.eINSTANCE
@@ -155,6 +164,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("quartz.conf")) {
+						keySet.remove("quartz.conf");
 						Object value = parameters.get("quartz.conf");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
@@ -162,6 +172,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("cronExpression")) {
+						keySet.remove("cronExpression");
 						Object value = parameters.get("cronExpression");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__CRON_EXPRESSION,
@@ -169,6 +180,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("pinnedServers")) {
+						keySet.remove("pinnedServers");
 						Object value = parameters.get("pinnedServers");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__PINNED_SERVERS,
@@ -176,6 +188,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						}
 					}
 					if (parameters.containsKey("is.active")) {
+						keySet.remove("is.active");
 						Object value = parameters.get("is.active");
 						if (StringUtils.isNotBlank(value.toString())) {
 							if ("true".equals(value)) {
@@ -186,6 +199,13 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 										ProcessorState.DEACTIVATE);
 							}
 						}
+					}
+					for (String key : keySet) {
+						MessageProcessorParameter processorParameter = EsbFactory.eINSTANCE
+								.createMessageProcessorParameter();
+						processorParameter.setParameterName(key);
+						processorParameter.setParameterValue(parameters.get(key).toString());
+						executeAddValueCommand(messageProcessor.getParameters(), processorParameter);
 					}
 					if (parameters.containsKey("non.retry.status.codes")) {
 						Object value = parameters.get("non.retry.status.codes");
@@ -244,7 +264,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 							executeSetValueCommand(MESSAGE_PROCESSOR__PINNED_SERVERS,
 									value.toString());
 						}
-					}
+					}					
 					if (parameters.containsKey("is.active")) {
 						Object value = parameters.get("is.active");
 						if (StringUtils.isNotBlank(value.toString())) {
