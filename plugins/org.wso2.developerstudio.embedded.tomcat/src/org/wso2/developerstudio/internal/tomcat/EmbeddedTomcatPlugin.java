@@ -66,7 +66,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 					final List<URL> classPath = new ArrayList<>();
 					// Add root directory of the bundle to class-path
 					final URL bundleURI = FileLocator.resolve(context
-							.getBundle().getResource("."));
+							.getBundle().getResource("/"));
 					classPath.add(bundleURI);
 
 					// Add third party libs to class-path
