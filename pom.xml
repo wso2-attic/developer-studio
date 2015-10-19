@@ -14,11 +14,11 @@
 ~ See the License for the specific language governing permissions and
 ~ limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0-SNAPSHOT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0-SNAPSHOT http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-kernel-parent</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>4.0.0.M0</version>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Kernel Parent</name>
     <modules>
@@ -42,31 +42,31 @@
         </repository>
     </distributionManagement>
     <properties>
-        <axis2.mr.tools.version>4.0.0-SNAPSHOT</axis2.mr.tools.version>
-        <carbon.tools.version>4.0.0-SNAPSHOT</carbon.tools.version>
-        <common.framework.feature.version>4.0.0-SNAPSHOT</common.framework.feature.version>
+        <axis2.mr.tools.version>4.0.0.M0</axis2.mr.tools.version>
+        <carbon.tools.version>4.0.0.M0</carbon.tools.version>
+        <common.framework.feature.version>4.0.0.M0</common.framework.feature.version>
         <!--********** bundle plugin versions **********-->
-        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>
-        <common.logging.version>4.0.0-SNAPSHOT</common.logging.version>
-        <common.maven.version>4.0.0-SNAPSHOT</common.maven.version>
-        <common.tools.version>4.0.0-SNAPSHOT</common.tools.version>
-        <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
-        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
-        <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
-        <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
-        <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
-        <osde.feature.version>4.0.0-SNAPSHOT</osde.feature.version>
+        <common.libraries.version>4.0.0.M0</common.libraries.version>
+        <common.logging.version>4.0.0.M0</common.logging.version>
+        <common.maven.version>4.0.0.M0</common.maven.version>
+        <common.tools.version>4.0.0.M0</common.tools.version>
+        <common.ui.version>4.0.0.M0</common.ui.version>
+        <common.utils.version>4.0.0.M0</common.utils.version>
+        <core.plugins.version>4.0.0.M0</core.plugins.version>
+        <core.tools.version>4.0.0.M0</core.tools.version>
+        <kernel.feature.version>4.0.0.M0</kernel.feature.version>
+        <kernel.samples.feature.version>4.0.0.M0</kernel.samples.feature.version>
+        <logging.tools.version>4.0.0.M0</logging.tools.version>
+        <osde.feature.version>4.0.0.M0</osde.feature.version>
         <osde.tools.version>0.9.5</osde.tools.version>
-        <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
-        <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
+        <p2.manager.version>4.0.0.M0</p2.manager.version>
+        <p2.manager36.version>4.0.0.M0</p2.manager36.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.scm.id>my-scm-server</project.scm.id>
         <tycho-version>0.23.0</tycho-version>
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
-        <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
-        <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
+        <embedded.tomcat.version>4.0.0.M0</embedded.tomcat.version>
+        <webeditor.version>4.0.0.M0</webeditor.version>
     </properties>
     <repositories>
         <repository>
