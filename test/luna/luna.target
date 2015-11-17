@@ -30,47 +30,6 @@
 <unit id="org.eclipse.nebula.widgets.gallery.feature.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/technology/nebula/snapshot/"/>
 </location>
-<!--location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.wso2.developerstudio.eclipse.distribution.project.feature.feature.group"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.30.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.ds.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.registry.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.ds.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.server.framework.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.usermgt.core.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.gadget.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.tcpmon.feature.feature.group" version="1.0.0"/>
-<unit id="org.wso2.developerstudio.eclipse.esb.graphical.editor.feature.feature.group" version="2.1.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" version="2.1.0"/>
-<unit id="org.wso2.developerstudio.eclipse.framework.core.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.appserver.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.security.artifact.feature.feature.group" version="2.1.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group" version="3.8.0"/>
-<unit id="org.jboss.tools.smooks.feature.feature.group" version="1.1.0.v20110215-1231-H25-GA"/>
-<unit id="org.wso2.developerstudio.eclipse.bpel.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.44.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.apim.feature.feature.group" version="1.0.0"/>
-<unit id="org.wso2.developerstudio.eclipse.gs.jaggery.feature.feature.group" version="2.1.0"/>
-<unit id="org.smooks.edi.editor-feature.feature.group" version="1.0.1.201105031731"/>
-<unit id="org.wso2.developerstudio.eclipse.carbonserver.31.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.soapui.feature.feature.group" version="4.0.1"/>
-<unit id="org.wso2.developerstudio.eclipse.framework.samples.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group" version="2.1.0"/>
-<unit id="org.wso2.developerstudio.eclipse.appfactory.feature.feature.group" version="2.1.0"/>
-<unit id="org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.artifact.library.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group" version="3.8.0"/>
-<unit id="org.wso2.developerstudio.eclipse.analytics.artifact.feature.feature.group" version="1.0.0"/-->
-<!--repository location="http://product-dist.wso2.com/p2/developer-studio/releases/3.8.0/"/>
-</location-->
 </locations>
 <launcherArgs>
 <vmArgs>-Dosgi.requiredJavaVersion=1.5 -XX:MaxPermSize=256m -Xms128m -Xmx1024m</vmArgs>
