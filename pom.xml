@@ -27,6 +27,7 @@
         <module>repository</module>
         <module>samples</module>
         <module>tests</module>
+        <module>test</module>
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>

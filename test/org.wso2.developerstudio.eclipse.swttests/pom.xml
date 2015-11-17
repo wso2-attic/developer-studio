@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2010-2012 Matthias Sohn <matthias.sohn@sap.com> All rights 
+	reserved. This program and the accompanying materials are made available 
+	under the terms of the Eclipse Public License v1.0 which accompanies this 
+	distribution, and is available at http://www.eclipse.org/legal/epl-v10.html -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+                <groupId>org.wso2.developerstudio</groupId>
+		<artifactId>org.wso2.developerstudio.eclipse</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+                <relativePath>../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.wso2.developerstudio.eclipse.swttests</artifactId>
+
+<packaging>eclipse-test-plugin</packaging>
+<dependencies>
+
+		<dependency>
+                        <groupId>org.wso2.developerstudio.eclipse</groupId>
+			<artifactId>org.wso2.developerstudio.eclipse.swtfunctionalframework</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+	<!-- <properties> <uitest.vmparams>-Dorg.eclipse.swtbot.search.timeout=30000 
+		-Xmx1024m -XX:MaxPermSize=384m</uitest.vmparams> </properties> -->
+	<build>
+		<!-- <sourceDirectory>${project.basedir}/init</sourceDirectory> -->
+		<!-- <testSourceDirectory>${project.basedir}/src</testSourceDirectory> -->
+		<plugins>
+
+			<!--plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>0.23.0</version>
+				<extensions>true</extensions>
+			</plugin-->
+			<!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>target-platform-configuration</artifactId> 
+				<version>${tycho-version}</version> <configuration> <dependency-resolution> 
+				<extraRequirements> <requirement> <type>eclipse-feature</type> <id>org.eclipse.e4.rcp</id> 
+				<versionRange>0.0.0</versionRange> </requirement> <requirement> <type>eclipse-feature</type> 
+				<id>org.eclipse.pde</id> <versionRange>0.0.0</versionRange> </requirement> 
+				<requirement> <type>eclipse-feature</type> <id>org.eclipse.cvs</id> <versionRange>0.0.0</versionRange> 
+				</requirement> </extraRequirements> </dependency-resolution> </configuration> 
+				</plugin> -->
+
+			<!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-surefire-plugin</artifactId> 
+				<version>${tycho-version}</version> <configuration> <includes> <include>Test*.java</include> 
+				</includes> <useUIHarness>true</useUIHarness> <useUIThread>false</useUIThread> 
+				<testRuntime>p2Installed</testRuntime> <work>/home/kushan/Downloads/hello/eclipse</work> 
+				<profileName>epp.package.jee</profileName> <product>org.eclipse.sdk.ide</product> 
+				<argLine>${ui.test.vmargs}</argLine> <application>org.eclipse.ui.ide.workbench</application> 
+				</configuration> </plugin> -->
+<plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includes>
+						<include>**/Kushan*.java</include>
+					</includes>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!-- <testRuntime>p2Installed</testRuntime> <work>/home/kushan/Downloads/hello/eclipse</work> 
+						<profileName>epp.package.jee</profileName> -->
+					<product>org.eclipse.sdk.ide</product>
+					<argLine>${ui.test.vmargs}</argLine>
+					<application>org.eclipse.ui.ide.workbench</application>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.4.0</version> <executions> <execution> <goals> <goal>exec</goal> 
+				</goals> <phase>install</phase> </execution> </executions> <configuration> 
+				<executable>testrunner.sh</executable> <workingDirectory>${basedir}</workingDirectory> 
+				</configuration> </plugin> -->
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.4.0</version> <executions> <execution> <phase>test</phase> <goals> 
+				<goal>java</goal> </goals> <configuration> <mainClass>hello</mainClass> <arguments> 
+				<argument>org.wso2.developerstudio.eclipse.swttests</argument> <argument>org.wso2.developerstudio.eclipse.swttests.testcase.AllTests</argument> 
+				</arguments> </configuration> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+</project>
