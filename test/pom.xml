@@ -85,11 +85,11 @@
 								<id>org.wso2.developerstudio.kernel.core.feature</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
-							<requirement>
+							<!--requirement>
 								<type>eclipse-feature</type>
 								<id>org.wso2.developerstudio.registry.feature</id>
 								<versionRange>0.0.0</versionRange>
-							</requirement>
+							</requirement-->
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>org.wso2.developerstudio.usermgt.core.feature</id>
@@ -107,7 +107,7 @@
 							</requirement>
 							<requirement>
 								<type>eclipse-feature</type>
-								<id>org.wso2.developerstudio.kernel.pluginsamples.feature</id>
+								<id>org.wso2.developerstudio.kernel.wso2plugins.template.manager.feature</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 							<requirement>
@@ -118,7 +118,32 @@
 
 							<requirement>
 								<type>eclipse-feature</type>
-								<id>org.wso2.developerstudio.carbon.server.feature</id>
+								<id>org.wso2.developerstudio.carbon.server-remote.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.wso2.developerstudio.carbon.server-40.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.wso2.developerstudio.carbon.server-42.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.wso2.developerstudio.carbon.server-44.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.wso2.developerstudio.kernel.security.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.wso2.developerstudio.library.artifact.feature</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 							<requirement>
@@ -248,22 +273,6 @@
 							</requirement>
 							<requirement>
 								<type>eclipse-plugin</type>
-								<id>org.wso2.developerstudio.eclipse.carbonserver30</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.wso2.developerstudio.eclipse.carbonserver31</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.wso2.developerstudio.eclipse.carbonserver32</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-plugin</type>
 								<id>org.wso2.developerstudio.eclipse.carbonserver40</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
@@ -280,6 +289,51 @@
 							<requirement>
 								<type>eclipse-plugin</type>
 								<id>org.wso2.developerstudio.eclipse.server.base</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.general.project</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.registry.perspective</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.registry.search</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.registry.manager.local</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.artifact.registry</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.registry.connector</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.artifact.security</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.security.ui</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.wso2.developerstudio.eclipse.artifact.library</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 							<requirement>
