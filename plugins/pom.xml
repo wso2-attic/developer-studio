@@ -49,8 +49,7 @@
  	<module>org.wso2.developerstudio.eclipse.artifact.security</module>
  	<module>org.wso2.developerstudio.eclipse.security.ui</module>
  	<module>org.wso2.developerstudio.eclipse.artifact.library</module>
-
-
+        <module>org.wso2.developerstudio.eclipse.swtfunctionalframework</module>
     </modules>
     <build>
         <plugins>
@@ -70,6 +69,12 @@
                     </buildcommands>
                 </configuration>
             </plugin>
+			<!--plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin-->
         </plugins>
     </build>
 </project>
