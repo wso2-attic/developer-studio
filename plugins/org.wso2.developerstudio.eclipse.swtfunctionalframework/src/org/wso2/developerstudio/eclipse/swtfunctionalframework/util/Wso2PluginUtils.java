@@ -49,7 +49,7 @@ public class Wso2PluginUtils extends Util {
 		}
 
 		catch (WidgetNotFoundException e) {
-			log.error("Problem with the Lable");
+			log.error("Problem with the Lable", e);
 			fail();
 		}
 		bot.sleep(2000);
@@ -59,7 +59,7 @@ public class Wso2PluginUtils extends Util {
 			selection = bot.table();
 			selection.select(projectType);
 		} catch (Exception e) {
-			log.error("Problem with project type selection table");
+			log.error("Problem with project type selection table", e);
 			fail();
 		}
 		checkButton(CommonCons.FINISH, newPluginProject);
@@ -91,7 +91,7 @@ public class Wso2PluginUtils extends Util {
         actual.remove(0);
         actual.remove(0);
         } catch (IndexOutOfBoundsException e){
-        	log.error("Getting files faliure");
+        	log.error("Getting files faliure", e);
         	fail();
         }
         assertNotSame("Main project creation faliure", expected, actual);

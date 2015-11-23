@@ -31,7 +31,7 @@ public class CompositeApplicationUtil extends Util{
         try {
             newCompositeApllication.bot().textWithLabel(CompositeApllicationCons.PROJECT_NAME).setText(projectName);
         } catch (Exception e) {
-            System.out.println("Problem with the Lable");
+        	log.error("Problem with the Lable", e);
             fail();
         }
         checkButton(CommonCons.NEXT, newCompositeApllication);

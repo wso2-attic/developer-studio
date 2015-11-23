@@ -47,7 +47,6 @@ public class Setup extends Util {
                 bot.button("OK").click();
             }
         } catch (Exception e) {
-
         }
 
     }
