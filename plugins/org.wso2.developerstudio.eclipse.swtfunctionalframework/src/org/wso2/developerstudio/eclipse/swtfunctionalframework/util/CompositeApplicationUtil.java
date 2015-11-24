@@ -22,7 +22,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationCons;
 
-public class CompositeApplicationUtil extends Util{
+public class CompositeApplicationUtil extends Util {
 
     public static void createCompositeApllication(String projectName) {
 
@@ -31,11 +31,13 @@ public class CompositeApplicationUtil extends Util{
         try {
             newCompositeApllication.bot().textWithLabel(CompositeApllicationCons.PROJECT_NAME).setText(projectName);
         } catch (Exception e) {
-        	log.error("Problem with the Lable", e);
+            log.error("Problem with the Lable", e);
             fail();
         }
+        bot.sleep(1000);
         checkButton(CommonCons.NEXT, newCompositeApllication);
         newCompositeApllication.bot().button(CommonCons.NEXT).click();
+        bot.sleep(1000);
         checkButton(CommonCons.FINISH, newCompositeApllication);
         newCompositeApllication.bot().button(CommonCons.FINISH).click();
         bot.waitUntil(Conditions.shellCloses(newCompositeApllication));

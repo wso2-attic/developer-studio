@@ -191,8 +191,14 @@ public class AbstractClass extends Util {
     }
 
     public static void deleteWithContent(String projectName) {
+    	try{
+    		bot.saveAllEditors();
+    	}catch(Exception e){
+    		
+    	}
         try {
-            bot.saveAllEditors();
+        	bot.viewByTitle("Project Explorer").setFocus();
+            
             bot.tree().getTreeItem(projectName).select();
             bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
             bot.sleep(2000);
@@ -233,7 +239,7 @@ public class AbstractClass extends Util {
         }
     }
 
-    public static SWTBotTreeItem packageExplorer(String projectName, String packageName) {
+    public static SWTBotTreeItem projectExplorer(String projectName, String packageName) {
         try {
             bot.tree().getTreeItem(projectName).expand();
             bot.tree().getTreeItem(projectName).getNode("src/main/java").expand();

@@ -29,23 +29,23 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Ws
 public class TestWso2Plugin extends Setup {
 
 	protected String projectName = "FirstPlugin1";
-	
+
 	@Test
 	@Order(order = 1)
 	public void open() {
 		AbstractClass.openProjectFromMenu(Wso2PluginCons.MENU_NAME);
 	}
-	
+
 	@Test
 	@Order(order = 2)
 	public void createPluginPorject() {
 		String projectType = "Single Module Project";
 		Wso2PluginUtils.createWso2Plugin(projectName, projectType);
 	}
-	
+
 	@Test
 	@Order(order = 3)
-	public void deleteProject(){
+	public void deleteProject() {
 		AbstractClass.deleteWithContent(projectName);
 	}
 

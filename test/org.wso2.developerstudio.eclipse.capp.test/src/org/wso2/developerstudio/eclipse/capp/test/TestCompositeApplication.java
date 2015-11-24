@@ -29,7 +29,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Co
 @RunWith(OrderedRunner.class)
 public class TestCompositeApplication extends Setup {
 
-	private String projectName = "first";
+	private String projectName = "firstApp";
 
 	@Test
 	@Order(order = 1)
