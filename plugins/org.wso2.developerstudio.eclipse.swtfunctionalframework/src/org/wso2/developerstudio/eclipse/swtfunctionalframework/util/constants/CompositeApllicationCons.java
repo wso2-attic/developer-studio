@@ -18,6 +18,6 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants;
 
 public class CompositeApllicationCons {
 	public static final String MENU_NAME = "Composite Application Project";
-    public static final String NEW_Composite_Apllication = "";
+    public static final String NEW_Composite_Apllication = "New Composite Application Project";
     public static final String PROJECT_NAME = "Project Name";
 }
