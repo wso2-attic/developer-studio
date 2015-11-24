@@ -67,7 +67,6 @@ public class Wso2PluginUtils extends Util {
         bot.waitUntil(Conditions.shellCloses(newPluginProject));
         bot.sleep(2000);
         projectValidation(projectName);
-        // validateProjectWiard(projectName);
     }
 
     public static void projectValidation(String projectName) {
