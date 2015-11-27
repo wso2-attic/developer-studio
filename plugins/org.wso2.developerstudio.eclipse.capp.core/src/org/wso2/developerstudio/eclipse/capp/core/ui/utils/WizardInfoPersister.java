@@ -32,49 +32,50 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class WizardInfoPersister {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private DialogSettings settings;
-	private String filename;
+	private String fileName;
 
-	public void addControl(final Control control, final String ID) throws IOException{
+	public void addControl(final Control control, final String ID)
+			throws IOException {
 		IPath path = Activator.getDefault().getStateLocation();
-		filename = path.append("settings.txt").toOSString();
-		File file = new File(filename);
-		if(!file.exists()){
+		fileName = path.append("settings.txt").toOSString();
+		File file = new File(fileName);
+		if (!file.exists()) {
 			file.createNewFile();
 		}
-		if(settings == null){
+		if (settings == null) {
 			settings = new DialogSettings("Top");
 		}
-		settings.load(filename);
-	
-		if(control instanceof Text){
+		settings.load(fileName);
+
+		if (control instanceof Text) {
 			((Text) control).addModifyListener(new ModifyListener() {
-				
+
 				public void modifyText(ModifyEvent arg0) {
 					if (settings != null) {
 						settings.put(ID, ((Text) control).getText());
 						try {
-							settings.save(filename);
+							settings.save(fileName);
 						} catch (IOException e) {
 							log.error(e);
 						}
 					}
 				}
 			});
-	        String temp="";
-	        if(settings != null){
-	        	try {
-					settings.load(filename);
+			String temp = "";
+			if (settings != null) {
+				try {
+					settings.load(fileName);
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					log.error("Error while loading file " + fileName, e1);
 				}
-	        	 temp = settings.get(ID);
-	        }
-	        if(temp != null){
-	        	((Text) control).setText(temp);
-	        }
+				temp = settings.get(ID);
+			}
+			if (temp != null) {
+				((Text) control).setText(temp);
+			}
 		}
 
 	}

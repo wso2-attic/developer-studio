@@ -32,14 +32,27 @@ import org.wso2.developerstudio.eclipse.capp.core.data.ImportFeature;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class CARArtifactFeatureManifest extends AbstractXMLDoc{
-	
+public class CARArtifactFeatureManifest extends AbstractXMLDoc {
+
+	private static final String REQUIRE = "require";
+	private static final String LICENCE = "licence";
+	private static final String DESCRIPTION = "description";
+	private static final String UNPACK = "unpack";
+	private static final String LABEL = "label";
+	private static final String EQUIVALENT = "equivalent";
+	private static final String MATCH = "match";
+	private static final String ID = "id";
+	private static final String PLUGIN = "plugin";
+	private static final String FEATURE = "feature";
+	private static final String IMPORT = "import";
+	private static final String FEATURE_XML = "feature.xml";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private String featureId;
 	private String version;
 	private Artifact artifact;
-	
+
 	private List<ImportFeature> importFeatures;
 	private List<Bundle> bundles;
 
@@ -47,8 +60,8 @@ public class CARArtifactFeatureManifest extends AbstractXMLDoc{
 
 	public CARArtifactFeatureManifest(Artifact artifact) {
 		setArtifact(artifact);
-    }
-	
+	}
+
 	/**
 	 * @return the featureId
 	 */
@@ -102,122 +115,123 @@ public class CARArtifactFeatureManifest extends AbstractXMLDoc{
 	}
 
 	private OMElement getDocumentElement() {
-		OMElement featureElement = getElement("feature", "");
-		addAttribute(featureElement, "id", getFeatureId());
-		addAttribute(featureElement, "label", getFeatureId());
-		addAttribute(featureElement, "version", getVersion());
-		
+		OMElement featureElement = getElement(FEATURE, "");
+		addAttribute(featureElement, ID, getFeatureId());
+		addAttribute(featureElement, LABEL, getFeatureId());
+		addAttribute(featureElement, ArtifactConstants.VERSION, getVersion());
+
 		// FIXME provider name should be parameterised
-		addAttribute(featureElement, "provider-name", "WSO2");
-		
+		addAttribute(featureElement, "provider-name", ArtifactConstants.WSO2);
+
 		featureElement.addChild(getDescriptionElement());
 		featureElement.addChild(getCopyrightElement());
 		featureElement.addChild(getLicenceElement());
-		
+
 		OMElement[] pluginElements = getPluginElements();
 		for (OMElement element : pluginElements) {
 			featureElement.addChild(element);
-        }
+		}
 		featureElement.addChild(getRequireElement());
 		return featureElement;
 	}
-	
+
 	private OMElement getDescriptionElement() {
-	    return getElement("description",getFeatureId());
-    }
-	
-	private OMElement getCopyrightElement() {
-		return getElement("description","%copyright");
-    }
-	
-	private OMElement getLicenceElement() {
-		return addAttribute(getElement("licence", "%licence"),"url","%licenceURL");
+		return getElement(DESCRIPTION, getFeatureId());
 	}
-	
+
+	private OMElement getCopyrightElement() {
+		return getElement(DESCRIPTION, "%copyright");
+	}
+
+	private OMElement getLicenceElement() {
+		return addAttribute(getElement(LICENCE, "%licence"), "url",
+				"%licenceURL");
+	}
+
 	private OMElement getRequireElement() {
-		OMElement requireElement = getElement("require","");
+		OMElement requireElement = getElement(REQUIRE, "");
 		OMElement[] importFeatureElements = getImportFeatureElements();
 		for (OMElement element : importFeatureElements) {
-	        requireElement.addChild(element);
-        }
+			requireElement.addChild(element);
+		}
 		return requireElement;
-    }
-	
+	}
+
 	private OMElement[] getImportFeatureElements() {
-		List<OMElement> list=new ArrayList<OMElement>();
-		for(ImportFeature importFeature:getImportFeatures()){
+		List<OMElement> list = new ArrayList<OMElement>();
+		for (ImportFeature importFeature : getImportFeatures()) {
 			list.add(getImportFeatureElement(importFeature));
 		}
-		return list.toArray(new OMElement[]{});
+		return list.toArray(new OMElement[] {});
 	}
-	
+
 	private OMElement[] getPluginElements() {
-		List<OMElement> list=new ArrayList<OMElement>();
-		for(Bundle bundle:getBundles()){
-			OMElement element = getElement("plugin", "");
-			addAttribute(element, "id", bundle.getName());
-			addAttribute(element, "version", bundle.getVersion());
-			addAttribute(element, "unpack", Boolean.toString(bundle.isUnpack()));
+		List<OMElement> list = new ArrayList<OMElement>();
+		for (Bundle bundle : getBundles()) {
+			OMElement element = getElement(PLUGIN, "");
+			addAttribute(element, ID, bundle.getName());
+			addAttribute(element, ArtifactConstants.VERSION, bundle.getVersion());
+			addAttribute(element, UNPACK, Boolean.toString(bundle.isUnpack()));
 			list.add(element);
 		}
-		return list.toArray(new OMElement[]{});
+		return list.toArray(new OMElement[] {});
 	}
-	
+
 	private OMElement getImportFeatureElement(ImportFeature importFeature) {
-		OMElement importElement = getElement("import", "");
-		addAttribute(importElement, "feature", importFeature.getFeatureId());
-		addAttribute(importElement, "version", importFeature.getVersion());
-		addAttribute(importElement, "match", importFeature.getCompatibility());
+		OMElement importElement = getElement(IMPORT, "");
+		addAttribute(importElement, FEATURE, importFeature.getFeatureId());
+		addAttribute(importElement, ArtifactConstants.VERSION, importFeature.getVersion());
+		addAttribute(importElement, MATCH, importFeature.getCompatibility());
 		return importElement;
-    }
-	
+	}
+
 	public void setArtifact(Artifact artifact) {
-	    this.artifact = artifact;
-	    setFeatureId(artifact.getName());
-	    setVersion(artifact.getVersion());
-	    List<ArtifactDependency> dependencies = artifact.getDependencies();
-	    for (ArtifactDependency dependency : dependencies) {
-	    	ImportFeature f = new ImportFeature();
-	    	f.setFeatureId(dependency.getName());
-	    	f.setVersion(dependency.getVersion());
-	    	f.setCompatibility("equivalent");
-	        getImportFeatures().add(f);
-        }
-    }
+		this.artifact = artifact;
+		setFeatureId(artifact.getName());
+		setVersion(artifact.getVersion());
+		List<ArtifactDependency> dependencies = artifact.getDependencies();
+		for (ArtifactDependency dependency : dependencies) {
+			ImportFeature f = new ImportFeature();
+			f.setFeatureId(dependency.getName());
+			f.setVersion(dependency.getVersion());
+			f.setCompatibility(EQUIVALENT);
+			getImportFeatures().add(f);
+		}
+	}
 
 	public Artifact getArtifact() {
-	    return artifact;
-    }
+		return artifact;
+	}
 
 	public void setBundles(List<Bundle> bundles) {
-	    this.bundles = bundles;
-    }
+		this.bundles = bundles;
+	}
 
 	public List<Bundle> getBundles() {
 		if (bundles == null) {
 			bundles = new ArrayList<Bundle>();
 		}
-	    return bundles;
-    }
+		return bundles;
+	}
 
-    protected String getDefaultName() {
-	    return "feature.xml";
-    }
+	protected String getDefaultName() {
+		return FEATURE_XML;
+	}
 
-    protected void deserialize(OMElement documentElement) {
-	    
-    }
+	protected void deserialize(OMElement documentElement) {
 
-    protected String serialize() {
+	}
+
+	protected String serialize() {
 		OMDocument document = factory.createOMDocument();
 		document.addChild(getDocumentElement());
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		try {
-	        document.serialize(outputStream);
-        } catch (XMLStreamException e) {
-	        log.error(e);
-	        return null;
-        }
+			document.serialize(outputStream);
+		} catch (XMLStreamException e) {
+			log.error("Error while serializing", e);
+			return null;
+		}
 		return outputStream.toString();
 	}
 }

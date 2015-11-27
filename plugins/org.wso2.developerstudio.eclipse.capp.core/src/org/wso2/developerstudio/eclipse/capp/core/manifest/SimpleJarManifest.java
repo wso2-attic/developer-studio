@@ -15,37 +15,38 @@
  */
 
 package org.wso2.developerstudio.eclipse.capp.core.manifest;
-
+import static org.wso2.developerstudio.eclipse.capp.core.manifest.ManifestConstants.*;
 
 public class SimpleJarManifest extends AbstractManifest {
-	
-	private static final String MANIFEST_MF = "MANIFEST.MF";
-	private static final String MANIFEST_VERSION = "Manifest-Version";
-	private String manifestVersion="1.0";
-	
+
+
+	private String manifestVersion = "1.0";
+
 	public String toString() {
 		String manifest;
-		manifest=appendLine(null, getManifestHeaderLine(MANIFEST_VERSION,getManifestVersion()));
-		manifest=appendLine(manifest, "\n\n");
+		manifest = appendLine(null,
+				getManifestHeaderLine(MANIFEST_VERSION, getManifestVersion()));
+		manifest = appendLine(manifest, "\n\n");
 		return manifest;
-    }
-	
+	}
+
 	protected String getDefaultName() {
 		return MANIFEST_MF;
 	}
 
 	protected String getManifestVersion() {
-	    return manifestVersion;
-    }
-	
-	protected String getManifestHeaderLine(String name,String value){
-		return name+": "+value;
+		return manifestVersion;
 	}
-	protected String appendLine(String currentStr,String appendStr){
-		if (currentStr==null){
+
+	protected String getManifestHeaderLine(String name, String value) {
+		return name + ": " + value;
+	}
+
+	protected String appendLine(String currentStr, String appendStr) {
+		if (currentStr == null) {
 			return appendStr;
-		}else{
-			return currentStr+"\n"+appendStr;
+		} else {
+			return currentStr + "\n" + appendStr;
 		}
 	}
 

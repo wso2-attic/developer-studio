@@ -24,8 +24,8 @@ public class ServerRole implements IServerRole {
 	private String serverRoleDescription;
 	
 	public ServerRole(String serverRoleName, String serverRoleDescription) {
-		this.serverRoleName=serverRoleName;
-		this.serverRoleDescription=serverRoleDescription;
+		this.serverRoleName = serverRoleName;
+		this.serverRoleDescription = serverRoleDescription;
     }
 	
 	public String getServerRoleName() {
@@ -33,7 +33,7 @@ public class ServerRole implements IServerRole {
 	}
 
     public String getServerRoleDescription() {
-    	if (serverRoleDescription==null || serverRoleDescription.trim().equals("")){
+    	if (serverRoleDescription == null || serverRoleDescription.trim().equals("")){
     		return getServerRoleName();
     	}else{
     		return serverRoleDescription;

@@ -19,53 +19,56 @@ package org.wso2.developerstudio.eclipse.capp.core.manifest;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class CAppArtifactBundleManifest extends BundleManifest{
+public class CAppArtifactBundleManifest extends BundleManifest {
+	
+	private static final String PARENT_APPLICATION = "ParentApplication";
 	private String parentApplication;
 	private Artifact artifact;
-	
+
 	public CAppArtifactBundleManifest(Artifact artifact) {
 		setArtifact(artifact);
-    }
-	
+	}
+
 	/**
-     * @return the parentApplication
-     */
-    public String getParentApplication() {
-    	return parentApplication;
-    }
+	 * @return the parentApplication
+	 */
+	public String getParentApplication() {
+		return parentApplication;
+	}
+
 	/**
-     * @param parentApplication the parentApplication to set
-     */
-    public void setParentApplication(String parentApplication) {
-    	this.parentApplication = parentApplication;
-    }
+	 * @param parentApplication
+	 *            the parentApplication to set
+	 */
+	public void setParentApplication(String parentApplication) {
+		this.parentApplication = parentApplication;
+	}
+
 	protected List<String> getAdditionalHeaders() {
-		List<String> list=new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 
-	    if (getParentApplication() != null) {
-            list.add(getManifestHeaderLine("ParentApplication",getParentApplication()));
-        }
+		if (getParentApplication() != null) {
+			list.add(getManifestHeaderLine(PARENT_APPLICATION,
+					getParentApplication()));
+		}
 
-	    return list;
-    }
-	
+		return list;
+	}
+
 	public String getTimestampedBundleVersion() {
-	    return getArtifact().getTimestampedVersion();
-    }
-	
+		return getArtifact().getTimestampedVersion();
+	}
 
 	public void setArtifact(Artifact artifact) {
-	    this.artifact = artifact;
-	    setBundleSymbolicName(artifact.getName());
-	    setBundleName(artifact.getName());
-	    setBundleDescription(artifact.getName());
-	    setBundleVersion(artifact.getVersion());
-    }
+		this.artifact = artifact;
+		setBundleSymbolicName(artifact.getName());
+		setBundleName(artifact.getName());
+		setBundleDescription(artifact.getName());
+		setBundleVersion(artifact.getVersion());
+	}
 
 	public Artifact getArtifact() {
-	    return artifact;
-    }
-
+		return artifact;
+	}
 
 }

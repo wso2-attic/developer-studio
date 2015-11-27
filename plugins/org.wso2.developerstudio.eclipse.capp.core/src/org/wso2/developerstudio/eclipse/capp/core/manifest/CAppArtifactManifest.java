@@ -32,6 +32,12 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CAppArtifactManifest {
+	
+	private static final String DEPLOYED_IN = "DeployedIn";
+	private static final String DEPLOYABLE_ARTIFACT = "DeployableArtifact";
+	private static final String VERSION2 = "Version";
+	private static final String TYPE = "Type";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private String artifactType;
@@ -138,19 +144,19 @@ public class CAppArtifactManifest {
 	}
 
 	private OMElement getTypeElement() {
-		return getElement("Type", getArtifactType());
+		return getElement(TYPE, getArtifactType());
 	}
 
 	private OMElement getVersionElement() {
-		return getElement("Version", getVersion());
+		return getElement(VERSION2, getVersion());
 	}
 
 	private OMElement getDeployableArtifactElement() {
-		return getElement("DeployableArtifact", getDeployableArtifact());
+		return getElement(DEPLOYABLE_ARTIFACT, getDeployableArtifact());
 	}
 
 	private OMElement getDeployedInElement() {
-		return getElement("DeployedIn", getServerRole());
+		return getElement(DEPLOYED_IN, getServerRole());
 	}
 
 	private OMElement getElement(String localName, String text) {
@@ -159,14 +165,4 @@ public class CAppArtifactManifest {
 		return element;
 	}
 	    
-	/* TODO find any usage, remove if this has not used
-	 public static void main (String[] b){
-		 CAppArtifactManifest a = new CAppArtifactManifest();
-		 a.setArtifactType("mtype");
-		 a.setDeployableArtifact("da");
-		 a.setServerRole("sr");
-		 a.setVersion("1.0.0");
-		 System.out.println(a);
-	 }
-	 */
 }

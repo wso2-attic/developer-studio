@@ -27,10 +27,9 @@ import org.apache.axiom.om.OMElement;
 import org.wso2.developerstudio.eclipse.capp.core.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import static org.wso2.developerstudio.eclipse.capp.core.manifest.ArtifactConstants.*;
 
 public class Artifacts extends AbstractXMLDoc{
-	private static final String ARTIFACTS_XML = "artifacts.xml";
-	private static final String ARTIFACTS = "artifacts";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

@@ -19,15 +19,16 @@ package org.wso2.developerstudio.eclipse.capp.core.ui.wizard;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
-public class CAppWizardNewFileCreationPage extends WizardNewFileCreationPage{
+public class CAppWizardNewFileCreationPage extends WizardNewFileCreationPage {
 	String fileLabel;
-	
-	public CAppWizardNewFileCreationPage(String pageName, IStructuredSelection selection, String fileLabel) {
-	    super(pageName, selection);
-	    this.fileLabel=fileLabel;
-    }
+
+	public CAppWizardNewFileCreationPage(String pageName,
+			IStructuredSelection selection, String fileLabel) {
+		super(pageName, selection);
+		this.fileLabel = fileLabel;
+	}
 
 	protected String getNewFileLabel() {
-	    return fileLabel;
+		return fileLabel;
 	}
 }
