@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.distribution.project.editor;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,6 +40,8 @@ import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -86,6 +89,7 @@ import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProv
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.CappPreferencesPage;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.eclipse.jface.dialogs.ErrorDialog;
 
@@ -487,8 +491,15 @@ public class DistProjectEditorPage extends FormPage {
         if(nodeData.hasChildren() || !item.getChecked()) return;
 		final String artifactInfo = DistProjectUtils
 		.getArtifactInfoAsString(nodeData.getDependency());
+		
+		//creating the dynamic serverRoles list for combo drop down
+				IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode(CappPreferencesPage.PREFERENCES_PLUGIN_ID);
+				List<String> customServerRolesList = Arrays.asList(prefs.get(CappPreferencesPage.CUSTOM_SERVER_ROLES, "").split(","));
+				String[] customServerRolesArray = (String[]) customServerRolesList.toArray();
+				final String[] finalizedServerArray = combine(customServerRolesArray, serverRoles);
+				
 		final Combo cmbServerRole = new Combo(trDependencies, SWT.SINGLE);
-		cmbServerRole.setItems(serverRoles);
+		cmbServerRole.setItems(finalizedServerArray);
 		cmbServerRole.setText(item.getText(1));
 		cmbServerRole.setFocus();
 		editor.setEditor(cmbServerRole , item,1);
@@ -1000,5 +1011,13 @@ public class DistProjectEditorPage extends FormPage {
 		setPageDirty(true);
 		updateDirtyState();
 	}
+	
+	 public static String[] combine(String[] a, String[] b){
+		   int length = a.length + b.length;
+		   String[] result = new String[length];
+	       System.arraycopy(a, 0, result, 0, a.length);
+	       System.arraycopy(b, 0, result, a.length, b.length);
+	       return result;
+	    }
 
 }
