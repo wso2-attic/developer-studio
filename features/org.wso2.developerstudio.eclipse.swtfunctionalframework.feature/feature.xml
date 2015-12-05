@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.eclipse.swtfunctionalframework.feature"
+      label="Feature"
+      version="4.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.swtbot.go" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.swtbot.forms.finder" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.forms" version="3.6.100" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.library" version="1.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.swtfunctionalframework"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
