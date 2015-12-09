@@ -29,7 +29,6 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public static final String UPDATE_INTAVAL = "UPDATE_INTAVAL";
-	public static final String UPDATE_WINDOW_MODE = "UPDATE_WINDOW_MODE";
 	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
@@ -44,23 +43,19 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	public void init(IWorkbench workbench) {
 		preferenceStore = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(preferenceStore);
-		setDescription("WSO2 Developer Studio UpdateChecker Preference");
+		setDescription("WSO2 Developer Studio Check for Updates Preferences");
 	}
 
 	@Override
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
-		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show Hidden Features (For plugin developers)", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
+		addField(new StringFieldEditor(RELESE_SITE_URL, "Release site:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show hidden features (for plugin developers)", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates automatically", getFieldEditorParent()));
 		String[][] intervals = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
 		intervalEditor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", intervals,
 				getFieldEditorParent());
 		addField(intervalEditor);
-		String[][] windowTypes = {{ "Eclipse Default", "SWT" }, { "WSO2 WebUI", "HTML" }};
-		ComboFieldEditor updateWindowTypeEditor = new ComboFieldEditor(UPDATE_WINDOW_MODE, "Window Mode ", windowTypes,
-				getFieldEditorParent());
-		addField(updateWindowTypeEditor);
 		addField(new StringFieldEditor(PLUGIN_TEMPLATE_URL, "Plug-in template location:", getFieldEditorParent()));
 
 	}	
