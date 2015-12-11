@@ -794,7 +794,16 @@ limitations under the License.
             name="WS-Policy"
             mediaType="application/xml"
             extension="xml">
-      </template>             
+      </template>    
+
+	<template
+            file="resources/templates/datamapper/sample_config.dmc"
+            id="org.wso2.developerstudio.eclipse.platform.core.mediatype.dmc"
+            name="DataMapper-Config"
+            mediaType="application/datamapper"
+            extension="dmc">
+      </template>    
+         
     </extension>
 
 </plugin>

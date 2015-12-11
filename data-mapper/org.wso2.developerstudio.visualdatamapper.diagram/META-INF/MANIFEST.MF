@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.wso2.developerstudio.datamapper.diagram.custom.util,
+Export-Package: org.wso2.developerstudio.datamapper.diagram,
+ org.wso2.developerstudio.datamapper.diagram.custom.util,
  org.wso2.developerstudio.datamapper.diagram.edit.parts,
  org.wso2.developerstudio.datamapper.diagram.part,
  org.wso2.developerstudio.datamapper.diagram.providers
@@ -89,11 +90,11 @@ Import-Package: org.apache.avro,
  org.wso2.developerstudio.eclipse.capp.maven.utils,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,
- org.wso2.developerstudio.eclipse.esb.impl,
- org.wso2.developerstudio.eclipse.esb.presentation.ui,
  org.wso2.developerstudio.eclipse.general.project.artifact,
  org.wso2.developerstudio.eclipse.general.project.artifact.bean,
+ org.wso2.developerstudio.eclipse.general.project.dialogs,
  org.wso2.developerstudio.eclipse.general.project.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.greg.core,
  org.wso2.developerstudio.eclipse.greg.core.interfaces,
  org.wso2.developerstudio.eclipse.logging.core,
@@ -104,5 +105,6 @@ Import-Package: org.apache.avro,
  org.wso2.developerstudio.eclipse.platform.core.utils,
  org.wso2.developerstudio.eclipse.platform.ui.editor,
  org.wso2.developerstudio.eclipse.platform.ui.startup,
+ org.wso2.developerstudio.eclipse.platform.ui.utils,
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file

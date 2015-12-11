@@ -53,11 +53,8 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-// import
-// org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
-// import
-// org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -65,6 +62,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.DialogDisplayUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.ESBDataMapperConfigurationDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -366,7 +365,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 	public void openDataMapperDiagram() {
 		//FIXME have to revisit this, think on seperation
-		/* Commented Enable when we start development on datamaper
+		//Commented Enable when we start development on datamaper
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 
@@ -381,7 +380,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			filters.put(mediaTypeKey, types);
 			
 			// IRegistryFile class is only required for datamapper related filtering 
-			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
+			final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
 			DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());
@@ -476,7 +475,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			openDataMapperEditor(datamapper);
 		}
 		
-		 */
+		
 	}
 
 	private String formatRegistryPath(String selectedPath) {
