@@ -58,6 +58,7 @@ public class DistributionProjectWizard extends
 	public DistributionProjectWizard() {
 		setModel(new DistributionProjectModel());
 		setDefaultPageImageDescriptor(DistributionProjectImageUtils.getInstance().getImageDescriptor("distribution-project-wizard.png"));
+		setWindowTitle("New Composite Application Project");
 	}
 
 	public IResource getCreatedResource() {
@@ -66,13 +67,19 @@ public class DistributionProjectWizard extends
 
 	public boolean performFinish() {
 		try {
+			log.info("DistributionProjectModel creation");
 			DistributionProjectModel projectModel = (DistributionProjectModel) getModel();
+			log.info("Creating new project");
 			project = createNewProject();
+			log.info("Getting the pom");
 			File pomfile = project.getFile("pom.xml").getLocation().toFile();
+			log.info("pom creation");
 			createPOM(pomfile);
+			log.info("pom creation sucssesful");
 			ProjectUtils
 					.addNatureToProject(project, false,
 							DISTRIBUTION_PROJECT_NATURE);
+			log.info("Nature applying sucssesful");
 			MavenUtils
 			.updateWithMavenEclipsePlugin(
 					pomfile,
@@ -80,19 +87,28 @@ public class DistributionProjectWizard extends
 					new String[] { DISTRIBUTION_PROJECT_NATURE });
 			project.refreshLocal(IResource.DEPTH_INFINITE,
 					new NullProgressMonitor());
+			log.info("update With Maven Eclipse sucssesful");
 
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+			log.info("get maven project sucssesful");
 			mavenProject.getModel().setPackaging("carbon/application");
+			log.info("set packaging sucssesful");
 			Plugin plugin = MavenUtils.createPluginEntry(mavenProject,
 					"org.wso2.maven", "maven-car-plugin", MavenConstants.MAVEN_CAR_VERSION, true);
+			log.info("plugin object created sucssesful");
 			PluginExecution pluginExecution;
 			
 
 			pluginExecution = new PluginExecution();
+			log.info("plugin Execution object");
 			pluginExecution.addGoal("car");
+			log.info("plugin Execution goal car");
 			pluginExecution.setPhase("package");
+			log.info("plugin Execution package");
 			pluginExecution.setId("car");
+			log.info("plugin Executionid car");
 			plugin.addExecution(pluginExecution);
+			log.info("plugin Execution created sucssesful");
 			
 			Plugin carDeployPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-car-deploy-plugin", MavenConstants.MAVEN_CAR_DEPLOY_VERSION, true);
 			Xpp3Dom carDeployConfElement = MavenUtils.createMainConfigurationNode(carDeployPlugin);
@@ -113,20 +129,28 @@ public class DistributionProjectWizard extends
 			Xpp3Dom serverOperation = MavenUtils.createXpp3Node(carbonServer, "operation");
 			serverOperation.setValue("deploy");
 
+			log.info("1");
 			Repository repo = new Repository();
+			log.info("2");
 			repo.setUrl("http://dist.wso2.org/maven2");
+			log.info("3");
 			repo.setId("wso2-maven2-repository-1");
-			
+			log.info("4");
 			Repository repo1 = new Repository();
+			log.info("5");
 			repo1.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+			log.info("6");
 			repo1.setId("wso2-nexus-repository-1");
 
+			log.info("7");
 			mavenProject.getModel().addRepository(repo);
+			log.info("8");
 			mavenProject.getModel().addPluginRepository(repo);
-			
+			log.info("9");
 			mavenProject.getModel().addRepository(repo1);
+			log.info("10");
 			mavenProject.getModel().addPluginRepository(repo1);
-
+			log.info("11");
 			List<Dependency> dependencyList = new ArrayList<Dependency>();
 			Properties properties = mavenProject.getModel().getProperties();
 			for (DependencyData dependencyData : projectModel.getSelectedProjects()) {
@@ -135,10 +159,14 @@ public class DistributionProjectWizard extends
 				properties.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependencyData.getServerRole());
 			}
 			ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+			log.info("12");
 			properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
+			log.info("13");
 			mavenProject.getModel().setProperties(properties);
-
+            log.info("adding maven depn");
+            
 			MavenUtils.addMavenDependency(mavenProject, dependencyList);
+			log.info("saving maven pro");
 			MavenUtils.saveMavenProject(mavenProject, pomfile);
 			project.refreshLocal(IResource.DEPTH_INFINITE,
 					new NullProgressMonitor());

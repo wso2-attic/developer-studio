@@ -407,7 +407,10 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	}
 
 	public void createPOM(File pomLocation) throws Exception {
-		MavenInfo mavenInfo = getModel().getMavenInfo();
+		ProjectDataModel modelkushan = getModel();
+		log.info("ProjectDataModel sucssefully created");
+		MavenInfo mavenInfo = modelkushan.getMavenInfo();
+		log.info("MavenInfo sucssefully created");
 
 		String customGroupId = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
 		                                                    GLOBAL_MAVEN_GROUP_ID, null, null);
@@ -421,22 +424,34 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		                                                                               : mavenInfo.getVersion(),
 		                                                          mavenInfo.getPackageName());
 		Parent parentProject = getModel().getMavenInfo().getParentProject();
+		log.info("parent project creartion sucsseful");
 		if (parentProject != null) {
+			log.info("if parent null");
 			mavenProject.getModel().setParent(parentProject);
+			log.info("get model and set parent");
 		}
 		String disableWSO2Repo = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
 		                                                      DISABLE_WSO2_REPOSITORY, null, null);
 		if (disableWSO2Repo == null) {
+			log.info("if disable reapo");
 			MavenUtils.updateMavenRepo(mavenProject);
+			log.info("update reapo");
 		}
 		Repository globalRepositoryFromPreference = getGlobalRepositoryFromPreference();
+		log.info("global repo");
 
 		if (globalRepositoryFromPreference != null) {
+			log.info("if global repo null");
 			mavenProject.getModel().addRepository(globalRepositoryFromPreference);
+			log.info("add repo");
 			mavenProject.getModel().addPluginRepository(globalRepositoryFromPreference);
+			log.info("add plugin repo");
 		}
 
+		log.info("saving pro");
 		MavenUtils.saveMavenProject(mavenProject, pomLocation);
+		log.info("save sucsessful");
+		
 	}
 
 	public void createPOM(File pomLocation, String packagingType) throws Exception {

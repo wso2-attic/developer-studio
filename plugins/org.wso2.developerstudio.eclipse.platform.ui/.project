@@ -158,11 +158,6 @@
 			<location>/home/kavith/GitHome/new/2/developer-studio/plugins/org.wso2.developerstudio.eclipse.utils/lib/maven-invoker-2.0.11.jar</location>
 		</link>
 		<link>
-			<name>maven-model-2.2.1.jar</name>
-			<type>1</type>
-			<location>/home/kavith/GitHome/new/2/developer-studio/plugins/org.wso2.developerstudio.eclipse.utils/lib/maven-model-2.2.1.jar</location>
-		</link>
-		<link>
 			<name>maven-model-3.2.1.jar</name>
 			<type>1</type>
 			<location>/home/kavith/MavenRepository/.cache/tycho/org.eclipse.m2e.maven.runtime-1.5.1.20150109-1819.jar/jars/maven-model-3.2.1.jar</location>
