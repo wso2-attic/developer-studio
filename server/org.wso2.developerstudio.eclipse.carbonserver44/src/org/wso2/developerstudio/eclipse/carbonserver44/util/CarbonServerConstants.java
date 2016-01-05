@@ -83,4 +83,8 @@ public class CarbonServerConstants {
 	public static final String CARBON_VERSION="4.4.0";
 
 	public static final String CATALINA_XPATH_EXPRESSION_FOR_SSL_ENABLED_PORT = "/Server/Service/Connector[@SSLEnabled=\"true\"]/@port";
+	public static final String SERVER_PORTS_OFFSET_XPATH = "/Server/Ports/Offset";
+	public static final String SERVER_SERVICE_CONNECTOR_XPATH = "/Server/Service/Connector[1]/@port";
+	public static final String HTTPS_NAME_TAG = "https";
+	public static final String HTTP_NAME_TAG = "http";
 }
