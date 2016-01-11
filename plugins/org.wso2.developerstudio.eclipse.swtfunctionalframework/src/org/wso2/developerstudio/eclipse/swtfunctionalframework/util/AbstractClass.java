@@ -39,12 +39,12 @@ public class AbstractClass extends Util {
             bot.sleep(2000);
             checkButton(CommonCons.NEXT, newProject);
             newProject.bot().button(CommonCons.NEXT).click();
-            //log.error("Openning project from menu sucssecfull");
+            log.error("Openning project from menu sucssecfull");
         } catch (Exception e) {
-            //log.error("Opening project from menu failed", e);
+            log.error("Opening project from menu failed", e);
             fail();
         } catch (Error erro) {
-            //log.error("Opening project from menu failed", erro);
+            log.error("Opening project from menu failed", erro);
             fail();
         }
     }
@@ -54,16 +54,16 @@ public class AbstractClass extends Util {
         try {
             bot.menu(CommonCons.DEVELOPER_STUDIO).menu(CommonCons.OPEN_DASHBOARD).click();
         } catch (Exception e) {
-            //log.error("Problem in openning dashboard", e);
+            log.error("Problem in openning dashboard", e);
         }
         try {
             SWTBotEditor dashBoard = bot.editorByTitle(CommonCons.DEVELOPER_STUDIO_DASHBOARD);
             dashBoard.show();
             SWTFormsBot form = new SWTFormsBot();
             form.imageHyperlink(project).click();
-            //log.error("Openning project from dashboard sucssecfull");
+            log.error("Openning project from dashboard sucssecfull");
         } catch (Exception e) {
-            //log.error("Problem with opennig the project", e);
+            log.error("Problem with opennig the project", e);
         }
 
     }
@@ -83,7 +83,7 @@ public class AbstractClass extends Util {
             }
             tree.getNode(fileName).doubleClick();
         } catch (WidgetNotFoundException e) {
-        	//log.error("Cannot open the editor", e);
+        	log.error("Cannot open the editor", e);
             fail();
 
         }
@@ -95,7 +95,7 @@ public class AbstractClass extends Util {
         actual = bot.editorByTitle(className + CommonCons.JAVA).bot().styledText().getText();
         expect = "package " + packageName + ";\n\npublic class " + className + "{\n\n}";
         assertContains(actual, expect);
-        //log.error("Validation sucsessful");
+        log.error("Validation sucsessful");
     }
 
     public static void changePerspective() {
@@ -106,7 +106,7 @@ public class AbstractClass extends Util {
                 bot.waitUntil(Conditions.shellCloses(changePerspective));
             }
         } catch (WidgetNotFoundException e) {
-            //log.error("Project unsucsessful", e);
+            log.error("Project unsucsessful", e);
             fail();
         }
     }
@@ -121,9 +121,9 @@ public class AbstractClass extends Util {
         bot.waitUntil(Conditions.shellCloses(newSql));
         try {
             bot.editorByTitle(filename + CommonCons.SQL).show();
-            //log.error("Create Sql File Sucsessful");
+            log.error("Create Sql File Sucsessful");
         } catch (WidgetNotFoundException e) {
-            //log.error("Editor didnt load", e);
+            log.error("Editor didnt load", e);
             fail();
         }
     }
@@ -146,7 +146,7 @@ public class AbstractClass extends Util {
                 tree = tree.getNode(element);
             }
         } catch (WidgetNotFoundException | Error e) {
-            //log.error("Cannot open the project", e);
+            log.error("Cannot open the project", e);
             fail();
         }
         
@@ -169,11 +169,11 @@ public class AbstractClass extends Util {
             }
             tree.contextMenu("New").menu(projectType).click();
         } catch (WidgetNotFoundException e) {
-           // log.error("Cannot open the project", e);
+            log.error("Cannot open the project", e);
             fail();
 
         } catch (Error erro) {
-            //log.error("Cannot open the project", erro);
+            log.error("Cannot open the project", erro);
             fail();
         }
     }
@@ -185,7 +185,7 @@ public class AbstractClass extends Util {
             bot.tree().getTreeItem(projectName).select();
             bot.tree().getTreeItem(projectName).contextMenu("New").menu(projectType).click();
         } catch (WidgetNotFoundException e) {
-            //log.error("Cannot open the project", e);
+            log.error("Cannot open the project", e);
             System.out.println("Cannot open the project");
             fail();
 
@@ -213,7 +213,7 @@ public class AbstractClass extends Util {
         }
 
         catch (WidgetNotFoundException e) {
-            //log.error("Widget cannot be load", e);
+            log.error("Widget cannot be load", e);
             fail();
         }
     }
@@ -232,7 +232,7 @@ public class AbstractClass extends Util {
             bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
             bot.sleep(2000);
         } catch (WidgetNotFoundException e) {
-            //log.error("Project not found", e);
+            log.error("Project not found", e);
             fail();
         }
         try {
@@ -240,9 +240,9 @@ public class AbstractClass extends Util {
             deleteShell.bot().checkBox(CommonCons.DELETE_PROJECT_CONTENTS_ON_DISK_CANNOT_BE_UNDONE).click();
             deleteShell.bot().button(CommonCons.OK).click();
             bot.button(CommonCons.CONTINUE).click();
-            //log.error("Delete successful");
+            log.error("Delete successful");
         } catch (Exception e) {
-            //log.error("Delete unsuccessful", e);
+            log.error("Delete unsuccessful", e);
             fail();
         }
     }
@@ -253,7 +253,7 @@ public class AbstractClass extends Util {
             bot.saveAllEditors();
             bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
         } catch (WidgetNotFoundException e) {
-            //log.error("Project not found", e);
+            log.error("Project not found", e);
             fail();
         }
         try {
@@ -261,9 +261,9 @@ public class AbstractClass extends Util {
             SWTBotShell deleteShell = bot.shell(CommonCons.DELETE_RESOURCES);
             deleteShell.bot().button(CommonCons.OK).click();
             bot.button(CommonCons.CONTINUE).click();
-            //log.error("Delete sucsessful");
+            log.error("Delete sucsessful");
         } catch (Exception e) {
-            //log.error("Delete unsucsessful", e);
+            log.error("Delete unsucsessful", e);
             fail();
         }
     }
@@ -273,10 +273,10 @@ public class AbstractClass extends Util {
             bot.tree().getTreeItem(projectName).expand();
             bot.tree().getTreeItem(projectName).getNode("src/main/java").expand();
             bot.tree().getTreeItem(projectName).getNode("src/main/java").getNode(packageName).select();
-           // log.info("Tree selection sucsessful");
+            log.info("Tree selection sucsessful");
             return bot.tree().getTreeItem(projectName).getNode("src/main/java").getNode(packageName);
         } catch (Exception e) {
-            //log.error("Problem with tree selection", e);
+            log.error("Problem with tree selection", e);
             fail();
             return null;
         }
@@ -286,7 +286,7 @@ public class AbstractClass extends Util {
         try {
             bot.cTabItem(tabName).activate();
         } catch (WidgetNotFoundException e) {
-            //log.error("Ctab cannot be found", e);
+            log.error("Ctab cannot be found", e);
             fail();
         }
     }
@@ -295,7 +295,7 @@ public class AbstractClass extends Util {
     	try {
         bot.viewByTitle(viewName).close();
     	} catch(Exception e){
-    		//log.error("Fail to close the view", e);
+    		log.error("Fail to close the view", e);
     		fail();
     	}
     }

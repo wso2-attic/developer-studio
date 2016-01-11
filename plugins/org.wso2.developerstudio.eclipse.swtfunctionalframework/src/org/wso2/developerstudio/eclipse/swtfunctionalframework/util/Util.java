@@ -35,12 +35,12 @@ public class Util {
     protected static String actual;
     protected static String expect;
     protected static SWTBotShell saveIn;
-    //public static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    public static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public static void checkShellLoading(final String shellName) {
         bot.waitUntil(new DefaultCondition() {
             public String getFailureMessage() {
-                //log.error("Shell loading failure");
+                log.error("Shell loading failure");
                 fail();
                 return "Unable to load the shell";
                 
@@ -56,7 +56,7 @@ public class Util {
         
         bot.waitUntil(new DefaultCondition() {
             public String getFailureMessage() {
-                //log.error(buttonName + " Button is not enabled");
+                log.error(buttonName + " Button is not enabled");
                 fail();
                 return "Button is not enabled";
             }
@@ -77,13 +77,13 @@ public class Util {
             bot.sleep(2000);
             actual = botShell.bot().textWithLabel(lableName).getText().trim().toString();
         } catch (WidgetNotFoundException e) {
-            //log.error("Problem with the Lable",e);
+            log.error("Problem with the Lable",e);
             fail();
         }
         try{
         assertEquals(actual, text);
         }catch(AssertionError e){
-            //log.error("Entered text is not the same", e);
+            log.error("Entered text is not the same", e);
             fail();
         }
         
