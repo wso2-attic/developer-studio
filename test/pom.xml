@@ -38,6 +38,16 @@
 			<url>http://download.eclipse.org/technology/swtbot/releases/latest/</url>
 			<layout>p2</layout>
 		</repository>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+			<id>DevS-Kernel-p2-Repository</id>
+			<url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.0.0/kernel/releases/</url>
+			<layout>p2</layout>
+		</repository>
 	</repositories>
 	<modules>
 		<module>luna</module>
@@ -143,11 +153,6 @@
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>org.wso2.developerstudio.capp.feature</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.wso2.developerstudio.kernel.webui.tools.feature</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
 							<requirement>
