@@ -21,27 +21,28 @@ import static org.junit.Assert.fail;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 
-public class CompositeApplicationUtil extends Util {
+public class CompositeApplicationUtil{
 
     public static void createCompositeApllication(String projectName) {
 
-        checkShellLoading(CompositeApllicationCons.NEW_Composite_Apllication);
-        bot.sleep(1000);
-        SWTBotShell newCompositeApllication = bot.shell(CompositeApllicationCons.NEW_Composite_Apllication);
-        setLableText(newCompositeApllication, CompositeApllicationCons.PROJECT_NAME, projectName);
-        bot.sleep(1000);
-        checkButton(CommonCons.NEXT, newCompositeApllication);
-        newCompositeApllication.bot().button(CommonCons.NEXT).click();
-        bot.sleep(1000);
-        checkButton(CommonCons.FINISH, newCompositeApllication);
-        newCompositeApllication.bot().button(CommonCons.FINISH).click();
+        Util.checkShellLoading(CompositeApllicationConstants.NEW_Composite_Apllication);
+        Util.bot.sleep(1000);
+        SWTBotShell newCompositeApllication = Util.bot.shell(CompositeApllicationConstants.NEW_Composite_Apllication);
+        Util.setLableText(newCompositeApllication, CompositeApllicationConstants.PROJECT_NAME, projectName);
+        Util.bot.sleep(1000);
+        Util.checkButton(CommonConstants.NEXT, newCompositeApllication);
+        newCompositeApllication.bot().button(CommonConstants.NEXT).click();
+        Util.bot.sleep(1000);
+        Util.checkButton(CommonConstants.FINISH, newCompositeApllication);
+        newCompositeApllication.bot().button(CommonConstants.FINISH).click();
         try {
-            bot.waitUntil(Conditions.shellCloses(newCompositeApllication));
+            Util.bot.waitUntil(Conditions.shellCloses(newCompositeApllication));
         } catch (TimeoutException e) {
-            log.error("Wizard closing faliure", e);
+            Util.log.error("Wizard closing faliure", e);
             fail();
             }
     }

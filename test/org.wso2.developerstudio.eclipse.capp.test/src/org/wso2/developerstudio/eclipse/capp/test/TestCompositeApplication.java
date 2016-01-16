@@ -22,11 +22,11 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CompositeApplicationUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationConstants;
 
 @RunWith(OrderedRunner.class)
 public class TestCompositeApplication extends Setup {
@@ -36,7 +36,7 @@ public class TestCompositeApplication extends Setup {
 	@Test
 	@Order(order = 1)
 	public void open() throws Exception {
-		AbstractClass.openProjectFromMenu(CompositeApllicationCons.MENU_NAME);
+		CommonUtil.openProjectFromMenu(CompositeApllicationConstants.MENU_NAME);
 
 	}
 
@@ -52,6 +52,6 @@ public class TestCompositeApplication extends Setup {
 	@Test
 	@Order(order = 3)
 	public void deleteApplication() throws Exception {
-		AbstractClass.deleteWithContent(projectName);
+		CommonUtil.deleteWithContent(projectName);
 	}
 }

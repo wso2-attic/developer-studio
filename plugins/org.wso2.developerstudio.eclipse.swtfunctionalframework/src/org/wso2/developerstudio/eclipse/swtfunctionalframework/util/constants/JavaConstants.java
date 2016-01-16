@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants;
 
-public class JavaCons {
+public class JavaConstants {
     public static final String NA_ME = "Na&me:";
     public static final String NEW_JAVA_CLASS = "New Java Class";
 }

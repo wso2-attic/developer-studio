@@ -29,12 +29,12 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.Activator;
 
 public class Util {
     public static SWTWorkbenchBot bot;
-    protected static SWTBotShell newServiceProject;
-    protected static SWTBotShell newWorkflow;
-    protected static SWTBotShell changePerspective;
-    protected static String actual;
-    protected static String expect;
-    protected static SWTBotShell saveIn;
+    public static SWTBotShell newServiceProject;
+    public static SWTBotShell newWorkflow;
+    public static SWTBotShell changePerspective;
+    public static String actual;
+    public static String expect;
+    public static SWTBotShell saveIn;
     public static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public static void checkShellLoading(final String shellName) {
@@ -86,7 +86,6 @@ public class Util {
             log.error("Entered text is not the same", e);
             fail();
         }
-        
-        
     }
+
 }

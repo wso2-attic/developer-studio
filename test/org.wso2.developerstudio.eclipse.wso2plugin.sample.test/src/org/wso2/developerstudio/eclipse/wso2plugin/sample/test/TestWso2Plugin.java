@@ -19,10 +19,10 @@ package org.wso2.developerstudio.eclipse.wso2plugin.sample.test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Wso2PluginUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Wso2PluginCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Wso2PluginConstants;
 
 @RunWith(OrderedRunner.class)
 public class TestWso2Plugin extends Setup {
@@ -33,20 +33,20 @@ public class TestWso2Plugin extends Setup {
 	@Test
 	@Order(order = 1)
 	public void open() {
-		AbstractClass.openProjectFromMenu(Wso2PluginCons.MENU_NAME);
+		CommonUtil.openProjectFromMenu(Wso2PluginConstants.MENU_NAME);
 	}
 
 	@Test
 	@Order(order = 2)
 	public void createPluginPorject() {
-		String projectType = Wso2PluginCons.SINGLE_MODULE_PROJECT;
+		String projectType = Wso2PluginConstants.SINGLE_MODULE_PROJECT;
 		Wso2PluginUtils.createWso2Plugin(projectName, projectType);
 	}
 
 	@Test
 	@Order(order = 3)
 	public void deleteProject() {
-		AbstractClass.deleteWithContent(projectName);
+		CommonUtil.deleteWithContent(projectName);
 	}
 
 }

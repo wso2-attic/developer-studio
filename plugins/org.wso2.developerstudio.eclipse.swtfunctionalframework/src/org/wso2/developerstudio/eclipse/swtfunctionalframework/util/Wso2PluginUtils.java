@@ -19,19 +19,18 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.util;
 import static org.eclipse.swtbot.swt.finder.SWTBotAssert.assertContains;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Wso2PluginCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Wso2PluginConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 
-public class Wso2PluginUtils extends Util {
+public class Wso2PluginUtils{
 
     private static SWTBotTreeItem main;
 
@@ -39,33 +38,33 @@ public class Wso2PluginUtils extends Util {
 
         SWTBotShell newPluginProject;
         SWTBotTable selection;
-        bot.sleep(2000);
-        checkShellLoading(Wso2PluginCons.WSO2_PLUGIN_PROJECT_WINDOW_TITLE);
-        newPluginProject = bot.shell(Wso2PluginCons.WSO2_PLUGIN_PROJECT_WINDOW_TITLE);
+        Util.bot.sleep(2000);
+        Util.checkShellLoading(Wso2PluginConstants.WSO2_PLUGIN_PROJECT_WINDOW_TITLE);
+        newPluginProject = Util.bot.shell(Wso2PluginConstants.WSO2_PLUGIN_PROJECT_WINDOW_TITLE);
         try {
-            newPluginProject.bot().textWithLabel(Wso2PluginCons.PLUGIN_Id).setText(projectName);
+            newPluginProject.bot().textWithLabel(Wso2PluginConstants.PLUGIN_Id).setText(projectName);
         }
 
         catch (WidgetNotFoundException e) {
-            log.error("Problem with the Lable", e);
+            Util.log.error("Problem with the Lable", e);
             fail();
         }
-        bot.sleep(2000);
-        checkButton(CommonCons.NEXT, newPluginProject);
-        newPluginProject.bot().button(CommonCons.NEXT).click();
-        bot.sleep(1000);
+        Util.bot.sleep(2000);
+        Util.checkButton(CommonConstants.NEXT, newPluginProject);
+        newPluginProject.bot().button(CommonConstants.NEXT).click();
+        Util.bot.sleep(1000);
         try {
-            selection = bot.table();
+            selection = Util.bot.table();
             selection.select(projectType);
         } catch (Exception e) {
-            log.error("Problem with project type selection table", e);
+            Util.log.error("Problem with project type selection table", e);
             fail();
         }
-        checkButton(CommonCons.FINISH, newPluginProject);
-        newPluginProject.bot().button(CommonCons.FINISH).click();
-        bot.sleep(1000);
-        bot.waitUntil(Conditions.shellCloses(newPluginProject));
-        bot.sleep(2000);
+        Util.checkButton(CommonConstants.FINISH, newPluginProject);
+        newPluginProject.bot().button(CommonConstants.FINISH).click();
+        Util.bot.sleep(1000);
+        Util.bot.waitUntil(Conditions.shellCloses(newPluginProject));
+        Util.bot.sleep(2000);
         projectValidation(projectName);
     }
 
@@ -81,26 +80,26 @@ public class Wso2PluginUtils extends Util {
         expected.add("plugin.xml");
         expected.add("pom.xml");
         expected.add("project_wizard.xml");
-        main = bot.tree().getTreeItem(projectName);
-        bot.sleep(5000);
+        main = Util.bot.tree().getTreeItem(projectName);
+        Util.bot.sleep(5000);
         main.expand();
-        bot.sleep(5000);
+        Util.bot.sleep(5000);
         actual = main.expand().getNodes();
-        bot.sleep(5000);
+        Util.bot.sleep(5000);
         try {
             actual.remove(0);
             actual.remove(0);
         } catch (IndexOutOfBoundsException e) {
-            log.error("Getting files faliure", e);
+            Util.log.error("Getting files faliure", e);
             fail();
         }
         assertNotSame("Main project creation faliure", expected, actual);
         expected.removeAll(expected);
         actual.removeAll(actual);
         main.getNode("src").expand();
-        bot.sleep(5000);
+        Util.bot.sleep(5000);
         actual = main.getNode("src").expand().getNodes();
-        bot.sleep(5000);
+        Util.bot.sleep(5000);
         expected.add("org.wso2.developerstudio.eclipse.artifact");
         expected.add("org.wso2.developerstudio.eclipse.artifact.model");
         expected.add("org.wso2.developerstudio.eclipse.artifact.project.export");
@@ -117,10 +116,10 @@ public class Wso2PluginUtils extends Util {
 
         String expected;
         String actual;
-        main = bot.tree().getTreeItem(projectName).expand();
+        main = Util.bot.tree().getTreeItem(projectName).expand();
         main.getNode("project_wizard.xml").doubleClick();
-        bot.cTabItem("Source").activate();
-        actual = bot.editorByTitle("project_wizard.xml").bot().styledText().getText();
+        Util.bot.cTabItem("Source").activate();
+        actual = Util.bot.editorByTitle("project_wizard.xml").bot().styledText().getText();
         expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>/n";
         expected = expected + "<wizard>/n";
         expected = expected + " <projectOptions title=\"Artifact Creation Wizard \"/n";

@@ -21,17 +21,18 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 
-public class Setup extends Util {
+public class Setup{
 
     @BeforeClass
     public static void beforeClass() throws Exception {
-        bot = new SWTWorkbenchBot();
+        Util.bot = new SWTWorkbenchBot();
         SWTBotPreferences.PLAYBACK_DELAY = 30;
 
         try {
-            bot.viewByTitle(CommonCons.WELCOME).close();
+            Util.bot.viewByTitle(CommonConstants.WELCOME).close();
         } catch (WidgetNotFoundException e) {
 
         }
@@ -41,10 +42,10 @@ public class Setup extends Util {
     @AfterClass
     public static void sleep() {
         try {
-            bot.closeAllEditors();
-            for (int i = bot.shells().length - 1; i > 0; i--) {
-                bot.shells()[i].close();
-                bot.button("OK").click();
+            Util.bot.closeAllEditors();
+            for (int i = Util.bot.shells().length - 1; i > 0; i--) {
+                Util.bot.shells()[i].close();
+                Util.bot.button("OK").click();
             }
         } catch (Exception e) {
         }

@@ -4,10 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.Order;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.OrderedRunner;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 //import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.MavenMultiModuleUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationConstants;
 //import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.MavenMultiModuleCons;
 
 

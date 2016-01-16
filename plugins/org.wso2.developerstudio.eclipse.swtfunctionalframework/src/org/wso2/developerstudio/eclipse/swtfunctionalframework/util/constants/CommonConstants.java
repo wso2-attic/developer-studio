@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants;
 //contarins full word
-public class CommonCons {
+public class CommonConstants {
     public static final String BPEL = ".bpel";
     public static final String BROWSE = "Browse...";
     public static final String CANCEL = "Cancel";

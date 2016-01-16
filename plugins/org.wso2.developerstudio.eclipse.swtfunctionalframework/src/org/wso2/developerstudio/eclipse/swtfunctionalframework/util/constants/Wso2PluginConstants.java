@@ -1,6 +1,6 @@
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants;
 
-public class Wso2PluginCons {
+public class Wso2PluginConstants {
 	
 	public static final String MENU_NAME = "WSO2 Plugin Project";
 	public static final String PLUGIN_Id = "Plugin Id   ";

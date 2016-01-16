@@ -16,8 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants;
 
-public class SqlFileCons {
-    public static final String FILE_NAME = "File name:";
-    public static final String NEW_SQL_FILE = "New SQL File";
-
+public class CompositeApllicationConstants {
+	public static final String MENU_NAME = "Composite Application Project";
+    public static final String NEW_Composite_Apllication = "New Composite Application Project";
+    public static final String PROJECT_NAME = "Project Name";
 }
