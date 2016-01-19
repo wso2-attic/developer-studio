@@ -40,7 +40,7 @@ public class CommonUtil {
             Util.bot.sleep(2000);
             Util.checkButton(CommonConstants.NEXT, newProject);
             newProject.bot().button(CommonConstants.NEXT).click();
-            Util.log.error("Openning project from menu sucssecfull");
+            Util.log.info("Openning project from menu sucssecfull");
         } catch (Exception e) {
             Util.log.error("Opening project from menu failed", e);
             fail();
@@ -51,7 +51,7 @@ public class CommonUtil {
     }
 
     public static void openFromDash(String project) throws Exception {
-        Util.bot.sleep(2000);
+        Util.bot.sleep(6000);
         try {
             Util.bot.menu(CommonConstants.DEVELOPER_STUDIO).menu(CommonConstants.OPEN_DASHBOARD).click();
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class CommonUtil {
             dashBoard.show();
             SWTFormsBot form = new SWTFormsBot();
             form.imageHyperlink(project).click();
-            Util.log.error("Openning project from dashboard sucssecfull");
+            Util.log.info("Openning project from dashboard sucssecfull");
         } catch (Exception e) {
             Util.log.error("Problem with opennig the project", e);
         }
@@ -72,7 +72,7 @@ public class CommonUtil {
     public static void openEditor(String projectName, String[] path, String fileName) {
         SWTBotTreeItem tree = Util.bot.tree().getTreeItem(projectName);
         try {
-            Util.bot.viewByTitle("Project Explorer").show();
+            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
             if (!tree.isExpanded()) {
                 tree.select();
                 tree.expand();
@@ -96,7 +96,7 @@ public class CommonUtil {
         Util.actual = Util.bot.editorByTitle(className + CommonConstants.JAVA).bot().styledText().getText();
         Util.expect = "package " + packageName + ";\n\npublic class " + className + "{\n\n}";
         assertContains(Util.actual, Util.expect);
-        Util.log.error("Validation sucsessful");
+        Util.log.info("Validation sucsessful");
     }
 
     public static void changePerspective() {
@@ -122,7 +122,7 @@ public class CommonUtil {
         Util.bot.waitUntil(Conditions.shellCloses(newSql));
         try {
             Util.bot.editorByTitle(filename + CommonConstants.SQL).show();
-            Util.log.error("Create Sql File Sucsessful");
+            Util.log.info("Create Sql File Sucsessful");
         } catch (WidgetNotFoundException e) {
             Util.log.error("Editor didnt load", e);
             fail();
@@ -134,7 +134,7 @@ public class CommonUtil {
         Util.bot.sleep(2000);
         try {
             SWTBotTreeItem tree = Util.bot.tree().getTreeItem(projectName);
-            Util.bot.viewByTitle("Project Explorer").show();
+            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
             if (!tree.isExpanded()) {
                 tree.select();
                 tree.expand();
@@ -158,7 +158,7 @@ public class CommonUtil {
         Util.bot.sleep(2000);
         try {
             SWTBotTreeItem tree = Util.bot.tree().getTreeItem(projectName);
-            Util.bot.viewByTitle("Project Explorer").show();
+            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
             if (!tree.isExpanded()) {
                 tree.select();
                 tree.expand();
@@ -168,7 +168,7 @@ public class CommonUtil {
                 tree.getNode(element).select();
                 tree = tree.getNode(element);
             }
-            tree.contextMenu("New").menu(projectType).click();
+            tree.contextMenu(CommonConstants.NEW).menu(projectType).click();
         } catch (WidgetNotFoundException e) {
             Util.log.error("Cannot open the project", e);
             fail();
@@ -182,9 +182,9 @@ public class CommonUtil {
     public static void openProjectFromRightClick(String projectName, String projectType) {
         Util.bot.sleep(2000);
         try {
-            Util.bot.viewByTitle("Project Explorer").show();
+            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
             Util.bot.tree().getTreeItem(projectName).select();
-            Util.bot.tree().getTreeItem(projectName).contextMenu("New").menu(projectType).click();
+            Util.bot.tree().getTreeItem(projectName).contextMenu(CommonConstants.NEW).menu(projectType).click();
         } catch (WidgetNotFoundException e) {
             Util.log.error("Cannot open the project", e);
             System.out.println("Cannot open the project");
@@ -227,10 +227,10 @@ public class CommonUtil {
     		
     	}
         try {
-        	Util.bot.viewByTitle("Project Explorer").setFocus();
+        	Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).setFocus();
             
             Util.bot.tree().getTreeItem(projectName).select();
-            Util.bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
+            Util.bot.tree().getTreeItem(projectName).contextMenu(CommonConstants.DELETE).click();
             Util.bot.sleep(2000);
         } catch (WidgetNotFoundException e) {
             Util.log.error("Project not found", e);
@@ -241,7 +241,7 @@ public class CommonUtil {
             deleteShell.bot().checkBox(CommonConstants.DELETE_PROJECT_CONTENTS_ON_DISK_CANNOT_BE_UNDONE).click();
             deleteShell.bot().button(CommonConstants.OK).click();
             Util.bot.button(CommonConstants.CONTINUE).click();
-            Util.log.error("Delete successful");
+            Util.log.info("Delete successful");
         } catch (Exception e) {
             Util.log.error("Delete unsuccessful", e);
             fail();
@@ -252,7 +252,7 @@ public class CommonUtil {
 
         try {
             Util.bot.saveAllEditors();
-            Util.bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
+            Util.bot.tree().getTreeItem(projectName).contextMenu(CommonConstants.DELETE).click();
         } catch (WidgetNotFoundException e) {
             Util.log.error("Project not found", e);
             fail();
@@ -262,7 +262,7 @@ public class CommonUtil {
             SWTBotShell deleteShell = Util.bot.shell(CommonConstants.DELETE_RESOURCES);
             deleteShell.bot().button(CommonConstants.OK).click();
             Util.bot.button(CommonConstants.CONTINUE).click();
-            Util.log.error("Delete sucsessful");
+            Util.log.info("Delete sucsessful");
         } catch (Exception e) {
             Util.log.error("Delete unsucsessful", e);
             fail();

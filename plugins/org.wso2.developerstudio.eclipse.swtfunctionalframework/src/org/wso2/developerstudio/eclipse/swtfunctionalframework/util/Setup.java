@@ -29,6 +29,7 @@ public class Setup{
     @BeforeClass
     public static void beforeClass() throws Exception {
         Util.bot = new SWTWorkbenchBot();
+        Util.bot.sleep(5000);
         SWTBotPreferences.PLAYBACK_DELAY = 30;
 
         try {
@@ -36,6 +37,7 @@ public class Setup{
         } catch (WidgetNotFoundException e) {
 
         }
+        Util.bot.sleep(2000);
 
     }
 

@@ -21,6 +21,7 @@ public class CommonConstants {
     public static final String BROWSE = "Browse...";
     public static final String CANCEL = "Cancel";
     public static final String CONTINUE = "Continue";
+    public static final String DELETE = "Delete";
     public static final String DELETE_PROJECT_CONTENTS_ON_DISK_CANNOT_BE_UNDONE = "Delete project contents on disk (cannot be undone)";
     public static final String DELETE_RESOURCES = "Delete Resources";
     public static final String DEVELOPER_STUDIO = "Developer Studio";
@@ -33,6 +34,7 @@ public class CommonConstants {
     public static final String OPEN_ASSOCIATED_PERSPECTIVE = "Open Associated Perspective?";
     public static final String OPEN_DASHBOARD = "Open Dashboard";
     public static final String OPEN_PERSPECTIVE = "Open Perspective";
+    public static final String PROJECT_EXPLORER = "Project Explorer";
     public static final String REFRESH = "Refresh";
     public static final String SELECT_FOLDER = "Select folder...";
     public static final String SOURCE = "Source";
