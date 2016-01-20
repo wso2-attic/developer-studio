@@ -54,16 +54,22 @@ import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
+import org.wso2.developerstudio.eclipse.carbonserver44.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServer44Utils;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServerConstants;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class CarbonServerBehavior44 extends CarbonServerBehaviour{
-    private void checkClosed(IModule[] module) throws CoreException
-    {
+
+	private static final String EMPTY_STRING = "";
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+	private void checkClosed(IModule[] module) throws CoreException {
     	for( int i=0; i < module.length; i++ ){
     		if( module[i] instanceof DeletedModule ){	
                 IStatus status = new Status(IStatus.ERROR,CorePlugin.PLUGIN_ID,0, NLS.bind(GenericServerCoreMessages.canNotPublishDeletedModule,module[i].getName()),null);
@@ -214,100 +220,91 @@ public class CarbonServerBehavior44 extends CarbonServerBehaviour{
 	}
 	
 	protected Integer[] getAllPortsServerWillUse(IServer server) {
-		List<Integer> ports=new ArrayList<Integer>();
-    	
-    	String axis2FilePath = getAxis2FilePath();
-//    	String transportsXmlPath = getTransportXmlFilePath();
-    	String carbonXmlPath = getCarbonXmlFilePath();
-    	String catelinaXmlFilePath = getCatelinaXmlFilePath();
-    	
-//		addServletTransportsPorts(ports, transportsXmlPath);
-    	addServletTransportPorts(ports, carbonXmlPath,catelinaXmlFilePath);
+		List<Integer> ports = new ArrayList<Integer>();
+
+		String axis2FilePath = getAxis2FilePath();
+		String carbonXmlPath = getCarbonXmlFilePath();
+		String catelinaXmlFilePath = getCatelinaXmlFilePath();
+
+		addServletTransportPorts(ports, carbonXmlPath, catelinaXmlFilePath);
 		addAxis2XmlPorts(ports, axis2FilePath);
-		
-		return ports.toArray(new Integer[]{});
+
+		return ports.toArray(new Integer[] {});
 	}
 	
-	protected void addServletTransportPorts(List<Integer> ports, String carbonXmlPath, String catelinaXmlPath) {
-		int port=0;
+	protected void addServletTransportPorts(List<Integer> ports,
+			String carbonXmlPath, String catelinaXmlPath) {
+		int port = 0;
 		XPathFactory factory = XPathFactory.newInstance();
-		NamespaceContext cntx =  CarbonServer44Utils.getCarbonNamespace();
+		NamespaceContext cntx = CarbonServer44Utils.getCarbonNamespace();
 		File xmlDocument = new File(carbonXmlPath);
 		File catelineXmlDocument = new File(catelinaXmlPath);
-    	try {
-			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
-			InputSource catelineSource =  new InputSource(new FileInputStream(catelineXmlDocument));
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			DocumentBuilder catelineBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse(xmlDocument);
-            Document catelinaDocument = catelineBuilder.parse(catelineXmlDocument);
-			XPath xPath=factory.newXPath();
-			XPath catelineXPath=factory.newXPath();
+		try {
+			InputSource inputSource = new InputSource(new FileInputStream(
+					xmlDocument));
+			InputSource catelineSource = new InputSource(new FileInputStream(
+					catelineXmlDocument));
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance()
+					.newDocumentBuilder();
+			DocumentBuilder catelineBuilder = DocumentBuilderFactory
+					.newInstance().newDocumentBuilder();
+			Document document = builder.parse(xmlDocument);
+			Document catelinaDocument = catelineBuilder
+					.parse(catelineXmlDocument);
+			XPath xPath = factory.newXPath();
+			XPath catelineXPath = factory.newXPath();
 			xPath.setNamespaceContext(cntx);
-			
-			int offSet = Integer.parseInt((String)xPath.evaluate("/Server/Ports/Offset", document, XPathConstants.STRING));
-//			XPathExpression  xPathExpression=xPath.compile("/:Server/:Ports/:ServletTransports/:HTTPS");
-//			String evaluate = xPathExpression.evaluate(inputSource);
+
+			int offSet = Integer.parseInt((String) xPath.evaluate(
+					CarbonServerConstants.SERVER_PORTS_OFFSET_XPATH, document,
+					XPathConstants.STRING));
 			String evaluate = (String) catelineXPath
 					.evaluate(
 							CarbonServerConstants.CATALINA_XPATH_EXPRESSION_FOR_SSL_ENABLED_PORT,
 							catelinaDocument, XPathConstants.STRING);
-			
-			if(!evaluate.equals("")){
-				port = Integer.parseInt(evaluate)+offSet;
-			}else{
-				port = getPortfromTransportXML("https");
-			}
-			ports.add(port);
-			inputSource =  new InputSource(new FileInputStream(xmlDocument));
-			evaluate = (String)catelineXPath.evaluate("/Server/Service/Connector[1]/@port", catelinaDocument, XPathConstants.STRING);
 
-//			xPathExpression=xPath.compile("/:Server/:Ports/:ServletTransports/:HTTP");
-//			evaluate = xPathExpression.evaluate(inputSource);
-			if(!evaluate.equals("")){
-				port = Integer.parseInt(evaluate)+offSet;
-			}else{
-				port = getPortfromTransportXML("http");
+			if (!evaluate.equals(EMPTY_STRING)) {
+				port = Integer.parseInt(evaluate) + offSet;
+			} else {
+				port = getPortfromTransportXML(CarbonServerConstants.HTTPS_NAME_TAG);
 			}
 			ports.add(port);
-			
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (XPathExpressionException e) {
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			inputSource = new InputSource(new FileInputStream(xmlDocument));
+			evaluate = (String) catelineXPath.evaluate(
+					CarbonServerConstants.SERVER_SERVICE_CONNECTOR_XPATH,
+					catelinaDocument, XPathConstants.STRING);
+
+			if (!evaluate.equals(EMPTY_STRING)) {
+				port = Integer.parseInt(evaluate) + offSet;
+			} else {
+				port = getPortfromTransportXML(CarbonServerConstants.HTTP_NAME_TAG);
+			}
+			ports.add(port);
+
+		} catch (NumberFormatException | XPathExpressionException
+				| ParserConfigurationException | SAXException | IOException e) {
+			log.warn("Error occured while adding server transport ports", e);
 		}
 	}
-	
-	private int getPortfromTransportXML(String protocolType){
+
+	private int getPortfromTransportXML(String protocolType) {
 		int port = 0;
 		String transportsXmlPath = getTransportXmlFilePath();
 		XPathFactory factory = XPathFactory.newInstance();
 		File xmlDocument = new File(transportsXmlPath);
-    	try {
-			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
-			XPath xPath=factory.newXPath();
-			XPathExpression  xPathExpression=xPath.compile("/transports/transport[@name='" + protocolType + "']/parameter[@name='port']");
+		try {
+			InputSource inputSource = new InputSource(new FileInputStream(
+					xmlDocument));
+			XPath xPath = factory.newXPath();
+			XPathExpression xPathExpression = xPath
+					.compile("/transports/transport[@name='" + protocolType
+							+ "']/parameter[@name='port']");
 			String evaluate = xPathExpression.evaluate(inputSource);
 			port = Integer.parseInt(evaluate);
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (NumberFormatException | FileNotFoundException
+				| XPathExpressionException e) {
+			log.warn("Error occured while getting port from transport XML", e);
 		}
 		return port;
-		
 	}
 }
