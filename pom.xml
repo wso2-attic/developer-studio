@@ -26,7 +26,6 @@
         <module>features</module>
         <module>repository</module>
         <module>samples</module>
-        <module>test</module>
         <module>tests</module>
     </modules>
     <scm>
