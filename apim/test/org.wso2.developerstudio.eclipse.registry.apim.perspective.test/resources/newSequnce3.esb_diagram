@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_pxX2QKI8EeWMY4JmemXuCg" type="Esb" name="newSequnce3" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_pyIrQKI8EeWMY4JmemXuCg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pyIrRaI8EeWMY4JmemXuCg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_p1wnAKI8EeWMY4JmemXuCg" type="3614">
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_p1wnAaI8EeWMY4JmemXuCg"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_p1wnAqI8EeWMY4JmemXuCg" fontName="Ubuntu"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_p1wnA6I8EeWMY4JmemXuCg"/>
+        <element xmi:type="esb:Sequences" href="resources/newSequnce3.esb#//@server/@children.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p1wnBKI8EeWMY4JmemXuCg" width="195" height="125"/>
+      </children>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_pyIrQaI8EeWMY4JmemXuCg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_pyIrQqI8EeWMY4JmemXuCg" fontName="Ubuntu"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_pyIrQ6I8EeWMY4JmemXuCg"/>
+    <element xmi:type="esb:EsbServer" href="resources/newSequnce3.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pyIrRKI8EeWMY4JmemXuCg"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_pxX2QaI8EeWMY4JmemXuCg"/>
+  <element xmi:type="esb:EsbDiagram" href="resources/newSequnce3.esb#/"/>
+</notation:Diagram>

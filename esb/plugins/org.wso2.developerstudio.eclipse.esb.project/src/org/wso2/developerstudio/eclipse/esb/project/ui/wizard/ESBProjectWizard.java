@@ -59,6 +59,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		setEsbProjectModel(new ESBProjectModel());
 		setModel(esbProjectModel);
 		setDefaultPageImageDescriptor(ESBImageUtils.getInstance().getImageDescriptor("esb-project-wizard.png"));
+                setWindowTitle("New ESB Config Project");
 	}
 	
 	public boolean performFinish() {

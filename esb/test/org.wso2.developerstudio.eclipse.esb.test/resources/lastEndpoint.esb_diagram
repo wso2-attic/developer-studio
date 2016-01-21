@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_4jqHYKJTEeWB_PnT-Gh18A" type="Esb" name="lastEndpoint" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_4lM_gKJTEeWB_PnT-Gh18A" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_4lM_haJTEeWB_PnT-Gh18A" type="7001"/>
+    <children xmi:type="notation:Shape" xmi:id="_4t5ogKJTEeWB_PnT-Gh18A" type="3642" fontName="Ubuntu">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_4t6PkKJTEeWB_PnT-Gh18A" type="7041">
+        <children xmi:type="notation:Node" xmi:id="_4uNxkKJTEeWB_PnT-Gh18A" type="3643">
+          <children xmi:type="notation:DecorationNode" xmi:id="_4uOYoqJTEeWB_PnT-Gh18A" type="5160"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_4uNxkaJTEeWB_PnT-Gh18A"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_4uNxkqJTEeWB_PnT-Gh18A" fontName="Ubuntu"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_4uOYoKJTEeWB_PnT-Gh18A"/>
+          <element xmi:type="esb:DefaultEndPoint" href="resources/lastEndpoint.esb#//@server/@children.0/@child"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4uOYoaJTEeWB_PnT-Gh18A" width="75" height="75"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_4t6PkaJTEeWB_PnT-Gh18A" showTitle="true"/>
+      </children>
+      <element xmi:type="esb:EndpointDiagram" href="resources/lastEndpoint.esb#//@server/@children.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4t5ogaJTEeWB_PnT-Gh18A" width="110" height="100"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_4lM_gaJTEeWB_PnT-Gh18A"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_4lM_gqJTEeWB_PnT-Gh18A" fontName="Ubuntu"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_4lM_g6JTEeWB_PnT-Gh18A"/>
+    <element xmi:type="esb:EsbServer" href="resources/lastEndpoint.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4lM_hKJTEeWB_PnT-Gh18A"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_4jqHYaJTEeWB_PnT-Gh18A"/>
+  <element xmi:type="esb:EsbDiagram" href="resources/lastEndpoint.esb#/"/>
+</notation:Diagram>
