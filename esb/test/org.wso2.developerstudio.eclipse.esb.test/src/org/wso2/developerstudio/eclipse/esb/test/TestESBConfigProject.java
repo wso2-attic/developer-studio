@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
@@ -21,7 +20,7 @@ import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.ESBUtils;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
 /* Testing ESB Configuration Project
@@ -35,66 +34,65 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 @RunWith(OrderedRunner.class)
 public class TestESBConfigProject extends Setup {
 
-    private String projectNameMenu = "CreatedFromMenu";
-    private String projectNameDash = "CreatedFromDash";
-    private String projectNameSecondary = "CreatedFromSecondary";
-    private String proxyService = "Hello";
-    private String sequenceName = "firstSequence";
-    private String endpointName = "lastEndpoint";
+	private String projectNameMenu = "CreatedFromMenu";
+	private String projectNameDash = "CreatedFromDash";
+	private String projectNameSecondary = "CreatedFromSecondary";
+	private String proxyService = "Hello";
+	private String sequenceName = "firstSequence";
+	private String endpointName = "lastEndpoint";
 
-    @Test
-    @Order(order = 1)
-    public void createANewESBProjectFromMenu() throws Exception {
+	@Test
+	@Order(order = 1)
+	public void createANewESBProjectFromMenu() throws Exception {
 
-        AbstractClass.openProjectFromMenu("ESB Config Project");
-        ESBUtils.createESBProject(projectNameMenu);
-    }
-    
-    
-    @Test
-    @Order(order = 2)
-    public void createANewESBProjectFromDash() throws Exception {
-    	
-        AbstractClass.openFromDash("ESB Config Project");
-        ESBUtils.createESBProject(projectNameDash);
-    }
-    
-    @Test
-    @Order(order = 3)
-    public void createNewSequence() throws Exception {
-    	
-    	String[] path={"src", "main", "synapse-config", "sequences"};
-    	AbstractClass.openProjectFromRightClick(projectNameMenu, "Sequence");
-        ESBUtils.createNewSequence(sequenceName, projectNameDash);
-        AbstractClass.expandProject(projectNameDash, path);
-    }
+		CommonUtil.openProjectFromMenu("ESB Config Project");
+		ESBUtils.createESBProject(projectNameMenu);
+	}
 
-    @Test
-    @Order(order = 4)
-    public void createProxy() throws Exception {
-    	
-        AbstractClass.openFromDash("Proxy Service");
-        ESBUtils.createProxyService(proxyService);
-        ESBUtils.validateProxyServicexml(proxyService);
-    }
+	@Test
+	@Order(order = 2)
+	public void createANewESBProjectFromDash() throws Exception {
 
-    @Test
-    @Order(order = 5)
-    public void createEndpoint() throws Exception {
-    	
-    	String[] path={"src", "main", "synapse-config", "endpoints"};
-        AbstractClass.openProjectFromRightClick(projectNameMenu, "Endpoint");
-        ESBUtils.createNewEndpointWithESB(endpointName, projectNameSecondary);
-        AbstractClass.expandProject(projectNameSecondary, path);
+		CommonUtil.openFromDash("ESB Config Project");
+		ESBUtils.createESBProject(projectNameDash);
+	}
 
-    }
-    
-    @Test
-    @Order(order = 6)
-    public void deleteProjects() throws Exception {
-        AbstractClass.deleteWithContent(projectNameMenu);
-        AbstractClass.deleteWithContent(projectNameDash);
-        AbstractClass.deleteWithContent(projectNameSecondary);
-    }
+	@Test
+	@Order(order = 3)
+	public void createNewSequence() throws Exception {
+
+		String[] path = { "src", "main", "synapse-config", "sequences" };
+		CommonUtil.openProjectFromRightClick(projectNameMenu, "Sequence");
+		ESBUtils.createNewSequence(sequenceName, projectNameDash);
+		CommonUtil.expandProject(projectNameDash, path);
+	}
+
+	@Test
+	@Order(order = 4)
+	public void createProxy() throws Exception {
+
+		CommonUtil.openFromDash("Proxy Service");
+		ESBUtils.createProxyService(proxyService);
+		ESBUtils.validateProxyServicexml(proxyService);
+	}
+
+	@Test
+	@Order(order = 5)
+	public void createEndpoint() throws Exception {
+
+		String[] path = { "src", "main", "synapse-config", "endpoints" };
+		CommonUtil.openProjectFromRightClick(projectNameMenu, "Endpoint");
+		ESBUtils.createNewEndpointWithESB(endpointName, projectNameSecondary);
+		CommonUtil.expandProject(projectNameSecondary, path);
+
+	}
+
+	@Test
+	@Order(order = 6)
+	public void deleteProjects() throws Exception {
+		CommonUtil.deleteWithContent(projectNameMenu);
+		CommonUtil.deleteWithContent(projectNameDash);
+		CommonUtil.deleteWithContent(projectNameSecondary);
+	}
 
 }

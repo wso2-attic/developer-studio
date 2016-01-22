@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants;
 
-public class ESBProjectCons {
+public class ESBProjectConstants {
     public static final String NEW_ESB_PROJECT = "";// "New ESB Project";
     public static final String PROJECT_NAME = "Project Name";
 }

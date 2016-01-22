@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.constants;
+package org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants;
 
-public class BusinessRulesServiceCons {
-
-    public static final String BUSINESS_RULE_SERVICE_DESCRIPTOR_FILE = "Business Rule  Service Descriptor File*";
-    public static final String IMPORT_BUSINESS_RULE_SERVICE = "Import Business Rule Service";
-    public static final String NEW_BUSINESS_RULES_SERVICE_PROJECT = "New Business Rules Service Project";
-    public static final String PROJECT_NAME = "Project Name*";
-    public static final String SERVICE_RSL = "service.rsl";
-    public static final String SERVICE_NAME = "Service Name*";
+public class ProxyServiceConstants {
+    public static final String CUSTOM_PROXY = "Custom Proxy";
+    public static final String PROXY_SERVICE_NAME = "Proxy Service Name";
+    public static final String NEW_PROXY_SERVICE = "New Proxy Service";
 
 }

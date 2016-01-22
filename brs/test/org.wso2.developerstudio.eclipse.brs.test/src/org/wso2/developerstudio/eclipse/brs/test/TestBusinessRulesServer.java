@@ -19,67 +19,66 @@ package org.wso2.developerstudio.eclipse.brs.test;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.BusinessRulesUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
 @RunWith(OrderedRunner.class)
 public class TestBusinessRulesServer extends Setup {
 
-    // Create a new Business Rules Server
-    private String projectName = "businessRule";
-    private String serviceName = "myFirstService";
-    private String className = "HelloWorld";
-    private String[] path = {"src/main/java"};
-    private String servicepath = "/home/kushan/myFirst.rsl";
+	private String projectName = "businessRule";
+	private String serviceName = "myFirstService";
+	private String className = "HelloWorld";
+	private String[] path = { "src/main/java" };
+	private String servicepath = "/home/kushan/myFirst.rsl";
 
-    @Test
-    @Order(order = 1)
-    public void createANewBusinesRulesServer() throws Exception {
+	@Test
+	@Order(order = 1)
+	public void createANewBusinesRulesServer() throws Exception {
 
-        AbstractClass.openProjectFromMenu("Business Rules Service Project");
-        BusinessRulesUtil.createBusinessRulesService(projectName, serviceName);
-    }
+		CommonUtil.openProjectFromMenu("Business Rules Service Project");
+		BusinessRulesUtil.createBusinessRulesService(projectName, serviceName);
+	}
 
-    @Test
-    @Order(order = 2)
-    public void accessesCtabs() throws Exception {
+	@Test
+	@Order(order = 2)
+	public void accessesCtabs() throws Exception {
 
-        BusinessRulesUtil.serviceEditorText("Target Namespace", "home");
-        BusinessRulesUtil.serviceEditorText("Service Name", serviceName);
-        AbstractClass.activateCtab("Source");
-        AbstractClass.activateCtab("Design");
-        BusinessRulesUtil.closeServiceEditor();
-    }
+		BusinessRulesUtil.serviceEditorText("Target Namespace", "home");
+		BusinessRulesUtil.serviceEditorText("Service Name", serviceName);
+		CommonUtil.activateCtab(CommonConstants.SOURCE);
+		BusinessRulesUtil.closeServiceEditor();
+	}
 
-    @Test
-    @Order(order = 3)
-    public void createNewClass() throws Exception {
+	@Test
+	@Order(order = 3)
+	public void createNewClass() throws Exception {
 
-        AbstractClass.openProjectFromRightClick(projectName, path, "Class");
-        AbstractClass.createJavaClass(className);
+		CommonUtil.openProjectFromRightClick(projectName, path, "Class");
+		CommonUtil.createJavaClass(className);
 
-    }
+	}
 
-    @Test
-    @Order(order = 4)
-    public void importARule() {
+	@Test
+	@Order(order = 4)
+	public void importARule() {
 
-        AbstractClass.openProjectFromMenu("Business Rules Service Project");
-        BusinessRulesUtil.importBusinessRulesService(servicepath);
+		CommonUtil.openProjectFromMenu("Business Rules Service Project");
+		BusinessRulesUtil.importBusinessRulesService(servicepath);
 
-    }
-    
-    @Test
-    @Order(order = 5)
-    public void deleteProject(){
-        AbstractClass.deleteWithContent(projectName);
-    }
-    
-    @Test
-    @Order(order = 5)
-    public void deleteNextProject(){
-        AbstractClass.deleteWithContent("myFirst");
-    }
+	}
+
+	@Test
+	@Order(order = 5)
+	public void deleteProject() {
+		CommonUtil.deleteWithContent(projectName);
+	}
+
+	@Test
+	@Order(order = 5)
+	public void deleteNextProject() {
+		CommonUtil.deleteWithContent("myFirst");
+	}
 
 }

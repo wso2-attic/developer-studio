@@ -16,18 +16,12 @@
 
 package org.wso2.developerstudio.eclipse.artifact.carbon.test;
 
-import static org.junit.Assert.fail;
-
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.CarbonUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.constants.CarbonUICons;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
 
 /* Testing Carbon UI Bundle Project
  * Create Carbon UI Bundle Project using new menu
@@ -39,53 +33,39 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Co
 @RunWith(OrderedRunner.class)
 public class TestCarbonUIBundleProject extends Setup {
 
-    private String projectName = "firstUi";
+	private String projectName = "firstUi";
 
-    // Create a new Carbon UI Bundle Project
-    @Test
-    @Order(order = 1)
-    public void createCarbonUIBundleProject() throws Exception {
+	// Create a new Carbon UI Bundle Project
+	@Test
+	@Order(order = 1)
+	public void createCarbonUIBundleProject() throws Exception {
 
-        AbstractClass.openProjectFromMenu("Carbon UI Bundle Project");
-        CarbonUtils.createCarbonUI(projectName);
-/*		checkShellLoading(CarbonUICons.PROJECT_WIZARD_WINDOW_TITLE);
-		SWTBotShell newCarbonUIBundle = bot
-				.shell(CarbonUICons.PROJECT_WIZARD_WINDOW_TITLE);
-		checkButton(CommonCons.NEXT, newCarbonUIBundle);
-		newCarbonUIBundle.bot().button(CommonCons.NEXT).click();
-		bot.button("Next >").click();
-		try {
-			newCarbonUIBundle.bot().textWithLabel(CarbonUICons.PROJECT_NAME)
-					.setText(projectName);
-		} catch (WidgetNotFoundException e) {
-			// log.error("Problem with the Lable");
-			fail();
-		}*/
-        AbstractClass.activateCtab("Runtime");
-        AbstractClass.activateCtab("Extensions");
+		CommonUtil.openProjectFromMenu("Carbon UI Bundle Project");
+		CarbonUtils.createCarbonUI(projectName);
+		CommonUtil.activateCtab("Runtime");
+		CommonUtil.activateCtab("Extensions");
 
-    }
+	}
 
-    @Test
-    @Order(order = 2)
-    public void createNewClass() throws Exception {
-        String className = "HelloWorld";
+	@Test
+	@Order(order = 2)
+	public void createNewClass() throws Exception {
+		String className = "HelloWorld";
 
-        AbstractClass.openProjectFromRightClick(projectName, "Class");
-        AbstractClass.createJavaClass(className);
+		CommonUtil.openProjectFromRightClick(projectName, "Class");
+		CommonUtil.createJavaClass(className);
 
-    }
+	}
 
-    @Test
-    @Order(order = 3)
-    public void changePerspective() throws Exception {
-        AbstractClass.openPerspective("Java EE");
-        bot.sleep(2000);
-    }
+	@Test
+	@Order(order = 3)
+	public void changePerspective() throws Exception {
+		CommonUtil.openPerspective("Java EE");
+	}
 
-    @Test
-    @Order(order = 4)
-    public void deleteProject() throws Exception {
-        AbstractClass.deleteWithContent(projectName);
-    }
+	@Test
+	@Order(order = 4)
+	public void deleteProject() throws Exception {
+		CommonUtil.deleteWithContent(projectName);
+	}
 }

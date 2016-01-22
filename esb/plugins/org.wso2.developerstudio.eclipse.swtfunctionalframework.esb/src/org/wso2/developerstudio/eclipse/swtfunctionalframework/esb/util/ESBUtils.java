@@ -22,151 +22,156 @@ import static org.junit.Assert.fail;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ESBProjectCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.EndPoinCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ProxyServiceCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.SequenceCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ESBProjectConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.EndPoinConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ProxyServiceConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.SequenceConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
-public class ESBUtils extends Util{
-	
-	
-	public static void esbRclick(String projectName, String artiactName){
-		bot.tree().getTreeItem(projectName).select();
-        bot.tree().getTreeItem(projectName).contextMenu("New").menu(artiactName).click();
-		
+public class ESBUtils {
+
+	public static void esbRclick(String projectName, String artiactName) {
+		Util.bot.tree().getTreeItem(projectName).select();
+		Util.bot.tree().getTreeItem(projectName).contextMenu("New")
+				.menu(artiactName).click();
+
 	}
-	
-	
-    public static void createESBProject(String projectName) {
-    	bot.sleep(2000);
-        SWTBotShell newESBConf= bot.shell("New ESB Config Project");
-        newESBConf.bot().button(CommonCons.NEXT).click();
-        bot.sleep(1000);
-        //bot.textWithLabel(ESBProjectCons.PROJECT_NAME).setText(projectName);
-        setLableText(newESBConf, ESBProjectCons.PROJECT_NAME, projectName);
-        bot.sleep(1000);
-        newESBConf.bot().button(CommonCons.NEXT).click();
-        bot.sleep(1000);
-        //log.error("All upto Finish is fine");
-        newESBConf.bot().button(CommonCons.FINISH).click();
-        bot.sleep(1000);
-    }
-	
-    public static void createNewSequence(String sequenceName, String esbProjectToSave) {
 
-        checkShellLoading(SequenceCons.NEW_SEQUENCE_ARTIFACT);
-        SWTBotShell newSeqeunce = bot.shell(SequenceCons.NEW_SEQUENCE_ARTIFACT);
-        checkButton(CommonCons.NEXT, newSeqeunce);
-        newSeqeunce.bot().button(CommonCons.NEXT).click();
-        bot.sleep(1000);
-        setLableText(newSeqeunce, SequenceCons.SEQUENCE_NAME, sequenceName);
-        newSeqeunce.bot().button(CommonCons.BROWSE).click();
+	public static void createESBProject(String projectName) {
+		Util.bot.sleep(2000);
+		SWTBotShell newESBConf = Util.bot.shell("New ESB Config Project");
+		newESBConf.bot().button(CommonConstants.NEXT).click();
+		Util.bot.sleep(1000);
+		Util.setLableText(newESBConf, ESBProjectConstants.PROJECT_NAME, projectName);
+		Util.bot.sleep(1000);
+		newESBConf.bot().button(CommonConstants.NEXT).click();
+		Util.bot.sleep(1000);
+		newESBConf.bot().button(CommonConstants.FINISH).click();
+		Util.bot.sleep(1000);
+	}
 
-        checkShellLoading(CommonCons.SELECT_FOLDER);
-        saveIn = bot.shell(CommonCons.SELECT_FOLDER);
-        saveIn.bot().tree().getTreeItem(esbProjectToSave).doubleClick();
-        bot.waitUntil(Conditions.shellCloses(saveIn));
-        newSeqeunce = bot.shell(SequenceCons.NEW_SEQUENCE_ARTIFACT);
-        checkButton(CommonCons.FINISH, newSeqeunce);
-        newSeqeunce.bot().button(CommonCons.FINISH).click();
-        bot.waitUntil(Conditions.shellCloses(newSeqeunce));
-        try {
-            bot.editorByTitle(sequenceName + CommonCons.XML).show();
-            System.out.println("Create New Sequence Sucsessful");
+	public static void createNewSequence(String sequenceName,
+			String esbProjectToSave) {
 
-        } catch (WidgetNotFoundException e) {
-            System.out.println("Editor didnt load");
-            fail();
-        }
-    }
-    
-    public static void createProxyService(String serviceName) {
+		Util.checkShellLoading(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+		SWTBotShell newSeqeunce = Util.bot
+				.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+		Util.checkButton(CommonConstants.NEXT, newSeqeunce);
+		newSeqeunce.bot().button(CommonConstants.NEXT).click();
+		Util.bot.sleep(1000);
+		Util.setLableText(newSeqeunce, SequenceConstants.SEQUENCE_NAME, sequenceName);
+		newSeqeunce.bot().button(CommonConstants.BROWSE).click();
 
-        checkShellLoading(ProxyServiceCons.NEW_PROXY_SERVICE);
-        SWTBotShell newProxy = bot.shell(ProxyServiceCons.NEW_PROXY_SERVICE);
-        checkButton(CommonCons.NEXT, newProxy);
-        newProxy.bot().button(CommonCons.NEXT).click();
-        setLableText(newProxy, ProxyServiceCons.PROXY_SERVICE_NAME, serviceName);
-        newProxy.bot().comboBox().setSelection(ProxyServiceCons.CUSTOM_PROXY);
-        checkButton(CommonCons.FINISH, newProxy);
-        newProxy.bot().button(CommonCons.FINISH).click();
-        bot.waitUntil(Conditions.shellCloses(newProxy));
-        try {
-            bot.editorByTitle(serviceName + CommonCons.XML).show();
-            System.out.println("Create New Proxy Service Sucsessful");
+		Util.checkShellLoading(CommonConstants.SELECT_FOLDER);
+		Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
+		Util.saveIn.bot().tree().getTreeItem(esbProjectToSave).doubleClick();
+		Util.bot.waitUntil(Conditions.shellCloses(Util.saveIn));
+		newSeqeunce = Util.bot.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+		Util.checkButton(CommonConstants.FINISH, newSeqeunce);
+		newSeqeunce.bot().button(CommonConstants.FINISH).click();
+		Util.bot.waitUntil(Conditions.shellCloses(newSeqeunce));
+		try {
+			Util.bot.editorByTitle(sequenceName + CommonConstants.XML).show();
+			Util.log.info("Create New Sequence Sucsessful");
 
-        } catch (WidgetNotFoundException e) {
-            System.out.println("Editor didnt load");
-            fail();
-        }
+		} catch (WidgetNotFoundException e) {
+			Util.log.error("Editor didnt load");
+			fail();
+		}
+	}
 
-    }
+	public static void createProxyService(String serviceName) {
 
-    public static void createNewEndpointWithESB(String endpoint, String esbProject) {
-        checkShellLoading(EndPoinCons.NEW_ENDPOINT_ARTIFACT);
-        SWTBotShell newEndpoint = bot.shell(EndPoinCons.NEW_ENDPOINT_ARTIFACT);
-        checkButton(CommonCons.NEXT, newEndpoint);
-        newEndpoint.bot().button(CommonCons.NEXT).click();
-        newEndpoint.bot().label(EndPoinCons.ENDPOINT_CONFIGURATION).click();
-        bot.sleep(1000);
-        newEndpoint.bot().label(EndPoinCons.ENDPOINT_CONFIGURATION).click();
-        setLableText(newEndpoint, EndPoinCons.ENDPOINT_NAME, endpoint);
-        newEndpoint.bot().comboBox().setSelection(EndPoinCons.DEFAULT_ENDPOINT);
-        bot.link().click();
+		Util.checkShellLoading(ProxyServiceConstants.NEW_PROXY_SERVICE);
+		SWTBotShell newProxy = Util.bot
+				.shell(ProxyServiceConstants.NEW_PROXY_SERVICE);
+		Util.checkButton(CommonConstants.NEXT, newProxy);
+		newProxy.bot().button(CommonConstants.NEXT).click();
+		Util.setLableText(newProxy, ProxyServiceConstants.PROXY_SERVICE_NAME,
+				serviceName);
+		newProxy.bot().comboBox().setSelection(ProxyServiceConstants.CUSTOM_PROXY);
+		Util.checkButton(CommonConstants.FINISH, newProxy);
+		newProxy.bot().button(CommonConstants.FINISH).click();
+		Util.bot.waitUntil(Conditions.shellCloses(newProxy));
+		try {
+			Util.bot.editorByTitle(serviceName + CommonConstants.XML).show();
+			Util.log.info("Create New Proxy Service Sucsessful");
 
-        createESBProject(esbProject);
+		} catch (WidgetNotFoundException e) {
+			Util.log.error("Editor didnt load");
+			fail();
+		}
 
-        newEndpoint.bot().button(CommonCons.BROWSE).click();
+	}
 
-        checkShellLoading(CommonCons.SELECT_FOLDER);
-        saveIn = bot.shell(CommonCons.SELECT_FOLDER);
-        saveIn = bot.shell(CommonCons.SELECT_FOLDER);
-        saveIn.bot().tree().getTreeItem(esbProject).doubleClick();
-        bot.waitUntil(Conditions.shellCloses(saveIn));
+	public static void createNewEndpointWithESB(String endpoint,
+			String esbProject) {
+		Util.checkShellLoading(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+		SWTBotShell newEndpoint = Util.bot
+				.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+		Util.checkButton(CommonConstants.NEXT, newEndpoint);
+		newEndpoint.bot().button(CommonConstants.NEXT).click();
+		newEndpoint.bot().label(EndPoinConstants.ENDPOINT_CONFIGURATION).click();
+		Util.bot.sleep(1000);
+		newEndpoint.bot().label(EndPoinConstants.ENDPOINT_CONFIGURATION).click();
+		Util.setLableText(newEndpoint, EndPoinConstants.ENDPOINT_NAME, endpoint);
+		newEndpoint.bot().comboBox().setSelection(EndPoinConstants.DEFAULT_ENDPOINT);
+		Util.bot.link().click();
 
-        newEndpoint = bot.shell(EndPoinCons.NEW_ENDPOINT_ARTIFACT);
-        checkButton(CommonCons.FINISH, newEndpoint);
-        newEndpoint.bot().button(CommonCons.FINISH).click();
-        try {
-            AbstractClass.changePerspective();
-        } catch (AssertionError e) {
+		createESBProject(esbProject);
 
-        }
-        bot.waitUntil(Conditions.shellCloses(newEndpoint));
-        try {
-            bot.editorByTitle(endpoint + CommonCons.XML).show();
-            System.out.println("Create New Endpoint Sucsessful");
+		newEndpoint.bot().button(CommonConstants.BROWSE).click();
 
-        } catch (WidgetNotFoundException e) {
-            System.out.println("Editor didnt load");
-            fail();
-        }
-    }
+		Util.checkShellLoading(CommonConstants.SELECT_FOLDER);
+		Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
+		Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
+		Util.saveIn.bot().tree().getTreeItem(esbProject).doubleClick();
+		Util.bot.waitUntil(Conditions.shellCloses(Util.saveIn));
 
-    public static void validateProxyServicexml(String proxyService) {
+		newEndpoint = Util.bot.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+		Util.checkButton(CommonConstants.FINISH, newEndpoint);
+		newEndpoint.bot().button(CommonConstants.FINISH).click();
+		try {
+			CommonUtil.changePerspective();
+		} catch (AssertionError e) {
 
-        try {
-            bot.cTabItem(CommonCons.SOURCE).activate();
-            actual = bot.editorByTitle(proxyService + CommonCons.XML).bot().styledText().getText();
-            expect = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-            expect = expect + "<proxy name=\"" + proxyService + "\" startOnLoad=\"true\" trace=\"disable\"\n";
-            expect = expect + "  transports=\"http https\" xmlns=\"http://ws.apache.org/ns/synapse\">\n";
-            expect = expect + "  <target>\n";
-            expect = expect + "    <inSequence/>\n";
-            expect = expect + "    <outSequence/>\n";
-            expect = expect + "    <faultSequence/>\n";
-            expect = expect + "  </target>\n";
-            expect = expect + "</proxy>";
-            assertContains(expect, actual);
-        } catch (Error e) {
-            //log.error("Validation failiure");
-            fail();
-        }
-    }
+		}
+		Util.bot.waitUntil(Conditions.shellCloses(newEndpoint));
+		try {
+			Util.bot.editorByTitle(endpoint + CommonConstants.XML).show();
+			Util.log.info("Create New Endpoint Sucsessful");
 
+		} catch (WidgetNotFoundException e) {
+			Util.log.error("Editor didnt load");
+			fail();
+		}
+	}
 
+	public static void validateProxyServicexml(String proxyService) {
+
+		try {
+			Util.bot.cTabItem(CommonConstants.SOURCE).activate();
+			Util.actual = Util.bot
+					.editorByTitle(proxyService + CommonConstants.XML).bot()
+					.styledText().getText();
+			Util.expect = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+			Util.expect = Util.expect + "<proxy name=\"" + proxyService
+					+ "\" startOnLoad=\"true\" trace=\"disable\"\n";
+			Util.expect = Util.expect
+					+ "  transports=\"http https\" xmlns=\"http://ws.apache.org/ns/synapse\">\n";
+			Util.expect = Util.expect + "  <target>\n";
+			Util.expect = Util.expect + "    <inSequence/>\n";
+			Util.expect = Util.expect + "    <outSequence/>\n";
+			Util.expect = Util.expect + "    <faultSequence/>\n";
+			Util.expect = Util.expect + "  </target>\n";
+			Util.expect = Util.expect + "</proxy>";
+			assertContains(Util.expect, Util.actual);
+		} catch (Error e) {
+			Util.log.error("Validation failiure");
+			fail();
+		}
+	}
 
 }

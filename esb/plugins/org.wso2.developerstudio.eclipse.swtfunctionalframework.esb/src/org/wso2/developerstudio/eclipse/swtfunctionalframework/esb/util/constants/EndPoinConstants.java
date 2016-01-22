@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants;
 
-public class EndPoinCons {
+public class EndPoinConstants {
     public static final String DEFAULT_ENDPOINT = "Default Endpoint";
     public static final String ENDPOINT_CONFIGURATION = "Endpoint Configuration";
     public static final String ENDPOINT_NAME = "Endpoint Name";

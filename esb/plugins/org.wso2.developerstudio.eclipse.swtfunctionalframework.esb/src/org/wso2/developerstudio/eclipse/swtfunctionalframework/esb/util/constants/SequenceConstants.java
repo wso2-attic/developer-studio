@@ -16,9 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants;
 
-public class ProxyServiceCons {
-    public static final String CUSTOM_PROXY = "Custom Proxy";
-    public static final String PROXY_SERVICE_NAME = "Proxy Service Name";
-    public static final String NEW_PROXY_SERVICE = "New Proxy Service";
-
+public class SequenceConstants {
+    public static final String SEQUENCE_NAME = "Sequence Name    ";
+    public static final String NEW_SEQUENCE_ARTIFACT = "New Sequence Artifact";
 }
