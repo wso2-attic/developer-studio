@@ -25,22 +25,23 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants.APIMCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.PerspectiveLoginUtil;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants.APIMConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
-public class APIMUtils extends Util {
+public class APIMUtils extends PerspectiveLoginUtil{
 
     private static SWTBotTreeItem mainTree;
-
+    
     public static SWTBotTreeItem apimMainTree(String userName) {
         try {
-            SWTBotView apimRegistry = bot.viewByTitle(APIMCons.WSO2_API_MANAGER);
+            SWTBotView apimRegistry = Util.bot.viewByTitle(APIMConstants.WSO2_API_MANAGER);
             apimRegistry.setFocus();
             SWTBotTreeItem mainTree = apimRegistry.bot().tree().getTreeItem(userName + "@https://localhost:9443/")
-                    .getNode(APIMCons.REPOSITORY).getNode(APIMCons.CUSTOMSEQUENCES);
+                    .getNode(APIMConstants.REPOSITORY).getNode(APIMConstants.CUSTOMSEQUENCES);
             return mainTree;
         } catch (WidgetNotFoundException e) {
-            log.error("Cannot select the tree");
+            Util.log.error("Cannot select the tree");
             return null;
         }
     }
@@ -66,29 +67,29 @@ public class APIMUtils extends Util {
 
         try {
             mainTree = APIMUtils.apimMainTree(userName);
-            mainTree.getNode(sequenceType).contextMenu(APIMCons.CREATE).click();
+            mainTree.getNode(sequenceType).contextMenu(APIMConstants.CREATE).click();
         } catch (WidgetNotFoundException e) {
-            log.error("Problem with the tree");
+            Util.log.error("Problem with the tree");
             fail();
         }
 
-        checkShellLoading(APIMCons.CREATE_SEQUENCE);
-        SWTBotShell createSequenceShell = bot.shell(APIMCons.CREATE_SEQUENCE);
+        Util.checkShellLoading(APIMConstants.CREATE_SEQUENCE);
+        SWTBotShell createSequenceShell = Util.bot.shell(APIMConstants.CREATE_SEQUENCE);
         try {
-            createSequenceShell.bot().textWithLabel(APIMCons.SEQUENCE_NAME).setText(sequenceName);
-            createSequenceShell.bot().button(CommonCons.OK).click();
-            bot.waitUntil(Conditions.shellCloses(createSequenceShell));
+            createSequenceShell.bot().textWithLabel(APIMConstants.SEQUENCE_NAME).setText(sequenceName);
+            createSequenceShell.bot().button(CommonConstants.OK).click();
+            Util.bot.waitUntil(Conditions.shellCloses(createSequenceShell));
         } catch (WidgetNotFoundException e) {
             System.out.println("");
             fail();
         } catch (TimeoutException e) {
-            log.error("Shell didn't close correctly.");
+            Util.log.error("Shell didn't close correctly.");
             fail();
         }
 
         try {
-            bot.editorByTitle(sequenceName + CommonCons.XML).show();
-            bot.editorByTitle(sequenceName + CommonCons.XML).close();
+            Util.bot.editorByTitle(sequenceName + CommonConstants.XML).show();
+            Util.bot.editorByTitle(sequenceName + CommonConstants.XML).close();
         } catch (WidgetNotFoundException e) {
         }
 
@@ -97,18 +98,18 @@ public class APIMUtils extends Util {
     public static void renameSequenceAPIM(String userName, String sequenceType, String sequenceName, String newName) {
         try {
             mainTree = APIMUtils.apimMainTree(userName);
-            mainTree.getNode(sequenceType).getNode(sequenceName + CommonCons.XML).contextMenu("Rename   ").click();
-            checkShellLoading(APIMCons.RENAME_RESOURCE);
-            SWTBotShell renameShell = bot.shell(APIMCons.RENAME_RESOURCE);
-            renameShell.bot().textWithLabel(APIMCons.NEW_NAME).setText(newName);
-            renameShell.bot().button(CommonCons.OK).click();
-            bot.waitUntil(Conditions.shellCloses(renameShell));
+            mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu("Rename   ").click();
+            Util.checkShellLoading(APIMConstants.RENAME_RESOURCE);
+            SWTBotShell renameShell = Util.bot.shell(APIMConstants.RENAME_RESOURCE);
+            renameShell.bot().textWithLabel(APIMConstants.NEW_NAME).setText(newName);
+            renameShell.bot().button(CommonConstants.OK).click();
+            Util.bot.waitUntil(Conditions.shellCloses(renameShell));
         } catch (WidgetNotFoundException e) {
-            log.error("Rename Fail");
+            Util.log.error("Rename Fail");
             fail();
 
         } catch (TimeoutException e) {
-            log.error("Rename Fail");
+            Util.log.error("Rename Fail");
             fail();
 
         }
@@ -118,19 +119,19 @@ public class APIMUtils extends Util {
 
         try {
             mainTree = APIMUtils.apimMainTree(userName);
-            mainTree.getNode(sequenceType).getNode(sequenceName + CommonCons.XML).contextMenu(APIMCons.COMMIT_FILE)
+            mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.COMMIT_FILE)
                     .click();
 
-            bot.button(CommonCons.YES).click();
-            bot.sleep(1000);
-            bot.button(CommonCons.OK).click();
-            bot.sleep(1000);
+            Util.bot.button(CommonConstants.YES).click();
+            Util.bot.sleep(1000);
+            Util.bot.button(CommonConstants.OK).click();
+            Util.bot.sleep(1000);
         } catch (WidgetNotFoundException e) {
-            log.error("Rename Fail");
+            Util.log.error("Rename Fail");
             fail();
 
         } catch (TimeoutException e) {
-            log.error("Rename Fail");
+            Util.log.error("Rename Fail");
             fail();
 
         }
@@ -138,21 +139,21 @@ public class APIMUtils extends Util {
     }
 
     public static void discardAllChanges() {
-        bot.toolbarButtonWithTooltip("Discard all local changes and synchronize with server").click();
-        bot.button(CommonCons.YES).click();
+        Util.bot.toolbarButtonWithTooltip("Discard all local changes and synchronize with server").click();
+        Util.bot.button(CommonConstants.YES).click();
     }
 
     public static void clickPushAllChanges() {
 
-        bot.toolbarButtonWithTooltip(APIMCons.PUSH_ALL_CHANGES_TO_THE_SERVER).click();
-        bot.button(CommonCons.YES).click();
-        bot.button(CommonCons.OK).click();
+        Util.bot.toolbarButtonWithTooltip(APIMConstants.PUSH_ALL_CHANGES_TO_THE_SERVER).click();
+        Util.bot.button(CommonConstants.YES).click();
+        Util.bot.button(CommonConstants.OK).click();
     }
 
     public static void deleteSequenceAPIM(String userName, String sequenceType, String sequenceName) {
         mainTree = APIMUtils.apimMainTree(userName);
-        mainTree.getNode(sequenceType).getNode(sequenceName + CommonCons.XML).contextMenu(APIMCons.DELETE).click();
-        bot.button(CommonCons.YES).click();
+        mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.DELETE).click();
+        Util.bot.button(CommonConstants.YES).click();
 
     }
 
@@ -161,31 +162,31 @@ public class APIMUtils extends Util {
         if (!mainTree.getNode(from).isExpanded()) {
             mainTree.getNode(from).expand();
         }
-        mainTree.getNode(from).getNode(sequenceName + CommonCons.XML).contextMenu(APIMCons.COPY).click();
+        mainTree.getNode(from).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.COPY).click();
         if (!mainTree.getNode(to).isExpanded()) {
             mainTree.getNode(to).expand();
         }
-        mainTree.getNode(to).contextMenu(APIMCons.PASTE).click();
-        bot.button(CommonCons.OK).click();
-        bot.sleep(2000);
+        mainTree.getNode(to).contextMenu(APIMConstants.PASTE).click();
+        Util.bot.button(CommonConstants.OK).click();
+        Util.bot.sleep(2000);
     }
 
-    public static void apiManagerLogin(String userName, String password) {
+    public void login(String userName, String password) {
         try {
-            bot.toolbarButtonWithTooltip(APIMCons.LOGIN2).click();
-            checkShellLoading(APIMCons.LOGIN_TO_API_MANAGER_REGISTRY);
-            SWTBotShell login = bot.shell(APIMCons.LOGIN_TO_API_MANAGER_REGISTRY);
-            login.bot().textWithLabel(APIMCons.USER_NAME).setText(userName);
-            login.bot().textWithLabel(APIMCons.PASSWORD2).setText(password);
-            bot.button(CommonCons.OK).click();
-            bot.waitUntil(Conditions.shellCloses(login));
-            // log.error("Login successful");
+            Util.bot.toolbarButtonWithTooltip(APIMConstants.LOGIN2).click();
+            Util.checkShellLoading(APIMConstants.LOGIN_TO_API_MANAGER_REGISTRY);
+            SWTBotShell login = Util.bot.shell(APIMConstants.LOGIN_TO_API_MANAGER_REGISTRY);
+            login.bot().textWithLabel(APIMConstants.USER_NAME).setText(userName);
+            login.bot().textWithLabel(APIMConstants.PASSWORD2).setText(password);
+            Util.bot.button(CommonConstants.OK).click();
+            Util.bot.waitUntil(Conditions.shellCloses(login));
+            Util.log.info("Login successful");
 
         } catch (TimeoutException e) {
-            // log.error("Fail to login");
+            Util.log.error("Fail to login");
             fail();
         } catch (WidgetNotFoundException e) {
-            // log.error("Problem with the login widget");
+            Util.log.error("Problem with the login widget");
             fail();
         }
 

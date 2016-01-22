@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants;
 
-public class APIMCons {
+public class APIMConstants {
     public static final String CREATE_SEQUENCE = "Create Sequence";
     public static final String CUSTOMSEQUENCES = "customsequences";
     public static final String COMMIT_FILE = "Commit file ";
