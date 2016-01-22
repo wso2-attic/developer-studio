@@ -19,8 +19,10 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.util;
 import static org.eclipse.swtbot.swt.finder.SWTBotAssert.assertContains;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -116,61 +118,53 @@ public class Wso2PluginUtils{
 
         String expected;
         String actual;
+        StringBuffer expectedBuffer = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         main = Util.bot.tree().getTreeItem(projectName).expand();
         main.getNode("project_wizard.xml").doubleClick();
         Util.bot.cTabItem("Source").activate();
         actual = Util.bot.editorByTitle("project_wizard.xml").bot().styledText().getText();
-        expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>/n";
-        expected = expected + "<wizard>/n";
-        expected = expected + " <projectOptions title=\"Artifact Creation Wizard \"/n";
-        expected = expected
-                + "                 description=\"Select how you would like to create your new artifact\"/n";
-        expected = expected + "                 error=\"Please select a method to create the project\">/n";
-        expected = expected + "    <option id=\"new.artifact\" default=\"true\">Create New Artifact</option>/n";
-        expected = expected + "    <option id=\"import.artifact\">Import From Workspace</option>/n";
-        expected = expected + " </projectOptions>/n";
-        expected = expected + " <projectOptionSettings>/n";
-        expected = expected + "    <settings optionId=\"new.artifact\"/n";
-        expected = expected + "                    title=\"Artifact\"/n";
-        expected = expected + "                    description=\"Create a new Artifact\"/n";
-        expected = expected + "                    error=\"Please give a name to create the Artifact\">/n";
-        expected = expected + "        <data modelProperty=\"project.name\"/n";
-        expected = expected + "                    type=\"string\" /n";
-        expected = expected
-                + "                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\">Project Name   </data>/n";
-        expected = expected + "        <data modelProperty=\"artifactClass.package.name\" /n";
-        expected = expected + "                    type=\"string\" /n";
-        expected = expected
-                + "                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\" group=\"testid\">Package Name</data>/n";
-        expected = expected + "        <data modelProperty=\"artifactClass.name\" /n";
-        expected = expected + "                    type=\"string\" /n";
-        expected = expected
-                + "                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\" group=\"testid\">Class Name</data>     /n";
-        expected = expected + "        <group id=\"testid\"></group>/n";
-        expected = expected + "/n";
-        expected = expected + "        <projectNatures>/n";
-        expected = expected + "            <nature>org.eclipse.jdt.core.javanature</nature>/n";
-        expected = expected + "        </projectNatures>/n";
-        expected = expected + "/n";
-        expected = expected + "    </settings>/n";
-        expected = expected + "        <settings optionId=\"import.artifact\"/n";
-        expected = expected + "                            title=\"Artifact\"/n";
-        expected = expected
-                + "                        description=\"Create an Artifact using a existing artifact file\"/n";
-        expected = expected + "                        error=\"Please select the project\">    /n";
-        expected = expected + "            <data modelProperty=\"import.project.list\" type=\"list\" /n";
-        expected = expected
-                + "                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\"/n";
-        expected = expected
-                + "                    controlData=\"select=single;class=org.wso2.developerstudio.eclipse.artifact.utils.ProjectData\">Artifact Project</data>/n";
-        expected = expected + "        <projectNatures>/n";
-        expected = expected + "            <nature>org.eclipse.jdt.core.javanature</nature>/n";
-        expected = expected + "        </projectNatures>/n";
-        expected = expected + "/n";
-        expected = expected + "    </settings>/n";
-        expected = expected + " </projectOptionSettings>/n";
-        expected = expected + "</wizard>/n";
+        expectedBuffer.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        expectedBuffer.append("<wizard>\n");
+        expectedBuffer.append(" <projectOptions title=\"Artifact Creation Wizard \"\n");
+        expectedBuffer.append("                 description=\"Select how you would like to create your new artifact\"\n");
+        expectedBuffer.append("                 error=\"Please select a method to create the project\">\n");
+        expectedBuffer.append("    <option id=\"new.artifact\" default=\"true\">Create New Artifact</option>\n");
+        expectedBuffer.append("    <option id=\"import.artifact\">Import From Workspace</option>\n");
+        expectedBuffer.append(" </projectOptions>\n");
+        expectedBuffer.append(" <projectOptionSettings>\n");
+        expectedBuffer.append("    <settings optionId=\"new.artifact\"\n");
+        expectedBuffer.append("                    title=\"Artifact\"\n");
+        expectedBuffer.append("                    description=\"Create a new Artifact\"\n");
+        expectedBuffer.append("                    error=\"Please give a name to create the Artifact\">\n");
+        expectedBuffer.append("        <data modelProperty=\"project.name\"\n");
+        expectedBuffer.append("                    type=\"string\" \n");
+        expectedBuffer.append("                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\">Project Name   </data>\n");
+        expectedBuffer.append("        <data modelProperty=\"artifactClass.package.name\" \n");
+        expectedBuffer.append("                    type=\"string\" \n");
+        expectedBuffer.append("                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\" group=\"testid\">Package Name</data>\n");
+        expectedBuffer.append("        <data modelProperty=\"artifactClass.name\" \n");
+        expectedBuffer.append("                    type=\"string\" \n");
+        expectedBuffer.append("                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\" group=\"testid\">Class Name</data>     \n");
+        expectedBuffer.append("        <group id=\"testid\"></group>\n\n");
+        expectedBuffer.append("        <projectNatures>\n");
+        expectedBuffer.append("            <nature>org.eclipse.jdt.core.javanature</nature>\n");
+        expectedBuffer.append("        </projectNatures>\n\n");
+        expectedBuffer.append("    </settings>\n");
+        expectedBuffer.append("        <settings optionId=\"import.artifact\"\n");
+        expectedBuffer.append("                            title=\"Artifact\"\n");
+        expectedBuffer.append("                        description=\"Create an Artifact using a existing artifact file\"\n");
+        expectedBuffer.append("                        error=\"Please select the project\">    \n");
+        expectedBuffer.append("            <data modelProperty=\"import.project.list\" type=\"list\" \n");
+        expectedBuffer.append("                    fieldController=\"org.wso2.developerstudio.eclipse.artifact.validators.ArtifactFieldsController\"\n");
+        expectedBuffer.append("                    controlData=\"select=single;class=org.wso2.developerstudio.eclipse.artifact.utils.ProjectData\">Artifact Project</data>\n");
+        expectedBuffer.append("        <projectNatures>\n");
+        expectedBuffer.append("            <nature>org.eclipse.jdt.core.javanature</nature>\n");
+        expectedBuffer.append("        </projectNatures>\n\n");
+        expectedBuffer.append("    </settings>\n");
+        expectedBuffer.append(" </projectOptionSettings>\n");
+        expectedBuffer.append("</wizard>\n");
 
+        expected = expectedBuffer.toString();
         assertContains(expected, actual);
 
     }

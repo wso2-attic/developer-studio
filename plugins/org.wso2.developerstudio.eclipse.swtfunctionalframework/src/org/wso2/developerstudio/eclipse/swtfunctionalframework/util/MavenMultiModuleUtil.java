@@ -10,15 +10,6 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 
 public class MavenMultiModuleUtil{
     
-/*    public static void createMavenProject(String groupID, String artifactID, String  projectName){
-        checkShellLoading(MavenMultiModuleCons.PROJECT_CREATION_WIZARD_TITLE);
-        bot.sleep(1000);
-        SWTBotShell newMavenProject = bot.shell(MavenMultiModuleCons.PROJECT_CREATION_WIZARD_TITLE);
-        setLableText(newMavenProject, MavenMultiModuleCons.GROUP_ID, groupID); 
-        setLableText(newMavenProject, MavenMultiModuleCons.ARTIFACT_ID, artifactID);
-        bot.tableWithLabel("Projects").select(projectName);
-    }*/
-    
     public static void createMavenProject(String groupID, String artifactID){
         Util.checkShellLoading(MavenMultiModuleConstants.PROJECT_CREATION_WIZARD_TITLE);
         Util.bot.sleep(1000);
@@ -36,36 +27,38 @@ public class MavenMultiModuleUtil{
         
         String expected;
         String actual;
+        StringBuffer expectedBuffer = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        
         main = Util.bot.tree().getTreeItem(artifactID).expand();
         main.getNode("pom.xml").doubleClick();
         Util.bot.sleep(3000);
         CommonUtil.activateCtab("pom.xml");
         actual = Util.bot.editorByTitle(artifactID + "/pom.xml").bot().styledText().getText();
-        expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-        expected = expected + "<project xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\" xmlns=\"http://maven.apache.org/POM/4.0.0\"\n";
-        expected = expected + "    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">";
-        expected = expected + "  <modelVersion>4.0.0</modelVersion>";
-        expected = expected + "  <groupId>" + groupID + "</groupId>";
-        expected = expected + "  <artifactId>" + artifactID + "</artifactId>";
-        expected = expected + "  <version>1.0.0</version>";
-        expected = expected + "  <packaging>pom</packaging>";
-        expected = expected + "  <name>MavenParentProject</name>";
-        expected = expected + "  <description>MavenParentProject</description>";
-        expected = expected + "  <build>";
-        expected = expected + "    <plugins>";
-        expected = expected + "      <plugin>";
-        expected = expected + "        <artifactId>maven-eclipse-plugin</artifactId>";
-        expected = expected + "        <version>2.9</version>";
-        expected = expected + "        <configuration>";
-        expected = expected + "          <buildcommands />";
-        expected = expected + "          <projectnatures>";
-        expected = expected + "            <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>";
-        expected = expected + "          </projectnatures>";
-        expected = expected + "        </configuration>";
-        expected = expected + "      </plugin>";
-        expected = expected + "    </plugins>";
-        expected = expected + "  </build>";
-        expected = expected + "</project>";
+        expectedBuffer.append("<project xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\" xmlns=\"http://maven.apache.org/POM/4.0.0\"\n");
+        expectedBuffer.append("    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n");
+        expectedBuffer.append("  <modelVersion>4.0.0</modelVersion>\n");
+        expectedBuffer.append("  <groupId>" + groupID + "</groupId>\n");
+        expectedBuffer.append("  <artifactId>" + artifactID + "</artifactId>\n");
+        expectedBuffer.append("  <version>1.0.0</version>\n");
+        expectedBuffer.append("  <packaging>pom</packaging>\n");
+        expectedBuffer.append("  <name>MavenParentProject</name>\n");
+        expectedBuffer.append("  <description>MavenParentProject</description>\n");
+        expectedBuffer.append("  <build>\n");
+        expectedBuffer.append("    <plugins>\n");
+        expectedBuffer.append("      <plugin>\n");
+        expectedBuffer.append("        <artifactId>maven-eclipse-plugin</artifactId>\n");
+        expectedBuffer.append("        <version>2.9</version>\n");
+        expectedBuffer.append("        <configuration>\n");
+        expectedBuffer.append("          <buildcommands />\n");
+        expectedBuffer.append("          <projectnatures>\n");
+        expectedBuffer.append("            <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>\n");
+        expectedBuffer.append("          </projectnatures>\n");
+        expectedBuffer.append("        </configuration>\n");
+        expectedBuffer.append("      </plugin>\n");
+        expectedBuffer.append("    </plugins>\n");
+        expectedBuffer.append("  </build>\n");
+        expectedBuffer.append("</project>\n");
+        expected = expectedBuffer.toString();
         assertContains(expected, actual);
         
     }
