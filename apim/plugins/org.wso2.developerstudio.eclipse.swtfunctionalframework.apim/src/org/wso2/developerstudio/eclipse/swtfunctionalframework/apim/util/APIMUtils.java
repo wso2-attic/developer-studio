@@ -29,10 +29,10 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.PerspectiveL
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants.APIMConstants;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
-public class APIMUtils extends PerspectiveLoginUtil{
+public class APIMUtils extends PerspectiveLoginUtil {
 
     private static SWTBotTreeItem mainTree;
-    
+
     public static SWTBotTreeItem apimMainTree(String userName) {
         try {
             SWTBotView apimRegistry = Util.bot.viewByTitle(APIMConstants.WSO2_API_MANAGER);
@@ -48,15 +48,15 @@ public class APIMUtils extends PerspectiveLoginUtil{
 
     public static void expandTree(String userName) {
         mainTree = APIMUtils.apimMainTree(userName);
-        if (!mainTree.getNode("fault").isExpanded()){
+        if (!mainTree.getNode("fault").isExpanded()) {
             mainTree.getNode("fault").expand();
         }
-        if (!mainTree.getNode("in").isExpanded()){
+        if (!mainTree.getNode("in").isExpanded()) {
             mainTree.getNode("in").expand();
         }
-        if (!mainTree.getNode("out").isExpanded()){
+        if (!mainTree.getNode("out").isExpanded()) {
             mainTree.getNode("out").expand();
-        }  
+        }
     }
 
     public static void contextMenuCreat(String userName, String nodeName) {
@@ -119,8 +119,8 @@ public class APIMUtils extends PerspectiveLoginUtil{
 
         try {
             mainTree = APIMUtils.apimMainTree(userName);
-            mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.COMMIT_FILE)
-                    .click();
+            mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML)
+                    .contextMenu(APIMConstants.COMMIT_FILE).click();
 
             Util.bot.button(CommonConstants.YES).click();
             Util.bot.sleep(1000);
@@ -152,7 +152,8 @@ public class APIMUtils extends PerspectiveLoginUtil{
 
     public static void deleteSequenceAPIM(String userName, String sequenceType, String sequenceName) {
         mainTree = APIMUtils.apimMainTree(userName);
-        mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.DELETE).click();
+        mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.DELETE)
+                .click();
         Util.bot.button(CommonConstants.YES).click();
 
     }

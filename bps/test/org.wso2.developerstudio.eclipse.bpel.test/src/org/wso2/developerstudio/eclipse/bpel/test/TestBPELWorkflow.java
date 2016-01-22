@@ -21,7 +21,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
 /* Testing BPEL Workflow
@@ -34,32 +34,25 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 @RunWith(OrderedRunner.class)
 public class TestBPELWorkflow extends Setup {
 
-    // create a new BPEL Workflow
     private String projectName = "first";
+    private String[] path = { "bpelContent" };
 
     @Test
     @Order(order = 1)
     public void createBPELProject() throws Exception {
 
-        AbstractClass.openProjectFromMenu("BPEL Workflow");
+        CommonUtil.openProjectFromMenu("BPEL Workflow");
         BPELUtil.createNewBPELProject(projectName);
 
-        bot.tree().getTreeItem(projectName).expand();
-        bot.tree().getTreeItem(projectName).getNode("bpelContent").expand();
-        bot.tree().getTreeItem(projectName).getNode("bpelContent").expand();
-        bot.tree().getTreeItem(projectName).getNode("bpelContent").select();
-        bot.editorByTitle(projectName + ".bpel").save();
-        // bot.tree().getTreeItem(projectName).contextMenu("Delete").click();
-
-        // bot.editorByTitle(projectName + ".bpel").close();
-        // bot.closeAllEditors();
+        CommonUtil.expandProject(projectName, path);
+        CommonUtil.saveEditor(projectName + ".bpel");
 
     }
 
     @Test
     @Order(order = 2)
     public void deleteProject() throws Exception {
-        AbstractClass.deleteWithContent(projectName);
+        CommonUtil.deleteWithContent(projectName);
     }
 
 }

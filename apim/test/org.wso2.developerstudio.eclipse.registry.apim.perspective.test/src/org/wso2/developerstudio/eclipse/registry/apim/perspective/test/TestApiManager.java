@@ -42,79 +42,79 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 @RunWith(OrderedRunner.class)
 public class TestApiManager extends Setup {
 
-    String userName = "admin";
-    String passWord = "admin";
-    String sequence1 = "newSequnce";
-    String sequence2 = "newSequnce2";
-    String sequence3 = "newSequnce3";
-    SWTBotTreeItem mainTree;
-    APIMUtils apimUtils = new APIMUtils();
+	String userName = "admin";
+	String passWord = "admin";
+	String sequence1 = "newSequnce";
+	String sequence2 = "newSequnce2";
+	String sequence3 = "newSequnce3";
+	SWTBotTreeItem mainTree;
+	APIMUtils apimUtils = new APIMUtils();
 
-    @Test
-    @Order(order = 1)
-    public void login() throws Exception {
+	@Test
+	@Order(order = 1)
+	public void login() throws Exception {
 
-    	CommonUtil.openPerspective("WSO2 APIManager");
+		CommonUtil.openPerspective("WSO2 APIManager");
 
-    	apimUtils.login(userName, passWord);
+		apimUtils.login(userName, passWord);
 
-    }
+	}
 
-    @Test
-    @Order(order = 2)
-    public void creatFirstSequence() {
+	@Test
+	@Order(order = 2)
+	public void creatFirstSequence() {
 
-        APIMUtils.expandTree(userName);
+		APIMUtils.expandTree(userName);
 
-        APIMUtils.createSequenceAPIM(userName, "in", sequence1);
+		APIMUtils.createSequenceAPIM(userName, "in", sequence1);
 
-    }
+	}
 
-    @Test
-    @Order(order = 3)
-    public void creatNew() {
+	@Test
+	@Order(order = 3)
+	public void creatNew() {
 
-        APIMUtils.commitFile(userName, "in", sequence1);
+		APIMUtils.commitFile(userName, "in", sequence1);
 
-        APIMUtils.renameSequenceAPIM(userName, "in", sequence1, sequence2);
+		APIMUtils.renameSequenceAPIM(userName, "in", sequence1, sequence2);
 
-        APIMUtils.discardAllChanges();
+		APIMUtils.discardAllChanges();
 
-        APIMUtils.createSequenceAPIM(userName, "in", sequence2);
+		APIMUtils.createSequenceAPIM(userName, "in", sequence2);
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
 
-        APIMUtils.createSequenceAPIM(userName, "in", sequence2);
+		APIMUtils.createSequenceAPIM(userName, "in", sequence2);
 
-        APIMUtils.createSequenceAPIM(userName, "in", sequence3);
+		APIMUtils.createSequenceAPIM(userName, "in", sequence3);
 
-        APIMUtils.clickPushAllChanges();
+		APIMUtils.clickPushAllChanges();
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
 
-        APIMUtils.discardAllChanges();
-        APIMUtils.copyPasteSequence(userName, "out", "in", "log_out_message");
+		APIMUtils.discardAllChanges();
+		APIMUtils.copyPasteSequence(userName, "out", "in", "log_out_message");
 
-        APIMUtils.commitFile(userName, "in", "log_out_message");
+		APIMUtils.commitFile(userName, "in", "log_out_message");
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", "log_out_message");
+		APIMUtils.deleteSequenceAPIM(userName, "in", "log_out_message");
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
 
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
 
-        APIMUtils.clickPushAllChanges();
-        APIMUtils.expandTree(userName);
+		APIMUtils.clickPushAllChanges();
+		APIMUtils.expandTree(userName);
 
-    }
+	}
 
-    @Test
-    @Order(order = 4)
-    public void deleteSequence() {
-        APIMUtils.deleteSequenceAPIM(userName, "in", sequence1);
+	@Test
+	@Order(order = 4)
+	public void deleteSequence() {
+		APIMUtils.deleteSequenceAPIM(userName, "in", sequence1);
 
-        APIMUtils.clickPushAllChanges();
-    }
+		APIMUtils.clickPushAllChanges();
+	}
 }

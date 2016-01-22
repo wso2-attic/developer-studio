@@ -3,51 +3,46 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-
 import static org.junit.Assert.fail;
-
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.Activator;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util.constants.BPELProjectCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util.constants.BPELProjectConstants;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
-public class BPELUtil extends Util{
+public class BPELUtil{
 	
 	private static SWTBotShell newWorkflow;
 	
     public static void createNewBPELProject(String projectName) {
 
         try {
-            checkShellLoading(BPELProjectCons.NEW_BPEL_PROJECT);
-            newWorkflow = bot.shell(BPELProjectCons.NEW_BPEL_PROJECT);
-            checkButton(CommonCons.NEXT, newWorkflow);
-            newWorkflow.bot().button(CommonCons.NEXT).click();
-            setLableText(newWorkflow, BPELProjectCons.PROJECT_NAME, projectName);
-            newWorkflow.bot().checkBox(CommonCons.USE_DEFAULT_LOCATION).click();
-            newWorkflow.bot().checkBox(CommonCons.USE_DEFAULT_LOCATION).click();
-            checkButton(CommonCons.NEXT, newWorkflow);
-            newWorkflow.bot().button(CommonCons.NEXT).click();
-            newWorkflow.bot().checkBox(CommonCons.SPECIFY_PARENT_FROM_WORKSPACE).click();
-            newWorkflow.bot().checkBox(CommonCons.SPECIFY_PARENT_FROM_WORKSPACE).click();
-            checkButton(CommonCons.FINISH, newWorkflow);
-            newWorkflow.bot().button(CommonCons.FINISH).click();
+            Util.checkShellLoading(BPELProjectConstants.NEW_BPEL_PROJECT);
+            newWorkflow = Util.bot.shell(BPELProjectConstants.NEW_BPEL_PROJECT);
+            Util.checkButton(CommonConstants.NEXT, newWorkflow);
+            newWorkflow.bot().button(CommonConstants.NEXT).click();
+            Util.setLableText(newWorkflow, BPELProjectConstants.PROJECT_NAME, projectName);
+            newWorkflow.bot().checkBox(CommonConstants.USE_DEFAULT_LOCATION).click();
+            newWorkflow.bot().checkBox(CommonConstants.USE_DEFAULT_LOCATION).click();
+            Util.checkButton(CommonConstants.NEXT, newWorkflow);
+            newWorkflow.bot().button(CommonConstants.NEXT).click();
+            newWorkflow.bot().checkBox(CommonConstants.SPECIFY_PARENT_FROM_WORKSPACE).click();
+            newWorkflow.bot().checkBox(CommonConstants.SPECIFY_PARENT_FROM_WORKSPACE).click();
+            Util.checkButton(CommonConstants.FINISH, newWorkflow);
+            newWorkflow.bot().button(CommonConstants.FINISH).click();
             try {
-                AbstractClass.changePerspective();
+                CommonUtil.changePerspective();
             } catch (AssertionError e) {
 
             }
             try {
-                bot.editorByTitle(projectName + CommonCons.BPEL).show();
-                log.error("Create New BPEL Project Sucsessful");
+                Util.bot.editorByTitle(projectName + CommonConstants.BPEL).show();
+                Util.log.info("Create New BPEL Project Sucsessful");
             } catch (WidgetNotFoundException e) {
-                log.error("Editor didnt load");
+                Util.log.error("Editor didnt load");
                 fail();
             }
         } catch (Exception e) {
-            log.error("Create New BPEL Project unsucsessful");
+            Util.log.error("Create New BPEL Project unsucsessful");
             fail();
         }
 
@@ -55,13 +50,13 @@ public class BPELUtil extends Util{
     
     public void importBPELProject(String path) {
 
-        checkShellLoading(BPELProjectCons.NEW_BPEL_PROJECT);
-        newWorkflow = bot.shell(BPELProjectCons.NEW_BPEL_PROJECT);
-        newWorkflow.bot().radio(BPELProjectCons.IMPORT_BPEL_WORKFLOW).click();
-        setLableText(newWorkflow, BPELProjectCons.BPEL_ARCHIVE_FILE, path);
-        checkButton(CommonCons.FINISH, newWorkflow);
-        newWorkflow.bot().button(CommonCons.FINISH).click();
-        bot.waitUntil(Conditions.shellCloses(newWorkflow));
+        Util.checkShellLoading(BPELProjectConstants.NEW_BPEL_PROJECT);
+        newWorkflow = Util.bot.shell(BPELProjectConstants.NEW_BPEL_PROJECT);
+        newWorkflow.bot().radio(BPELProjectConstants.IMPORT_BPEL_WORKFLOW).click();
+        Util.setLableText(newWorkflow, BPELProjectConstants.BPEL_ARCHIVE_FILE, path);
+        Util.checkButton(CommonConstants.FINISH, newWorkflow);
+        newWorkflow.bot().button(CommonConstants.FINISH).click();
+        Util.bot.waitUntil(Conditions.shellCloses(newWorkflow));
     }
 
 }
