@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.constants;
 
-public class AppFactoryCons {
+public class AppFactoryConstants {
 
     public static final String APP_CLOUD_APP_FACTORY_LOGIN = "App Cloud/ App Factory Login ";
     public static final String APPLICATIONS_LIST = "Applications List";

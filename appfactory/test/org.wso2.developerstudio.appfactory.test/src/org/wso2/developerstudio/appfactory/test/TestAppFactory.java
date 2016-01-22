@@ -16,25 +16,14 @@
 
 package org.wso2.developerstudio.appfactory.test;
 
-import static org.eclipse.swtbot.swt.finder.SWTBotAssert.assertContains;
-import static org.junit.Assert.fail;
-
-import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotStyledText;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite.SuiteClasses;
 //import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Login;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.AbstractClass;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.AppFactoryUtils;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.constants.AppFactoryCons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonCons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.constants.AppFactoryConstants;
 
 /* Testing app factory prospective
  * Open the app factory prospective
@@ -47,13 +36,13 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Co
 @RunWith(OrderedRunner.class)
 public class TestAppFactory extends Setup {
 
-    protected String emailUserName = "kaviththiranga";
-    protected String domainName = "gmail.com";
+    protected String email = "kaviththiranga@gmail.com";
+    AppFactoryUtils appFactoryUtil = new AppFactoryUtils();
 
     @Test
     @Order(order = 1)
     public void openAppFactoryPerspective() throws Exception {
-        AbstractClass.openPerspective(AppFactoryCons.WSO2_APP_FACTORY);
+    	CommonUtil.openPerspective(AppFactoryConstants.WSO2_APP_FACTORY);
 
     }
 
@@ -63,7 +52,7 @@ public class TestAppFactory extends Setup {
 
         String password = "123456";
 
-        AppFactoryUtils.appFactoryLogin(emailUserName, domainName, password);
+        appFactoryUtil.login(email, password);
 
     }
 
@@ -71,33 +60,27 @@ public class TestAppFactory extends Setup {
     @Order(order = 3)
     public void buildTest() throws Exception {
 
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryCons.BUILD);
-
-        /*
-         * bot.toolbarButtonWithTooltip(emailUserName + "." + domainName + "@developerstudio").click();
-         * bot.button(CommonCons.CANCEL).click();
-         * bot.toolbarButtonWithTooltip(CommonCons.REFRESH).click();
-         */
+        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.BUILD);
 
     }
 
     @Test
     @Order(order = 4)
     public void deployTest() throws Exception {
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryCons.DEPLOY);
+        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.DEPLOY);
     }
 
     @Test
     @Order(order = 5)
     public void buildLogsTest() throws Exception {
 
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryCons.BUILD_LOGS);
+        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.BUILD_LOGS);
     }
     
     @Test
     @Order(order = 6)
     public void cancel()throws Exception{
-        AbstractClass.closeView(AppFactoryCons.APPLICATIONS_LIST);
+    	CommonUtil.closeView(AppFactoryConstants.APPLICATIONS_LIST);
     }
 
 }
