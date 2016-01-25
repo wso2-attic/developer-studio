@@ -116,12 +116,21 @@ public class CommonUtil {
 
     }
 
-    public static void validateJavaClass(String packageName, String className) {
-
-        Util.actual = Util.bot.editorByTitle(className + CommonConstants.JAVA).bot().styledText().getText();
-        Util.expect = "package " + packageName + ";\n\npublic class " + className + "{\n\n}";
-        assertContains(Util.actual, Util.expect);
-        Util.log.info("Validation sucsessful");
+    /**
+     * This method will validate the content of a source.
+     * 
+     * @param editorName Name of the editor that must validate
+     * @param expectedContent expected content in the source
+     */
+    public static void contentValidation(String editorName, String expectedContent) {
+        Util.actual = Util.bot.editorByTitle(editorName).bot().styledText().getText();
+        Util.expect = expectedContent;
+        try {
+            assertContains(Util.actual, Util.expect);
+            Util.log.info("Validation sucsessful");
+        } catch (AssertionError e) {
+            Util.log.error("Content dosen't match", e);
+        }
     }
 
     /**
@@ -400,8 +409,8 @@ public class CommonUtil {
     /**
      * This method will validate the main project structure
      * 
-     * @param projectName  The name of the project that should be validated
-     * @param expectedFiles  Expected project structure
+     * @param projectName The name of the project that should be validated
+     * @param expectedFiles Expected project structure
      */
     public static void projectValidation(String projectName, List<String> expectedFiles) {
 
@@ -417,9 +426,10 @@ public class CommonUtil {
 
     /**
      * This method will validate structure inside of a specific node in the project
-     * @param projectName  Name of the project that has to validate
-     * @param path  Path that want to validate
-     * @param expectedFiles  Expected structure
+     * 
+     * @param projectName Name of the project that has to validate
+     * @param path Path that want to validate
+     * @param expectedFiles Expected structure
      */
     public static void projectValidation(String projectName, String[] path, List<String> expectedFiles) {
 
