@@ -58,6 +58,7 @@ public class DistributionProjectWizard extends
 	public DistributionProjectWizard() {
 		setModel(new DistributionProjectModel());
 		setDefaultPageImageDescriptor(DistributionProjectImageUtils.getInstance().getImageDescriptor("distribution-project-wizard.png"));
+		setWindowTitle("New Composite Application Project");
 	}
 
 	public IResource getCreatedResource() {
