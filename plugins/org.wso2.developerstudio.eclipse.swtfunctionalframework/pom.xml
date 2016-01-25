@@ -27,14 +27,6 @@ limitations under the License.
 	<packaging>eclipse-plugin</packaging>
 	<name>UI Test Framework</name>
 
-
-	<repositories>
-		<!--repository>
-			<id>swtbot</id>
-			<url>http://download.eclipse.org/technology/swtbot/releases/latest/</url>
-			<layout>p2</layout>
-		</repository-->
-	</repositories>
 	<build>
 		<sourceDirectory>${project.basedir}/src</sourceDirectory>
 	</build>
