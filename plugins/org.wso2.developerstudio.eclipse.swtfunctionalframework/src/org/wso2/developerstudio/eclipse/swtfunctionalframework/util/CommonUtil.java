@@ -251,7 +251,6 @@ public class CommonUtil {
             Util.bot.tree().getTreeItem(projectName).contextMenu(CommonConstants.NEW).menu(projectType).click();
         } catch (WidgetNotFoundException e) {
             Util.log.error("Cannot open the project", e);
-            System.out.println("Cannot open the project");
             fail();
 
         }
@@ -428,7 +427,7 @@ public class CommonUtil {
         Util.bot.sleep(5000);
         Util.actualFiles = Util.main.getNodes();
         Util.bot.sleep(5000);
-        assertNotSame("Suorce folder creation faliure", expectedFiles, Util.actualFiles);
+        assertNotSame("Inside folder creation faliure", expectedFiles, Util.actualFiles);
     }
 
 }
