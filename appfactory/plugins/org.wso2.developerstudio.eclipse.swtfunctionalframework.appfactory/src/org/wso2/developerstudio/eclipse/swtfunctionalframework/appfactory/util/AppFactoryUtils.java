@@ -43,7 +43,7 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
             try {
                 appList.bot().tree().getTreeItem("TestApplicationOne (Opened)").isVisible();
             } catch (WidgetNotFoundException | TimeoutException erro) {
-                Util.log.error("Application list loading failiure");
+                Util.log.error("Application list loading failiure",e);
                 fail();
             }
 
@@ -70,7 +70,7 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
         try {
             opened.getNode(op[0]).getNode(op[1]).contextMenu(action).click();
         } catch (WidgetNotFoundException e) {
-            Util.log.error(action + " is not available");
+            Util.log.error(action + " is not available",e);
         }
         Util.bot.sleep(2000);
 
@@ -96,7 +96,7 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
         try {
             assertContains(text, styledText);
         } catch (AssertionError e) {
-            Util.log.error("Action execution unsucssesful");
+            Util.log.error("Action execution unsucssesful",e);
             fail();
         }
 
@@ -122,10 +122,10 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
             Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST).show();
             Util.log.info("Login successful");
         } catch (TimeoutException e) {
-            Util.log.error("Fail to login");
+            Util.log.error("Fail to login",e);
             fail();
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Problem with the login widget");
+            Util.log.error("Problem with the login widget",e);
             fail();
         }
 

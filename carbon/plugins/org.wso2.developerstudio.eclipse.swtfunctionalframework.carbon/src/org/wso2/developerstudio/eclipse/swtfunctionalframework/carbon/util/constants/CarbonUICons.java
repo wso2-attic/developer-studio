@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.constants;
+package org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants;
 
 public class CarbonUICons {
     public static final String PROJECT_NAME = "Project Name*  ";

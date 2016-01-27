@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util;
+package org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util;
 
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.constants.CarbonUICons;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants.CarbonUICons;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;

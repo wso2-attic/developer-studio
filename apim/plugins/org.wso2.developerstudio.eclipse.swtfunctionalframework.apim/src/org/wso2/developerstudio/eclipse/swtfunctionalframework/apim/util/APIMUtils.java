@@ -41,7 +41,7 @@ public class APIMUtils extends PerspectiveLoginUtil {
                     .getNode(APIMConstants.REPOSITORY).getNode(APIMConstants.CUSTOMSEQUENCES);
             return mainTree;
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Cannot select the tree");
+            Util.log.error("Cannot select the tree",e);
             return null;
         }
     }
@@ -76,7 +76,7 @@ public class APIMUtils extends PerspectiveLoginUtil {
             mainTree = APIMUtils.apimMainTree(userName);
             mainTree.getNode(sequenceType).contextMenu(APIMConstants.CREATE).click();
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Problem with the tree");
+            Util.log.error("Problem with the tree",e);
             fail();
         }
 
@@ -87,10 +87,10 @@ public class APIMUtils extends PerspectiveLoginUtil {
             createSequenceShell.bot().button(CommonConstants.OK).click();
             Util.bot.waitUntil(Conditions.shellCloses(createSequenceShell));
         } catch (WidgetNotFoundException e) {
-            System.out.println("");
+        	Util.log.error("Problem with the shell",e);
             fail();
         } catch (TimeoutException e) {
-            Util.log.error("Shell didn't close correctly.");
+            Util.log.error("Shell didn't close correctly.",e);
             fail();
         }
 
@@ -120,11 +120,11 @@ public class APIMUtils extends PerspectiveLoginUtil {
             renameShell.bot().button(CommonConstants.OK).click();
             Util.bot.waitUntil(Conditions.shellCloses(renameShell));
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Rename Fail");
+            Util.log.error("Rename Fail",e);
             fail();
 
         } catch (TimeoutException e) {
-            Util.log.error("Rename Fail");
+            Util.log.error("Rename Fail",e);
             fail();
 
         }
@@ -148,11 +148,11 @@ public class APIMUtils extends PerspectiveLoginUtil {
             Util.bot.button(CommonConstants.OK).click();
             Util.bot.sleep(1000);
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Rename Fail");
+            Util.log.error("Commiting Fail",e);
             fail();
 
         } catch (TimeoutException e) {
-            Util.log.error("Rename Fail");
+            Util.log.error("Commiting Fail",e);
             fail();
 
         }
@@ -227,10 +227,10 @@ public class APIMUtils extends PerspectiveLoginUtil {
             Util.log.info("Login successful");
 
         } catch (TimeoutException e) {
-            Util.log.error("Fail to login");
+            Util.log.error("Fail to login",e);
             fail();
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Problem with the login widget");
+            Util.log.error("Problem with the login widget",e);
             fail();
         }
 

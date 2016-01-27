@@ -45,7 +45,7 @@ public class TestESBConfigProject extends Setup {
 	@Order(order = 1)
 	public void createANewESBProjectFromMenu() throws Exception {
 
-		CommonUtil.openProjectFromMenu("ESB Config Project");
+		CommonUtil.openProjectCreationWizardFromMenu("ESB Config Project");
 		ESBUtils.createESBProject(projectNameMenu);
 	}
 
@@ -53,7 +53,7 @@ public class TestESBConfigProject extends Setup {
 	@Order(order = 2)
 	public void createANewESBProjectFromDash() throws Exception {
 
-		CommonUtil.openFromDash("ESB Config Project");
+		CommonUtil.openProjectCreationWizardFromDashboard("ESB Config Project");
 		ESBUtils.createESBProject(projectNameDash);
 	}
 
@@ -62,16 +62,16 @@ public class TestESBConfigProject extends Setup {
 	public void createNewSequence() throws Exception {
 
 		String[] path = { "src", "main", "synapse-config", "sequences" };
-		CommonUtil.openProjectFromRightClick(projectNameMenu, "Sequence");
+		CommonUtil.openProjectCreationWizardFromRightClick(projectNameMenu, "Sequence");
 		ESBUtils.createNewSequence(sequenceName, projectNameDash);
-		CommonUtil.expandProject(projectNameDash, path);
+		CommonUtil.getexpandProjecttree(projectNameDash, path);
 	}
 
 	@Test
 	@Order(order = 4)
 	public void createProxy() throws Exception {
 
-		CommonUtil.openFromDash("Proxy Service");
+		CommonUtil.openProjectCreationWizardFromDashboard("Proxy Service");
 		ESBUtils.createProxyService(proxyService);
 		ESBUtils.validateProxyServicexml(proxyService);
 	}
@@ -81,9 +81,9 @@ public class TestESBConfigProject extends Setup {
 	public void createEndpoint() throws Exception {
 
 		String[] path = { "src", "main", "synapse-config", "endpoints" };
-		CommonUtil.openProjectFromRightClick(projectNameMenu, "Endpoint");
+		CommonUtil.openProjectCreationWizardFromRightClick(projectNameMenu, "Endpoint");
 		ESBUtils.createNewEndpointWithESB(endpointName, projectNameSecondary);
-		CommonUtil.expandProject(projectNameSecondary, path);
+		CommonUtil.getexpandProjecttree(projectNameSecondary, path);
 
 	}
 

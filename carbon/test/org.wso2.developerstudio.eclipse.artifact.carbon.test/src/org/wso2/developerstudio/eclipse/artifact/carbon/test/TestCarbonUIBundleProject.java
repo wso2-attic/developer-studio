@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.artifact.carbon.test;
 
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.CarbonUtils;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.CarbonUtils;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;

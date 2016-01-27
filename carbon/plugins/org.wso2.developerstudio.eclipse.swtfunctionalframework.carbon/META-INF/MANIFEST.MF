@@ -8,11 +8,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swtbot.go;bundle-version="2.3.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: org.wso2.developerstudio.eclipse.swtfunctionalframework-4.0.0-SNAPSHOT.jar,
- .
-Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util,
- org.wso2.developerstudio.eclipse.swtfunctionalframework.art.carbon.util.constants,
- org.wso2.developerstudio.eclipse.swtfunctionalframework.junit,
+Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
  org.wso2.developerstudio.eclipse.swtfunctionalframework.util,
  org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants
-Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0"
