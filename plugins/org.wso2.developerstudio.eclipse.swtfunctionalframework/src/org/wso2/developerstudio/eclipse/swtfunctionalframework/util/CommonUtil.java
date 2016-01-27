@@ -38,10 +38,10 @@ public class CommonUtil {
     /**
      * This method will open the a specified project creation
      * wizard from the new project button on the tool bar.
-     * 
+     *
      * @param projectType Project type that want to create
      */
-    public static void openProjectFromMenu(String projectType) {
+    public static void openProjectCreationWizardFromMenu(String projectType) {
         Util.bot.sleep(5000);
         try {
             Util.bot.toolbarDropDownButtonWithTooltip(CommonConstants.NEW).click();
@@ -64,10 +64,10 @@ public class CommonUtil {
     /**
      * This method will open the a specified project creation
      * wizard from the Dash board of Developer Studio.
-     * 
+     *
      * @param projectType Project type that want to create
      */
-    public static void openFromDash(String project) throws Exception {
+    public static void openProjectCreationWizardFromDashboard(String project) throws Exception {
         Util.bot.sleep(6000);
         try {
             Util.bot.menu(CommonConstants.DEVELOPER_STUDIO).menu(CommonConstants.OPEN_DASHBOARD).click();
@@ -89,7 +89,7 @@ public class CommonUtil {
     /**
      * This method will open a file in a already created project
      * in a editor.
-     * 
+     *
      * @param projectName Name of the project that the file is in.
      * @param path Path to the file excluding the project name and the file name.
      * @param fileName Name of the file that need to be opened.
@@ -118,7 +118,7 @@ public class CommonUtil {
 
     /**
      * This method will validate the content of a source.
-     * 
+     *
      * @param editorName Name of the editor that must validate
      * @param expectedContent expected content in the source
      */
@@ -137,7 +137,7 @@ public class CommonUtil {
      * This method will change the perspective if the change perspective wizard
      * appear after creating a project.
      */
-    public static void changePerspective() {
+    public static void switchPerspectiveInCreatingProjects() {
         try {
             Util.changePerspective = Util.bot.shell(CommonConstants.OPEN_ASSOCIATED_PERSPECTIVE);
             if (Util.changePerspective.isActive()) {
@@ -167,38 +167,8 @@ public class CommonUtil {
     }
 
     /**
-     * This method will expand a path from the project tree that user specifies.
-     * 
-     * @param projectName Name of the project that has the path to expand
-     * @param path Path to expand excluding project name
-     */
-    public static void expandProject(String projectName, String[] path) {
-
-        Util.bot.sleep(2000);
-        try {
-            tree = Util.bot.tree().getTreeItem(projectName);
-            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
-            if (!tree.isExpanded()) {
-                tree.select();
-                tree.expand();
-            }
-            for (String element : path) {
-                if (!tree.getNode(element).isExpanded()) {
-                    tree.getNode(element).expand();
-                    tree.getNode(element).select();
-                }
-                tree = tree.getNode(element);
-            }
-        } catch (WidgetNotFoundException | Error e) {
-            Util.log.error("Cannot open the project", e);
-            fail();
-        }
-
-    }
-
-    /**
      * This method will expand the specified path and return the last node of that path
-     * 
+     *
      * @param projectName Name of the project that has the path to expand
      * @param path Path to expand excluding project name
      * @return SWTBotTreeItem Last node will be returned
@@ -231,15 +201,21 @@ public class CommonUtil {
 
     /**
      * This method will open a specified project by right clicking a given path.
-     * 
+     *
      * @param projectName Name of the project that already created.
      * @param path Path that new project must be created excluding the main project name.
      * @param projectType Type of project that should be created.
      */
-    public static void openProjectFromRightClick(String projectName, String[] path, String projectType) {
+    public static void openProjectCreationWizardFromRightClick(String projectName, String[] path, String projectType) {
 
         Util.bot.sleep(2000);
-        tree = getexpandProjecttree(projectName, path);
+        if (path == null) {
+            tree = Util.bot.tree().getTreeItem(projectName);
+            tree.select();
+
+        } else {
+            tree = getexpandProjecttree(projectName, path);
+        }
         try {
             tree.contextMenu(CommonConstants.NEW).menu(projectType).click();
         } catch (WidgetNotFoundException e) {
@@ -252,17 +228,9 @@ public class CommonUtil {
         }
     }
 
-    public static void openProjectFromRightClick(String projectName, String projectType) {
+    public static void openProjectCreationWizardFromRightClick(String projectName, String projectType) {
         Util.bot.sleep(2000);
-        try {
-            Util.bot.viewByTitle(CommonConstants.PROJECT_EXPLORER).show();
-            Util.bot.tree().getTreeItem(projectName).select();
-            Util.bot.tree().getTreeItem(projectName).contextMenu(CommonConstants.NEW).menu(projectType).click();
-        } catch (WidgetNotFoundException e) {
-            Util.log.error("Cannot open the project", e);
-            fail();
-
-        }
+        openProjectCreationWizardFromRightClick(projectName, null, projectType);
     }
 
     public static void createJavaClass(String className) {
@@ -276,7 +244,7 @@ public class CommonUtil {
 
     /**
      * This method will open a specified perspective
-     * 
+     *
      * @param perspective Name of the perspective
      */
     public static void openPerspective(String perspective) {
@@ -298,7 +266,7 @@ public class CommonUtil {
 
     /**
      * This method will delete a project with its content in the hard disk
-     * 
+     *
      * @param projectName Name of the project that you want to delete
      */
     public static void deleteWithContent(String projectName) {
@@ -332,7 +300,7 @@ public class CommonUtil {
 
     /**
      * This method will delete a specified project without its content in the hard disk
-     * 
+     *
      * @param projectName Name of the project that you want to delete
      */
     public static void deleteWithoutContent(String projectName) {
@@ -355,23 +323,9 @@ public class CommonUtil {
         }
     }
 
-    public static SWTBotTreeItem projectExplorer(String projectName, String packageName) {
-        try {
-            Util.bot.tree().getTreeItem(projectName).expand();
-            Util.bot.tree().getTreeItem(projectName).getNode("src/main/java").expand();
-            Util.bot.tree().getTreeItem(projectName).getNode("src/main/java").getNode(packageName).select();
-            Util.log.info("Tree selection sucsessful");
-            return Util.bot.tree().getTreeItem(projectName).getNode("src/main/java").getNode(packageName);
-        } catch (Exception e) {
-            Util.log.error("Problem with tree selection", e);
-            fail();
-            return null;
-        }
-    }
-
     /**
      * This method will set focus to specified ctab in the editor
-     * 
+     *
      * @param tabName Name of the tab
      */
     public static void activateCtab(String tabName) {
@@ -385,7 +339,7 @@ public class CommonUtil {
 
     /**
      * This method will close a already open view
-     * 
+     *
      * @param viewName Name of the view that want to be closed
      */
     public static void closeView(String viewName) {
@@ -399,7 +353,7 @@ public class CommonUtil {
 
     /**
      * This method will save a already open editor
-     * 
+     *
      * @param editorName Name of the editor that wanted to be saved
      */
     public static void saveEditor(String editorName) {
@@ -408,36 +362,35 @@ public class CommonUtil {
 
     /**
      * This method will validate the main project structure
-     * 
+     *
      * @param projectName The name of the project that should be validated
      * @param expectedFiles Expected project structure
      */
     public static void projectValidation(String projectName, List<String> expectedFiles) {
 
-        Util.main = Util.bot.tree().getTreeItem(projectName);
-        Util.bot.sleep(5000);
-        Util.main.expand();
-        Util.bot.sleep(5000);
-        Util.actualFiles = Util.main.expand().getNodes();
-        Util.bot.sleep(5000);
-        assertNotSame("Main project creation faliure", expectedFiles, Util.actualFiles);
-
+        projectValidation(projectName, null, expectedFiles);
     }
 
     /**
      * This method will validate structure inside of a specific node in the project
-     * 
+     *
      * @param projectName Name of the project that has to validate
      * @param path Path that want to validate
      * @param expectedFiles Expected structure
      */
     public static void projectValidation(String projectName, String[] path, List<String> expectedFiles) {
 
-        Util.main = CommonUtil.getexpandProjecttree(projectName, path);
+        if (path == null) {
+            Util.main = Util.bot.tree().getTreeItem(projectName);
+            Util.bot.sleep(5000);
+            Util.main.expand();
+        } else {
+            Util.main = CommonUtil.getexpandProjecttree(projectName, path);
+        }
         Util.bot.sleep(5000);
         Util.actualFiles = Util.main.getNodes();
         Util.bot.sleep(5000);
-        assertNotSame("Inside folder creation faliure", expectedFiles, Util.actualFiles);
+        assertNotSame("Project validation faliure", expectedFiles, Util.actualFiles);
     }
 
 }
