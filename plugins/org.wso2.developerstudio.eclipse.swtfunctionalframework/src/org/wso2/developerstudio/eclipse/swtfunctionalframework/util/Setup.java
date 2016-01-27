@@ -47,7 +47,7 @@ public class Setup {
             Util.bot.closeAllEditors();
             for (int i = Util.bot.shells().length - 1; i > 0; i--) {
                 Util.bot.shells()[i].close();
-                Util.bot.button("OK").click();
+                Util.bot.button(CommonConstants.OK).click();
             }
         } catch (Exception e) {
         }
