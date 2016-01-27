@@ -124,6 +124,11 @@
             <layout>p2</layout>
         </repository>
         <repository>
+		<id>swtbot</id>
+		<url>http://download.eclipse.org/technology/swtbot/releases/latest/</url>
+		<layout>p2</layout>
+	</repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>

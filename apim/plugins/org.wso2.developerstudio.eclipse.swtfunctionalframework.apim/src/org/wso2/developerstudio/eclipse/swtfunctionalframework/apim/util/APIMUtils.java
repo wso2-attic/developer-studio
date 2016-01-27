@@ -63,6 +63,13 @@ public class APIMUtils extends PerspectiveLoginUtil {
 
     }
 
+    /**
+     * This method will create a sequence
+     *
+     * @param String userName Username that used to login
+     * @param String sequenceType Sequence type want to create
+     * @param String sequenceName Name of the sequence
+     */
     public static void createSequenceAPIM(String userName, String sequenceType, String sequenceName) {
 
         try {
@@ -95,6 +102,14 @@ public class APIMUtils extends PerspectiveLoginUtil {
 
     }
 
+    /**
+     * This method will rename a sequence
+     *
+     * @param String userName Username that used to login
+     * @param String sequenceType Sequence type want to create
+     * @param String sequenceName Current name of the sequence
+     * @param String sequenceName New name of the sequence
+     */
     public static void renameSequenceAPIM(String userName, String sequenceType, String sequenceName, String newName) {
         try {
             mainTree = APIMUtils.apimMainTree(userName);
@@ -115,6 +130,12 @@ public class APIMUtils extends PerspectiveLoginUtil {
         }
     }
 
+    /**
+     * This method will commit a file that has uncommit changes
+     * @param userName   userName User name that use to login
+     * @param sequenceType   Type of the sequence want to commit
+     * @param sequenceName   Name of the sequence want to commit
+     */
     public static void commitFile(String userName, String sequenceType, String sequenceName) {
 
         try {
@@ -138,11 +159,18 @@ public class APIMUtils extends PerspectiveLoginUtil {
 
     }
 
+    /**
+     * This method will discard all the unsaved changes
+     */
     public static void discardAllChanges() {
         Util.bot.toolbarButtonWithTooltip("Discard all local changes and synchronize with server").click();
         Util.bot.button(CommonConstants.YES).click();
     }
 
+    /**
+     * This method will click push all changes button save all the changes
+     * that have done
+     */
     public static void clickPushAllChanges() {
 
         Util.bot.toolbarButtonWithTooltip(APIMConstants.PUSH_ALL_CHANGES_TO_THE_SERVER).click();
@@ -150,6 +178,13 @@ public class APIMUtils extends PerspectiveLoginUtil {
         Util.bot.button(CommonConstants.OK).click();
     }
 
+    /**
+     * This method will delete a specified sequence
+     * 
+     * @param userName User name that use to login
+     * @param sequenceType What is the type of the specified sequence
+     * @param sequenceName Name of the sequence that want to delete
+     */
     public static void deleteSequenceAPIM(String userName, String sequenceType, String sequenceName) {
         mainTree = APIMUtils.apimMainTree(userName);
         mainTree.getNode(sequenceType).getNode(sequenceName + CommonConstants.XML).contextMenu(APIMConstants.DELETE)
@@ -158,6 +193,14 @@ public class APIMUtils extends PerspectiveLoginUtil {
 
     }
 
+    /**
+     * This method will copy a specific sequence and paste it to a specific location
+     * 
+     * @param userName  User name that use to login
+     * @param from  From where the sequence should be copied
+     * @param to    To where the copied sequence must be pasted to
+     * @param sequenceName  The name of the sequence that should copy and paste
+     */
     public static void copyPasteSequence(String userName, String from, String to, String sequenceName) {
         mainTree = APIMUtils.apimMainTree(userName);
         if (!mainTree.getNode(from).isExpanded()) {

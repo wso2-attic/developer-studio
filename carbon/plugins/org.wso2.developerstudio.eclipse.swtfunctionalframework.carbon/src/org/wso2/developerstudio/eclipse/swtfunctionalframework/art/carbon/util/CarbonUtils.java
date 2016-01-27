@@ -39,7 +39,7 @@ public class CarbonUtils {
 		Util.checkButton(CommonConstants.FINISH, newCarbonUIBundle);
 		newCarbonUIBundle.bot().button(CommonConstants.FINISH).click();
 		try {
-			CommonUtil.changePerspective();
+			CommonUtil.switchPerspectiveInCreatingProjects();
 		} catch (AssertionError e) {
 
 		}

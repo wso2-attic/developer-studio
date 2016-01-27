@@ -20,7 +20,6 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util.BPELUti
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
@@ -41,10 +40,10 @@ public class TestBPELWorkflow extends Setup {
     @Order(order = 1)
     public void createBPELProject() throws Exception {
 
-        CommonUtil.openProjectFromMenu("BPEL Workflow");
+        CommonUtil.openProjectCreationWizardFromMenu("BPEL Workflow");
         BPELUtil.createNewBPELProject(projectName);
 
-        CommonUtil.expandProject(projectName, path);
+        CommonUtil.getexpandProjecttree(projectName, path);
         CommonUtil.saveEditor(projectName + ".bpel");
 
     }

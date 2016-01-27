@@ -37,7 +37,7 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 1)
 	public void createANewBusinesRulesServer() throws Exception {
 
-		CommonUtil.openProjectFromMenu("Business Rules Service Project");
+		CommonUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
 		BusinessRulesUtil.createBusinessRulesService(projectName, serviceName);
 	}
 
@@ -55,7 +55,7 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 3)
 	public void createNewClass() throws Exception {
 
-		CommonUtil.openProjectFromRightClick(projectName, path, "Class");
+		CommonUtil.openProjectCreationWizardFromRightClick(projectName, path, "Class");
 		CommonUtil.createJavaClass(className);
 
 	}
@@ -64,7 +64,7 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 4)
 	public void importARule() {
 
-		CommonUtil.openProjectFromMenu("Business Rules Service Project");
+		CommonUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
 		BusinessRulesUtil.importBusinessRulesService(servicepath);
 
 	}

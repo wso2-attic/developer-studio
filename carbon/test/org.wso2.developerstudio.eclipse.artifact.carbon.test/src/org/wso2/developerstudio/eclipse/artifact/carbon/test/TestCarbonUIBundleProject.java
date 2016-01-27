@@ -40,7 +40,7 @@ public class TestCarbonUIBundleProject extends Setup {
 	@Order(order = 1)
 	public void createCarbonUIBundleProject() throws Exception {
 
-		CommonUtil.openProjectFromMenu("Carbon UI Bundle Project");
+		CommonUtil.openProjectCreationWizardFromMenu("Carbon UI Bundle Project");
 		CarbonUtils.createCarbonUI(projectName);
 		CommonUtil.activateCtab("Runtime");
 		CommonUtil.activateCtab("Extensions");
@@ -52,7 +52,7 @@ public class TestCarbonUIBundleProject extends Setup {
 	public void createNewClass() throws Exception {
 		String className = "HelloWorld";
 
-		CommonUtil.openProjectFromRightClick(projectName, "Class");
+		CommonUtil.openProjectCreationWizardFromRightClick(projectName, "Class");
 		CommonUtil.createJavaClass(className);
 
 	}

@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Appfactory
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory
 Bundle-Version: 4.0.0.qualifier
-Bundle-Activator: org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.swtbot.go;bundle-version="2.3.0"

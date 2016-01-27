@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Bpel
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel
 Bundle-Version: 4.0.0.qualifier
-Bundle-Activator: org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.swtbot.swt.finder,
