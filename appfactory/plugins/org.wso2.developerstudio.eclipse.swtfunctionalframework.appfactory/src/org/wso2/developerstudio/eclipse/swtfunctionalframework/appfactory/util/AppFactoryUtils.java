@@ -29,19 +29,20 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.PerspectiveL
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
 
-public class AppFactoryUtils extends PerspectiveLoginUtil{
+public class AppFactoryUtils implements PerspectiveLoginUtil{
+
 
     public static SWTBotTreeItem appFactoryTree() {
         SWTBotView appList = Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST);
         try {
-            appList.bot().tree().getTreeItem("TestApplicationOne").select();
-            appList.bot().tree().getTreeItem("TestApplicationOne").contextMenu("Open  ").click();
-            while (!appList.bot().tree().getTreeItem("TestApplicationOne (Opened)").isVisible()) {
+            appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE).select();
+            appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE).contextMenu(AppFactoryConstants.OPEN).click();
+            while (!appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED).isVisible()) {
                 Util.bot.sleep(1000);
             }
         } catch (WidgetNotFoundException | TimeoutException e) {
             try {
-                appList.bot().tree().getTreeItem("TestApplicationOne (Opened)").isVisible();
+                appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED).isVisible();
             } catch (WidgetNotFoundException | TimeoutException erro) {
                 Util.log.error("Application list loading failiure",e);
                 fail();
@@ -49,7 +50,7 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
 
         }
 
-        SWTBotTreeItem opened = appList.bot().tree().getTreeItem("TestApplicationOne (Opened)");
+        SWTBotTreeItem opened = appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED);
         return opened;
     }
 
@@ -102,21 +103,47 @@ public class AppFactoryUtils extends PerspectiveLoginUtil{
 
     }
 
-    public void login(String email, String password) {
+    public void appFactoryLogin(String email, String password, String connectTo, String url, String path){
         try {
             Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST).show();
-        } catch (WidgetNotFoundException e) {
+        } catch (WidgetNotFoundException | TimeoutException e) {
             Util.bot.menu("Window").menu("Show View").menu("Other...").click();
             SWTBotShell showView = Util.bot.shell("Show View");
             showView.bot().text().setText(AppFactoryConstants.APPLICATIONS_LIST);
+            Util.checkButton(CommonConstants.OK, showView);
             showView.bot().button("OK").click();
         }
+        
         try {
             Util.bot.toolbarButtonWithTooltip(AppFactoryConstants.LOGIN2).click();
             Util.checkShellLoading(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
             SWTBotShell login = Util.bot.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
-            login.bot().textWithLabel(AppFactoryConstants.EMAIL).setText(email);
-            login.bot().textWithLabel(AppFactoryConstants.PASSWORD2).setText(password);
+            login.bot().radio(connectTo).click();
+            if (connectTo != AppFactoryConstants.APP_CLOUD){
+                login(email, password, null, null);
+            }
+            else{
+                login(email, password, url, null);
+            }
+        } catch (TimeoutException e) {
+            Util.log.error("Fail to login",e);
+            fail();
+        } catch (WidgetNotFoundException e) {
+            Util.log.error("Problem with the login widget",e);
+            fail();
+        }
+        
+    }
+    public void login(String email, String password, String url, String path) {
+
+        try {
+            SWTBotShell login = Util.bot.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
+            Util.setLableText(login, AppFactoryConstants.EMAIL, email);
+            Util.setLableText(login, AppFactoryConstants.PASSWORD2, password);
+            if (url != null){
+                Util.setLableText(login, AppFactoryConstants.URL, password);
+            } 
+            Util.checkButton(CommonConstants.OK, login);
             login.bot().button(CommonConstants.OK).click();
             Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(login));
             Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST).show();
