@@ -36,7 +36,7 @@ public class BusinessRulesUtil {
 			serviceEditor.bot().textWithLabel(option).setText(value);
 			serviceEditor.save();
 		} catch (Exception e) {
-			Util.log.error("Editor cannot be found");
+			Util.log.error("Editor cannot be found", e);
 			fail();
 		}
 
@@ -47,7 +47,7 @@ public class BusinessRulesUtil {
 			serviceEditor = Util.bot.editorByTitle("service.rsl");
 			serviceEditor.close();
 		} catch (Exception e) {
-			Util.log.error("Editor cannot be found");
+			Util.log.error("Editor cannot be found", e);
 			fail();
 		}
 	}
@@ -76,7 +76,7 @@ public class BusinessRulesUtil {
 			Util.log.info("Create Business Rules Service Sucsessful");
 
 		} catch (WidgetNotFoundException e) {
-			Util.log.error("Editor didnt load");
+			Util.log.error("Editor didnt load",e);
 			fail();
 		}
 	}

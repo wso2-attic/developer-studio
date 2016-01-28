@@ -19,7 +19,6 @@ package org.wso2.developerstudio.appfactory.test;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-//import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Login;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.AppFactoryUtils;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
@@ -52,7 +51,7 @@ public class TestAppFactory extends Setup {
 
         String password = "123456";
 
-        appFactoryUtil.login(email, password);
+        appFactoryUtil.appFactoryLogin(email, password, AppFactoryConstants.APP_CLOUD, null, null);
 
     }
 

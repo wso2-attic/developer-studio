@@ -34,6 +34,7 @@ public class APIMConstants {
 	public static final String SEQUENCE_TYPE_IN = "in";
 	public static final String SEQUENCE_TYPE_OUT = "out";
     public static final String USER_NAME = "User Name: ";
+    public static final String URL = "URL: ";
     public static final String WSO2_API_MANAGER = "WSO2 APIManager";
     public static final String DELETE = "Delete   ";
     public static final String CREATE = "Create   ";

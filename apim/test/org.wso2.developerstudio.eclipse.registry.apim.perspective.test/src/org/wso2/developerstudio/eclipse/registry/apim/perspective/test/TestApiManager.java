@@ -21,6 +21,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.APIMUtils;
+import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants.APIMConstants;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
@@ -42,79 +43,62 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 @RunWith(OrderedRunner.class)
 public class TestApiManager extends Setup {
 
-	String userName = "admin";
-	String passWord = "admin";
-	String sequence1 = "newSequnce";
-	String sequence2 = "newSequnce2";
-	String sequence3 = "newSequnce3";
-	SWTBotTreeItem mainTree;
-	APIMUtils apimUtils = new APIMUtils();
+    String url = "https://localhost:9443/";
+    String userName = "admin";
+    String passWord = "admin";
+    String firstSequence = "newSequnce";
+    String secondSequence = "newSequnce2";
+    String thirdSequence = "newSequnce3";
+    SWTBotTreeItem mainTree;
+    APIMUtils apimUtils = new APIMUtils();
 
-	@Test
-	@Order(order = 1)
-	public void login() throws Exception {
+    @Test
+    @Order(order = 1)
+    public void login() throws Exception {
 
-		CommonUtil.openPerspective("WSO2 APIManager");
+        CommonUtil.openPerspective(APIMConstants.WSO2_API_MANAGER);
+        apimUtils.login(userName, passWord, url, null);
 
-		apimUtils.login(userName, passWord);
+    }
 
-	}
+    @Test
+    @Order(order = 2)
+    public void creatFirstSequence() {
 
-	@Test
-	@Order(order = 2)
-	public void creatFirstSequence() {
+        APIMUtils.expandTree(userName, url);
+        APIMUtils.createSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, firstSequence);
+    }
 
-		APIMUtils.expandTree(userName);
+    @Test
+    @Order(order = 3)
+    public void creatNew() {
 
-		APIMUtils.createSequenceAPIM(userName, "in", sequence1);
+        APIMUtils.commitFile(userName, url, APIMConstants.SEQUENCE_TYPE_IN, firstSequence);
+        APIMUtils.renameSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, firstSequence, secondSequence);
+        APIMUtils.discardAllChanges();
+        APIMUtils.createSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, secondSequence);
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, secondSequence);
+        APIMUtils.createSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, secondSequence);
+        APIMUtils.createSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, thirdSequence);
+        APIMUtils.clickPushAllChanges();
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, secondSequence);
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, thirdSequence);
+        APIMUtils.discardAllChanges();
+        APIMUtils.copyPasteSequence(userName, url, APIMConstants.SEQUENCE_TYPE_OUT, APIMConstants.SEQUENCE_TYPE_IN,
+                "log_out_message");
+        APIMUtils.commitFile(userName, url, APIMConstants.SEQUENCE_TYPE_IN, "log_out_message");
 
-	}
+    }
 
-	@Test
-	@Order(order = 3)
-	public void creatNew() {
+    @Test
+    @Order(order = 4)
+    public void deleteSequence() {
 
-		APIMUtils.commitFile(userName, "in", sequence1);
-
-		APIMUtils.renameSequenceAPIM(userName, "in", sequence1, sequence2);
-
-		APIMUtils.discardAllChanges();
-
-		APIMUtils.createSequenceAPIM(userName, "in", sequence2);
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
-
-		APIMUtils.createSequenceAPIM(userName, "in", sequence2);
-
-		APIMUtils.createSequenceAPIM(userName, "in", sequence3);
-
-		APIMUtils.clickPushAllChanges();
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
-
-		APIMUtils.discardAllChanges();
-		APIMUtils.copyPasteSequence(userName, "out", "in", "log_out_message");
-
-		APIMUtils.commitFile(userName, "in", "log_out_message");
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", "log_out_message");
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence2);
-
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence3);
-
-		APIMUtils.clickPushAllChanges();
-		APIMUtils.expandTree(userName);
-
-	}
-
-	@Test
-	@Order(order = 4)
-	public void deleteSequence() {
-		APIMUtils.deleteSequenceAPIM(userName, "in", sequence1);
-
-		APIMUtils.clickPushAllChanges();
-	}
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, firstSequence);
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, "log_out_message");
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, secondSequence);
+        APIMUtils.deleteSequenceAPIM(userName, url, APIMConstants.SEQUENCE_TYPE_IN, thirdSequence);
+        APIMUtils.clickPushAllChanges();
+        APIMUtils.expandTree(userName, url);
+    }
 }

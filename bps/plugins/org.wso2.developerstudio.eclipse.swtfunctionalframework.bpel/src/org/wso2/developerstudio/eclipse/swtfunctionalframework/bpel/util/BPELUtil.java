@@ -38,11 +38,11 @@ public class BPELUtil{
                 Util.bot.editorByTitle(projectName + CommonConstants.BPEL).show();
                 Util.log.info("Create New BPEL Project Sucsessful");
             } catch (WidgetNotFoundException e) {
-                Util.log.error("Editor didnt load");
+                Util.log.error("Editor didnt load", e);
                 fail();
             }
         } catch (Exception e) {
-            Util.log.error("Create New BPEL Project unsucsessful");
+            Util.log.error("Create New BPEL Project unsucsessful", e);
             fail();
         }
 

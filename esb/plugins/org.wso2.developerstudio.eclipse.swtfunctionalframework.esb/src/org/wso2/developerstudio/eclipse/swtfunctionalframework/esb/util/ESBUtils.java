@@ -71,7 +71,7 @@ public class ESBUtils {
             Util.log.info("Create New Sequence Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load",e);
+            Util.log.error("Editor didnt load", e);
             fail();
         }
     }
@@ -92,7 +92,7 @@ public class ESBUtils {
             Util.log.info("Create New Proxy Service Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load",e);
+            Util.log.error("Editor didnt load", e);
             fail();
         }
 
@@ -134,7 +134,7 @@ public class ESBUtils {
             Util.log.info("Create New Endpoint Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load",e);
+            Util.log.error("Editor didnt load", e);
             fail();
         }
     }
