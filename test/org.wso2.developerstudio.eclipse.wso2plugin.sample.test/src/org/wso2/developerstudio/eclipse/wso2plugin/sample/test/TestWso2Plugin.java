@@ -18,34 +18,34 @@ package org.wso2.developerstudio.eclipse.wso2plugin.sample.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Wso2PluginUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Wso2PluginConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.PluginConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
+import org.wso2.developerstudio.eclipse.test.automation.utils.kernel.WSO2PluginUtils;
 
 @RunWith(OrderedRunner.class)
-public class TestWso2Plugin extends Setup {
+public class TestWso2Plugin extends Executor {
 
-	private String projectName = "FirstPlugin1";
+    private String projectName = "FirstPlugin1";
 
-	@Test
-	@Order(order = 1)
-	public void open() {
-		CommonUtil.openProjectFromMenu(Wso2PluginConstants.MENU_NAME);
-	}
+    @Test
+    @Order(order = 1)
+    public void open() {
+        FunctionalUtil.openProjectCreationWizardFromMenu(PluginConstants.MENU_NAME);
+    }
 
-	@Test
-	@Order(order = 2)
-	public void createPluginPorject() {
-		String projectType = Wso2PluginConstants.SINGLE_MODULE_PROJECT;
-		Wso2PluginUtils.createWso2Plugin(projectName, projectType);
-	}
+    @Test
+    @Order(order = 2)
+    public void createPluginPorject() {
+        String projectType = PluginConstants.SINGLE_MODULE_PROJECT;
+        WSO2PluginUtils.createWso2Plugin(projectName, projectType);
+    }
 
-	@Test
-	@Order(order = 3)
-	public void deleteProject() {
-		CommonUtil.deleteWithContent(projectName);
-	}
+    @Test
+    @Order(order = 3)
+    public void deleteProject() {
+        FunctionalUtil.deleteProjectWithContent(projectName);
+    }
 
 }

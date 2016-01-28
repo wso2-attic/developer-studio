@@ -18,22 +18,22 @@ package org.wso2.developerstudio.eclipse.capp.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CompositeApplicationUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CompositeApllicationConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CompositeApllicationConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
+import org.wso2.developerstudio.eclipse.test.automation.utils.kernel.CompositeApplicationUtil;
 
 @RunWith(OrderedRunner.class)
-public class TestCompositeApplication extends Setup {
+public class TestCompositeApplication extends Executor {
 
 	private String projectName = "firstApp2";
 
 	@Test
 	@Order(order = 1)
 	public void open() throws Exception {
-		CommonUtil.openProjectFromMenu(CompositeApllicationConstants.MENU_NAME);
+		FunctionalUtil.openProjectCreationWizardFromMenu(CompositeApllicationConstants.MENU_NAME);
 
 	}
 
@@ -42,13 +42,13 @@ public class TestCompositeApplication extends Setup {
 	public void createANewCompositeApplication() throws Exception {
 
 		CompositeApplicationUtil.createCompositeApllication(projectName);
-		CommonUtil.activateCtab(CommonConstants.SOURCE);
+		FunctionalUtil.activateCtab(CommonConstants.SOURCE);
 
 	}
 
 	@Test
 	@Order(order = 3)
 	public void deleteApplication() throws Exception {
-		CommonUtil.deleteWithContent(projectName);
+		FunctionalUtil.deleteProjectWithContent(projectName);
 	}
 }

@@ -5,14 +5,9 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.wso2plugin.sample.test;sin
 Bundle-Version: 1.0.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: 
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.swtbot.go,
- org.apache.log4j,
- org.eclipse.ui.forms,
- org.eclipse.jdt.junit4.runtime;bundle-version="1.1.400",
- org.junit,
- org.eclipse.core.resources,
- org.eclipse.equinox.registry,
- org.wso2.developerstudio.eclipse.swtfunctionalframework;bundle-version="1.0.0.qualifier",
- org.eclipse.swtbot.forms.finder;bundle-version="2.3.0"
+ org.eclipse.swtbot.forms.finder;bundle-version="2.3.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils;bundle-version="4.0.0"
 Export-Package: org.wso2.developerstudio.eclipse.wso2plugin.sample.test
