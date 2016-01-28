@@ -29,15 +29,9 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.Co
 
 public class ESBUtils {
 
-    public static void esbRclick(String projectName, String artiactName) {
-        Util.bot.tree().getTreeItem(projectName).select();
-        Util.bot.tree().getTreeItem(projectName).contextMenu("New").menu(artiactName).click();
-
-    }
-
     public static void createESBProject(String projectName) {
         Util.bot.sleep(2000);
-        SWTBotShell newESBConf = Util.bot.shell("New ESB Config Project");
+        SWTBotShell newESBConf = Util.bot.shell(ESBProjectConstants.NEW_ESB_PROJECT);
         newESBConf.bot().button(CommonConstants.NEXT).click();
         Util.bot.sleep(1000);
         Util.setLableText(newESBConf, ESBProjectConstants.PROJECT_NAME, projectName);
