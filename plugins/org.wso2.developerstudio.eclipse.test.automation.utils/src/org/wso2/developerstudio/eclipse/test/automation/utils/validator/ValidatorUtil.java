@@ -18,7 +18,9 @@ package org.wso2.developerstudio.eclipse.test.automation.utils.validator;
 
 import static org.eclipse.swtbot.swt.finder.SWTBotAssert.assertContains;
 import static org.junit.Assert.assertNotSame;
+
 import java.util.List;
+
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;

@@ -25,32 +25,31 @@ import org.wso2.developerstudio.eclipse.test.automation.framework.constants.Exec
 import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;
 
 public class Executor {
-	@BeforeClass
-	public static void beforeClass() throws Exception {
-		WorkbenchElementsValidator.bot = new SWTWorkbenchBot();
-		WorkbenchElementsValidator.bot.sleep(5000);
-		SWTBotPreferences.PLAYBACK_DELAY = 30;
+    @BeforeClass
+    public static void beforeClass() throws Exception {
+        WorkbenchElementsValidator.bot = new SWTWorkbenchBot();
+        WorkbenchElementsValidator.bot.sleep(5000);
+        SWTBotPreferences.PLAYBACK_DELAY = 30;
 
-		try {
-			WorkbenchElementsValidator.bot.viewByTitle(
-					ExecutorConstants.WELCOME).close();
-		} catch (WidgetNotFoundException e) {
+        try {
+            WorkbenchElementsValidator.bot.viewByTitle(ExecutorConstants.WELCOME).close();
+        } catch (WidgetNotFoundException e) {
 
-		}
-		WorkbenchElementsValidator.bot.sleep(2000);
+        }
+        WorkbenchElementsValidator.bot.sleep(2000);
 
-	}
+    }
 
-	@AfterClass
-	public static void sleep() {
-		try {
-			WorkbenchElementsValidator.bot.closeAllEditors();
-			for (int i = WorkbenchElementsValidator.bot.shells().length - 1; i > 0; i--) {
-				WorkbenchElementsValidator.bot.shells()[i].close();
-				WorkbenchElementsValidator.bot.button("OK").click();
-			}
-		} catch (Exception e) {
-		}
+    @AfterClass
+    public static void sleep() {
+        try {
+            WorkbenchElementsValidator.bot.closeAllEditors();
+            for (int i = WorkbenchElementsValidator.bot.shells().length - 1; i > 0; i--) {
+                WorkbenchElementsValidator.bot.shells()[i].close();
+                WorkbenchElementsValidator.bot.button("OK").click();
+            }
+        } catch (Exception e) {
+        }
 
-	}
+    }
 }

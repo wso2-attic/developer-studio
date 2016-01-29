@@ -31,70 +31,67 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class WorkbenchElementsValidator {
-	public static SWTWorkbenchBot bot;
-	public static SWTBotShell newServiceProject;
-	public static SWTBotShell newWorkflow;
-	public static SWTBotShell changePerspective;
-	public static String actual;
-	public static String expect;
-	public static StringBuffer expectedBuffer;
-	public static SWTBotShell saveIn;
-	public static List<String> actualFiles;
-	public static SWTBotTreeItem main;
-	public static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    public static SWTWorkbenchBot bot;
+    public static SWTBotShell newServiceProject;
+    public static SWTBotShell newWorkflow;
+    public static SWTBotShell changePerspective;
+    public static String actual;
+    public static String expect;
+    public static StringBuffer expectedBuffer;
+    public static SWTBotShell saveIn;
+    public static List<String> actualFiles;
+    public static SWTBotTreeItem main;
+    public static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public static void checkShellLoading(final String shellName) {
-		bot.waitUntil(new DefaultCondition() {
-			public String getFailureMessage() {
-				log.error("Shell loading failure");
-				fail();
-				return "Unable to load the shell";
+    public static void checkShellLoading(final String shellName) {
+        bot.waitUntil(new DefaultCondition() {
+            public String getFailureMessage() {
+                log.error("Shell loading failure");
+                fail();
+                return "Unable to load the shell";
 
-			}
+            }
 
-			public boolean test() throws Exception {
-				return bot.shell(shellName).isActive();
-			}
-		});
-	}
+            public boolean test() throws Exception {
+                return bot.shell(shellName).isActive();
+            }
+        });
+    }
 
-	public static void checkButton(final String buttonName,
-			final SWTBotShell botShell) {
+    public static void checkButton(final String buttonName, final SWTBotShell botShell) {
 
-		bot.waitUntil(new DefaultCondition() {
-			public String getFailureMessage() {
-				log.error(buttonName + " Button is not enabled");
-				fail();
-				return "Button is not enabled";
-			}
+        bot.waitUntil(new DefaultCondition() {
+            public String getFailureMessage() {
+                log.error(buttonName + " Button is not enabled");
+                fail();
+                return "Button is not enabled";
+            }
 
-			public boolean test() throws Exception {
-				return botShell.bot().button(buttonName).isEnabled();
-			}
+            public boolean test() throws Exception {
+                return botShell.bot().button(buttonName).isEnabled();
+            }
 
-		});
+        });
 
-	}
+    }
 
-	public static void setLableText(SWTBotShell botShell, String lableName,
-			String text) {
+    public static void setLableText(SWTBotShell botShell, String lableName, String text) {
 
-		String actual = "";
-		try {
-			botShell.bot().textWithLabel(lableName).setText(text);
-			bot.sleep(2000);
-			actual = botShell.bot().textWithLabel(lableName).getText().trim()
-					.toString();
-		} catch (WidgetNotFoundException e) {
-			log.error("Problem with the Lable", e);
-			fail();
-		}
-		try {
-			assertEquals(actual, text);
-		} catch (AssertionError e) {
-			log.error("Entered text is not the same", e);
-			fail();
-		}
-	}
+        String actual = "";
+        try {
+            botShell.bot().textWithLabel(lableName).setText(text);
+            bot.sleep(2000);
+            actual = botShell.bot().textWithLabel(lableName).getText().trim().toString();
+        } catch (WidgetNotFoundException e) {
+            log.error("Problem with the Lable", e);
+            fail();
+        }
+        try {
+            assertEquals(actual, text);
+        } catch (AssertionError e) {
+            log.error("Entered text is not the same", e);
+            fail();
+        }
+    }
 
 }

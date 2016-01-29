@@ -17,7 +17,7 @@
 package org.wso2.developerstudio.eclipse.test.automation.utils.constants;
 
 public class CompositeApllicationConstants {
-    public static final String MENU_NAME = "Composite Application Project";
-    public static final String NEW_Composite_Apllication = "New Composite Application Project";
-    public static final String PROJECT_NAME = "Project Name";
+	public static final String MENU_NAME = "Composite Application Project";
+	public static final String NEW_Composite_Apllication = "New Composite Application Project";
+	public static final String PROJECT_NAME = "Project Name";
 }

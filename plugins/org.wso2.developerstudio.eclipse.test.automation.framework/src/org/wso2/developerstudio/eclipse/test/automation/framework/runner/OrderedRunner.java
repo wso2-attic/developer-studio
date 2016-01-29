@@ -25,30 +25,30 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 public class OrderedRunner extends BlockJUnit4ClassRunner {
-	public OrderedRunner(Class<?> klass) throws InitializationError {
-		super(klass);
-	}
+    public OrderedRunner(Class<?> klass) throws InitializationError {
+        super(klass);
+    }
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
-	protected List computeTestMethods() {
-		List list = super.computeTestMethods();
-		List copy = new ArrayList(list);
-		Collections.sort(copy, new Comparator() {
-			public int compare(Object o1, Object o2) {
-				FrameworkMethod f1 = (FrameworkMethod) o1;
-				FrameworkMethod f2 = (FrameworkMethod) o2;
-				Order order1 = f1.getMethod().getAnnotation(Order.class);
-				Order order2 = f2.getMethod().getAnnotation(Order.class);
-				if (order1.order() == order2.order()) {
-					return 0;
-				} else if (order1.order() > order2.order()) {
-					return 1;
-				} else {
-					return -1;
-				}
-			}
-		});
-		return copy;
-	}
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    protected List computeTestMethods() {
+        List list = super.computeTestMethods();
+        List copy = new ArrayList(list);
+        Collections.sort(copy, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                FrameworkMethod f1 = (FrameworkMethod) o1;
+                FrameworkMethod f2 = (FrameworkMethod) o2;
+                Order order1 = f1.getMethod().getAnnotation(Order.class);
+                Order order2 = f2.getMethod().getAnnotation(Order.class);
+                if (order1.order() == order2.order()) {
+                    return 0;
+                } else if (order1.order() > order2.order()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
+        return copy;
+    }
 }

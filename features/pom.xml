@@ -41,9 +41,8 @@
 	<module>org.wso2.developerstudio.kernel.security.feature</module>
 	<module>org.wso2.developerstudio.library.artifact.feature</module>
         <module>org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature</module>
-        <module>org.wso2.developerstudio.eclipse.test.automation.framework.feature</module>
-        <module>org.wso2.developerstudio.eclipse.test.automation.utils.feature</module>
-
+        <module>org.wso2.developerstudio.test.automation.framework.feature</module>
+        <module>org.wso2.developerstudio.test.automation.utils.feature</module>
 
     </modules>
     <distributionManagement>

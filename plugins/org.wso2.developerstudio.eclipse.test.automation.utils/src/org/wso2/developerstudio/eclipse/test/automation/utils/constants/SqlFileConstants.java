@@ -17,7 +17,7 @@
 package org.wso2.developerstudio.eclipse.test.automation.utils.constants;
 
 public class SqlFileConstants {
-    public static final String FILE_NAME = "File name:";
-    public static final String NEW_SQL_FILE = "New SQL File";
+	public static final String FILE_NAME = "File name:";
+	public static final String NEW_SQL_FILE = "New SQL File";
 
 }

@@ -17,8 +17,8 @@ package org.wso2.developerstudio.eclipse.test.automation.utils.constants;
 
 public class PluginConstants {
 
-    public static final String MENU_NAME = "WSO2 Plugin Project";
-    public static final String PLUGIN_Id = "Plugin Id   ";
-    public static final String WSO2_PLUGIN_PROJECT_WINDOW_TITLE = "New WSO2 Plugin Project";
-    public static final String SINGLE_MODULE_PROJECT = "Single Module Project";
+	public static final String MENU_NAME = "WSO2 Plugin Project";
+	public static final String PLUGIN_Id = "Plugin Id   ";
+	public static final String WSO2_PLUGIN_PROJECT_WINDOW_TITLE = "New WSO2 Plugin Project";
+	public static final String SINGLE_MODULE_PROJECT = "Single Module Project";
 }
