@@ -22,8 +22,8 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.constants.BusinessRulesServiceConstants;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
 
 public class BusinessRulesUtil {
 
@@ -32,11 +32,12 @@ public class BusinessRulesUtil {
 
 	public static void serviceEditorText(String option, String value) {
 		try {
-			serviceEditor = Util.bot.editorByTitle("service.rsl");
+			serviceEditor = WorkbenchElementsValidator.bot
+					.editorByTitle("service.rsl");
 			serviceEditor.bot().textWithLabel(option).setText(value);
 			serviceEditor.save();
 		} catch (Exception e) {
-			Util.log.error("Editor cannot be found", e);
+			WorkbenchElementsValidator.log.error("Editor cannot be found", e);
 			fail();
 		}
 
@@ -44,10 +45,11 @@ public class BusinessRulesUtil {
 
 	public static void closeServiceEditor() {
 		try {
-			serviceEditor = Util.bot.editorByTitle("service.rsl");
+			serviceEditor = WorkbenchElementsValidator.bot
+					.editorByTitle("service.rsl");
 			serviceEditor.close();
 		} catch (Exception e) {
-			Util.log.error("Editor cannot be found", e);
+			WorkbenchElementsValidator.log.error("Editor cannot be found", e);
 			fail();
 		}
 	}
@@ -55,52 +57,64 @@ public class BusinessRulesUtil {
 	public static void createBusinessRulesService(String projectName,
 			String serviceName) {
 
-		Util.bot.sleep(2000);
-		Util.checkShellLoading(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
-		newServiceProject = Util.bot
+		WorkbenchElementsValidator.bot.sleep(2000);
+		WorkbenchElementsValidator
+				.checkShellLoading(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
+		newServiceProject = WorkbenchElementsValidator.bot
 				.shell(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
-		Util.checkButton(CommonConstants.NEXT, newServiceProject);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.NEXT).click();
-		Util.setLableText(newServiceProject,
+		WorkbenchElementsValidator.setLableText(newServiceProject,
 				BusinessRulesServiceConstants.PROJECT_NAME, projectName);
-		Util.setLableText(newServiceProject,
+		WorkbenchElementsValidator.setLableText(newServiceProject,
 				BusinessRulesServiceConstants.SERVICE_NAME, serviceName);
-		Util.checkButton(CommonConstants.NEXT, newServiceProject);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.NEXT).click();
-		Util.checkButton(CommonConstants.FINISH, newServiceProject);
+		WorkbenchElementsValidator.checkButton(CommonConstants.FINISH,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.FINISH).click();
-		Util.bot.waitUntil(Conditions.shellCloses(newServiceProject));
+		WorkbenchElementsValidator.bot.waitUntil(Conditions
+				.shellCloses(newServiceProject));
 		try {
-			Util.bot.editorByTitle(BusinessRulesServiceConstants.SERVICE_RSL)
-					.show();
-			Util.log.info("Create Business Rules Service Sucsessful");
+			WorkbenchElementsValidator.bot.editorByTitle(
+					BusinessRulesServiceConstants.SERVICE_RSL).show();
+			WorkbenchElementsValidator.log
+					.info("Create Business Rules Service Sucsessful");
 
 		} catch (WidgetNotFoundException e) {
-			Util.log.error("Editor didnt load",e);
+			WorkbenchElementsValidator.log.error("Editor didnt load", e);
 			fail();
 		}
 	}
 
 	public static void importBusinessRulesService(String path) {
 
-		Util.checkShellLoading(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
-		newServiceProject = Util.bot
+		WorkbenchElementsValidator
+				.checkShellLoading(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
+		newServiceProject = WorkbenchElementsValidator.bot
 				.shell(BusinessRulesServiceConstants.NEW_BUSINESS_RULES_SERVICE_PROJECT);
 		newServiceProject
 				.bot()
 				.radio(BusinessRulesServiceConstants.IMPORT_BUSINESS_RULE_SERVICE)
 				.click();
-		Util.checkButton(CommonConstants.NEXT, newServiceProject);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.NEXT).click();
-		Util.setLableText(
-				newServiceProject,
-				BusinessRulesServiceConstants.BUSINESS_RULE_SERVICE_DESCRIPTOR_FILE,
-				path);
-		Util.checkButton(CommonConstants.NEXT, newServiceProject);
+		WorkbenchElementsValidator
+				.setLableText(
+						newServiceProject,
+						BusinessRulesServiceConstants.BUSINESS_RULE_SERVICE_DESCRIPTOR_FILE,
+						path);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.NEXT).click();
-		Util.checkButton(CommonConstants.FINISH, newServiceProject);
+		WorkbenchElementsValidator.checkButton(CommonConstants.FINISH,
+				newServiceProject);
 		newServiceProject.bot().button(CommonConstants.FINISH).click();
-		Util.bot.waitUntil(Conditions.shellCloses(newServiceProject));
+		WorkbenchElementsValidator.bot.waitUntil(Conditions
+				.shellCloses(newServiceProject));
 	}
 
 }

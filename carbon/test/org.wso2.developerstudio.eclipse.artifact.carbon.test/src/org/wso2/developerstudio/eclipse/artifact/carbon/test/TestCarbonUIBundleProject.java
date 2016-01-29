@@ -17,11 +17,11 @@
 package org.wso2.developerstudio.eclipse.artifact.carbon.test;
 
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.CarbonUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 
 /* Testing Carbon UI Bundle Project
  * Create Carbon UI Bundle Project using new menu
@@ -31,7 +31,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
  */
 
 @RunWith(OrderedRunner.class)
-public class TestCarbonUIBundleProject extends Setup {
+public class TestCarbonUIBundleProject extends Executor {
 
 	private String projectName = "firstUi";
 
@@ -40,10 +40,10 @@ public class TestCarbonUIBundleProject extends Setup {
 	@Order(order = 1)
 	public void createCarbonUIBundleProject() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromMenu("Carbon UI Bundle Project");
+		FunctionalUtil.openProjectCreationWizardFromMenu("Carbon UI Bundle Project");
 		CarbonUtils.createCarbonUI(projectName);
-		CommonUtil.activateCtab("Runtime");
-		CommonUtil.activateCtab("Extensions");
+		FunctionalUtil.activateCtab("Runtime");
+		FunctionalUtil.activateCtab("Extensions");
 
 	}
 
@@ -52,20 +52,20 @@ public class TestCarbonUIBundleProject extends Setup {
 	public void createNewClass() throws Exception {
 		String className = "HelloWorld";
 
-		CommonUtil.openProjectCreationWizardFromRightClick(projectName, "Class");
-		CommonUtil.createJavaClass(className);
+		FunctionalUtil.openProjectCreationWizardFromRightClick(projectName, "Class");
+		FunctionalUtil.createJavaClass(className);
 
 	}
 
 	@Test
 	@Order(order = 3)
 	public void changePerspective() throws Exception {
-		CommonUtil.openPerspective("Java EE");
+		FunctionalUtil.openPerspective("Java EE");
 	}
 
 	@Test
 	@Order(order = 4)
 	public void deleteProject() throws Exception {
-		CommonUtil.deleteWithContent(projectName);
+		FunctionalUtil.deleteProjectWithContent(projectName);
 	}
 }

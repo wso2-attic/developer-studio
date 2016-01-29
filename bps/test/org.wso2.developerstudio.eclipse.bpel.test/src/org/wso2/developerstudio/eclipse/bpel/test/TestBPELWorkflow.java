@@ -17,11 +17,11 @@
 package org.wso2.developerstudio.eclipse.bpel.test;
 
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util.BPELUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
 /* Testing BPEL Workflow
  * Create a new BPEL Workflow using new menu
@@ -31,27 +31,27 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
  */
 
 @RunWith(OrderedRunner.class)
-public class TestBPELWorkflow extends Setup {
+public class TestBPELWorkflow extends Executor {
 
-    private String projectName = "first";
-    private String[] path = { "bpelContent" };
+	private String projectName = "first";
+	private String[] path = { "bpelContent" };
 
-    @Test
-    @Order(order = 1)
-    public void createBPELProject() throws Exception {
+	@Test
+	@Order(order = 1)
+	public void createBPELProject() throws Exception {
 
-        CommonUtil.openProjectCreationWizardFromMenu("BPEL Workflow");
-        BPELUtil.createNewBPELProject(projectName);
+		FunctionalUtil.openProjectCreationWizardFromMenu("BPEL Workflow");
+		BPELUtil.createNewBPELProject(projectName);
 
-        CommonUtil.getexpandProjecttree(projectName, path);
-        CommonUtil.saveEditor(projectName + ".bpel");
+		FunctionalUtil.getExpandProjectTree(projectName, path);
+		FunctionalUtil.saveEditor(projectName + ".bpel");
 
-    }
+	}
 
-    @Test
-    @Order(order = 2)
-    public void deleteProject() throws Exception {
-        CommonUtil.deleteWithContent(projectName);
-    }
+	@Test
+	@Order(order = 2)
+	public void deleteProject() throws Exception {
+		FunctionalUtil.deleteProjectWithContent(projectName);
+	}
 
 }

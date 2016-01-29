@@ -11,5 +11,6 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util,
  org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants
 Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
- org.wso2.developerstudio.eclipse.swtfunctionalframework.util,
- org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0"

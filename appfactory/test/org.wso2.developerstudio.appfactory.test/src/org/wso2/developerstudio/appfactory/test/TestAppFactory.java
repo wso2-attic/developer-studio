@@ -16,12 +16,12 @@
 
 package org.wso2.developerstudio.appfactory.test;
 
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.AppFactoryUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.constants.AppFactoryConstants;
 
 /* Testing app factory prospective
@@ -33,53 +33,57 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.c
  */
 
 @RunWith(OrderedRunner.class)
-public class TestAppFactory extends Setup {
+public class TestAppFactory extends Executor {
 
-    protected String email = "kaviththiranga@gmail.com";
-    AppFactoryUtils appFactoryUtil = new AppFactoryUtils();
+	protected String email = "kaviththiranga@gmail.com";
+	AppFactoryUtils appFactoryUtil = new AppFactoryUtils();
 
-    @Test
-    @Order(order = 1)
-    public void openAppFactoryPerspective() throws Exception {
-    	CommonUtil.openPerspective(AppFactoryConstants.WSO2_APP_FACTORY);
+	@Test
+	@Order(order = 1)
+	public void openAppFactoryPerspective() throws Exception {
+		FunctionalUtil.openPerspective(AppFactoryConstants.WSO2_APP_FACTORY);
 
-    }
+	}
 
-    @Test
-    @Order(order = 2)
-    public void loginToAppFactory() throws Exception {
+	@Test
+	@Order(order = 2)
+	public void loginToAppFactory() throws Exception {
 
-        String password = "123456";
+		String password = "123456";
 
-        appFactoryUtil.appFactoryLogin(email, password, AppFactoryConstants.APP_CLOUD, null, null);
+		appFactoryUtil.appFactoryLogin(email, password,
+				AppFactoryConstants.APP_CLOUD, null, null);
 
-    }
+	}
 
-    @Test
-    @Order(order = 3)
-    public void buildTest() throws Exception {
+	@Test
+	@Order(order = 3)
+	public void buildTest() throws Exception {
 
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.BUILD);
+		AppFactoryUtils.appFactoryApplicationAction("trunk/main",
+				AppFactoryConstants.BUILD);
 
-    }
+	}
 
-    @Test
-    @Order(order = 4)
-    public void deployTest() throws Exception {
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.DEPLOY);
-    }
+	@Test
+	@Order(order = 4)
+	public void deployTest() throws Exception {
+		AppFactoryUtils.appFactoryApplicationAction("trunk/main",
+				AppFactoryConstants.DEPLOY);
+	}
 
-    @Test
-    @Order(order = 5)
-    public void buildLogsTest() throws Exception {
+	@Test
+	@Order(order = 5)
+	public void buildLogsTest() throws Exception {
 
-        AppFactoryUtils.appFactoryApplicationAction("trunk/main", AppFactoryConstants.BUILD_LOGS);
-    }
-    
-    @Test
-    @Order(order = 6)
-    public void cancel()throws Exception{
-    	CommonUtil.closeView(AppFactoryConstants.APPLICATIONS_LIST);
-    }
+		AppFactoryUtils.appFactoryApplicationAction("trunk/main",
+				AppFactoryConstants.BUILD_LOGS);
+	}
+
+	@Test
+	@Order(order = 6)
+	public void cancel() throws Exception {
+		FunctionalUtil.closeView(AppFactoryConstants.APPLICATIONS_LIST);
+	}
 
 }

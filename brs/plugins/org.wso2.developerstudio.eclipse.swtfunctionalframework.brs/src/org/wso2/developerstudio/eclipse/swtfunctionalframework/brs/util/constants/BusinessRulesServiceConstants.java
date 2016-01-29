@@ -18,11 +18,11 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.constan
 
 public class BusinessRulesServiceConstants {
 
-    public static final String BUSINESS_RULE_SERVICE_DESCRIPTOR_FILE = "Business Rule  Service Descriptor File*";
-    public static final String IMPORT_BUSINESS_RULE_SERVICE = "Import Business Rule Service";
-    public static final String NEW_BUSINESS_RULES_SERVICE_PROJECT = "New Business Rules Service Project";
-    public static final String PROJECT_NAME = "Project Name*";
-    public static final String SERVICE_RSL = "service.rsl";
-    public static final String SERVICE_NAME = "Service Name*";
+	public static final String BUSINESS_RULE_SERVICE_DESCRIPTOR_FILE = "Business Rule  Service Descriptor File*";
+	public static final String IMPORT_BUSINESS_RULE_SERVICE = "Import Business Rule Service";
+	public static final String NEW_BUSINESS_RULES_SERVICE_PROJECT = "New Business Rules Service Project";
+	public static final String PROJECT_NAME = "Project Name*";
+	public static final String SERVICE_RSL = "service.rsl";
+	public static final String SERVICE_NAME = "Service Name*";
 
 }

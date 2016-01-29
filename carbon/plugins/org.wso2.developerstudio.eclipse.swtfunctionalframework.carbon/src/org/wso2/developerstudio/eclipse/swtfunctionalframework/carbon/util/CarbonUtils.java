@@ -19,31 +19,36 @@ package org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants.CarbonUICons;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 
 public class CarbonUtils {
 
 	public static void createCarbonUI(String projectName) {
 
-		Util.checkShellLoading(CarbonUICons.PROJECT_WIZARD_WINDOW_TITLE);
-		SWTBotShell newCarbonUIBundle = Util.bot
+		WorkbenchElementsValidator
+				.checkShellLoading(CarbonUICons.PROJECT_WIZARD_WINDOW_TITLE);
+		SWTBotShell newCarbonUIBundle = WorkbenchElementsValidator.bot
 				.shell(CarbonUICons.PROJECT_WIZARD_WINDOW_TITLE);
-		Util.checkButton(CommonConstants.NEXT, newCarbonUIBundle);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newCarbonUIBundle);
 		newCarbonUIBundle.bot().button(CommonConstants.NEXT).click();
-		Util.setLableText(newCarbonUIBundle, CarbonUICons.PROJECT_NAME,
-				projectName);
-		Util.checkButton(CommonConstants.NEXT, newCarbonUIBundle);
+		WorkbenchElementsValidator.setLableText(newCarbonUIBundle,
+				CarbonUICons.PROJECT_NAME, projectName);
+		WorkbenchElementsValidator.checkButton(CommonConstants.NEXT,
+				newCarbonUIBundle);
 		newCarbonUIBundle.bot().button(CommonConstants.NEXT).click();
-		Util.checkButton(CommonConstants.FINISH, newCarbonUIBundle);
+		WorkbenchElementsValidator.checkButton(CommonConstants.FINISH,
+				newCarbonUIBundle);
 		newCarbonUIBundle.bot().button(CommonConstants.FINISH).click();
 		try {
-			CommonUtil.switchPerspectiveInCreatingProjects();
+			FunctionalUtil.switchPerspectiveInProjectCreation();
 		} catch (AssertionError e) {
 
 		}
-		Util.bot.waitUntil(Conditions.shellCloses(newCarbonUIBundle));
+		WorkbenchElementsValidator.bot.waitUntil(Conditions
+				.shellCloses(newCarbonUIBundle));
 	}
 
 }

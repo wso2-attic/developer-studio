@@ -17,9 +17,9 @@
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.bpel.util.constants;
 
 public class BPELProjectConstants {
-    public static final String BPEL_ARCHIVE_FILE = "BPEL Archive File*";
-    public static final String IMPORT_BPEL_WORKFLOW = "Import BPEL Workflow";
-    public static final String NEW_BPEL_PROJECT = "New BPEL Project";
-    public static final String PROJECT_NAME = "Project Name*";
+	public static final String BPEL_ARCHIVE_FILE = "BPEL Archive File*";
+	public static final String IMPORT_BPEL_WORKFLOW = "Import BPEL Workflow";
+	public static final String NEW_BPEL_PROJECT = "New BPEL Project";
+	public static final String PROJECT_NAME = "Project Name*";
 
 }

@@ -17,13 +17,13 @@
 package org.wso2.developerstudio.eclipse.registry.apim.perspective.test;
 
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.APIMUtils;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants.APIMConstants;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
 
 /* Testing APIM perspective
  * Open perspective and login
@@ -41,7 +41,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
  */
 
 @RunWith(OrderedRunner.class)
-public class TestApiManager extends Setup {
+public class TestApiManager extends Executor {
 
     String url = "https://localhost:9443/";
     String userName = "admin";
@@ -56,7 +56,7 @@ public class TestApiManager extends Setup {
     @Order(order = 1)
     public void login() throws Exception {
 
-        CommonUtil.openPerspective(APIMConstants.WSO2_API_MANAGER);
+        FunctionalUtil.openPerspective(APIMConstants.WSO2_API_MANAGER);
         apimUtils.login(userName, passWord, url, null);
 
     }

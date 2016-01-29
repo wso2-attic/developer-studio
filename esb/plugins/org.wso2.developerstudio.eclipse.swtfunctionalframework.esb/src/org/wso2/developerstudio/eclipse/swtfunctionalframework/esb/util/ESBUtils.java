@@ -17,118 +17,120 @@
 package org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util;
 
 import static org.junit.Assert.fail;
+
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ESBProjectConstants;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.EndPoinConstants;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.ProxyServiceConstants;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants.SequenceConstants;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
+import org.wso2.developerstudio.eclipse.test.automation.utils.validator.ValidatorUtil;
 
 public class ESBUtils {
 
     public static void createESBProject(String projectName) {
-        Util.bot.sleep(2000);
-        SWTBotShell newESBConf = Util.bot.shell(ESBProjectConstants.NEW_ESB_PROJECT);
+        WorkbenchElementsValidator.bot.sleep(2000);
+        SWTBotShell newESBConf = WorkbenchElementsValidator.bot.shell(ESBProjectConstants.NEW_ESB_PROJECT);
         newESBConf.bot().button(CommonConstants.NEXT).click();
-        Util.bot.sleep(1000);
-        Util.setLableText(newESBConf, ESBProjectConstants.PROJECT_NAME, projectName);
-        Util.bot.sleep(1000);
+        WorkbenchElementsValidator.bot.sleep(1000);
+        WorkbenchElementsValidator.setLableText(newESBConf, ESBProjectConstants.PROJECT_NAME, projectName);
+        WorkbenchElementsValidator.bot.sleep(1000);
         newESBConf.bot().button(CommonConstants.NEXT).click();
-        Util.bot.sleep(1000);
+        WorkbenchElementsValidator.bot.sleep(1000);
         newESBConf.bot().button(CommonConstants.FINISH).click();
-        Util.bot.sleep(1000);
+        WorkbenchElementsValidator.bot.sleep(1000);
     }
 
     public static void createNewSequence(String sequenceName, String esbProjectToSave) {
 
-        Util.checkShellLoading(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
-        SWTBotShell newSeqeunce = Util.bot.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
-        Util.checkButton(CommonConstants.NEXT, newSeqeunce);
+        WorkbenchElementsValidator.checkShellLoading(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+        SWTBotShell newSeqeunce = WorkbenchElementsValidator.bot.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+        WorkbenchElementsValidator.checkButton(CommonConstants.NEXT, newSeqeunce);
         newSeqeunce.bot().button(CommonConstants.NEXT).click();
-        Util.bot.sleep(1000);
-        Util.setLableText(newSeqeunce, SequenceConstants.SEQUENCE_NAME, sequenceName);
+        WorkbenchElementsValidator.bot.sleep(1000);
+        WorkbenchElementsValidator.setLableText(newSeqeunce, SequenceConstants.SEQUENCE_NAME, sequenceName);
         newSeqeunce.bot().button(CommonConstants.BROWSE).click();
 
-        Util.checkShellLoading(CommonConstants.SELECT_FOLDER);
-        Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
-        Util.saveIn.bot().tree().getTreeItem(esbProjectToSave).doubleClick();
-        Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(Util.saveIn));
-        newSeqeunce = Util.bot.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
-        Util.checkButton(CommonConstants.FINISH, newSeqeunce);
+        WorkbenchElementsValidator.checkShellLoading(CommonConstants.SELECT_FOLDER);
+        WorkbenchElementsValidator.saveIn = WorkbenchElementsValidator.bot.shell(CommonConstants.SELECT_FOLDER);
+        WorkbenchElementsValidator.saveIn.bot().tree().getTreeItem(esbProjectToSave).doubleClick();
+        WorkbenchElementsValidator.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(WorkbenchElementsValidator.saveIn));
+        newSeqeunce = WorkbenchElementsValidator.bot.shell(SequenceConstants.NEW_SEQUENCE_ARTIFACT);
+        WorkbenchElementsValidator.checkButton(CommonConstants.FINISH, newSeqeunce);
         newSeqeunce.bot().button(CommonConstants.FINISH).click();
-        Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newSeqeunce));
+        WorkbenchElementsValidator.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newSeqeunce));
         try {
-            Util.bot.editorByTitle(sequenceName + CommonConstants.XML).show();
-            Util.log.info("Create New Sequence Sucsessful");
+            WorkbenchElementsValidator.bot.editorByTitle(sequenceName + CommonConstants.XML).show();
+            WorkbenchElementsValidator.log.info("Create New Sequence Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load", e);
+            WorkbenchElementsValidator.log.error("Editor didnt load", e);
             fail();
         }
     }
 
     public static void createProxyService(String serviceName) {
 
-        Util.checkShellLoading(ProxyServiceConstants.NEW_PROXY_SERVICE);
-        SWTBotShell newProxy = Util.bot.shell(ProxyServiceConstants.NEW_PROXY_SERVICE);
-        Util.checkButton(CommonConstants.NEXT, newProxy);
+        WorkbenchElementsValidator.checkShellLoading(ProxyServiceConstants.NEW_PROXY_SERVICE);
+        SWTBotShell newProxy = WorkbenchElementsValidator.bot.shell(ProxyServiceConstants.NEW_PROXY_SERVICE);
+        WorkbenchElementsValidator.checkButton(CommonConstants.NEXT, newProxy);
         newProxy.bot().button(CommonConstants.NEXT).click();
-        Util.setLableText(newProxy, ProxyServiceConstants.PROXY_SERVICE_NAME, serviceName);
+        WorkbenchElementsValidator.setLableText(newProxy, ProxyServiceConstants.PROXY_SERVICE_NAME, serviceName);
         newProxy.bot().comboBox().setSelection(ProxyServiceConstants.CUSTOM_PROXY);
-        Util.checkButton(CommonConstants.FINISH, newProxy);
+        WorkbenchElementsValidator.checkButton(CommonConstants.FINISH, newProxy);
         newProxy.bot().button(CommonConstants.FINISH).click();
-        Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newProxy));
+        WorkbenchElementsValidator.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newProxy));
         try {
-            Util.bot.editorByTitle(serviceName + CommonConstants.XML).show();
-            Util.log.info("Create New Proxy Service Sucsessful");
+            WorkbenchElementsValidator.bot.editorByTitle(serviceName + CommonConstants.XML).show();
+            WorkbenchElementsValidator.log.info("Create New Proxy Service Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load", e);
+            WorkbenchElementsValidator.log.error("Editor didnt load", e);
             fail();
         }
 
     }
 
     public static void createNewEndpointWithESB(String endpoint, String esbProject) {
-        Util.checkShellLoading(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
-        SWTBotShell newEndpoint = Util.bot.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
-        Util.checkButton(CommonConstants.NEXT, newEndpoint);
+        WorkbenchElementsValidator.checkShellLoading(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+        SWTBotShell newEndpoint = WorkbenchElementsValidator.bot.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+        WorkbenchElementsValidator.checkButton(CommonConstants.NEXT, newEndpoint);
         newEndpoint.bot().button(CommonConstants.NEXT).click();
         newEndpoint.bot().label(EndPoinConstants.ENDPOINT_CONFIGURATION).click();
-        Util.bot.sleep(1000);
+        WorkbenchElementsValidator.bot.sleep(1000);
         newEndpoint.bot().label(EndPoinConstants.ENDPOINT_CONFIGURATION).click();
-        Util.setLableText(newEndpoint, EndPoinConstants.ENDPOINT_NAME, endpoint);
+        WorkbenchElementsValidator.setLableText(newEndpoint, EndPoinConstants.ENDPOINT_NAME, endpoint);
         newEndpoint.bot().comboBox().setSelection(EndPoinConstants.DEFAULT_ENDPOINT);
-        Util.bot.link().click();
+        WorkbenchElementsValidator.bot.link().click();
 
         createESBProject(esbProject);
 
         newEndpoint.bot().button(CommonConstants.BROWSE).click();
 
-        Util.checkShellLoading(CommonConstants.SELECT_FOLDER);
-        Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
-        Util.saveIn = Util.bot.shell(CommonConstants.SELECT_FOLDER);
-        Util.saveIn.bot().tree().getTreeItem(esbProject).doubleClick();
-        Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(Util.saveIn));
+        WorkbenchElementsValidator.checkShellLoading(CommonConstants.SELECT_FOLDER);
+        WorkbenchElementsValidator.saveIn = WorkbenchElementsValidator.bot.shell(CommonConstants.SELECT_FOLDER);
+        WorkbenchElementsValidator.saveIn = WorkbenchElementsValidator.bot.shell(CommonConstants.SELECT_FOLDER);
+        WorkbenchElementsValidator.saveIn.bot().tree().getTreeItem(esbProject).doubleClick();
+        WorkbenchElementsValidator.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(WorkbenchElementsValidator.saveIn));
 
-        newEndpoint = Util.bot.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
-        Util.checkButton(CommonConstants.FINISH, newEndpoint);
+        newEndpoint = WorkbenchElementsValidator.bot.shell(EndPoinConstants.NEW_ENDPOINT_ARTIFACT);
+        WorkbenchElementsValidator.checkButton(CommonConstants.FINISH, newEndpoint);
         newEndpoint.bot().button(CommonConstants.FINISH).click();
         try {
-            CommonUtil.switchPerspectiveInCreatingProjects();
+        	FunctionalUtil.switchPerspectiveInProjectCreation();
         } catch (AssertionError e) {
 
         }
-        Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newEndpoint));
+        WorkbenchElementsValidator.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(newEndpoint));
         try {
-            Util.bot.editorByTitle(endpoint + CommonConstants.XML).show();
-            Util.log.info("Create New Endpoint Sucsessful");
+            WorkbenchElementsValidator.bot.editorByTitle(endpoint + CommonConstants.XML).show();
+            WorkbenchElementsValidator.log.info("Create New Endpoint Sucsessful");
 
         } catch (WidgetNotFoundException e) {
-            Util.log.error("Editor didnt load", e);
+            WorkbenchElementsValidator.log.error("Editor didnt load", e);
             fail();
         }
     }
@@ -136,20 +138,20 @@ public class ESBUtils {
     public static void validateProxyServicexml(String proxyService) {
 
         String editorName;
-        Util.expectedBuffer = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        Util.expectedBuffer.append("<proxy name=\"" + proxyService + "\" startOnLoad=\"true\" trace=\"disable\"\n");
-        Util.expectedBuffer.append("  transports=\"http https\" xmlns=\"http://ws.apache.org/ns/synapse\">\n");
-        Util.expectedBuffer.append("  <target>\n");
-        Util.expectedBuffer.append("    <inSequence/>\n");
-        Util.expectedBuffer.append("    <outSequence/>\n");
-        Util.expectedBuffer.append("    <faultSequence/>\n");
-        Util.expectedBuffer.append("  </target>\n");
-        Util.expectedBuffer.append("</proxy>");
-        Util.expect = Util.expectedBuffer.toString();
+        WorkbenchElementsValidator.expectedBuffer = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("<proxy name=\"" + proxyService + "\" startOnLoad=\"true\" trace=\"disable\"\n");
+        WorkbenchElementsValidator.expectedBuffer.append("  transports=\"http https\" xmlns=\"http://ws.apache.org/ns/synapse\">\n");
+        WorkbenchElementsValidator.expectedBuffer.append("  <target>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("    <inSequence/>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("    <outSequence/>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("    <faultSequence/>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("  </target>\n");
+        WorkbenchElementsValidator.expectedBuffer.append("</proxy>");
+        WorkbenchElementsValidator.expect = WorkbenchElementsValidator.expectedBuffer.toString();
 
-        Util.bot.cTabItem(CommonConstants.SOURCE).activate();
+        WorkbenchElementsValidator.bot.cTabItem(CommonConstants.SOURCE).activate();
         editorName = proxyService + CommonConstants.XML;
-        CommonUtil.contentValidation(editorName, Util.expect);
+		ValidatorUtil.contentValidation(editorName, WorkbenchElementsValidator.expect);
 
     }
 

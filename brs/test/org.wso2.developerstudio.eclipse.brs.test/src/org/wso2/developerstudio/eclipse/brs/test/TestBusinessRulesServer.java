@@ -16,16 +16,16 @@
 
 package org.wso2.developerstudio.eclipse.brs.test;
 
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.BusinessRulesUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 
 @RunWith(OrderedRunner.class)
-public class TestBusinessRulesServer extends Setup {
+public class TestBusinessRulesServer extends Executor {
 
 	private String projectName = "businessRule";
 	private String serviceName = "myFirstService";
@@ -37,7 +37,7 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 1)
 	public void createANewBusinesRulesServer() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
+		FunctionalUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
 		BusinessRulesUtil.createBusinessRulesService(projectName, serviceName);
 	}
 
@@ -47,7 +47,7 @@ public class TestBusinessRulesServer extends Setup {
 
 		BusinessRulesUtil.serviceEditorText("Target Namespace", "home");
 		BusinessRulesUtil.serviceEditorText("Service Name", serviceName);
-		CommonUtil.activateCtab(CommonConstants.SOURCE);
+		FunctionalUtil.activateCtab(CommonConstants.SOURCE);
 		BusinessRulesUtil.closeServiceEditor();
 	}
 
@@ -55,8 +55,8 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 3)
 	public void createNewClass() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromRightClick(projectName, path, "Class");
-		CommonUtil.createJavaClass(className);
+		FunctionalUtil.openProjectCreationWizardFromRightClick(projectName, path, "Class");
+		FunctionalUtil.createJavaClass(className);
 
 	}
 
@@ -64,7 +64,7 @@ public class TestBusinessRulesServer extends Setup {
 	@Order(order = 4)
 	public void importARule() {
 
-		CommonUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
+		FunctionalUtil.openProjectCreationWizardFromMenu("Business Rules Service Project");
 		BusinessRulesUtil.importBusinessRulesService(servicepath);
 
 	}
@@ -72,13 +72,13 @@ public class TestBusinessRulesServer extends Setup {
 	@Test
 	@Order(order = 5)
 	public void deleteProject() {
-		CommonUtil.deleteWithContent(projectName);
+		FunctionalUtil.deleteProjectWithContent(projectName);
 	}
 
 	@Test
 	@Order(order = 5)
 	public void deleteNextProject() {
-		CommonUtil.deleteWithContent("myFirst");
+		FunctionalUtil.deleteProjectWithContent("myFirst");
 	}
 
 }

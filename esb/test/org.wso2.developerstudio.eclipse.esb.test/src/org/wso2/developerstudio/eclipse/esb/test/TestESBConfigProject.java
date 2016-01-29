@@ -18,10 +18,10 @@ package org.wso2.developerstudio.eclipse.esb.test;
 
 import org.junit.runner.RunWith;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.ESBUtils;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.junit.*;
 import org.junit.Test;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.CommonUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
+import org.wso2.developerstudio.eclipse.test.automation.framework.executor.Executor;
+import org.wso2.developerstudio.eclipse.test.automation.framework.runner.*;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.FunctionalUtil;
 
 /* Testing ESB Configuration Project
  * Create ESB Config Project using new menu
@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Setup;
  */
 
 @RunWith(OrderedRunner.class)
-public class TestESBConfigProject extends Setup {
+public class TestESBConfigProject extends Executor {
 
 	private String projectNameMenu = "CreatedFromMenu";
 	private String projectNameDash = "CreatedFromDash";
@@ -45,7 +45,7 @@ public class TestESBConfigProject extends Setup {
 	@Order(order = 1)
 	public void createANewESBProjectFromMenu() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromMenu("ESB Config Project");
+		FunctionalUtil.openProjectCreationWizardFromMenu("ESB Config Project");
 		ESBUtils.createESBProject(projectNameMenu);
 	}
 
@@ -53,7 +53,8 @@ public class TestESBConfigProject extends Setup {
 	@Order(order = 2)
 	public void createANewESBProjectFromDash() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromDashboard("ESB Config Project");
+		FunctionalUtil
+				.openProjectCreationWizardFromDashboard("ESB Config Project");
 		ESBUtils.createESBProject(projectNameDash);
 	}
 
@@ -62,16 +63,17 @@ public class TestESBConfigProject extends Setup {
 	public void createNewSequence() throws Exception {
 
 		String[] path = { "src", "main", "synapse-config", "sequences" };
-		CommonUtil.openProjectCreationWizardFromRightClick(projectNameMenu, "Sequence");
+		FunctionalUtil.openProjectCreationWizardFromRightClick(projectNameMenu,
+				"Sequence");
 		ESBUtils.createNewSequence(sequenceName, projectNameDash);
-		CommonUtil.getexpandProjecttree(projectNameDash, path);
+		FunctionalUtil.getExpandProjectTree(projectNameDash, path);
 	}
 
 	@Test
 	@Order(order = 4)
 	public void createProxy() throws Exception {
 
-		CommonUtil.openProjectCreationWizardFromDashboard("Proxy Service");
+		FunctionalUtil.openProjectCreationWizardFromDashboard("Proxy Service");
 		ESBUtils.createProxyService(proxyService);
 		ESBUtils.validateProxyServicexml(proxyService);
 	}
@@ -81,18 +83,19 @@ public class TestESBConfigProject extends Setup {
 	public void createEndpoint() throws Exception {
 
 		String[] path = { "src", "main", "synapse-config", "endpoints" };
-		CommonUtil.openProjectCreationWizardFromRightClick(projectNameMenu, "Endpoint");
+		FunctionalUtil.openProjectCreationWizardFromRightClick(projectNameMenu,
+				"Endpoint");
 		ESBUtils.createNewEndpointWithESB(endpointName, projectNameSecondary);
-		CommonUtil.getexpandProjecttree(projectNameSecondary, path);
+		FunctionalUtil.getExpandProjectTree(projectNameSecondary, path);
 
 	}
 
 	@Test
 	@Order(order = 6)
 	public void deleteProjects() throws Exception {
-		CommonUtil.deleteWithContent(projectNameMenu);
-		CommonUtil.deleteWithContent(projectNameDash);
-		CommonUtil.deleteWithContent(projectNameSecondary);
+		FunctionalUtil.deleteProjectWithContent(projectNameMenu);
+		FunctionalUtil.deleteProjectWithContent(projectNameDash);
+		FunctionalUtil.deleteProjectWithContent(projectNameSecondary);
 	}
 
 }

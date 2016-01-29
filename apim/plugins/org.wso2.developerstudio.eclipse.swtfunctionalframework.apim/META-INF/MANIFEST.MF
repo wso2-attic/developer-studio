@@ -13,5 +13,8 @@ Bundle-ClassPath: .,
 Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util;uses:="org.eclipse.swtbot.swt.finder.widgets,org.wso2.developerstudio.eclipse.swtfunctionalframework.util",
  org.wso2.developerstudio.eclipse.swtfunctionalframework.apim.util.constants
 Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
- org.wso2.developerstudio.eclipse.swtfunctionalframework.util,
- org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.runner;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0"

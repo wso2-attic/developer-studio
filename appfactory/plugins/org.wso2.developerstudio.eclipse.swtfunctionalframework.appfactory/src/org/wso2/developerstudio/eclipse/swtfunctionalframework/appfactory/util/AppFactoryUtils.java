@@ -25,138 +25,173 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.wso2.developerstudio.eclipse.swtfunctionalframework.appfactory.util.constants.AppFactoryConstants;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.PerspectiveLoginUtil;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.Util;
-import org.wso2.developerstudio.eclipse.swtfunctionalframework.util.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.framework.element.validator.WorkbenchElementsValidator;
+import org.wso2.developerstudio.eclipse.test.automation.utils.constants.CommonConstants;
+import org.wso2.developerstudio.eclipse.test.automation.utils.functional.PerspectiveLoginUtil;
 
-public class AppFactoryUtils implements PerspectiveLoginUtil{
+public class AppFactoryUtils implements PerspectiveLoginUtil {
 
+	public static SWTBotTreeItem appFactoryTree() {
+		SWTBotView appList = WorkbenchElementsValidator.bot
+				.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST);
+		try {
+			appList.bot().tree()
+					.getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE)
+					.select();
+			appList.bot().tree()
+					.getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE)
+					.contextMenu(AppFactoryConstants.OPEN).click();
+			while (!appList
+					.bot()
+					.tree()
+					.getTreeItem(
+							AppFactoryConstants.TEST_APPLICATION_ONE_OPENED)
+					.isVisible()) {
+				WorkbenchElementsValidator.bot.sleep(1000);
+			}
+		} catch (WidgetNotFoundException | TimeoutException e) {
+			try {
+				appList.bot()
+						.tree()
+						.getTreeItem(
+								AppFactoryConstants.TEST_APPLICATION_ONE_OPENED)
+						.isVisible();
+			} catch (WidgetNotFoundException | TimeoutException erro) {
+				WorkbenchElementsValidator.log.error(
+						"Application list loading failiure", e);
+				fail();
+			}
 
-    public static SWTBotTreeItem appFactoryTree() {
-        SWTBotView appList = Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST);
-        try {
-            appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE).select();
-            appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE).contextMenu(AppFactoryConstants.OPEN).click();
-            while (!appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED).isVisible()) {
-                Util.bot.sleep(1000);
-            }
-        } catch (WidgetNotFoundException | TimeoutException e) {
-            try {
-                appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED).isVisible();
-            } catch (WidgetNotFoundException | TimeoutException erro) {
-                Util.log.error("Application list loading failiure",e);
-                fail();
-            }
+		}
 
-        }
+		SWTBotTreeItem opened = appList.bot().tree()
+				.getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED);
+		return opened;
+	}
 
-        SWTBotTreeItem opened = appList.bot().tree().getTreeItem(AppFactoryConstants.TEST_APPLICATION_ONE_OPENED);
-        return opened;
-    }
+	public static void appFactoryApplicationAction(String path, String action)
+			throws Exception {
 
-    public static void appFactoryApplicationAction(String path, String action) throws Exception {
+		String text = "";
+		String[] op = path.split("/");
+		SWTBotTreeItem opened = AppFactoryUtils.appFactoryTree();
+		WorkbenchElementsValidator.bot.sleep(2000);
+		if (!opened.isExpanded()) {
+			opened.expand();
+		}
+		if (!opened.getNode(op[0]).isExpanded()) {
+			opened.getNode(op[0]).expand();
+		}
 
-        String text = "";
-        String[] op = path.split("/");
-        SWTBotTreeItem opened = AppFactoryUtils.appFactoryTree();
-        Util.bot.sleep(2000);
-        if (!opened.isExpanded()) {
-            opened.expand();
-        }
-        if (!opened.getNode(op[0]).isExpanded()) {
-            opened.getNode(op[0]).expand();
-        }
+		opened.getNode(op[0]).getNode(op[1]).select();
+		try {
+			opened.getNode(op[0]).getNode(op[1]).contextMenu(action).click();
+		} catch (WidgetNotFoundException e) {
+			WorkbenchElementsValidator.log.error(action + " is not available",
+					e);
+		}
+		WorkbenchElementsValidator.bot.sleep(2000);
 
-        opened.getNode(op[0]).getNode(op[1]).select();
-        try {
-            opened.getNode(op[0]).getNode(op[1]).contextMenu(action).click();
-        } catch (WidgetNotFoundException e) {
-            Util.log.error(action + " is not available",e);
-        }
-        Util.bot.sleep(2000);
+		if (action == AppFactoryConstants.BUILD) {
+			WorkbenchElementsValidator.bot.sleep(2000);
+			text = "Build invoked successfully.";
+		} else if (action == AppFactoryConstants.DEPLOY) {
+			WorkbenchElementsValidator.bot.sleep(2000);
+			text = "Successfully deployed";
+		} else if (action == AppFactoryConstants.BUILD_LOGS) {
+			WorkbenchElementsValidator.bot.sleep(10000);
+			text = "[INFO] BUILD SUCCESS";
+		} else if (action == AppFactoryConstants.CHECK_OUT) {
+			WorkbenchElementsValidator.bot.sleep(3000);
+			text = "Cloning completed successfully";
+		} else {
+			fail();
 
-        if (action == AppFactoryConstants.BUILD) {
-            Util.bot.sleep(2000);
-            text = "Build invoked successfully.";
-        } else if (action == AppFactoryConstants.DEPLOY) {
-            Util.bot.sleep(2000);
-            text = "Successfully deployed";
-        } else if (action == AppFactoryConstants.BUILD_LOGS) {
-            Util.bot.sleep(10000);
-            text = "[INFO] BUILD SUCCESS";
-        } else if (action == AppFactoryConstants.CHECK_OUT) {
-            Util.bot.sleep(3000);
-            text = "Cloning completed successfully";
-        }
-        else {
-            fail();
+		}
+		WorkbenchElementsValidator.bot.cTabItem("Console").setFocus();
+		String styledText = WorkbenchElementsValidator.bot.styledText()
+				.getText();
+		try {
+			assertContains(text, styledText);
+		} catch (AssertionError e) {
+			WorkbenchElementsValidator.log.error(
+					"Action execution unsucssesful", e);
+			fail();
+		}
 
-        }
-        Util.bot.cTabItem("Console").setFocus();
-        String styledText = Util.bot.styledText().getText();
-        try {
-            assertContains(text, styledText);
-        } catch (AssertionError e) {
-            Util.log.error("Action execution unsucssesful",e);
-            fail();
-        }
+	}
 
-    }
+	public void appFactoryLogin(String email, String password,
+			String connectTo, String url, String path) {
+		try {
+			WorkbenchElementsValidator.bot.viewByTitle(
+					AppFactoryConstants.APPLICATIONS_LIST).show();
+		} catch (WidgetNotFoundException | TimeoutException e) {
+			WorkbenchElementsValidator.bot.menu("Window").menu("Show View")
+					.menu("Other...").click();
+			SWTBotShell showView = WorkbenchElementsValidator.bot
+					.shell("Show View");
+			showView.bot().text()
+					.setText(AppFactoryConstants.APPLICATIONS_LIST);
+			WorkbenchElementsValidator
+					.checkButton(CommonConstants.OK, showView);
+			showView.bot().button("OK").click();
+		}
 
-    public void appFactoryLogin(String email, String password, String connectTo, String url, String path){
-        try {
-            Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST).show();
-        } catch (WidgetNotFoundException | TimeoutException e) {
-            Util.bot.menu("Window").menu("Show View").menu("Other...").click();
-            SWTBotShell showView = Util.bot.shell("Show View");
-            showView.bot().text().setText(AppFactoryConstants.APPLICATIONS_LIST);
-            Util.checkButton(CommonConstants.OK, showView);
-            showView.bot().button("OK").click();
-        }
-        
-        try {
-            Util.bot.toolbarButtonWithTooltip(AppFactoryConstants.LOGIN2).click();
-            Util.checkShellLoading(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
-            SWTBotShell login = Util.bot.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
-            login.bot().radio(connectTo).click();
-            if (connectTo != AppFactoryConstants.APP_CLOUD){
-                login(email, password, null, null);
-            }
-            else{
-                login(email, password, url, null);
-            }
-        } catch (TimeoutException e) {
-            Util.log.error("Fail to login",e);
-            fail();
-        } catch (WidgetNotFoundException e) {
-            Util.log.error("Problem with the login widget",e);
-            fail();
-        }
-        
-    }
-    public void login(String email, String password, String url, String path) {
+		try {
+			WorkbenchElementsValidator.bot.toolbarButtonWithTooltip(
+					AppFactoryConstants.LOGIN2).click();
+			WorkbenchElementsValidator
+					.checkShellLoading(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
+			SWTBotShell login = WorkbenchElementsValidator.bot
+					.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
+			login.bot().radio(connectTo).click();
+			if (connectTo != AppFactoryConstants.APP_CLOUD) {
+				login(email, password, null, null);
+			} else {
+				login(email, password, url, null);
+			}
+		} catch (TimeoutException e) {
+			WorkbenchElementsValidator.log.error("Fail to login", e);
+			fail();
+		} catch (WidgetNotFoundException e) {
+			WorkbenchElementsValidator.log.error(
+					"Problem with the login widget", e);
+			fail();
+		}
 
-        try {
-            SWTBotShell login = Util.bot.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
-            Util.setLableText(login, AppFactoryConstants.EMAIL, email);
-            Util.setLableText(login, AppFactoryConstants.PASSWORD2, password);
-            if (url != null){
-                Util.setLableText(login, AppFactoryConstants.URL, password);
-            } 
-            Util.checkButton(CommonConstants.OK, login);
-            login.bot().button(CommonConstants.OK).click();
-            Util.bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(login));
-            Util.bot.viewByTitle(AppFactoryConstants.APPLICATIONS_LIST).show();
-            Util.log.info("Login successful");
-        } catch (TimeoutException e) {
-            Util.log.error("Fail to login",e);
-            fail();
-        } catch (WidgetNotFoundException e) {
-            Util.log.error("Problem with the login widget",e);
-            fail();
-        }
+	}
 
-    }
+	public void login(String email, String password, String url, String path) {
 
+		try {
+			SWTBotShell login = WorkbenchElementsValidator.bot
+					.shell(AppFactoryConstants.APP_CLOUD_APP_FACTORY_LOGIN);
+			WorkbenchElementsValidator.setLableText(login,
+					AppFactoryConstants.EMAIL, email);
+			WorkbenchElementsValidator.setLableText(login,
+					AppFactoryConstants.PASSWORD2, password);
+			if (url != null) {
+				WorkbenchElementsValidator.setLableText(login,
+						AppFactoryConstants.URL, password);
+			}
+			WorkbenchElementsValidator.checkButton(CommonConstants.OK, login);
+			login.bot().button(CommonConstants.OK).click();
+			WorkbenchElementsValidator.bot
+					.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions
+							.shellCloses(login));
+			WorkbenchElementsValidator.bot.viewByTitle(
+					AppFactoryConstants.APPLICATIONS_LIST).show();
+			WorkbenchElementsValidator.log.info("Login successful");
+		} catch (TimeoutException e) {
+			WorkbenchElementsValidator.log.error("Fail to login", e);
+			fail();
+		} catch (WidgetNotFoundException e) {
+			WorkbenchElementsValidator.log.error(
+					"Problem with the login widget", e);
+			fail();
+		}
+
+	}
 
 }
