@@ -192,7 +192,7 @@ public class FunctionalUtil {
 	 *            Path to expand excluding project name
 	 * @return SWTBotTreeItem Last node will be returned
 	 */
-	public static SWTBotTreeItem getexpandProjectTree(String projectName,
+	public static SWTBotTreeItem getExpandProjectTree(String projectName,
 			String[] path) {
 
 		WorkbenchElementsValidator.bot.sleep(2000);
@@ -232,7 +232,7 @@ public class FunctionalUtil {
 	 * @param projectType
 	 *            Type of project that should be created.
 	 */
-	public static void openProjectFromRightClick(String projectName,
+	public static void openProjectCreationWizardFromRightClick(String projectName,
 			String[] path, String projectType) {
 
 		WorkbenchElementsValidator.bot.sleep(2000);
@@ -242,7 +242,7 @@ public class FunctionalUtil {
 			tree.select();
 
 		} else {
-			tree = getexpandProjectTree(projectName, path);
+			tree = getExpandProjectTree(projectName, path);
 		}
 		try {
 			tree.contextMenu(CommonConstants.NEW).menu(projectType).click();
@@ -267,10 +267,10 @@ public class FunctionalUtil {
 	 * @param projectType
 	 *            Type of project that should be created.
 	 */
-	public static void openProjectFromRightClick(String projectName,
+	public static void openProjectCreationWizardFromRightClick(String projectName,
 			String projectType) {
 		WorkbenchElementsValidator.bot.sleep(2000);
-		openProjectFromRightClick(projectName, null, projectType);
+		openProjectCreationWizardFromRightClick(projectName, null, projectType);
 	}
 
 	/**

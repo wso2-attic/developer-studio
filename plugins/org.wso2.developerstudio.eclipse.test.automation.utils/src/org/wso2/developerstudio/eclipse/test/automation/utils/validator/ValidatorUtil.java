@@ -84,7 +84,7 @@ public class ValidatorUtil {
 			WorkbenchElementsValidator.main.expand();
 		} else {
 			WorkbenchElementsValidator.main = FunctionalUtil
-					.getexpandProjectTree(projectName, path);
+					.getExpandProjectTree(projectName, path);
 		}
 		WorkbenchElementsValidator.bot.sleep(5000);
 		WorkbenchElementsValidator.actualFiles = WorkbenchElementsValidator.main
