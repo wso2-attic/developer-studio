@@ -12,12 +12,15 @@ Export-Package: org.wso2.developerstudio.eclipse.test.automation.utils;version="
  org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0",
  org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0",
  org.wso2.developerstudio.eclipse.test.automation.utils.kernel;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.server,
  org.wso2.developerstudio.eclipse.test.automation.utils.validator;version="4.0.0"
 Require-Bundle: org.eclipse.swtbot.go,
  org.eclipse.swtbot.forms.finder,
  org.eclipse.ui.forms;bundle-version="3.6.100",
  org.wso2.developerstudio.eclipse.utils,
- org.wso2.developerstudio.eclipse.test.automation.framework
-Bundle-ClassPath: .
+ org.wso2.developerstudio.eclipse.test.automation.framework,
+ org.wso2.developerstudio.eclipse.libraries
+Bundle-ClassPath: .,
+ commons-lang3-3.4.jar
 Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)"
 
