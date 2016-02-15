@@ -16,6 +16,7 @@
 	<module>org.wso2.developerstudio.eclipse.artifact.analytics.publisher</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.analytics.receiver</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.analytics.stream</module>
+	<module>org.wso2.developerstudio.eclipse.swtfunctionalframework.analytics</module>
     </modules>
     <build>
         <plugins>
