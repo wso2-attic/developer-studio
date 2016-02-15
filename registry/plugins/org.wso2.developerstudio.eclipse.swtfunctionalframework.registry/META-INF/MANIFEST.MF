@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Registry
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.registry
+Bundle-Version: 4.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.test.automation.utils,
+ org.eclipse.swtbot.go;bundle-version="2.3.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0"
+Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.registry.util
