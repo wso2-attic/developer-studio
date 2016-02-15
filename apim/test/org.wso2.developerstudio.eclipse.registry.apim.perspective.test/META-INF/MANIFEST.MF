@@ -7,8 +7,12 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: 
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.swtbot.go,
- org.wso2.developerstudio.eclipse.swtfunctionalframework.apim;bundle-version="1.0.0"
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.apim;bundle-version="1.0.0",
+ org.junit
 Bundle-ClassPath: .
-Import-Package: org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
  org.wso2.developerstudio.eclipse.test.automation.framework.runner;version="4.0.0",
- org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0"
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.server

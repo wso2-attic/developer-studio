@@ -30,7 +30,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>luna</module>
-		<module>org.wso2.developerstudio.eclipse.registry.apim.perspective.runserver</module>
 		<module>org.wso2.developerstudio.eclipse.registry.apim.perspective.test</module>
 	</modules>
 
