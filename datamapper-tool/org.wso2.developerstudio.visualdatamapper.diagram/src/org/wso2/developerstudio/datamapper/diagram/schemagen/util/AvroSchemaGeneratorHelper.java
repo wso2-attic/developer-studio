@@ -34,38 +34,33 @@ public class AvroSchemaGeneratorHelper {
 	private static final String XML = "*.xml";
 	private static final String JSON = "*.json";
 	private static final String INPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_InputSchemaFile;
+	private static final String OUTPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_OutputSchemaFile;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
-	public static Schema getAvroSchema(SchemaImportOptions option) {
+	public static Schema getAvroSchema(SchemaImportOptions option, String schemaTypeString, Shell shell) {
 
 		String filter = AVSC;
-		String title = INPUT_SCHEMA_FILE;
+		String title = schemaTypeString;
 		AvroSchemaGenerator generator = null;
 		switch (option) {
 		case AVRO:
 			filter = AVSC;
-			title = INPUT_SCHEMA_FILE;
 			generator = new AvroSchemaGenerator();
 			break;
 		case XSD:
 			filter = XSD;
-			title = INPUT_SCHEMA_FILE;
 			generator = new AvroSchemaGeneratorForXSD();
 			break;
 		case XML:
 			filter = XML;
-			title = INPUT_SCHEMA_FILE;
 			generator = new AvroSchemaGeneratorForXML();
 			break;
 		case JSON:
 			filter = JSON;
-			title = INPUT_SCHEMA_FILE;
 			generator = new AvroSchemaGenerator();
 			break;
 		}
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
 		FileDialog fid = new FileDialog(shell);
 		fid.setFilterExtensions(new String[] { filter });
 		fid.setText(title);

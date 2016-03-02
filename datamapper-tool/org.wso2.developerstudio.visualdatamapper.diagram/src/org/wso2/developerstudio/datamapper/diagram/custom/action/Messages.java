@@ -20,6 +20,8 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.wso2.developerstudio.datamapper.diagram.custom.action.messages"; //$NON-NLS-1$
+	public static String ErrorDialogMessageOnSchemaError;
+	public static String SchemaKeyEditorDialog_OutputSchemaFile;
 	public static String CreateNewConfigurationDialog_DefaultConfigName;
 	public static String CreateNewConfigurationDialog_DialogHeaderLoadingCAppProjects;
 	public static String CreateNewConfigurationDialog_DialogHeaderResourceCreation;

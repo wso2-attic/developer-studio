@@ -26,16 +26,19 @@ import org.wso2.developerstudio.visualdatamapper.diagram.avro.generators.XSDtoAv
 
 public class AvroSchemaGeneratorForXSD extends AvroSchemaGenerator {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
+
 	@Override
 	public Schema getAvroSchemaContent(String filePath) throws IOException {
+		// read the xml file remove any attribute fields that exist which may
+		// cause the xsd to error out, and put it into a map so that you can
+		// manipulate it later to reflect the attributes
 		XSDtoAvroGen convertXSDtoAvro = new XSDtoAvroGen();
 		String avroContent = convertXSDtoAvro.generateAVRO(filePath);
 		if (avroContent == null || avroContent.isEmpty()) {
-			log.error("Error Generating Avro content from the fgiven XSD file.");
+			log.error("Error Generating Avro content from the given XSD file.");
 		}
 		return super.getAvroSchemaContent(avroContent);
-		
+
 	}
 
 }

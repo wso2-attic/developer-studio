@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -42,6 +43,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
@@ -67,7 +69,7 @@ import org.wso2.developerstudio.datamapper.diagram.schemagen.util.*;
 
 public class SchemaKeyEditorDialog extends Dialog {
 
-	
+	private static final String ERROR = "Error";
 	private Text schemaKeyTextField;
 	private Label lblSchemaTypeLabel;
 	private Combo schemaTypeCombo;
@@ -110,19 +112,21 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String REASON_REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_ReasonRegistryBrowser;
 	private static final String ERROR_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ErrorRegistryURL;
 	private static final String REASON_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ReasonRegistryURL;
-	private static final String SELECT_SCHEMA_SOURCE = Messages.SchemaKeyEditorDialog_SelecSchemaSource;;
+	private static final String SELECT_SCHEMA_SOURCE = Messages.SchemaKeyEditorDialog_SelecSchemaSource;
 	private static final String ERROR_DIALOG_VISIBILITY = "Error occured while changing dialog visibility"; //$NON-NLS-1$
+	private static final String ERROR_DIALOG_MESSAGE = Messages.ErrorDialogMessageOnSchemaError;
 
-	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
-			String schemaType) {
+	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP,
+			IWorkbenchPart workbenchPart, String schemaType) {
 		super(parent);
 		this.selectedEP = selectedEP;
 		this.schemaType = schemaType;
 
-		IEditorPart editorPart = workbenchPart.getSite().getWorkbenchWindow().getActivePage()
-				.getActiveEditor();
+		IEditorPart editorPart = workbenchPart.getSite().getWorkbenchWindow()
+				.getActivePage().getActiveEditor();
 		if (editorPart != null) {
-			IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+			IFileEditorInput input = (IFileEditorInput) editorPart
+					.getEditorInput();
 			inputFile = input.getFile();
 		}
 	}
@@ -137,7 +141,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 	private void changeVisibility(boolean visible) {
 		try {
-			if(this.getShell() != null) {
+			if (this.getShell() != null) {
 				this.getShell().setVisible(visible);
 			}
 		} catch (Exception e) {
@@ -160,16 +164,16 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_grpPropertyKey.marginHeight = 10;
 		fl_grpPropertyKey.marginWidth = 10;
 		grpPropertyKey.setLayout(fl_grpPropertyKey);
-		
-		FormData lableLayoutData  = new FormData();
+
+		FormData lableLayoutData = new FormData();
 		lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
 		lblSchemaTypeLabel.setText(SELECT_SCHEMA_SOURCE);
 		lblSchemaTypeLabel.setLayoutData(lableLayoutData);
-				
-		
-        FormData comboLayoutData = new FormData();
-        comboLayoutData.left = new FormAttachment(lblSchemaTypeLabel, 10);
-		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+
+		FormData comboLayoutData = new FormData();
+		comboLayoutData.left = new FormAttachment(lblSchemaTypeLabel, 10);
+		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN
+				| SWT.READ_ONLY);
 		schemaTypeCombo.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 			}
@@ -182,14 +186,13 @@ public class SchemaKeyEditorDialog extends Dialog {
 		schemaTypeCombo.setItems(options);
 		schemaTypeCombo.select(0);
 		schemaTypeCombo.setLayoutData(comboLayoutData);
-		
-	
+
 		FormData fd_link = new FormData();
 		fd_link.top = new FormAttachment(lblSchemaTypeLabel, 20);
 		Link link = new Link(grpPropertyKey, SWT.NONE);
 		link.setLayoutData(fd_link);
 		link.setText(SCHEMA_KEY_EDITOR_DIALOG_TEXT);
-		
+
 		link.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -199,9 +202,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 				} else if (REGISTRY.equals(selectedCommand)) {
 					openRegistryBrowser();
 				} else if (WORKSPACE.equals(selectedCommand)) {
-					//commented by susinda openRegistryResourceProviderDialog();
+					// commented by susinda
+					// openRegistryResourceProviderDialog();
 				} else if (LOCAL_ENTRIES.equals(selectedCommand)) {
-					//commented by susinda  openEmbeddedEntryBrowser();
+					// commented by susinda openEmbeddedEntryBrowser();
 				}
 			}
 		});
@@ -216,7 +220,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 		});
 		{
 			FormData schemaKeyTextFieldLayoutData = new FormData();
-			schemaKeyTextFieldLayoutData.top = new FormAttachment(lblSchemaTypeLabel, 50);
+			schemaKeyTextFieldLayoutData.top = new FormAttachment(
+					lblSchemaTypeLabel, 50);
 			schemaKeyTextFieldLayoutData.left = new FormAttachment(0, 5);
 			schemaKeyTextFieldLayoutData.right = new FormAttachment(100, -5);
 			schemaKeyTextField.setLayoutData(schemaKeyTextFieldLayoutData);
@@ -254,44 +259,32 @@ public class SchemaKeyEditorDialog extends Dialog {
 	/**
 	 * browser for in-workspace local-entries
 	 */
-	/* Commented by susinda
-	protected void openEmbeddedEntryBrowser() {
-		hide();
-		try {
-			EmbeddedEntriesDialog embeddedEntriesDialog = new EmbeddedEntriesDialog(
-					getParentShell(), null);
-			embeddedEntriesDialog.create();
-			embeddedEntriesDialog.getShell().setText(EMBEDDED_RESOURCES);
-			embeddedEntriesDialog.open();
-			if (embeddedEntriesDialog.getReturnCode() == Window.OK) {
-				setSelectedPath(embeddedEntriesDialog.getSelectedItem().trim());
-			}
-		} finally {
-			show();
-		}
-	}
-	*/
+	/*
+	 * Commented by susinda protected void openEmbeddedEntryBrowser() { hide();
+	 * try { EmbeddedEntriesDialog embeddedEntriesDialog = new
+	 * EmbeddedEntriesDialog( getParentShell(), null);
+	 * embeddedEntriesDialog.create();
+	 * embeddedEntriesDialog.getShell().setText(EMBEDDED_RESOURCES);
+	 * embeddedEntriesDialog.open(); if (embeddedEntriesDialog.getReturnCode()
+	 * == Window.OK) {
+	 * setSelectedPath(embeddedEntriesDialog.getSelectedItem().trim()); } }
+	 * finally { show(); } }
+	 */
 
 	/**
 	 * Create new resource dialog
 	 */
-	/* Commented by susinda
-	protected void openNewResourceTemplateDialog() {
-		hide();
-		try {
-			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(
-					getParentShell(), null);
-			newResourceTemplateDialog.create();
-			newResourceTemplateDialog.getShell().setText(NEW_RESOURCE);
-			newResourceTemplateDialog.open();
-			if (newResourceTemplateDialog.getReturnCode() == Window.OK) {
-				setSelectedPath(newResourceTemplateDialog.getSelectedPath());
-			}
-		} finally {
-			show();
-		}
-	}
-	*/
+	/*
+	 * Commented by susinda protected void openNewResourceTemplateDialog() {
+	 * hide(); try { NewResourceTemplateDialog newResourceTemplateDialog = new
+	 * NewResourceTemplateDialog( getParentShell(), null);
+	 * newResourceTemplateDialog.create();
+	 * newResourceTemplateDialog.getShell().setText(NEW_RESOURCE);
+	 * newResourceTemplateDialog.open(); if
+	 * (newResourceTemplateDialog.getReturnCode() == Window.OK) {
+	 * setSelectedPath(newResourceTemplateDialog.getSelectedPath()); } } finally
+	 * { show(); } }
+	 */
 
 	/**
 	 * Open Registry browser
@@ -299,8 +292,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private void openRegistryBrowser() {
 		hide();
 		try {
-			IRegistryConnection[] registryConnections = CAppEnvironment.getRegistryHandler()
-					.getRegistryConnections();
+			IRegistryConnection[] registryConnections = CAppEnvironment
+					.getRegistryHandler().getRegistryConnections();
 			if (registryConnections.length == 0) {
 				RegistryConnection registryConnection = new RegistryConnection();
 				try {
@@ -308,32 +301,40 @@ public class SchemaKeyEditorDialog extends Dialog {
 				} catch (MalformedURLException e) {
 					log.error(ERROR_REGISTRY_URL, e);
 
-					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_URL);
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-							ERROR_REGISTRY_URL, editorStatus);
+					IStatus editorStatus = new Status(IStatus.ERROR,
+							Activator.PLUGIN_ID, REASON_REGISTRY_URL);
+					ErrorDialog.openError(
+							Display.getCurrent().getActiveShell(),
+							ERROR_MSG_HEADER, ERROR_REGISTRY_URL, editorStatus);
 				}
 				registryConnection.setPath(C_REG_PATH_PREFIX);
 			}
 
-			IRegistryData selectedPathData = CAppEnvironment.getRegistryHandler()
-					.selectRegistryPath(registryConnections, REGISTRY_BROWSER,
-							SELECT_REGISTRY_RESOURCE, IRegistryHandler.SELECTED_REGISTRY_RESOURCE);
-			
+			IRegistryData selectedPathData = CAppEnvironment
+					.getRegistryHandler().selectRegistryPath(
+							registryConnections, REGISTRY_BROWSER,
+							SELECT_REGISTRY_RESOURCE,
+							IRegistryHandler.SELECTED_REGISTRY_RESOURCE);
+
 			if (selectedPathData == null) {
 				return;
 			}
 
-			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schemaFilePath = schemaEditorUtil.createDiagram(selectedPathData, schemaType);
+			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(
+					inputFile);
+			String schemaFilePath = schemaEditorUtil.createDiagram(
+					selectedPathData, schemaType);
 
 			if (!schemaFilePath.isEmpty()) {
 
 				setSelectedPath(schemaFilePath);
 
-				if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
+				if (Messages.LoadInputSchemaAction_SchemaTypeInput
+						.equals(schemaType)) {
 					InputEditPart iep = (InputEditPart) selectedEP;
 					iep.resetInputTreeFromFile(schemaFilePath);
-				} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
+				} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput
+						.equals(schemaType)) {
 					OutputEditPart iep = (OutputEditPart) selectedEP;
 					iep.resetOutputTreeFromFile(schemaFilePath);
 				}
@@ -342,9 +343,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} catch (Exception e) {
 			log.error(ERROR_REGISTRY_BROWSER, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_BROWSER);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-					ERROR_REGISTRY_BROWSER, editorStatus);
+			IStatus editorStatus = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID, REASON_REGISTRY_BROWSER);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(),
+					ERROR_MSG_HEADER, ERROR_REGISTRY_BROWSER, editorStatus);
 		} finally {
 			show();
 		}
@@ -372,23 +374,18 @@ public class SchemaKeyEditorDialog extends Dialog {
 	 * Import schema from projects in workspace
 	 */
 	/*
-	private void openRegistryResourceProviderDialog() {
-		hide();
-		try {
-			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(
-					getParentShell(), new Class[] { IRegistryFile.class, IEsbEndpoint.class,
-							IEsbSequence.class, IEsbLocalEntry.class }, null);
-			registryResourceProviderSelector.create();
-			registryResourceProviderSelector.getShell().setText(WORKSPACE_ELEMENT_PROVIDERS);
-			registryResourceProviderSelector.open();
-			if (registryResourceProviderSelector.getReturnCode() == Window.OK) {
-				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
-			}
-		} finally {
-			show();
-		}
-	}
-	*/
+	 * private void openRegistryResourceProviderDialog() { hide(); try {
+	 * DeveloperStudioElementProviderDialog registryResourceProviderSelector =
+	 * new DeveloperStudioElementProviderDialog( getParentShell(), new Class[] {
+	 * IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class,
+	 * IEsbLocalEntry.class }, null); registryResourceProviderSelector.create();
+	 * registryResourceProviderSelector
+	 * .getShell().setText(WORKSPACE_ELEMENT_PROVIDERS);
+	 * registryResourceProviderSelector.open(); if
+	 * (registryResourceProviderSelector.getReturnCode() == Window.OK) {
+	 * setSelectedPath(registryResourceProviderSelector.getSelectedPath()); } }
+	 * finally { show(); } }
+	 */
 
 	/**
 	 * Open file browser
@@ -396,21 +393,37 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private void openFileBrowser() {
 		hide();
 		try {
-			
-			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			Schema schema = AvroSchemaGeneratorHelper.getAvroSchema(SchemaImportOptions.values()[schemaTypeCombo.getSelectionIndex()]);
-			if(schema != null){
-				String schemaFilePath = schemaEditorUtil.createDiagram(schema.toString(), schemaType);
-			  if (!schemaFilePath.isEmpty()) {
-					setSelectedPath(schemaFilePath);
+			Display display = Display.getDefault();
+			Shell shell = new Shell(display);
+			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(
+					inputFile);
+			Schema schema = AvroSchemaGeneratorHelper.getAvroSchema(
+					SchemaImportOptions.values()[schemaTypeCombo
+							.getSelectionIndex()], schemaType, shell);
 
-					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-						InputEditPart iep = (InputEditPart) selectedEP;
-						iep.resetInputTreeFromFile(schemaFilePath);
-					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-						OutputEditPart iep = (OutputEditPart) selectedEP;
-						iep.resetOutputTreeFromFile(schemaFilePath);
-					}
+			if (schema == null || schema.isError()) {
+				if (schema == null) {
+					return;
+				}
+				
+				MessageDialog.openError(shell, ERROR,
+						ERROR_DIALOG_MESSAGE);
+				return;
+			}
+			String schemaFilePath = schemaEditorUtil.createDiagram(
+					schema.toString(), schemaType);
+
+			if (!schemaFilePath.isEmpty()) {
+				setSelectedPath(schemaFilePath);
+
+				if (Messages.LoadInputSchemaAction_SchemaTypeInput
+						.equals(schemaType)) {
+					InputEditPart iep = (InputEditPart) selectedEP;
+					iep.resetInputTreeFromFile(schemaFilePath);
+				} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput
+						.equals(schemaType)) {
+					OutputEditPart iep = (OutputEditPart) selectedEP;
+					iep.resetOutputTreeFromFile(schemaFilePath);
 				}
 			}
 			
@@ -419,9 +432,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_OPENING_FILE);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-					ERROR_OPENING_FILE, editorStatus);
+			IStatus editorStatus = new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID, REASON_OPENING_FILE);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(),
+					ERROR_MSG_HEADER, ERROR_OPENING_FILE, editorStatus);
 		} finally {
 			show();
 		}
