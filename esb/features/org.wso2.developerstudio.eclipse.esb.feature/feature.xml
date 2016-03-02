@@ -16,7 +16,9 @@
    <license url="%licenseURL">
       %license
    </license>
-
+   <requires>
+      <import feature="org.wso2.developerstudio.kernel.core.feature" version="4.0.0.201603020233" match="equivalent"/>
+   </requires>
    <plugin
          id="org.wso2.developerstudio.eclipse.esb.core"
          download-size="0"
