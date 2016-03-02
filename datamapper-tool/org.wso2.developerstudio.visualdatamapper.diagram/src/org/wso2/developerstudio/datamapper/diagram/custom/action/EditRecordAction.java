@@ -1,8 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
