@@ -426,6 +426,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 					iep.resetOutputTreeFromFile(schemaFilePath);
 				}
 			}
+			
+
+			
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);
 
