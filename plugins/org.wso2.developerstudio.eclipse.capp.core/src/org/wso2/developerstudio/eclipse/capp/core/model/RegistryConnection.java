@@ -33,6 +33,7 @@ public class RegistryConnection implements IRegistryConnection {
 	private String path;
 	private String id;
 	private String connectionName;
+	private String mediaType;
 	
 	public String getConnectionName() {
     	return connectionName;
@@ -79,4 +80,13 @@ public class RegistryConnection implements IRegistryConnection {
         }
         return getConnectionName() + " - " + getURL().toString();
     }
+	
+	public void setMediaType (String mediaType) {
+		this.mediaType = mediaType;
+	}
+	
+	public String getMediaType() {
+		return mediaType;
+	}
+
 }

@@ -27,9 +27,11 @@ public interface IRegistryConnection {
 	public void setPassword(String password);
 	public void setPath(String path);
 	public void setURL(URL url);
+	public void setMediaType(String mediaType);
 	public String getId();
 	public void setId(String id);
 	public void setConnectionName(String connectionName);
 	public String getConnectionName();
 	public String getCaption();
+	public String getMediaType();
 }

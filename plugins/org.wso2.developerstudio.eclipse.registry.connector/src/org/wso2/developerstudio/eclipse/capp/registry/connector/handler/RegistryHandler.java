@@ -173,7 +173,7 @@ public class RegistryHandler implements IRegistryHandler {
 				}else{
 					log.error("Resource not defined");
 				}
-				
+				regData.setMediaType(node.getMediaType());
 				regData.setURL(node.getConnectionInfo().getUrl());
 				regData.setPath(node.getRegistryResourcePath());
 				regData.setUsername(node.getConnectionInfo().getUsername());
