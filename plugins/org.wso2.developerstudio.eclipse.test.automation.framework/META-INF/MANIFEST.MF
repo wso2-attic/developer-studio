@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test Framework
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.test.automation.framework;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.test.automation.framework.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Eclipse-RegisterBuddy: org.apache.log4js
+Export-Package: org.wso2.developerstudio.eclipse.test.automation.framework;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.constants;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.runner;version="4.0.0"
+Require-Bundle: org.eclipse.swtbot.go,
+ org.eclipse.swtbot.forms.finder,
+ org.eclipse.ui.forms;bundle-version="3.6.100",
+ org.wso2.developerstudio.eclipse.utils
+Bundle-ClassPath: .
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)"
+
