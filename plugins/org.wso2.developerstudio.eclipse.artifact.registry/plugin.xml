@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-  <!-- <extension
+   <extension
          point="org.eclipse.ui.newWizards">
          <wizard name="Registry Resource" category="org.wso2.developerstudio.eclipse.capp.projectBASS/org.wso2.developerstudio.eclipse.repository123"
 			class="org.wso2.developerstudio.eclipse.artifact.registry.ui.wizard.RegistryResourceCreationWizard"
@@ -31,7 +31,7 @@
                  wizard="org.wso2.developerstudio.eclipse.artifact.newregistryresource"
                  priority="3">
      </wizardLink>
- </extension> -->
+ </extension> 
        
     <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"

@@ -25,7 +25,5 @@
     <url>http://wso2.org</url>
     <modules>
 	<module>main</module>
-        <module>core-features</module>
-	<module>composite</module>
     </modules>
 </project>

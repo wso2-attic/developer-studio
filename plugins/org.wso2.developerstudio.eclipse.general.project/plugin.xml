@@ -13,7 +13,7 @@
 			<description>Registry Resources Project</description>
 		</wizard>
    </extension>
-   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
    <category id="dashboard.category.greg" showTitle="true"
                   title="Repository"
                   priority="3">

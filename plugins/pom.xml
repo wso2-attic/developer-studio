@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>wso2-developerstudio-kernel-parent</artifactId>
 		<groupId>org.wso2.developerstudio</groupId>
-		<version>4.0.0-SNAPSHOT</version>
+		<version>4.1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>wso2-developerstudio-kernel-plugins</artifactId>
@@ -15,6 +15,7 @@
 		<module>org.wso2.developerstudio.eclipse.libraries</module>
 		<module>org.wso2.developerstudio.eclipse.ui</module>
 		<module>org.wso2.developerstudio.eclipse.samples</module>
+		<module>org.wso2.developerstudio.eclipse.dashboard</module>
 		<module>org.wso2.developerstudio.eclipse.registry.core</module>
 		<module>org.wso2.developerstudio.eclipse.registry.libraries</module>
 		<module>org.wso2.developerstudio.eclipse.registry.manager.remote</module>
