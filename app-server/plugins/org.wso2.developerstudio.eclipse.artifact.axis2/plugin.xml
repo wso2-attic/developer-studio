@@ -18,7 +18,7 @@
           nature="org.wso2.developerstudio.eclipse.axis2.project.nature"></provider>
    </extension>	
 	   <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+		point="org.wso2.developerstudio.eclipse.dashboad.link">
    <category id="dashboard.category.AS" showTitle="true"
 			title="Web App and Service Artifacts"
 			priority="9">

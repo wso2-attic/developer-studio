@@ -17,7 +17,11 @@
       </wizard>
    </extension>
    	   <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+		point="org.wso2.developerstudio.eclipse.dashboad.link">
+		  <category id="dashboard.category.AS" showTitle="true"
+			title="Axis2 Service Client"
+			priority="9">
+	</category>
 	<wizardLink category="dashboard.category.AS"
 			id="dashboard.wizardLink.AS.axis2.clientProject"
 			wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2serviceclient"

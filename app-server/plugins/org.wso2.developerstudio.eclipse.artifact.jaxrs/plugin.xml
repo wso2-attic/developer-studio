@@ -15,24 +15,28 @@
           nature="org.wso2.developerstudio.eclipse.jaxrs.project.nature"></provider>
    </extension>
 	 <extension point="org.eclipse.ui.newWizards">
-		<wizard name="JAX-RS Service Class" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.features"
+		<wizard name="JAX-RS Service Class" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
 			class="org.wso2.developerstudio.eclipse.artifact.jaxrs.ui.wizard.JaxrsClassWizard"
 			id="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifactClass"
 			project="false" icon="icons/JAX-RS-16x16.png">
 			<description>JAX-RS Service Class</description>
 		</wizard>	
 	</extension>
-	<extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
-     <category id="dashboard.category.AS" showTitle="true"
-			title="Web Applications and Service Artifacts"
+	   <extension
+		point="org.wso2.developerstudio.eclipse.dashboad.link">
+   <category id="dashboard.category.AS" showTitle="true"
+			title="Web App and Service Artifacts"
 			priority="9">
 	</category>
 	<wizardLink category="dashboard.category.AS"
-			id="dashboard.wizardLink.AS.jax.rsProject"
+			id="dashboard.wizardLink.AS.axis2.serviceProject"
 			wizard="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact"
 			priority="1">
 	</wizardLink>
+	<!-- <customAction
+			class="org.wso2.developerstudio.appfactory.ui.perspective.ShowAppFactoryPerspective"
+			id="org.wso2.developerstudio.AF.perspective.action">
+	</customAction> -->
  </extension>
 		
 	<extension point="org.eclipse.core.resources.natures"

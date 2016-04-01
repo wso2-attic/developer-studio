@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Consumption Core
 Bundle-SymbolicName: org.wso2.wsf.ide.consumption.core;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.wsf.ide.consumption.core.plugin.WebServiceWSASConsumptionCorePlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -40,9 +40,9 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.apache.axis2.util,
  org.apache.axis2.wsdl.codegen,
  org.apache.woden,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,5.0.0)",
  org.wso2.wsf.ide.core.context,
  org.wso2.wsf.ide.core.plugin.messages,
  org.wso2.wsf.ide.core.utils

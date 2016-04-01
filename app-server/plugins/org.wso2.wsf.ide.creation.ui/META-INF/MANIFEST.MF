@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Creation UI
 Bundle-SymbolicName: org.wso2.wsf.ide.creation.ui;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.wsf.ide.creation.ui.plugin.WebServiceWSASCreationUIPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -25,13 +25,13 @@ Export-Package: org.wso2.wsf.ide.creation.ui.widgets.bean,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: WSO2
 Import-Package: org.apache.axis2.util,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.archive;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.wst;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.archive;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.wst;version="[4.0.0,5.0.0)",
  org.wso2.wsf.ide.consumption.core.data,
  org.wso2.wsf.ide.consumption.core.messages,
  org.wso2.wsf.ide.consumption.core.utils,
