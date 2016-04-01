@@ -19,4 +19,17 @@
 			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
 		</category>
    </extension-->
+   
+   	<extension
+		point="org.wso2.developerstudio.eclipse.dashboad.link">
+     <category id="dashboard.category.AS" showTitle="true"
+			title="Web Applications and Service Artifacts"
+			priority="9">
+	</category>
+	<wizardLink category="dashboard.category.AS"
+			id="dashboard.wizardLink.AS.jax.wsProject"
+			wizard="org.wso2.developerstudio.eclipse.axis2.rpcmessagereceiver.NewDataserviceValidatorWizard"
+			priority="5">
+	</wizardLink>
+ </extension>
 </plugin>

@@ -8,12 +8,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.axiom.om,
- org.apache.axiom.om.impl.builder,
- org.apache.commons.io;version="2.0.0.wso2v1",
- org.apache.maven.model,
- org.apache.maven.project,
- org.eclipse.core.resources,
+Import-Package: org.eclipse.core.resources,
  org.eclipse.emf.common.notify.impl,
  org.eclipse.emf.ecore.impl,
  org.eclipse.jdt.core,

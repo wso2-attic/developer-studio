@@ -31,7 +31,7 @@
 	<wizardLink category="dashboard.category.AS"
 			id="dashboard.wizardLink.AS.axis2.serviceProject"
 			wizard="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact"
-			priority="1">
+			priority="3">
 	</wizardLink>
 	<!-- <customAction
 			class="org.wso2.developerstudio.appfactory.ui.perspective.ShowAppFactoryPerspective"
