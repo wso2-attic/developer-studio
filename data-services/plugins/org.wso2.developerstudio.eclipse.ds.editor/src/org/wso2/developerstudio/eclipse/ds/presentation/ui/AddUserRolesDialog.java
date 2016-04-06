@@ -27,7 +27,7 @@ import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
-import org.wso2.developerstudio.eclipse.platform.ui.dialogs.UserRolesDialog;
+import org.wso2.developerstudio.eclipse.usermgt.remote.UserRolesDialog;
 
 public class AddUserRolesDialog extends UserRolesDialog {
 
@@ -107,4 +107,5 @@ public class AddUserRolesDialog extends UserRolesDialog {
 			editingDomain.getCommandStack().execute(setCmd);
 		}
 	}
+	
 }

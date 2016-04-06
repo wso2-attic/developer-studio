@@ -59,7 +59,7 @@
             sampleProjectName="EmployeeDataService">
       </sample>
    </extension>
-    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
      <category id="odashboard.category.ds" showTitle="true"
                   title="Data Services Server"
                   priority="4">
