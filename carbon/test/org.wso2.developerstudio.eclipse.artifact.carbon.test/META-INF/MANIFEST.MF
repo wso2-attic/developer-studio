@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wso2.developerstudio.eclipse.artifact.carbon.test
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.carbon.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.swtbot.go,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon;bundle-version="4.0.0"
+Import-Package: org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.runner,
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0"

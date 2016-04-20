@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wso2.developerstudio.eclipse.registry.apim.perspective.test
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.apim.perspective.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.swtbot.go,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.apim;bundle-version="1.0.0",
+ org.junit
+Bundle-ClassPath: .
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.runner;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.server

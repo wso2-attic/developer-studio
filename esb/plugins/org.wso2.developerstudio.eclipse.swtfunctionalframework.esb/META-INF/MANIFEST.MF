@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Esb Tests
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.esb;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.swtbot.go;bundle-version="2.3.0",
+ org.eclipse.swtbot.forms.finder;bundle-version="2.3.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util;uses:="org.wso2.developerstudio.eclipse.swtfunctionalframework.util",
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.esb.util.constants
+Bundle-ClassPath: .,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework-4.0.0-SNAPSHOT.jar
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.validator;version="4.0.0"

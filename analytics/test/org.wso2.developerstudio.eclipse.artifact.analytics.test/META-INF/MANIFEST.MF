@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wso2.developerstudio.eclipse.artifact.analytics.test
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.analytics.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: 
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.swtbot.go,
+ org.wso2.developerstudio.eclipse.test.automation.utils
+Import-Package: org.wso2.developerstudio.eclipse.artifact.analytics.util,
+ org.wso2.developerstudio.eclipse.test.automation.framework.executor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.runner

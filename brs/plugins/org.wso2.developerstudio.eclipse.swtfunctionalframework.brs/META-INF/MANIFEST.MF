@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Brs
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.brs
+Bundle-Version: 4.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.swtbot.go
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework-4.0.0-SNAPSHOT.jar
+Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.brs.util.constants
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0"

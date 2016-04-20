@@ -131,6 +131,11 @@
             <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
             <layout>default</layout>
         </repository>
+        <repository>
+		<id>swtbot</id>
+		<url>http://download.eclipse.org/technology/swtbot/releases/latest/</url>
+		<layout>p2</layout>
+	</repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>

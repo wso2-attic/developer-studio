@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Carbon
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon
+Bundle-Version: 4.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.swtbot.go;bundle-version="2.3.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util,
+ org.wso2.developerstudio.eclipse.swtfunctionalframework.carbon.util.constants
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.framework.element.validator;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.constants;version="4.0.0",
+ org.wso2.developerstudio.eclipse.test.automation.utils.functional;version="4.0.0"
