@@ -64,7 +64,7 @@
 							<adapt type="org.eclipse.core.resources.IFolder"/>
 						</or>
 					</enablement>
-				</commonWizard>
+				</commonWizard>org.wso2.developerstudio.eclipse.dashboad.link
 				<triggerPoints>
 				           <or>         
 				              <instanceof 
@@ -133,7 +133,7 @@
     </sample>
  </extension>
 
-<extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
      <category id="dashboard.category.bps" showTitle="true"
                   title="Business Process Server"
                   priority="6">
