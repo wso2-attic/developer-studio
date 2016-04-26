@@ -18,7 +18,7 @@
          </category>
    </extension>  
    <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+		point="org.wso2.developerstudio.eclipse.dashboad.link">
 		<wizardCategory category="org.wso2.developerstudio.eclipse.artifact.analytics.category"/>
     	<category id="dashboard.category.analytics" showTitle="true"
                   title="Analytics"
