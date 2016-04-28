@@ -54,6 +54,9 @@
  <feature id="org.wso2.developerstudio.platform.libraries.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.data.service.feature.category"/>
    </feature>
+<feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.data.service.feature.category"/>
+   </feature>
  <feature id="org.wso2.developerstudio.usr.management.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.data.service.feature.category"/>
    </feature>
