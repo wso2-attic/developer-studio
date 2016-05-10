@@ -71,6 +71,7 @@ public class DataSourceConfigurationItemProvider extends ItemProviderAdapter
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
+			addEnableODataPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -93,6 +94,28 @@ public class DataSourceConfigurationItemProvider extends ItemProviderAdapter
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Enable OData feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnableODataPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataSourceConfiguration_enableOData_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataSourceConfiguration_enableOData_feature", "_UI_DataSourceConfiguration_type"),
+				 DsPackage.Literals.DATA_SOURCE_CONFIGURATION__ENABLE_ODATA,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -175,6 +198,7 @@ public class DataSourceConfigurationItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(DataSourceConfiguration.class)) {
 			case DsPackage.DATA_SOURCE_CONFIGURATION__ID:
+			case DsPackage.DATA_SOURCE_CONFIGURATION__ENABLE_ODATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DsPackage.DATA_SOURCE_CONFIGURATION__MIXED:

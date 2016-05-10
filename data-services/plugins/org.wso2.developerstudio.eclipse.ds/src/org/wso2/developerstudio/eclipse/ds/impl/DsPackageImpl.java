@@ -534,6 +534,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
      * @generated
      */
+	public EAttribute getCallQuery_RequiredRoles() {
+		return (EAttribute)callQueryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCallQueryList() {
         return callQueryListEClass;
     }
@@ -831,6 +840,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
      * @generated
      */
+	public EAttribute getDataSourceConfiguration_EnableOData() {
+		return (EAttribute)dataSourceConfigurationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDescription() {
         return descriptionEClass;
     }
@@ -2314,6 +2332,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
         createEAttribute(callQueryEClass, CALL_QUERY__MIXED);
         createEReference(callQueryEClass, CALL_QUERY__WITH_PARAM);
         createEAttribute(callQueryEClass, CALL_QUERY__HREF);
+		createEAttribute(callQueryEClass, CALL_QUERY__REQUIRED_ROLES);
 
         callQueryListEClass = createEClass(CALL_QUERY_LIST);
         createEAttribute(callQueryListEClass, CALL_QUERY_LIST__MIXED);
@@ -2352,6 +2371,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
         createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__MIXED);
         createEReference(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__PROPERTY);
         createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__ID);
+		createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__ENABLE_ODATA);
 
         descriptionEClass = createEClass(DESCRIPTION);
         createEAttribute(descriptionEClass, DESCRIPTION__VALUE);
@@ -2598,6 +2618,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
         initEAttribute(getCallQuery_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, CallQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getCallQuery_WithParam(), this.getParameterMapping(), null, "withParam", null, 0, -1, CallQuery.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEAttribute(getCallQuery_Href(), theXMLTypePackage.getString(), "href", null, 1, 1, CallQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCallQuery_RequiredRoles(), theXMLTypePackage.getString(), "requiredRoles", null, 0, 1, CallQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(callQueryListEClass, CallQueryList.class, "CallQueryList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCallQueryList_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, CallQueryList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2636,6 +2657,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
         initEAttribute(getDataSourceConfiguration_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDataSourceConfiguration_Property(), this.getConfigurationProperty(), null, "property", null, 1, -1, DataSourceConfiguration.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEAttribute(getDataSourceConfiguration_Id(), theXMLTypePackage.getString(), "id", null, 0, 1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSourceConfiguration_EnableOData(), theXMLTypePackage.getBoolean(), "enableOData", null, 0, 1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(descriptionEClass, Description.class, "Description", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDescription_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, Description.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

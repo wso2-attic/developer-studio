@@ -70,6 +70,7 @@ public class CallQueryItemProvider extends ItemProviderAdapter implements
 			super.getPropertyDescriptors(object);
 
 			addHrefPropertyDescriptor(object);
+			addRequiredRolesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,6 +89,28 @@ public class CallQueryItemProvider extends ItemProviderAdapter implements
 				 getString("_UI_CallQuery_href_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_CallQuery_href_feature", "_UI_CallQuery_type"),
 				 DsPackage.Literals.CALL_QUERY__HREF,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Required Roles feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequiredRolesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CallQuery_requiredRoles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CallQuery_requiredRoles_feature", "_UI_CallQuery_type"),
+				 DsPackage.Literals.CALL_QUERY__REQUIRED_ROLES,
 				 true,
 				 false,
 				 false,
@@ -175,6 +198,7 @@ public class CallQueryItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(CallQuery.class)) {
 			case DsPackage.CALL_QUERY__HREF:
+			case DsPackage.CALL_QUERY__REQUIRED_ROLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DsPackage.CALL_QUERY__MIXED:
