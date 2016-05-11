@@ -126,5 +126,23 @@
            nature="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature">
      </provider>
   </extension>
- 	  
+ 	   <extension
+        point="org.wso2.developerstudio.carbon.product.server.registry">
+     <product.server
+           carbon.server.version="carbon.server.42"
+           server.display.name="WSO2 CEP Server 3.0.0">
+     </product.server>
+      <product.server
+           carbon.server.version="carbon.server.42"
+           server.display.name="WSO2 CEP Server 3.1.0">
+     </product.server>
+      <product.server
+           carbon.server.version="carbon.server.44"
+           server.display.name="WSO2 CEP Server 4.1.0">
+     </product.server>
+      <product.server
+           carbon.server.version="carbon.server.44"
+           server.display.name="WSO2 CEP Server 4.0.0">
+     </product.server>
+  </extension>
 </plugin>
