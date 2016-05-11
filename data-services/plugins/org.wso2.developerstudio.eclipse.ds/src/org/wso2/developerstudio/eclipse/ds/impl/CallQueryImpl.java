@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getWithParam <em>With Param</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getHref <em>Href</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getRequiredRoles <em>Required Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,6 +74,26 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 	 * @ordered
 	 */
 	protected String href = HREF_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRequiredRoles() <em>Required Roles</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequiredRoles()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REQUIRED_ROLES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRequiredRoles() <em>Required Roles</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequiredRoles()
+	 * @generated
+	 * @ordered
+	 */
+	protected String requiredRoles = REQUIRED_ROLES_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,6 +162,27 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getRequiredRoles() {
+		return requiredRoles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRequiredRoles(String newRequiredRoles) {
+		String oldRequiredRoles = requiredRoles;
+		requiredRoles = newRequiredRoles;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.CALL_QUERY__REQUIRED_ROLES, oldRequiredRoles, requiredRoles));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
@@ -170,6 +212,8 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 				return getWithParam();
 			case DsPackage.CALL_QUERY__HREF:
 				return getHref();
+			case DsPackage.CALL_QUERY__REQUIRED_ROLES:
+				return getRequiredRoles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -193,6 +237,9 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 			case DsPackage.CALL_QUERY__HREF:
 				setHref((String)newValue);
 				return;
+			case DsPackage.CALL_QUERY__REQUIRED_ROLES:
+				setRequiredRoles((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -215,6 +262,9 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 			case DsPackage.CALL_QUERY__HREF:
 				setHref(HREF_EDEFAULT);
 				return;
+			case DsPackage.CALL_QUERY__REQUIRED_ROLES:
+				setRequiredRoles(REQUIRED_ROLES_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -234,6 +284,8 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 				return !getWithParam().isEmpty();
 			case DsPackage.CALL_QUERY__HREF:
 				return HREF_EDEFAULT == null ? href != null : !HREF_EDEFAULT.equals(href);
+			case DsPackage.CALL_QUERY__REQUIRED_ROLES:
+				return REQUIRED_ROLES_EDEFAULT == null ? requiredRoles != null : !REQUIRED_ROLES_EDEFAULT.equals(requiredRoles);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -253,6 +305,8 @@ public class CallQueryImpl extends EObjectImpl implements CallQuery {
 		result.append(mixed);
 		result.append(", href: ");
 		result.append(href);
+		result.append(", requiredRoles: ");
+		result.append(requiredRoles);
 		result.append(')');
 		return result.toString();
 	}

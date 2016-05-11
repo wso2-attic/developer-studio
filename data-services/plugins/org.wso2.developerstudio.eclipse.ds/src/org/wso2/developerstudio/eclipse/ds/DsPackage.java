@@ -164,13 +164,22 @@ public interface DsPackage extends EPackage {
 	int CALL_QUERY__HREF = 2;
 
 	/**
+	 * The feature id for the '<em><b>Required Roles</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_QUERY__REQUIRED_ROLES = 3;
+
+	/**
      * The number of structural features of the '<em>Call Query</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int CALL_QUERY_FEATURE_COUNT = 3;
+	int CALL_QUERY_FEATURE_COUNT = 4;
 
 	/**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
@@ -511,13 +520,22 @@ public interface DsPackage extends EPackage {
 	int DATA_SOURCE_CONFIGURATION__ID = 2;
 
 	/**
+	 * The feature id for the '<em><b>Enable OData</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE_CONFIGURATION__ENABLE_ODATA = 3;
+
+	/**
      * The number of structural features of the '<em>Data Source Configuration</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int DATA_SOURCE_CONFIGURATION_FEATURE_COUNT = 3;
+	int DATA_SOURCE_CONFIGURATION_FEATURE_COUNT = 4;
 
 	/**
      * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DescriptionImpl <em>Description</em>}' class.
@@ -2410,6 +2428,17 @@ public interface DsPackage extends EPackage {
 	EAttribute getCallQuery_Href();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Required Roles</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CallQuery#getRequiredRoles()
+	 * @see #getCallQuery()
+	 * @generated
+	 */
+	EAttribute getCallQuery_RequiredRoles();
+
+	/**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.CallQueryList <em>Call Query List</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2766,6 +2795,17 @@ public interface DsPackage extends EPackage {
      * @generated
      */
 	EAttribute getDataSourceConfiguration_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable OData</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#isEnableOData()
+	 * @see #getDataSourceConfiguration()
+	 * @generated
+	 */
+	EAttribute getDataSourceConfiguration_EnableOData();
 
 	/**
      * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.Description <em>Description</em>}'.
@@ -4613,6 +4653,14 @@ public interface DsPackage extends EPackage {
 		EAttribute CALL_QUERY__HREF = eINSTANCE.getCallQuery_Href();
 
 		/**
+		 * The meta object literal for the '<em><b>Required Roles</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALL_QUERY__REQUIRED_ROLES = eINSTANCE.getCallQuery_RequiredRoles();
+
+		/**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4887,6 +4935,14 @@ public interface DsPackage extends EPackage {
          * @generated
          */
 		EAttribute DATA_SOURCE_CONFIGURATION__ID = eINSTANCE.getDataSourceConfiguration_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable OData</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SOURCE_CONFIGURATION__ENABLE_ODATA = eINSTANCE.getDataSourceConfiguration_EnableOData();
 
 		/**
          * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DescriptionImpl <em>Description</em>}' class.

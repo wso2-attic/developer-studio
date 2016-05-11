@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getProperty <em>Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,5 +92,31 @@ public interface DataSourceConfiguration extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Enable OData</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enable OData</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable OData</em>' attribute.
+	 * @see #setEnableOData(boolean)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataSourceConfiguration_EnableOData()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean isEnableOData();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable OData</em>' attribute.
+	 * @see #isEnableOData()
+	 * @generated
+	 */
+	void setEnableOData(boolean value);
 
 } // DataSourceConfiguration
