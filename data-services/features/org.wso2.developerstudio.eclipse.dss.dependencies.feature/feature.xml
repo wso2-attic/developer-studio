@@ -21,7 +21,7 @@
          id="org.eclipse.emf.validation"
          download-size="0"
          install-size="0"
-         version="1.8.0.201405281429"
+         version="1.8.0.201505312255"
          unpack="false"/>
 
    <plugin
@@ -35,14 +35,14 @@
          id="org.eclipse.emf.query"
          download-size="0"
          install-size="0"
-         version="1.7.0.201405281426"
+         version="1.7.0.201505312221"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.transaction"
          download-size="0"
          install-size="0"
-         version="1.8.0.201405281451"
+         version="1.9.0.201506010221"
          unpack="false"/>
 
 </feature>
