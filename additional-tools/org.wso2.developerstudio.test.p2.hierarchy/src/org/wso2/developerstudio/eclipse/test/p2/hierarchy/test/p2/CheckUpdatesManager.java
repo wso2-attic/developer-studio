@@ -17,10 +17,9 @@
 package org.wso2.developerstudio.eclipse.test.p2.hierarchy.test.p2;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -45,6 +44,7 @@ import org.eclipse.equinox.p2.repository.metadata.IMetadataRepository;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
+import org.eclipse.equinox.p2.metadata.Version;
 
 public class CheckUpdatesManager {
 
@@ -96,11 +96,45 @@ public class CheckUpdatesManager {
 	 * @param monitor
 	 * @throws Exception
 	 */
-	public boolean checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String updatedFeatureID)
+	public void checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String featureID)
 			throws Exception {
+		String[] featureInfo = featureID.split("_");
+		String updatedFeatureID = featureInfo[0];
+		Version featureVersion = generateOSGIVersion(featureInfo[1]);
+		Iterator<IInstallableUnit> allFeaturesInUpdateRepo = queryP2Repository(monitor, updateURL);
+		if (!checkIfFeatureExist(updatedFeatureID, allFeaturesInUpdateRepo, featureVersion)) {
+			System.exit(1);
+		}
+		System.out.println("\n=============================== SUCCESS ======================================\n");
+		System.exit(0);
+
+	}
+
+	public void checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String[] featureIDs)
+			throws OperationCanceledException, URISyntaxException {
+
+		Iterator<IInstallableUnit> allFeaturesInUpdateRepo = queryP2Repository(monitor, updateURL);
+		for (String featureID : featureIDs) {
+			String[] featureInfo = featureID.split("_");
+			String updatedFeatureID = featureInfo[0];
+			Version featureVersion = generateOSGIVersion(featureInfo[1]);
+			if (!checkIfFeatureExist(updatedFeatureID, allFeaturesInUpdateRepo, featureVersion)) {
+				System.out.println("\n=====================================================================\n");
+				System.out.println("\n===================" + featureID
+						+ " does not exist, other features will not be checked =================================================\n");
+				System.exit(1);
+			}
+		}
+		System.out.println("\n=============================== SUCCESS ======================================\n");
+		System.exit(0);
+	}
+
+	private Iterator<IInstallableUnit> queryP2Repository(IProgressMonitor monitor, String updateURL)
+			throws URISyntaxException {
 		if (monitor == null) {
 			monitor = new NullProgressMonitor();
 		}
+
 		SubMonitor progress = SubMonitor.convert(monitor, "", 6);
 		// get all available IUs in update repository
 		IMetadataRepository metadataRepo = null;
@@ -112,53 +146,55 @@ public class CheckUpdatesManager {
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
 		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepo.query(allIUQuery, progress.newChild(1));
 
-		SubMonitor progress1 = SubMonitor.convert(monitor, "", 10);
-
-		Map<String, String> allFeaturesInUpdateRepo = filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_JAR_IU_ID_SFX,
-				allIUQueryResult, progress1.newChild(1));
+		Iterator<IInstallableUnit> iterator = allIUQueryResult.iterator();
 
 		if (progress.isCanceled()) {
 			throw new OperationCanceledException();
 		}
-		updatedFeatureID = updatedFeatureID + "." + FEATURE_JAR_IU_ID_SFX;
-		if (allFeaturesInUpdateRepo.containsKey(updatedFeatureID)) {
-			System.out.println("\n===========================xxxxxxxxxxxxxxxxxxx==================================\n");
-			System.out.println("-------------------------P2 Structure is valid----------------- \n \n ");
-			System.out.println("\n=====================================================================\n");
-			System.out.println("\n=====================================================================\n");
-			System.out.println("===========          " + updatedFeatureID + "   is Available in the Updates Repository          =============\n");
-			System.out.println("\n=====================================================================\n");
-			System.exit(0);
-		} else {
-			System.exit(1);
-		}
-
-		return false;
-
+		return iterator;
 	}
 
-	private Map<String, String> filterInstallableUnits(String idPrefix, String idSuffix,
-			IQueryResult<IInstallableUnit> queryResult, IProgressMonitor monitor) {
-		if (monitor == null) {
-			monitor = new NullProgressMonitor();
-		}
-		Iterator<IInstallableUnit> iterator = queryResult.iterator();
-		SubMonitor progress = SubMonitor.convert(monitor, "", queryResult.toSet().size());
-		Map<String, String> loadedFeatureMap = new HashMap<>();
-
+	private boolean checkIfFeatureExist(String updatedFeatureID, Iterator<IInstallableUnit> iterator,
+			Version featureVersion) {
+		updatedFeatureID = updatedFeatureID + "." + FEATURE_JAR_IU_ID_SFX;
+		System.out.println("Checking Availability of " + updatedFeatureID + "Version  : " + featureVersion + " in the given repository");
 		while (iterator.hasNext()) {
-			if (progress.isCanceled()) {
-				throw new OperationCanceledException();
-			}
 			IInstallableUnit iu = iterator.next();
-			String versionedID = iu.getId();
-			progress.subTask("" + versionedID);
-			if (versionedID != null && versionedID.startsWith(idPrefix) && versionedID.endsWith(idSuffix)) {
-				loadedFeatureMap.put(iu.getId(), iu.PROP_DESCRIPTION);
+			String featureIuId = iu.getId();
+			Version IUVersion = iu.getVersion();
+			System.out.println("Available Feature : " + featureIuId);
+			if (featureIuId != null && featureIuId.startsWith(WSO2_FEATURE_PREFIX)
+					&& featureIuId.endsWith(FEATURE_JAR_IU_ID_SFX)) {
+				if (featureIuId.equals(updatedFeatureID)) {
+					if (IUVersion.compareTo(featureVersion) == 0) {
+						System.out.println(
+								"\n===========================xxxxxxxxxxxxxxxxxxx==================================\n");
+						System.out.println("-------------------------P2 Structure is valid----------------- \n \n ");
+						System.out.println("\n=====================================================================\n");
+						System.out.println("\n=====================================================================\n");
+						System.out.println("===========          " + updatedFeatureID + "Version  : " + featureVersion
+								+ "   is Available in the Updates Repository          =============\n");
+						System.out.println("\n=====================================================================\n");
+						return true;
+					}
+				}
 			}
-			progress.worked(1);
 		}
-		return loadedFeatureMap;
+		System.out.println("\n=====================================================================\n");
+		System.out.println("\n=====================================================================\n");
+		System.out.println("===========          " + updatedFeatureID
+				+ " is not available in the given repository, Exiting system with error code ======================");
+		return false;
+	}
+
+	private Version generateOSGIVersion(String installedVersion) {
+		System.out.println("\nGenerationg version Object with " + installedVersion);
+		String[] majorMinorUpperLmit = installedVersion.split("\\.");
+		Version upperLimit = Version.createOSGi(Integer.parseInt(majorMinorUpperLmit[0]),
+				Integer.parseInt(majorMinorUpperLmit[1]), Integer.parseInt(majorMinorUpperLmit[2]),
+				majorMinorUpperLmit[3]);
+		System.out.println("\nGenrated version : \n" + upperLimit.toString());
+		return upperLimit;
 	}
 
 }
