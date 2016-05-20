@@ -16,6 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.test.p2.hierarchy.test.p2;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -104,10 +107,50 @@ public class CheckUpdatesManager {
 		Iterator<IInstallableUnit> allFeaturesInUpdateRepo = queryP2Repository(monitor, updateURL);
 		if (!checkIfFeatureExist(updatedFeatureID, allFeaturesInUpdateRepo, featureVersion)) {
 			System.exit(1);
+		} else {
+			installAvailableFeature(updatedFeatureID);
 		}
-		System.out.println("\n=============================== SUCCESS ======================================\n");
 		System.exit(0);
 
+	}
+
+	private void installAvailableFeature(String updatedFeatureID) {
+		System.out.println("\n=============================== Installing the feautures " + updatedFeatureID + " using script ======================================\n");
+		String[] cmd = {"/home/awanthika/featureInstallerScript.sh", updatedFeatureID ,"4.1.0" };
+		try {
+			  Process p = Runtime.getRuntime().exec(cmd);
+			  System.out.println("Waiting for script to end ...");
+			  BufferedReader stdInput = new BufferedReader(new
+		                 InputStreamReader(p.getInputStream()));
+		 
+		            BufferedReader stdError = new BufferedReader(new
+		                 InputStreamReader(p.getErrorStream()));
+		            String s = null;
+		            // read the output from the command
+		            System.out.println("Here is the standard output of the command:\n");
+		            while ((s = stdInput.readLine()) != null) {
+		                System.out.println(s);
+		            }
+		             
+		            // read any errors from the attempted command
+		            System.out.println("Here is the standard error of the command (if any):\n");
+		            while ((s = stdError.readLine()) != null) {
+		                System.out.println(s);
+		            }                            
+		       p.waitFor();
+			if (p.exitValue() == 0) {
+				System.out.println("\n=============================== SUCCESS ======================================\n");
+			} else {
+				System.out.println("\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
+				System.exit(p.exitValue());
+			}
+		} catch (IOException e) {
+			System.out.print("\n IO exception in executing the script!! \n " + e);
+			System.exit(1);
+		} catch (InterruptedException e) {
+			System.out.println("\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
+			System.exit(1);
+		}
 	}
 
 	public void checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String[] featureIDs)
@@ -123,9 +166,10 @@ public class CheckUpdatesManager {
 				System.out.println("\n===================" + featureID
 						+ " does not exist, other features will not be checked =================================================\n");
 				System.exit(1);
+			} else {
+				installAvailableFeature(updatedFeatureID);
 			}
 		}
-		System.out.println("\n=============================== SUCCESS ======================================\n");
 		System.exit(0);
 	}
 
@@ -162,7 +206,6 @@ public class CheckUpdatesManager {
 			IInstallableUnit iu = iterator.next();
 			String featureIuId = iu.getId();
 			Version IUVersion = iu.getVersion();
-			System.out.println("Available Feature : " + featureIuId);
 			if (featureIuId != null && featureIuId.startsWith(WSO2_FEATURE_PREFIX)
 					&& featureIuId.endsWith(FEATURE_JAR_IU_ID_SFX)) {
 				if (featureIuId.equals(updatedFeatureID)) {
@@ -182,7 +225,7 @@ public class CheckUpdatesManager {
 		}
 		System.out.println("\n=====================================================================\n");
 		System.out.println("\n=====================================================================\n");
-		System.out.println("===========          " + updatedFeatureID
+		System.out.println("===========          " + updatedFeatureID + "Version  : " + featureVersion
 				+ " is not available in the given repository, Exiting system with error code ======================");
 		return false;
 	}
