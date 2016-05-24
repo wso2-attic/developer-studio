@@ -47,9 +47,12 @@ import org.eclipse.equinox.p2.repository.metadata.IMetadataRepository;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
+import org.wso2.developerstudio.eclipse.test.p2.hierarchy.RunHeadlessMode;
 import org.eclipse.equinox.p2.metadata.Version;
 
 public class CheckUpdatesManager {
+
+	private static final String INSTALLER_SCRIPT_SH = "/home/developerstudio/p2_tools/featureInstallerScript.sh";
 
 	public CheckUpdatesManager() {
 		initProvisioningAgent();
@@ -101,56 +104,18 @@ public class CheckUpdatesManager {
 	 */
 	public void checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String featureID)
 			throws Exception {
-		String[] featureInfo = featureID.split("_");
-		String updatedFeatureID = featureInfo[0];
-		Version featureVersion = generateOSGIVersion(featureInfo[1]);
 		Iterator<IInstallableUnit> allFeaturesInUpdateRepo = queryP2Repository(monitor, updateURL);
-		if (!checkIfFeatureExist(updatedFeatureID, allFeaturesInUpdateRepo, featureVersion)) {
+		System.out.println("Sending Feature ID with Version : " + featureID);
+		if (!checkIfFeatureExist(featureID, allFeaturesInUpdateRepo)) {
+			System.out.println("\n============================   FAILED =========================================\n");
+			System.out.println("\n===================" + featureID
+					+ " does not exist =================================================\n");
 			System.exit(1);
 		} else {
-			installAvailableFeature(updatedFeatureID);
+			installAvailableFeature();
 		}
 		System.exit(0);
 
-	}
-
-	private void installAvailableFeature(String updatedFeatureID) {
-		System.out.println("\n=============================== Installing the feautures " + updatedFeatureID + " using script ======================================\n");
-		String[] cmd = {"/home/awanthika/featureInstallerScript.sh", updatedFeatureID ,"4.1.0" };
-		try {
-			  Process p = Runtime.getRuntime().exec(cmd);
-			  System.out.println("Waiting for script to end ...");
-			  BufferedReader stdInput = new BufferedReader(new
-		                 InputStreamReader(p.getInputStream()));
-		 
-		            BufferedReader stdError = new BufferedReader(new
-		                 InputStreamReader(p.getErrorStream()));
-		            String s = null;
-		            // read the output from the command
-		            System.out.println("Here is the standard output of the command:\n");
-		            while ((s = stdInput.readLine()) != null) {
-		                System.out.println(s);
-		            }
-		             
-		            // read any errors from the attempted command
-		            System.out.println("Here is the standard error of the command (if any):\n");
-		            while ((s = stdError.readLine()) != null) {
-		                System.out.println(s);
-		            }                            
-		       p.waitFor();
-			if (p.exitValue() == 0) {
-				System.out.println("\n=============================== SUCCESS ======================================\n");
-			} else {
-				System.out.println("\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
-				System.exit(p.exitValue());
-			}
-		} catch (IOException e) {
-			System.out.print("\n IO exception in executing the script!! \n " + e);
-			System.exit(1);
-		} catch (InterruptedException e) {
-			System.out.println("\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
-			System.exit(1);
-		}
 	}
 
 	public void checkForAvailableUpdates(IProgressMonitor monitor, String updateURL, String[] featureIDs)
@@ -158,19 +123,83 @@ public class CheckUpdatesManager {
 
 		Iterator<IInstallableUnit> allFeaturesInUpdateRepo = queryP2Repository(monitor, updateURL);
 		for (String featureID : featureIDs) {
-			String[] featureInfo = featureID.split("_");
-			String updatedFeatureID = featureInfo[0];
-			Version featureVersion = generateOSGIVersion(featureInfo[1]);
-			if (!checkIfFeatureExist(updatedFeatureID, allFeaturesInUpdateRepo, featureVersion)) {
-				System.out.println("\n=====================================================================\n");
+			System.out.println("Sending Feature ID with Version : " + featureID);
+			if (!checkIfFeatureExist(featureID, allFeaturesInUpdateRepo)) {
+				System.out
+						.println("\n============================   FAILED =========================================\n");
 				System.out.println("\n===================" + featureID
 						+ " does not exist, other features will not be checked =================================================\n");
 				System.exit(1);
-			} else {
-				installAvailableFeature(updatedFeatureID);
 			}
 		}
+		installAvailableFeature();
+		// try installing all features since they have passed the initial check.
 		System.exit(0);
+	}
+
+	private void installAvailableFeature() {
+		String url = RunHeadlessMode.RELEASES_REPO_URL.trim();
+		System.out.println("\n=============================== Installing the feautures from " + url
+				+ " using script ======================================\n");
+		String[] cmd = {INSTALLER_SCRIPT_SH};
+		BufferedReader stdError = null;
+		BufferedReader stdInput = null;
+		try {
+			Process p = Runtime.getRuntime().exec(cmd);
+			System.out.println("Waiting for script to end ...");
+			stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+			stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			String s = null;
+			// read the output from the command
+			System.out.println("Here is the standard output of the command:\n");
+			while ((s = stdInput.readLine()) != null) {
+				System.out.println(s);
+				if (s.contains("failed.")) {
+					failureExit(s);
+				}
+			}
+			// read any errors from the attempted command
+			System.out.println("Here is the standard error of the command (if any):\n");
+			while ((s = stdError.readLine()) != null) {
+				System.out.println(s);
+				if (s.contains("failed.")) {
+					failureExit(s);
+				}
+			}
+			p.waitFor();
+			if (p.exitValue() == 0) {
+				System.out
+						.println("\n=============================== SUCCESS ======================================\n");
+			} else {
+				System.out.println(
+						"\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
+				System.exit(p.exitValue());
+			}
+		} catch (IOException e) {
+			System.out.print("\n IO exception in executing the script!! \n " + e);
+			System.exit(1);
+		} catch (InterruptedException e) {
+			System.out.println(
+					"\n=============================== ERROR OCCURRED DURING FEATURE INSTALLATION ======================================\n");
+			System.exit(1);
+		} finally {
+			try {
+				stdError.close();
+				stdInput.close();
+			} catch (IOException e) {
+				// not necessary to print this error
+			}
+		}
+	}
+
+	private void failureExit(String s) {
+		if (s.contains("failed.")) {
+			System.out.println("\n=============================== FAILED ======================================\n");
+			System.out.println("Installation of features at the repository \n " + RunHeadlessMode.RELEASES_REPO_URL
+					+ "has failed. Exiting system with error code.");
+			System.exit(1);
+		}
 	}
 
 	private Iterator<IInstallableUnit> queryP2Repository(IProgressMonitor monitor, String updateURL)
@@ -198,10 +227,15 @@ public class CheckUpdatesManager {
 		return iterator;
 	}
 
-	private boolean checkIfFeatureExist(String updatedFeatureID, Iterator<IInstallableUnit> iterator,
-			Version featureVersion) {
+	private boolean checkIfFeatureExist(String featureID, Iterator<IInstallableUnit> iterator) {
+		System.out.println("Received Feature ID with Version : " + featureID);
+		String[] featureInfo = featureID.split("_");
+		String updatedFeatureID = featureInfo[0];
+		System.out.println("The version being tested : " + featureInfo[1]);
+		Version featureVersion = generateOSGIVersion(featureInfo[1]);
 		updatedFeatureID = updatedFeatureID + "." + FEATURE_JAR_IU_ID_SFX;
-		System.out.println("Checking Availability of " + updatedFeatureID + "Version  : " + featureVersion + " in the given repository");
+		System.out.println("Checking Availability of " + updatedFeatureID + "Version  : " + featureVersion
+				+ " in the given repository");
 		while (iterator.hasNext()) {
 			IInstallableUnit iu = iterator.next();
 			String featureIuId = iu.getId();
@@ -215,7 +249,7 @@ public class CheckUpdatesManager {
 						System.out.println("-------------------------P2 Structure is valid----------------- \n \n ");
 						System.out.println("\n=====================================================================\n");
 						System.out.println("\n=====================================================================\n");
-						System.out.println("===========          " + updatedFeatureID + "Version  : " + featureVersion
+						System.out.println("===========          " + featureID + " Version  : " + featureVersion
 								+ "   is Available in the Updates Repository          =============\n");
 						System.out.println("\n=====================================================================\n");
 						return true;
@@ -225,7 +259,7 @@ public class CheckUpdatesManager {
 		}
 		System.out.println("\n=====================================================================\n");
 		System.out.println("\n=====================================================================\n");
-		System.out.println("===========          " + updatedFeatureID + "Version  : " + featureVersion
+		System.out.println("=========== " + updatedFeatureID + "Version  : " + featureVersion
 				+ " is not available in the given repository, Exiting system with error code ======================");
 		return false;
 	}
