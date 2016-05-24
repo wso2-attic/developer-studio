@@ -1,11 +1,14 @@
-=====================================================================
      READ ME
 =====================================================================
 
 
 This jar should be executed with the command 
 
-java -jar plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar -consoleLog -console -nosplash -application org.wso2.developerstudio.eclipse.test.p2.hierarchy $repo_url $feature_id
+============================================================================================================================================================================================
+java -jar plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar -consoleLog -console -nosplash -application /path_to_org.wso2.developerstudio.eclipse.test.p2.hierarchy $repo_url feature_id_version
+
+============================================================================================================================================================================================
+
 
 after copying this jar to an eclipse MARS instance.
 
@@ -19,11 +22,6 @@ It will test for the availability of one or more features in a given P2 reposito
 
 
 ----------------------------------------------------------------
-
-known limitation(s)
-
-
-1. The eclipse P2 director installer will not throw any exceptions if feature installation fails, instead it will only log the output which would be visible as console output.
 
 
 
