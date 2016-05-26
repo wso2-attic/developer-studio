@@ -138,8 +138,7 @@ public class CheckUpdatesManager {
 	}
 
 	private void installAvailableFeature() {
-		String url = RunHeadlessMode.RELEASES_REPO_URL.trim();
-		System.out.println("\n=============================== Installing the feautures from " + url
+		System.out.println("\n=============================== Installing the feautures from builder releases repository" 
 				+ " using script ======================================\n");
 		String[] cmd = {INSTALLER_SCRIPT_SH};
 		BufferedReader stdError = null;
@@ -196,7 +195,7 @@ public class CheckUpdatesManager {
 	private void failureExit(String s) {
 		if (s.contains("failed.")) {
 			System.out.println("\n=============================== FAILED ======================================\n");
-			System.out.println("Installation of features at the repository \n " + RunHeadlessMode.RELEASES_REPO_URL
+			System.out.println("Installation of features at the builder releases repository \n "
 					+ "has failed. Exiting system with error code.");
 			System.exit(1);
 		}
@@ -265,12 +264,12 @@ public class CheckUpdatesManager {
 	}
 
 	private Version generateOSGIVersion(String installedVersion) {
-		System.out.println("\nGenerationg version Object with " + installedVersion);
+		System.out.println("\n Generationg version Object with " + installedVersion);
 		String[] majorMinorUpperLmit = installedVersion.split("\\.");
 		Version upperLimit = Version.createOSGi(Integer.parseInt(majorMinorUpperLmit[0]),
 				Integer.parseInt(majorMinorUpperLmit[1]), Integer.parseInt(majorMinorUpperLmit[2]),
 				majorMinorUpperLmit[3]);
-		System.out.println("\nGenrated version : \n" + upperLimit.toString());
+		System.out.println("\n Genrated version : \n" + upperLimit.toString());
 		return upperLimit;
 	}
 

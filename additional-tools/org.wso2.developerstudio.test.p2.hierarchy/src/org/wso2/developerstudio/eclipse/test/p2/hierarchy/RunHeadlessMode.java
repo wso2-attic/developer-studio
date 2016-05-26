@@ -28,32 +28,29 @@ import org.wso2.developerstudio.eclipse.test.p2.hierarchy.test.p2.CheckUpdatesMa
 
 public class RunHeadlessMode implements IApplication {
 	
-	public static String RELEASES_REPO_URL = null;
 
 	@Override
 	public Object start(IApplicationContext arg0) throws Exception {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> contextArguments = arg0.getArguments();
 		String [] cmdArgs = (String[]) contextArguments.get(IApplicationContext.APPLICATION_ARGS);
-		RELEASES_REPO_URL = cmdArgs[0];
 		CheckUpdatesManager checkUpdatesManager = new CheckUpdatesManager();
-		if (cmdArgs.length == 3) {
+		if (cmdArgs.length == 2) {
 		System.out.println("Arguments Received : ------------------------------------------\n");
-		System.out.println(" Releases Repository URL : " + cmdArgs[0] + "\n URL of the Repository tested  : " + cmdArgs[1] + "\n Feature Being Checked :" + cmdArgs[2]);
+		System.out.println("\n URL of the Repository tested  : " + cmdArgs[0] + "\n Feature Being Checked :" + cmdArgs[1]);
 			System.out.println("\n \n Arguments Computed : ------------------------------------------\n");
-			System.out.println(cmdArgs[1] + " and " + cmdArgs[2]);
+			System.out.println(cmdArgs[0] + " and " + cmdArgs[1]);
 			if (cmdArgs[1] == null || cmdArgs[0] == null) {
 				System.out.println(
 						"\n \n Invalid Arguments, arguments passed should be P2 repository URL and updated feature ID \n");
 				System.exit(1);
 			}
-			checkUpdatesManager.checkForAvailableUpdates(generateNewProgressMonitor(), cmdArgs[1], cmdArgs[2]);
-		} else if (cmdArgs.length > 3) {
+			checkUpdatesManager.checkForAvailableUpdates(generateNewProgressMonitor(), cmdArgs[0], cmdArgs[1]);
+		} else if (cmdArgs.length > 2) {
 			List<String> comdArgArray = new ArrayList<String>(Arrays.asList(cmdArgs));
 		    comdArgArray.remove(0);
-		    comdArgArray.remove(1);
 		    String[] array = comdArgArray.toArray(new String[comdArgArray.size()]);
-		    checkUpdatesManager.checkForAvailableUpdates(generateNewProgressMonitor(), cmdArgs[1], array);
+		    checkUpdatesManager.checkForAvailableUpdates(generateNewProgressMonitor(), cmdArgs[0], array);
 		    System.out.println("Arguments Received : ------------------------------------------\n");
 		    System.out.println(
 					"\n \n Received Arguments, with multiple feature IDs  \n");
