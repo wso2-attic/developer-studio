@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Developer Studio
+Bundle-SymbolicName: org.wso2.developerstudio.rcp.plugin;singleton:=true
+Bundle-Version: 4.2.0.qualifier
+Bundle-Vendor: WSO2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
