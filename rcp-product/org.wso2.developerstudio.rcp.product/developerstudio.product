@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="developer-studio" uid="org.wso2.developerstudio" id="org.wso2.developerstudio.rcp.product" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
-
+<product name="developer-studio" uid="org.wso2.developerstudio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -16,11 +15,7 @@
 
    <windowImages/>
 
-   <splash
-      location="org.wso2.developerstudio.rcp.plugin"
-      startupProgressRect="5,600,445,15"
-      startupMessageRect="7,252,445,20"
-      startupForegroundColor="000000" />
+
    <launcher name="developerstudio">
       <solaris/>
       <win useIco="false">
@@ -28,10 +23,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>

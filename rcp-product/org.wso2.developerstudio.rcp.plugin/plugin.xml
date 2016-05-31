@@ -28,6 +28,22 @@
                name="preferenceCustomization"
                value="plugin_customization.ini">
          </property>
+          <property
+           name="lifeCycleURI"
+           value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="devstudio"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="developer-studio">
+         <property
+               name="appName"
+               value="developer-studio">
+         </property>
       </product>
    </extension>
 

@@ -5,3 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.rcp.plugin;singleton:=true
 Bundle-Version: 4.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.e4.core.services,
+ org.eclipse.e4.ui.workbench,
+ org.eclipse.equinox.app,
+ org.eclipse.swt,
+ org.eclipse.osgi.services
