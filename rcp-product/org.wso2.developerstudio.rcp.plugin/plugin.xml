@@ -3,30 +3,14 @@
 <plugin>
 
    <extension
-         id="product"
+         id="developerstudio"
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.eclipse.ui.ide.workbench"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
             name="developer-studio">
          <property
                name="appName"
                value="developer-studio">
-         </property>
-         <property
-               name="startupProgressRect"
-               value="5,600,445,15">
-         </property>
-         <property
-               name="startupForegroundColor"
-               value="000000">
-         </property>
-         <property
-               name="startupMessageRect"
-               value="7,252,445,20">
-         </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
          </property>
           <property
            name="lifeCycleURI"
@@ -46,5 +30,4 @@
          </property>
       </product>
    </extension>
-
 </plugin>
