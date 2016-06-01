@@ -28,6 +28,10 @@
                name="appName"
                value="developer-studio">
          </property>
+         <property
+           name="lifeCycleURI"
+           value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
+         </property>
       </product>
    </extension>
 </plugin>

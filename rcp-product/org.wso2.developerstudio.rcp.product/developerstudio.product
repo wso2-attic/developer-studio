@@ -50,6 +50,9 @@
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.m2e.feature"/>
       <feature id="org.eclipse.jdt"/>
+      <feature id="org.eclipse.emf.ecore.edit"/>
+      <feature id="org.eclipse.wst.xml_core.feature"/>
+      <feature id="org.eclipse.wst.xml_ui.feature"/>
    </features>
 
    <configurations>
