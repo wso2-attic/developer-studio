@@ -10,6 +10,7 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
 public class LifeCycleManager {
+	
 	@PostContextCreate
 	void postContextCreate(final IEventBroker eventBroker, IApplicationContext context) {
 		final Shell shell = new Shell(SWT.SHELL_TRIM);
