@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="developer-studio" uid="org.wso2.developerstudio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
+<product name="WSO2 Developer Studio" uid="org.wso2.developerstudio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
@@ -109,6 +109,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.wst.ws_userdoc.feature"/>
       <feature id="org.eclipse.jst.web_ui.feature"/>
       <feature id="org.eclipse.jst.web_userdoc.feature"/>
+      <feature id="org.wso2.developerstudio.kernel.feature" version="4.1.0.201605130901"/>
    </features>
 
    <configurations>
