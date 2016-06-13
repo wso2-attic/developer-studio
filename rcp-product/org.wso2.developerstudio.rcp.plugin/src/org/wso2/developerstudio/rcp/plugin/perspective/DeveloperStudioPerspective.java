@@ -13,21 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.rcp.plugin;
+package org.wso2.developerstudio.rcp.plugin.perspective;
 
-import org.eclipse.e4.core.services.events.IEventBroker;
-import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
-import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
-import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.ui.IFolderLayout;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IPerspectiveFactory;
 
-public class LifeCycleManager {
+public class DeveloperStudioPerspective implements IPerspectiveFactory {
+
+	private static final String dashboardViewID = "org.wso2.developerstudio.eclipse.rcp.dashboard";
 	
-	@PostContextCreate
-	void postContextCreate(final IEventBroker eventBroker, IApplicationContext context) {
+	@Override
+	public void createInitialLayout(IPageLayout layout) {
+		// Get the editor area.
+        String editorArea = layout.getEditorArea();
+        IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 1f,
+                editorArea);
+        topLeft.addView(dashboardViewID);
 	}
-	
-	@ProcessAdditions
-	public void setPerspective(){
-		
-	}
+
 }

@@ -6,10 +6,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
-            name="WSO2 Developer Studio">
+            name="Developer Studio">
          <property
                name="appName"
-               value="WSO2 Developer Studio">
+               value="Developer Studio">
          </property>
          <property
                name="aboutImage"
@@ -27,6 +27,44 @@
            name="lifeCycleURI"
            value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
          </property>
+         <property
+               name="startupForegroundColor"
+               value="729FCF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,440,20">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="WSO2"
+            icon="icons/perspective.png"
+            class="org.wso2.developerstudio.rcp.plugin.perspective.DeveloperStudioPerspective"
+            id="org.wso2.developerstudio.eclipse.WSO2DeveloperStudioPerspective">
+      </perspective>
+   </extension>
+    <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.wso2.developerstudio.eclipse.rcp.views"
+            name="WSO2"/>
+      <view
+            id="org.wso2.developerstudio.eclipse.rcp.dashboard"
+            name="WSO2 Documentation"
+            icon="icons/icon-16.gif"
+            class="org.wso2.developerstudio.eclipse.platform.ui.view.DocumentationView"
+            category="org.wso2.developerstudio.eclipse.rcp.views"
+            allowMultiple="false"/>
    </extension>
 </plugin>
