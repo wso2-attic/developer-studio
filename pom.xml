@@ -19,6 +19,7 @@
 		<module>plugins</module>
 		<module>features</module>
 		<module>repository</module>
+		<module>rcp-product</module>
 		<module>samples</module>
 	</modules>
 	<scm>
@@ -35,8 +36,8 @@
 	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>0.23.0</tycho-version>
-		<tycho-extras.version>0.23.0</tycho-extras.version>
+		<tycho-version>0.24.0</tycho-version>
+		<tycho-extras.version>0.24.0</tycho-extras.version>
 		<version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
 		<version.sortpom.plugin>2.3.0</version.sortpom.plugin>
 	</properties>
@@ -163,7 +164,6 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<resolver>p2</resolver>
 					<environments>
 						<environment>
 							<os>linux</os>
@@ -184,11 +184,6 @@
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86</arch>
 						</environment>
 						<environment>
 							<os>macosx</os>

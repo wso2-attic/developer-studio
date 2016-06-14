@@ -31,12 +31,13 @@ Please visit : http://wso2.com/products/developer-studio/
       startupMessageRect="7,252,445,20"
       startupForegroundColor="729FCF" />
    <launcher name="developerstudio">
-      <linux icon="/org.wso2.developerstudio.rcp.plugin/icons/icon-linux.xpm"/>
+      <linux icon="../org.wso2.developerstudio.rcp.plugin/icons/icon-linux.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -123,6 +124,10 @@ Please visit : http://wso2.com/products/developer-studio/
    </configurations>
 
    <repositories>
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
       <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
       <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
    </repositories>
