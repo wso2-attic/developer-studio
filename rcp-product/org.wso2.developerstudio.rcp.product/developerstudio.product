@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Developer Studio" uid="org.wso2.developerstudio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
+<product name="Developer Studio" uid="WSO2 Developer Studio" id="org.wso2.developerstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="4.1.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.developerstudio.rcp.plugin/icons/carbon-studio-logo.gif"/>
@@ -126,10 +126,8 @@ Please visit : http://wso2.com/products/developer-studio/
    <repositories>
       <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
       <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/" enabled="true" />
-      <repository location="http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/releases/" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/mars" enabled="true" />
+      <repository location="http://download.eclipse.org/releases/mars" enabled="true" />
    </repositories>
 
    <preferencesInfo>
