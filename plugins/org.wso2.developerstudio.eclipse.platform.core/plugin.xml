@@ -25,9 +25,9 @@
     <!--extension point="org.eclipse.ui.intro.configExtension">
     
     
-        <configExtension content="intro/welcome.xml"
+        <configExtension content="intro/introContent.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>
-    </extension-->
+    </extension -->
     
     <extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
         <resolver
@@ -559,4 +559,40 @@
             mediaType="application/xsd"
             extension="xsd"></template>
     </extension>
+    <!--extension
+    point="org.eclipse.ui.intro.configExtension">
+		 <configExtension
+ 		  configId="org.eclipse.ui.intro.universalConfig"
+  		 content="intro/welcome.xml">
+ </configExtension>
+</extension> -->
+   
+
+    <!--extension
+          point="org.eclipse.ui.intro">
+       <intro
+             class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+             id="org.wso2.developerstudio.eclipse.platform.core.intro">
+       </intro>
+       <introProductBinding
+             introId="org.wso2.developerstudio.eclipse.platform.core.intro"
+             productId="org.wso2.developerstudio.rcp.plugin.devstudio">
+       </introProductBinding>
+    </extension>
+    <extension
+          point="org.eclipse.ui.intro.config">
+       <config
+             content="introContent.xml"
+             id="org.wso2.developerstudio.eclipse.platform.core.introConfigId"
+             introId="org.wso2.developerstudio.eclipse.platform.core.intro">
+          <presentation
+                home-page-id="root">
+             <implementation
+                   kind="html"
+                   os="win32,linux,macosx"
+                   style="content/shared.css">
+             </implementation>
+          </presentation>
+       </config>
+    </extension> -->
 </plugin>

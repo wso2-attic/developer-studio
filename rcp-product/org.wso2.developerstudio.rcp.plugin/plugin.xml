@@ -39,10 +39,12 @@
                name="startupProgressRect"
                value="5,275,440,20">
          </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
+         <property name="introBrandingImage" value="product:icons/dev-studio-logo.gif"/>
+		 <property name="introTitle" value="Welcome to WSO2 Developer Studio"/>
+   <property
+         name="preferenceCustomization"
+         value="plugin_customization.ini">
+   </property>
       </product>
    </extension>
    <extension
@@ -67,4 +69,11 @@
             category="org.wso2.developerstudio.eclipse.rcp.views"
             allowMultiple="false"/>
    </extension>
+   
+   <extension point="org.eclipse.ui.intro">
+	<introProductBinding
+		 introId="org.eclipse.ui.intro.universal"
+		 productId="org.wso2.developerstudio.rcp.plugin.devstudio">
+	</introProductBinding>
+</extension>
 </plugin>

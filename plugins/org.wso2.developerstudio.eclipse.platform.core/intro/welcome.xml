@@ -9,14 +9,6 @@
 <introContent>
 	<extensionContent id="comdeveloperwelcome-introExtension"
 		style="css/sample.css" name="Sample Extension" path="overview/@">
-		<group style-id="content-group" id="comdeveloperwelcome-introLink-group"
-			icon="icons/carbon-normal.png">
-			<link label="Open Dashboard"
-				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.developerstudio.eclipse.platform.core&#38;class=org.wso2.developerstudio.eclipse.platform.core.intro.action.OpenDashboardAction"
-				id="carbonStudio-dashboardlink" style-id="content-link">
-				<text>Start using WSO2 Developer Studio</text>
-			</link>
-		</group>
 		<group style-id="content-group" id="comdeveloperwelcome-introLink-group">
 			<link label="WSO2 Developer Studio - Quick Start Guide"
 				url="https://docs.wso2.com/display/DVS400/Getting+Started" id="carbonStudio-introLink"

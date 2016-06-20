@@ -193,6 +193,7 @@
                 sequence="M1+6">
         </key>
     </extension>
+  
 
 <!--
     <extension
@@ -276,5 +277,4 @@
         </objectContribution>
     </extension>
     -->
-
 </plugin>

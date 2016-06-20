@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.rcp.feature"
       label="Feature"
-      version="4.2.0.qualifier"
+      version="4.1.1.qualifier"
       provider-name="WSO2 Inc.">
 
    <description url="http://www.example.com/description">
@@ -187,6 +187,27 @@
 
    <plugin
          id="org.eclipse.gef"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.intro.universal"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.intro"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.forms"
          download-size="0"
          install-size="0"
          version="0.0.0"
