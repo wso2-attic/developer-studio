@@ -1,0 +1,43 @@
+#root-container {
+   background: #BBBBBB;
+   padding: 15px;
+   background: radial-gradient(circle, #BBBBBB 25%, #ffffff 65%);
+    height: 1000px;
+    width: 1000px;
+}
+
+#pageRow{
+	width: 100%;
+	height: 100%;
+}
+
+#svgArea{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+}
+#zoomInIcon{
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    width: 100px;
+    height: 100px;
+    color: red;
+}
+
+#zoomInIcon:hover{
+    color: #ffff00;
+}
+
+.title{
+    cursor: pointer;
+    background-color: red;
+}
+
+.centerCircle{
+    cursor: pointer;
+}
+
+.childCircle{
+    cursor: pointer;
+}
