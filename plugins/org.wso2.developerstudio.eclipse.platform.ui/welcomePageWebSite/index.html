@@ -9,43 +9,18 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/app.css"/>
-    <link rel="stylesheet" type="text/css" href="css/gooefy.css"/>
 </head>
 <body>
     <div id="root-container" class="container-fluid">
         <div class="row">
-            <nav id="templateChildMenu" class="menu">
-                <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-                <label style="position: relative; top:-0px;" class="menu-open-button" for="menu-open">
-                    <span class="hamburger hamburger-1"></span>
-                    <span class="hamburger hamburger-2"></span>
-                    <span class="hamburger hamburger-3"></span>
-                </label>
-
-                <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
-                <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
-                <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
-                <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
-                <a href="#" class="menu-item"> <i class="fa fa-cog"></i> </a>
-                <a href="#" class="menu-item"> <i class="fa fa-ellipsis-h"></i> </a>
-            </nav>
         </div>
         <div class="row" id="pageRow" >
-            <svg width="100%" height="100%" id="svgArea">
+            <svg width="100%" height="100%" viewBox="0 0 1000 1000" id="svgArea">
                 <defs>
-                    <filter id="shadowed-goo">
-                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                    <filter id="gooey">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
                         <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                        <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-                        <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-                        <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-                        <feComposite in2="shadow" in="goo" result="goo" />
-                        <feComposite in2="goo" in="SourceGraphic" result="mix" />
-                    </filter>
-                    <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                        <feComposite in2="goo" in="SourceGraphic" result="mix" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
                     </filter>
                 </defs>
             </svg>
@@ -55,6 +30,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/snap.svg.js"></script>
+    <script src="js/debug.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

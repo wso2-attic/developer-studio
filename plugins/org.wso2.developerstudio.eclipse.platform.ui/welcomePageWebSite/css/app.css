@@ -12,9 +12,7 @@
 }
 
 #svgArea{
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 0;*/
+
 }
 #zoomInIcon{
     position: absolute;
@@ -41,3 +39,8 @@
 .childCircle{
     cursor: pointer;
 }
+
+.leafCircle{
+    cursor: pointer;
+}
+
