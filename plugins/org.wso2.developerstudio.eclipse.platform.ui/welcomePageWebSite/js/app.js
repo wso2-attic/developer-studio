@@ -106,7 +106,12 @@ var addCenteredMainText = function () {
 };
 
 
-var addCenteredText = function (x, y, text) {
+var addCenteredText = function (x, y, text, offset) {
+    if(offset > 0){
+        return svgArea.text(x, y, text)
+            .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0, dy: offset})
+            .addClass('.title');
+    }
     return svgArea.text(x, y, text)
         .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0})
         .addClass('.title');
@@ -150,6 +155,10 @@ var count = 1;
 function setViewPortToChild(childCircle) {
     svgArea.animate({viewBox: (parseInt(childCircle.attr('cx')) - 300) + ' ' + (parseInt(childCircle.attr('cy')) - 300) + ' 600 600'}, 1000);
 }
+function setViewPortToChild(childCircle, radius) {
+    svgArea.animate({viewBox: (parseInt(childCircle.attr('cx')) - radius/2) + ' ' + (parseInt(childCircle.attr('cy')) - radius/2) + ' ' + radius + ' ' + radius}, 1000);
+}
+
 
 
 function getRandomArbitrary(min, max) {
@@ -197,34 +206,35 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         }
         setSelectedNode(welcomeNode);
         hideUnselectedNodes();
-        setViewPortToChild(circle);
+        setViewPortToChild(circle, 600);
         setTimeout(function () {
             var anglePerChild = toRadians(360) / welcomeNode.nodes.length;
             var childCount = 1;
             if(welcomeNode.nodes.length > 8){
-
+                setViewPortToChild(circle, 1100);
             }
             var childAngleOffset = getRandomArbitrary(toRadians(360),toRadians(20));
             welcomeNode.nodes.forEach(function (childNode) {
                 var childEP1 = getEndpointForChildPath(circle, childAngleOffset + childCount * anglePerChild, 100);
                 var childEP2 = getEndpointForChildPath(circle, childAngleOffset + childCount * anglePerChild, 200);
                 if(welcomeNode.nodes.length > 8){
-                    childEP2 = getEndpointForChildPath(circle, childAngleOffset + childCount * anglePerChild, getRandomArbitrary(300,600));
+                    childEP2 = getEndpointForChildPath(circle, childAngleOffset + childCount * anglePerChild, getRandomArbitrary(275,500));
+
                 }
                 var childLine = svgArea.line(parseInt(circle.attr('cx')), parseInt(circle.attr('cy')), childEP1.x, childEP1.y)
                     .insertBefore(circle)
-                    .attr({strokeWidth: 10, stroke: colorGrey1, strokeLinecap: "round"})
+                    .attr({strokeWidth: 5, stroke: colorGrey1, strokeLinecap: "round"})
                     .animate({x1: parseInt(circle.attr('cx')), y1: parseInt(circle.attr('cy')), x2: childEP2.x, y2: childEP2.y }, 400);
 
-                childNode.text = addCenteredText(childEP2.x, childEP2.y, childNode.title);
-                var childCircle = svgArea.circle(childEP1.x, childEP1.y, 50)
+                childNode.text = addCenteredText(childEP2.x, childEP2.y, GetWizardDescription(childNode.wizardID));
+                var childCircle = svgArea.circle(childEP1.x, childEP1.y, 20)
                     .insertBefore(childNode.text)
                     .attr({fill: colorOrange, stroke: colorGrey1, strokeWidth: 0})
                     .animate({ cx: childEP2.x, cy: childEP2.y}, 400, null, function () {
                         childNode.text.animate({opacity: 100}, 400);
                     })
                     .hover(function () {
-                        childCircle.animate({strokeWidth: 10}, 200);
+                        childCircle.animate({strokeWidth: 5}, 200);
                     }, function () {
                         childCircle.animate({strokeWidth: 0}, 200);
                     })

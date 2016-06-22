@@ -19,6 +19,8 @@ package org.wso2.developerstudio.eclipse.platform.ui.welcome.model;
 public class DashboardLink {
 
 	private String id;
+	private String title;
+	private String imgAbsolutePath;
 	private String name;
 	private int priority = Integer.MAX_VALUE;
 

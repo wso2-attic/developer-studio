@@ -33,7 +33,6 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.DashboardContributionsHandler;
 
 public class WelcomePage extends ViewPart {
 
@@ -50,6 +49,7 @@ public class WelcomePage extends ViewPart {
 		try {
 			new OpenIDEWizardFunction(browser);
 			new GetDashboardWizardContributionsFunction(browser);
+			new GetWizardDescriptionFunction(browser);
 			browser.setUrl(getWelcomePage());
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
