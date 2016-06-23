@@ -71,14 +71,6 @@ public class DashboardContributionsHandler {
 							iconPath);
 					cat.setIcon(imageDescriptor);
 				}
-//				try {
-////					Bundle bundle = Platform.getBundle(contributerPluginId);
-////					URL iconURL = bundle.getEntry(iconPath);
-////					URL fileURI = FileLocator.toFileURL(iconURL);
-////					cat.setIconAbsoluteURL(fileURI.getPath());
-//				} catch (IOException e1) {
-//					log.error(e1);
-//				}
 				String priorityValue = element.getAttribute("priority");
 				if (priorityValue != null) {
 					try {

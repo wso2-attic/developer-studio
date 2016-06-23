@@ -38,7 +38,7 @@ public class OpenDashboardHandler extends AbstractHandler {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
-	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.dashboard";
+	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.ui.welcome.WelcomePage";
 	static final String J2EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {

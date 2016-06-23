@@ -22,12 +22,15 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.browser.BrowserFunction;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 public class OpenIDEWizardFunction extends BrowserFunction {
+
+	private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -66,7 +69,17 @@ public class OpenIDEWizardFunction extends BrowserFunction {
 			IWizard wizard = descriptor.createWizard();
 			WizardDialog wd = new WizardDialog(Display.getDefault().getActiveShell(), wizard);
 			wd.setTitle(wizard.getWindowTitle());
-			wd.open();
+			if (wd.open() == WizardDialog.OK) {
+				try 
+				{
+				   PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE,       
+				         PlatformUI.getWorkbench().getActiveWorkbenchWindow());
+				} 
+				catch (WorkbenchException e) 
+				{
+				  log.error("Error while opening J2EE perspective.", e);
+				}
+			}
 		}
 	}
 }

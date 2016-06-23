@@ -288,5 +288,10 @@
             category="org.wso2.developerstudio.eclipse.rcp.views"
             allowMultiple="false"/>
    </extension>
-
+	<extension point="org.eclipse.ui.editors">
+        <editor
+                class="org.wso2.developerstudio.eclipse.platform.ui.welcome.WelcomePageEditor"
+                id="org.wso2.developerstudio.eclipse.ui.welcome.WelcomePage"
+                name="Developer Studio Dashboard"></editor>
+    </extension>
 </plugin>

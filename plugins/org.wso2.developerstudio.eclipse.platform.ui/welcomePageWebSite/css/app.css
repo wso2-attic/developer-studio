@@ -1,14 +1,21 @@
 #root-container {
-   background: #BBBBBB;
    padding: 15px;
-   background: radial-gradient(circle, #BBBBBB 25%, #ffffff 65%);
     height: 1000px;
-    width: 1000px;
+    width: 100%;
+    background-color: #CCCCCC;
+}
+body{
+    background-color: #CCCCCC;
 }
 
 #pageRow{
 	width: 100%;
-	height: 100%;
+	height: 80%;
+}
+
+#footer{
+    background-color: #666666;
+    height: 80px;
 }
 
 #svgArea{
@@ -21,6 +28,7 @@
     width: 100px;
     height: 100px;
     color: red;
+    display: none;
 }
 
 #zoomInIcon:hover{
@@ -44,3 +52,6 @@
     cursor: pointer;
 }
 
+.handPointer{
+    cursor: pointer;
+}
