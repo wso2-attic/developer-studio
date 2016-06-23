@@ -159,6 +159,11 @@ function setViewPortToChild(childCircle, radius) {
     svgArea.animate({viewBox: (parseInt(childCircle.attr('cx')) - radius/2) + ' ' + (parseInt(childCircle.attr('cy')) - radius/2) + ' ' + radius + ' ' + radius}, 1000);
 }
 
+function addImageForChild(childNode){
+    var imageData = GetWizardIconData(childNode.wizardID);
+    var imageSrc = "data:image/png;base64," + imageData;
+    svgArea.image(imageSrc, childNode.ep2.x, childNode.ep2.y, 15,15);
+}
 
 
 function getRandomArbitrary(min, max) {
@@ -245,6 +250,8 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 childNode.ep2 = childEP2;
                 childLine.data("dataNode", welcomeNode);
                 childCircle.data("dataNode", welcomeNode);
+
+                addImageForChild(childNode);
                 childCount++
             });
 

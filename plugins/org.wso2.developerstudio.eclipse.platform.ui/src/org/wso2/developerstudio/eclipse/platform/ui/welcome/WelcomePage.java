@@ -50,6 +50,7 @@ public class WelcomePage extends ViewPart {
 			new OpenIDEWizardFunction(browser);
 			new GetDashboardWizardContributionsFunction(browser);
 			new GetWizardDescriptionFunction(browser);
+			new GetWizardIconDataFunction(browser);
 			browser.setUrl(getWelcomePage());
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
