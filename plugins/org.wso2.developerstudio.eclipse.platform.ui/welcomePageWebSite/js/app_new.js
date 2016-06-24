@@ -18,8 +18,10 @@ var w = window,
 
 var animationDuration = 250;
 
+//svgArea.attr({viewBox:'0 0 ' + parseInt(x) + ' ' + parseInt(totalHeight)});
+
 function setViewPortFullScreen(duration) {
-    svgArea.animate({viewBox: '0 0 1000 1000'}, duration);
+    svgArea.animate({viewBox: '0 0 ' +   window.innerWidth + ' ' +  window.innerHeight}, duration);
 }
 
 var selectedNode = null;
@@ -85,9 +87,11 @@ var angleOffset = getRandomArbitrary(toRadians(360), toRadians(20));
 var anglePerMainItem = toRadians(360) / (welcomeNodeArray.length);
 
 
-var cy = $('#pageRow').height() / 2;
-var cx = $('#pageRow').width() / 2;
+var cy = window.innerHeight / 2;
+var cx = window.innerWidth / 2;
 var cr = 50;
+
+svgArea.attr({viewBox: '0 0 ' +   window.innerWidth + ' ' +  window.innerHeight});
 
 var centeredMainText;
 var addCenteredMainText = function () {
@@ -109,8 +113,14 @@ var addCenteredText = function (x, y, text, dx, dy) {
 };
 
 var centerCircle = svgArea.circle(cx, cy, cr);
+//
+//Snap.load("wso2.svg", function (element) {
+////    var icon = element.select('#layer1');
+////    icon.select("circle").attr({x:cx, y:cy});
+//    svgArea.append(element);
+//
+//});
 
-var centerImage = svgArea.image(getCenterImage(), cx - 300, cy - 88, 600, 178);
 
 var centerCircleOnHover = function (event, t) {
     cr = 110;
@@ -174,7 +184,7 @@ function addTextForChild(childNode) {
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
-setViewPortFullScreen(400);
+//setViewPortFullScreen(400);
 
 welcomeNodeArray.forEach(function (welcomeNode) {
     var line1Endpoint = getEndpointForPath(angleOffset + count * anglePerMainItem, cr);

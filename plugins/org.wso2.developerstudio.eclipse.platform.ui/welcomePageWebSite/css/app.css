@@ -1,25 +1,27 @@
 #root-container {
-   padding: 15px;
-    height: 1000px;
+    padding: 0px 0px 0 0px;
+    height: 100%;
     width: 100%;
-    background-color: #CCCCCC;
+    background-color: #BBBBBB;
 }
 body{
-    background-color: #CCCCCC;
+    background-color: #BBBBBB;
 }
 
 #pageRow{
 	width: 100%;
-	height: 80%;
+	height: 100%;
+    background-color: #BBBBBB;
 }
 
 #footer{
+    width: 100%;
     background-color: #666666;
-    height: 80px;
+    height: 20%;
 }
 
 #svgArea{
-
+    margin: 0;
 }
 #zoomInIcon{
     position: absolute;
@@ -37,6 +39,7 @@ body{
 
 .title{
     cursor: pointer;
+    color: #ffffff;
     background-color: red;
 }
 
