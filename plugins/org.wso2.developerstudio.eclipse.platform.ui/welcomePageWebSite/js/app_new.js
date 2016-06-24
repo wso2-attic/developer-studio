@@ -1,12 +1,8 @@
 var svgArea = Snap("#svgArea");
 
-var colorOrange = "#f47a20";//"#";
+var colorOrange = "#f47a20";
 var colorOrange2 = "#ffffff";
 var colorBorder = "#ffffff";
-var colorGrey1 = "#333333";
-var colorGrey2 = "#666666";
-var colorGrey3 = "#999999";
-var colorGrey4 = "#BBBBBB";
 var rectAnimationDuration = 50;
 
 var centerLogo;
@@ -20,10 +16,9 @@ var w = window,
 
 var animationDuration = 250;
 
-//svgArea.attr({viewBox:'0 0 ' + parseInt(x) + ' ' + parseInt(totalHeight)});
 
 function setViewPortFullScreen(duration) {
-    svgArea.animate({viewBox: (cx - 650/2) +' '+ (cy-650/2) + ' ' +  650 + ' ' +  650}, duration);
+    svgArea.animate({viewBox: (cx - 650 / 2) + ' ' + (cy - 650 / 2) + ' ' + 650 + ' ' + 650}, duration);
 }
 
 var selectedNode = null;
@@ -82,6 +77,12 @@ function loadWelcomeNodes() {
 
 var welcomeNodeArray = loadWelcomeNodes();
 
+welcomeNodeArray.push({title: "Common", nodes: [
+    {title: '', wizardID: 'org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard'},
+    {title: '', wizardID: 'org.wso2.developerstudio.eclipse.distribution.project'},
+    {title: '', wizardID: 'org.eclipse.wst.server.ui.new.server'}
+]});
+
 function toRadians(angle) {
     return angle * (Math.PI / 180);
 }
@@ -90,11 +91,11 @@ var angleOffset = getRandomArbitrary(toRadians(360), toRadians(20));
 var anglePerMainItem = toRadians(360) / (welcomeNodeArray.length);
 
 
-var cy = $("#pageRow").height()/ 2;
+var cy = $("#pageRow").height() / 2;
 var cx = $("#pageRow").width() / 2;
 var cr = 50;
 
-svgArea.attr({viewBox: '0 0 ' +   $("#pageRow").width() + ' ' +  $("#pageRow").height()});
+svgArea.attr({viewBox: '0 0 ' + $("#pageRow").width() + ' ' + $("#pageRow").height()});
 
 var centeredMainText;
 var addCenteredMainText = function () {
@@ -103,16 +104,10 @@ var addCenteredMainText = function () {
         .addClass('title');
 };
 
-$('.wso2-logo').css("left",$(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
+$('.wso2-logo').css("left", $(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
 
-//$('#pageRow').css("height",$("#root-container").height() - 72 -150);
-
-
-$( window ).resize(function() {
-    $('.wso2-logo').css("left",$(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
-//    cy = $("#pageRow").height()/ 2;
-//    cx = $("#pageRow").width() / 2;
-    //$('#pageRow').css("height",$("#root-container").height() - 72 -150);
+$(window).resize(function () {
+    $('.wso2-logo').css("left", $(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
     location.reload();
 });
 
@@ -128,10 +123,6 @@ var addCenteredText = function (x, y, text, dx, dy) {
 };
 
 var centerCircle = svgArea.circle(cx, cy, cr);
-
-
-var myMatrix = new Snap.Matrix();          // play with scaling before and after the rotate
-myMatrix.translate(cx,cy);      // this translate will not be applied to the rotation
 
 Snap.load("wso2.svg", function (element) {
     centerLogo = element.select('svg');
@@ -262,7 +253,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
             var count = 0;
             welcomeNode.nodes.forEach(function (childNode) {
                 var color = colorOrange2;
-                if(count % 2 == 0){
+                if (count % 2 == 0) {
                     color = colorOrange;
                 }
                 childNode.x = childX0;
@@ -298,10 +289,10 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 }, count * rectAnimationDuration);
                 count++;
                 childY0 += (childMargin + childHeight);
-                if(count % maxPerColumn == 0){
+                if (count % maxPerColumn == 0) {
                     childX0 += rectWidth + childMargin;
                     childY0 = parseInt(circle.attr('cy')) - parseInt(circle.attr('r')) / 2 + childMargin;
-                    setViewPortToChild(circle, (1+count/maxPerColumn)*rectWidth + (2 * childMargin * count/maxPerColumn), childHeight + childMargin, welcomeNode.nodes.length);
+                    setViewPortToChild(circle, (1 + count / maxPerColumn) * rectWidth + (2 * childMargin * count / maxPerColumn), childHeight + childMargin, welcomeNode.nodes.length);
                 }
             });
         }, animationDuration + 250);
@@ -316,9 +307,9 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         if (selectedNode != welcomeNode) {
             circle.animate({strokeWidth: 0}, 200);
         }
-    })
+    });
 
-    if( $("#pageRow").width()  < 80){
+    if ($("#pageRow").width() < 80) {
         location.reload();
     }
 
@@ -331,14 +322,11 @@ welcomeNodeArray.forEach(function (welcomeNode) {
 
 });
 
-
-
-function setOpacityOfLogo(op, dur){
+function setOpacityOfLogo(op, dur) {
     centerLogo.select('#circle3041').animate({opacity: op}, dur);
     centerLogo.select('#path3043').animate({opacity: op}, dur);
     centerLogo.select('#path3045').animate({opacity: op}, dur);
 }
-
 
 function hideUnselectedNodes() {
     if (selectedNode != null) {
@@ -367,7 +355,6 @@ function showUnselectedNodes() {
         }
     });
 }
-
 
 $('#zoomInIconP').click(function () {
     setSelectedNode(null);
