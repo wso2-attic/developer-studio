@@ -1,13 +1,15 @@
 var svgArea = Snap("#svgArea");
 
-var colorOrange = "#999967";//"#";
-var colorOrange2 = "#CCCC9A";
-var colorBorder = "#666666";
+var colorOrange = "#f47a20";//"#";
+var colorOrange2 = "#ffffff";
+var colorBorder = "#ffffff";
 var colorGrey1 = "#333333";
 var colorGrey2 = "#666666";
 var colorGrey3 = "#999999";
 var colorGrey4 = "#BBBBBB";
 var rectAnimationDuration = 50;
+
+var centerLogo;
 
 var w = window,
     d = document,
@@ -21,7 +23,7 @@ var animationDuration = 250;
 //svgArea.attr({viewBox:'0 0 ' + parseInt(x) + ' ' + parseInt(totalHeight)});
 
 function setViewPortFullScreen(duration) {
-    svgArea.animate({viewBox: '0 0 ' +   window.innerWidth + ' ' +  window.innerHeight}, duration);
+    svgArea.animate({viewBox: (cx - 650/2) +' '+ (cy-650/2) + ' ' +  650 + ' ' +  650}, duration);
 }
 
 var selectedNode = null;
@@ -63,6 +65,7 @@ function loadWelcomeNodes() {
     contributions.forEach(function (contribution) {
         var welcomeNode = {};
         welcomeNode.title = contribution.name;
+        welcomeNode.title = welcomeNode.title.split(/ /g)[0];
         welcomeNode.icon = contribution.iconURL;
         welcomeNode.nodes = [];
         contribution.wizards.forEach(function (wizard) {
@@ -87,39 +90,59 @@ var angleOffset = getRandomArbitrary(toRadians(360), toRadians(20));
 var anglePerMainItem = toRadians(360) / (welcomeNodeArray.length);
 
 
-var cy = window.innerHeight / 2;
-var cx = window.innerWidth / 2;
+var cy = $("#pageRow").height()/ 2;
+var cx = $("#pageRow").width() / 2;
 var cr = 50;
 
-svgArea.attr({viewBox: '0 0 ' +   window.innerWidth + ' ' +  window.innerHeight});
+svgArea.attr({viewBox: '0 0 ' +   $("#pageRow").width() + ' ' +  $("#pageRow").height()});
 
 var centeredMainText;
 var addCenteredMainText = function () {
-    centeredMainText = svgArea.text(cx, cy, "WSO2 Developer Studio")
-        .attr({"text-anchor": "middle", "font-size": "15px"})
-        .addClass('.title');
+    centeredMainText = svgArea.text(cx, cy, "WSO2 Developsdsder Studio")
+        .attr({"text-anchor": "middle", "font-size": "0px"})
+        .addClass('title');
 };
 
+$('.wso2-logo').css("left",$(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
+
+//$('#pageRow').css("height",$("#root-container").height() - 72 -150);
+
+
+$( window ).resize(function() {
+    $('.wso2-logo').css("left",$(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
+//    cy = $("#pageRow").height()/ 2;
+//    cx = $("#pageRow").width() / 2;
+    //$('#pageRow').css("height",$("#root-container").height() - 72 -150);
+    location.reload();
+});
 
 var addCenteredText = function (x, y, text, dx, dy) {
     if (dx > 0 && dy > 0) {
         return svgArea.text(x, y, text)
             .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0, dx: dx, dy: dy})
-            .addClass('.title');
+            .addClass('title');
     }
     return svgArea.text(x, y, text)
         .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0})
-        .addClass('.title');
+        .addClass('title');
 };
 
 var centerCircle = svgArea.circle(cx, cy, cr);
-//
-//Snap.load("wso2.svg", function (element) {
-////    var icon = element.select('#layer1');
-////    icon.select("circle").attr({x:cx, y:cy});
-//    svgArea.append(element);
-//
-//});
+
+
+var myMatrix = new Snap.Matrix();          // play with scaling before and after the rotate
+myMatrix.translate(cx,cy);      // this translate will not be applied to the rotation
+
+Snap.load("wso2.svg", function (element) {
+    centerLogo = element.select('svg');
+    centerLogo.attr({
+        height: 200,
+        width: 200,
+        x: cx - 100,
+        y: cy - 100
+    });
+    svgArea.append(centerLogo);
+});
 
 
 var centerCircleOnHover = function (event, t) {
@@ -134,7 +157,6 @@ var centerCircleHoverOff = function (event, t) {
 
 centerCircle.attr({
     fill: colorOrange,
-    stroke: colorGrey1,
     strokeWidth: 10
 }).addClass('centerCircle')
     .animate({r: 100}, animationDuration, null, addCenteredMainText)
@@ -184,7 +206,7 @@ function addTextForChild(childNode) {
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
-//setViewPortFullScreen(400);
+setViewPortFullScreen(400);
 
 welcomeNodeArray.forEach(function (welcomeNode) {
     var line1Endpoint = getEndpointForPath(angleOffset + count * anglePerMainItem, cr);
@@ -216,8 +238,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
     welcomeNode.line = line;
     welcomeNode.circle = circle;
 
-
-    circle.click(function () {
+    var expandNodes = function () {
         var childX0 = parseInt(circle.attr('cx')) + 2 * parseInt(circle.attr('r'));
         var childY0 = parseInt(circle.attr('cy')) - parseInt(circle.attr('r')) / 2;
         var childMargin = 10;
@@ -253,7 +274,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 }).click(function () {
                     OpenIDEWizard(childNode.wizardID);
                 })
-                .addClass('handPointer');
+                    .addClass('handPointer');
                 childNode.icon = addImageForChild(childNode).hover(function () {
                     childNode.rect.animate({strokeWidth: 5}, 100);
                 }, function () {
@@ -261,7 +282,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 }).click(function () {
                     OpenIDEWizard(childNode.wizardID);
                 })
-                .addClass('handPointer');
+                    .addClass('handPointer');
                 childNode.text = addTextForChild(childNode).hover(function () {
                     childNode.rect.animate({strokeWidth: 5}, 100);
                 }, function () {
@@ -269,7 +290,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 }).click(function () {
                     OpenIDEWizard(childNode.wizardID);
                 })
-                .addClass('handPointer');
+                    .addClass('handPointer');
                 setTimeout(function () {
                     childNode.rect.animate({width: rectWidth, height: childHeight}, rectAnimationDuration);
                     childNode.icon.animate({opacity: 100}, rectAnimationDuration);
@@ -284,7 +305,22 @@ welcomeNodeArray.forEach(function (welcomeNode) {
                 }
             });
         }, animationDuration + 250);
-    });
+    };
+
+    circle.click(expandNodes);
+    welcomeNode.text.click(expandNodes).hover(function () {
+        if (selectedNode != welcomeNode) {
+            circle.animate({strokeWidth: 10}, 200);
+        }
+    }, function () {
+        if (selectedNode != welcomeNode) {
+            circle.animate({strokeWidth: 0}, 200);
+        }
+    })
+
+    if( $("#pageRow").width()  < 80){
+        location.reload();
+    }
 
     circle.hover(function () {
 
@@ -295,9 +331,19 @@ welcomeNodeArray.forEach(function (welcomeNode) {
 
 });
 
+
+
+function setOpacityOfLogo(op, dur){
+    centerLogo.select('#circle3041').animate({opacity: op}, dur);
+    centerLogo.select('#path3043').animate({opacity: op}, dur);
+    centerLogo.select('#path3045').animate({opacity: op}, dur);
+}
+
+
 function hideUnselectedNodes() {
     if (selectedNode != null) {
         centerCircle.animate({opacity: 0}, animationDuration);
+        setOpacityOfLogo(0, animationDuration);
         centeredMainText.animate({opacity: 0}, animationDuration);
         welcomeNodeArray.forEach(function (node) {
             node.line.animate({opacity: 0}, animationDuration / 5);
@@ -311,6 +357,7 @@ function hideUnselectedNodes() {
 
 function showUnselectedNodes() {
     centerCircle.animate({opacity: 100}, animationDuration);
+    setOpacityOfLogo(100, animationDuration);
     centeredMainText.animate({opacity: 100}, animationDuration);
     welcomeNodeArray.forEach(function (node) {
         node.line.animate({opacity: 100}, animationDuration);
@@ -320,6 +367,7 @@ function showUnselectedNodes() {
         }
     });
 }
+
 
 $('#zoomInIconP').click(function () {
     setSelectedNode(null);

@@ -11,6 +11,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.ProgressEvent;
+import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -70,6 +72,17 @@ public class WelcomePageEditor extends EditorPart {
 			new GetWizardDescriptionFunction(browser);
 			new GetWizardIconDataFunction(browser);
 			browser.setUrl(getWelcomePage());
+			browser.addProgressListener(new ProgressListener() {	
+				@Override
+				public void completed(ProgressEvent arg0) {
+					browser.execute("setTimeout(function(){setViewPortFullScreen(400);},500);");
+				}
+
+				@Override
+				public void changed(ProgressEvent arg0) {
+					// TODO Auto-generated method stub	
+				}
+			});
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
 		} catch (IOException e) {

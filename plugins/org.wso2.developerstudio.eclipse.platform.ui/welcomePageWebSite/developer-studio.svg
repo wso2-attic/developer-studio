@@ -1,0 +1,1716 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="192.8"
+   height="50.4"
+   viewBox="0 0 192.8 50.4"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="developer-studio.svg">
+  <metadata
+     id="metadata1304">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     id="namedview1302"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="12.116182"
+     inkscape:cx="45.846487"
+     inkscape:cy="17.57673"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g456">
+    <sodipodi:guide
+       orientation="0,1"
+       position="22.177,25.328468"
+       id="guide5210" />
+  </sodipodi:namedview>
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M149.3 8.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path4" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M149.4 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path6" />
+  <defs
+     id="defs8">
+    <filter
+       id="a"
+       filterUnits="userSpaceOnUse"
+       x="144.5"
+       y="8.5"
+       width="19.1"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix11" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="144.5"
+     y="8.5"
+     width="19.1"
+     height="16.6"
+     id="b">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87BFD.png"
+       xlink:href="87B4389599E87BFD.png"
+       id="image14"
+       filter="url(#a)"
+       transform="translate(144.874 8.784)"
+       height="16.2"
+       width="18.8"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#b)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M149.4 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path16" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.4 8.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path18" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.6 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path20" />
+  <defs
+     id="defs22">
+    <filter
+       id="c"
+       filterUnits="userSpaceOnUse"
+       x="115.7"
+       y="8.5"
+       width="19.1"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix25" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="115.7"
+     y="8.5"
+     width="19.1"
+     height="16.6"
+     id="d">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87BFF.png"
+       xlink:href="87B4389599E87BFF.png"
+       id="image28"
+       filter="url(#c)"
+       transform="translate(116.07 8.75)"
+       height="16.2"
+       width="18.8"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#d)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.6 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path30" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M134.9 16.8c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path32" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M135 17c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H135z"
+     id="path34" />
+  <defs
+     id="defs36">
+    <filter
+       id="e"
+       filterUnits="userSpaceOnUse"
+       x="130.1"
+       y="16.9"
+       width="19.1"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix39" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="130.1"
+     y="16.9"
+     width="19.1"
+     height="16.6"
+     id="f">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87BFA.png"
+       xlink:href="87B4389599E87BFA.png"
+       id="image42"
+       filter="url(#e)"
+       transform="translate(130.528 17.118)"
+       height="16.2"
+       width="18.8"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#f)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M135 17c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H135z"
+     id="path44" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M163.8 16.8c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path46" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M163.9 17c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path48" />
+  <defs
+     id="defs50">
+    <filter
+       id="g"
+       filterUnits="userSpaceOnUse"
+       x="159"
+       y="16.8"
+       width="19.2"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix53" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="159"
+     y="16.8"
+     width="19.2"
+     height="16.6"
+     id="h">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87BFB.png"
+       xlink:href="87B4389599E87BFB.png"
+       id="image56"
+       filter="url(#g)"
+       transform="translate(159.214 16.982)"
+       height="16.2"
+       width="18.7"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#h)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M163.9 17c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path58" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M134.9 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path60" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M135 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H135z"
+     id="path62" />
+  <defs
+     id="defs64">
+    <filter
+       id="i"
+       filterUnits="userSpaceOnUse"
+       x="130.1"
+       y="33.5"
+       width="19.2"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix67" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="130.1"
+     y="33.5"
+     width="19.2"
+     height="16.6"
+     id="j">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87C05.png"
+       xlink:href="87B4389599E87C05.png"
+       id="image70"
+       filter="url(#i)"
+       transform="translate(130.558 33.774)"
+       height="16.2"
+       width="18.8"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#j)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M135 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H135z"
+     id="path72" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.4 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+     id="path74" />
+  <path
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.6 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path76" />
+  <defs
+     id="defs78">
+    <filter
+       id="k"
+       filterUnits="userSpaceOnUse"
+       x="115.7"
+       y="25.2"
+       width="19.1"
+       height="16.6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+         id="feColorMatrix81" />
+    </filter>
+  </defs>
+  <mask
+     maskUnits="userSpaceOnUse"
+     x="115.7"
+     y="25.2"
+     width="19.1"
+     height="16.6"
+     id="l">
+    <image
+       sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87C07.png"
+       xlink:href="87B4389599E87C07.png"
+       id="image84"
+       filter="url(#k)"
+       transform="translate(116.075 25.513)"
+       height="16.2"
+       width="18.8"
+       overflow="visible" />
+  </mask>
+  <path
+     mask="url(#l)"
+     fill="#FFF"
+     stroke="#DBDCDD"
+     stroke-width=".357"
+     d="M120.6 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+     id="path86" />
+  <g
+     id="g88">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M149.3 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path90" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M149.4 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path92" />
+    <defs
+       id="defs94">
+      <filter
+         id="m"
+         filterUnits="userSpaceOnUse"
+         x="144.5"
+         y="25.2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix97" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="144.5"
+       y="25.2"
+       width="19.1"
+       height="16.6"
+       id="n">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87C0A.png"
+         xlink:href="87B4389599E87C0A.png"
+         id="image100"
+         filter="url(#m)"
+         transform="translate(144.974 25.446)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#n)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M149.4 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path102" />
+  </g>
+  <g
+     id="g104">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M163.7 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path106" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M163.9 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path108" />
+    <defs
+       id="defs110">
+      <filter
+         id="o"
+         filterUnits="userSpaceOnUse"
+         x="159"
+         y="33.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix113" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="159"
+       y="33.5"
+       width="19.1"
+       height="16.6"
+       id="p">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87C0B.png"
+         xlink:href="87B4389599E87C0B.png"
+         id="image116"
+         filter="url(#o)"
+         transform="translate(159.2 33.81)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#p)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M163.9 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path118" />
+  </g>
+  <g
+     id="g120">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106 16.8c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3H106z"
+       id="path122" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106.1 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path124" />
+    <defs
+       id="defs126">
+      <filter
+         id="q"
+         filterUnits="userSpaceOnUse"
+         x="101.3"
+         y="16.9"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix129" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="101.3"
+       y="16.9"
+       width="19.1"
+       height="16.6"
+       id="r">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/87B4389599E87C0D.png"
+         xlink:href="87B4389599E87C0D.png"
+         id="image132"
+         filter="url(#q)"
+         transform="translate(101.528 17.09)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#r)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106.1 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path134" />
+  </g>
+  <g
+     id="g136">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3H106z"
+       id="path138" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106.1 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path140" />
+    <defs
+       id="defs142">
+      <filter
+         id="s"
+         filterUnits="userSpaceOnUse"
+         x="101.3"
+         y="33.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix145" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="101.3"
+       y="33.5"
+       width="19.1"
+       height="16.6"
+       id="t">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EB96.png"
+         xlink:href="9D0C2D9F3E99EB96.png"
+         id="image148"
+         filter="url(#s)"
+         transform="translate(101.57 33.788)"
+         height="16.2"
+         width="18.7"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#t)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M106.1 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path150" />
+  </g>
+  <g
+     id="g152">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.2.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path154" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path156" />
+    <defs
+       id="defs158">
+      <filter
+         id="u"
+         filterUnits="userSpaceOnUse"
+         x="72.4"
+         y=".2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix161" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="72.4"
+       y=".2"
+       width="19.1"
+       height="16.6"
+       id="v">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EB91.png"
+         xlink:href="9D0C2D9F3E99EB91.png"
+         id="image164"
+         filter="url(#u)"
+         transform="translate(72.595 .398)"
+         height="16.2"
+         width="18.7"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#v)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path166" />
+  </g>
+  <g
+     id="g168">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.3.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path170" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path172" />
+    <defs
+       id="defs174">
+      <filter
+         id="w"
+         filterUnits="userSpaceOnUse"
+         x="43.5"
+         y=".2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix177" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="43.5"
+       y=".2"
+       width="19.1"
+       height="16.6"
+       id="x">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EB92.png"
+         xlink:href="9D0C2D9F3E99EB92.png"
+         id="image180"
+         filter="url(#w)"
+         transform="translate(43.74 .405)"
+         height="16.2"
+         width="18.7"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#x)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path182" />
+  </g>
+  <g
+     id="g184">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.7 8.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path186" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.9 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path188" />
+    <defs
+       id="defs190">
+      <filter
+         id="y"
+         filterUnits="userSpaceOnUse"
+         x="58"
+         y="8.6"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix193" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="58"
+       y="8.6"
+       width="19.1"
+       height="16.6"
+       id="z">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EB90.png"
+         xlink:href="9D0C2D9F3E99EB90.png"
+         id="image196"
+         filter="url(#y)"
+         transform="translate(58.306 8.727)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#z)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.9 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path198" />
+  </g>
+  <g
+     id="g200">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M33.9 8.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path202" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M34 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H34z"
+       id="path204" />
+    <defs
+       id="defs206">
+      <filter
+         id="A"
+         filterUnits="userSpaceOnUse"
+         x="29.1"
+         y="8.6"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix209" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="29.1"
+       y="8.6"
+       width="19.1"
+       height="16.6"
+       id="B">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBAE.png"
+         xlink:href="9D0C2D9F3E99EBAE.png"
+         id="image212"
+         filter="url(#A)"
+         transform="translate(29.37 8.757)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#B)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M34 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H34z"
+       id="path214" />
+  </g>
+  <g
+     id="g216">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.3 16.9c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3-.2-.1-9.4 0-9.6 0z"
+       id="path218" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path220" />
+    <defs
+       id="defs222">
+      <filter
+         id="C"
+         filterUnits="userSpaceOnUse"
+         x="43.5"
+         y="16.9"
+         width="19.2"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix225" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="43.5"
+       y="16.9"
+       width="19.2"
+       height="16.6"
+       id="D">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBB1.png"
+         xlink:href="9D0C2D9F3E99EBB1.png"
+         id="image228"
+         filter="url(#C)"
+         transform="translate(43.9 17.14)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#D)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path230" />
+  </g>
+  <g
+     id="g232">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.2 16.8c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path234" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path236" />
+    <defs
+       id="defs238">
+      <filter
+         id="E"
+         filterUnits="userSpaceOnUse"
+         x="72.4"
+         y="16.9"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix241" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="72.4"
+       y="16.9"
+       width="19.1"
+       height="16.6"
+       id="F">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBB2.png"
+         xlink:href="9D0C2D9F3E99EBB2.png"
+         id="image244"
+         filter="url(#E)"
+         transform="translate(72.677 17.092)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#F)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3 17.1c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path246" />
+  </g>
+  <g
+     id="g248">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.6 8.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path250" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.7 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path252" />
+    <defs
+       id="defs254">
+      <filter
+         id="G"
+         filterUnits="userSpaceOnUse"
+         x="86.8"
+         y="8.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix257" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="86.8"
+       y="8.5"
+       width="19.1"
+       height="16.6"
+       id="H">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBB0.png"
+         xlink:href="9D0C2D9F3E99EBB0.png"
+         id="image260"
+         filter="url(#G)"
+         transform="translate(87.15 8.744)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#H)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.7 8.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path262" />
+  </g>
+  <g
+     id="g264">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.3 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path266" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path268" />
+    <defs
+       id="defs270">
+      <filter
+         id="I"
+         filterUnits="userSpaceOnUse"
+         x="43.5"
+         y="33.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix273" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="43.5"
+       y="33.5"
+       width="19.1"
+       height="16.6"
+       id="J">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBB6.png"
+         xlink:href="9D0C2D9F3E99EBB6.png"
+         id="image276"
+         filter="url(#I)"
+         transform="translate(43.85 33.784)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#J)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M48.4 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path278" />
+  </g>
+  <g
+     id="g280">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M33.9 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path282" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M34 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H34z"
+       id="path284" />
+    <defs
+       id="defs286">
+      <filter
+         id="K"
+         filterUnits="userSpaceOnUse"
+         x="29.1"
+         y="25.2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix289" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="29.1"
+       y="25.2"
+       width="19.1"
+       height="16.6"
+       id="L">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBB3.png"
+         xlink:href="9D0C2D9F3E99EBB3.png"
+         id="image292"
+         filter="url(#K)"
+         transform="translate(29.45 25.476)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#L)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M34 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H34z"
+       id="path294" />
+  </g>
+  <g
+     id="g296">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.7 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path298" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.9 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path300" />
+    <defs
+       id="defs302">
+      <filter
+         id="M"
+         filterUnits="userSpaceOnUse"
+         x="58"
+         y="25.2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix305" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="58"
+       y="25.2"
+       width="19.1"
+       height="16.6"
+       id="N">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBD5.png"
+         xlink:href="9D0C2D9F3E99EBD5.png"
+         id="image308"
+         filter="url(#M)"
+         transform="translate(58.315 25.427)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#N)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M62.9 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path310" />
+  </g>
+  <g
+     id="g312">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.2 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path314" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path316" />
+    <defs
+       id="defs318">
+      <filter
+         id="O"
+         filterUnits="userSpaceOnUse"
+         x="72.4"
+         y="33.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix321" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="72.4"
+       y="33.5"
+       width="19.1"
+       height="16.6"
+       id="P">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBD7.png"
+         xlink:href="9D0C2D9F3E99EBD7.png"
+         id="image324"
+         filter="url(#O)"
+         transform="translate(72.8 33.827)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#P)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M77.3 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path326" />
+  </g>
+  <g
+     id="g328">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.6 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path330" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.7 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path332" />
+    <defs
+       id="defs334">
+      <filter
+         id="Q"
+         filterUnits="userSpaceOnUse"
+         x="86.8"
+         y="25.2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix337" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="86.8"
+       y="25.2"
+       width="19.1"
+       height="16.6"
+       id="R">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBD4.png"
+         xlink:href="9D0C2D9F3E99EBD4.png"
+         id="image340"
+         filter="url(#Q)"
+         transform="translate(87.302 25.458)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#R)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M91.7 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path342" />
+  </g>
+  <g
+     id="g344">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.4.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3H29c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path346" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.6.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1H29c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path348" />
+    <defs
+       id="defs350">
+      <filter
+         id="S"
+         filterUnits="userSpaceOnUse"
+         x="14.7"
+         y=".2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix353" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="14.7"
+       y=".2"
+       width="19.1"
+       height="16.6"
+       id="T">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBD3.png"
+         xlink:href="9D0C2D9F3E99EBD3.png"
+         id="image356"
+         filter="url(#S)"
+         transform="translate(14.884 .412)"
+         height="16.2"
+         width="18.7"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#T)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.6.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1H29c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path358" />
+  </g>
+  <g
+     id="g376">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.4 33.5c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3H29c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path378" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.6 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1H29c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path380" />
+    <defs
+       id="defs382">
+      <filter
+         id="W"
+         filterUnits="userSpaceOnUse"
+         x="14.7"
+         y="33.6"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix385" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="14.7"
+       y="33.6"
+       width="19.1"
+       height="16.6"
+       id="X">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBDF.png"
+         xlink:href="9D0C2D9F3E99EBDF.png"
+         id="image388"
+         filter="url(#W)"
+         transform="translate(14.888 33.813)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#X)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M19.6 33.7c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1H29c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path390" />
+  </g>
+  <g
+     id="g392"
+     transform="translate(-0.03677461,-0.34813258)">
+    <path
+       d="M 5,8.5 C 4.9,8.7 0.3,16.6 0.2,16.8 0.3,17.1 4.9,25 5,25.2 h 9.6 C 14.7,25 19.3,17.1 19.4,16.9 19.3,16.7 14.7,8.8 14.6,8.6 14.4,8.5 5.3,8.5 5,8.5 z"
+       id="path394"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#dbdcdd;stroke-width:0.35699999" />
+    <path
+       d="M 5.1,8.8 C 4.6,9.7 1,16 0.5,16.9 1,17.8 4.6,24.1 5.1,25 h 9.4 C 15,24.1 18.7,17.8 19.2,16.9 18.7,16 15,9.7 14.5,8.7 c -1,0 -8.3,0.1 -9.4,0.1 z"
+       id="path396"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#dbdcdd;stroke-width:0.35699999" />
+    <defs
+       id="defs398">
+      <filter
+         id="Y"
+         filterUnits="userSpaceOnUse"
+         x="0.2"
+         y="8.6000004"
+         width="19.1"
+         height="16.6"
+         color-interpolation-filters="sRGB">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix401" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x=".2"
+       y="8.6"
+       width="19.1"
+       height="16.6"
+       id="Z">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBDC.png"
+         xlink:href="9D0C2D9F3E99EBDC.png"
+         style="overflow:visible;filter:url(#Y)"
+         id="image404"
+         transform="translate(0.53,8.784)"
+         height="16.200001"
+         width="18.799999"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#Z)"
+       d="M 5.1,8.8 C 4.6,9.7 1,16 0.5,16.9 1,17.8 4.6,24.1 5.1,25 h 9.4 C 15,24.1 18.7,17.8 19.2,16.9 18.7,16 15,9.7 14.5,8.7 c -1,0 -8.3,0.1 -9.4,0.1 z"
+       id="path406"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#dbdcdd;stroke-width:0.35699999" />
+  </g>
+  <g
+     id="g408">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M5 25.2c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3H5z"
+       id="path410" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M5.1 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H5.1z"
+       id="path412" />
+    <defs
+       id="defs414">
+      <filter
+         id="aa"
+         filterUnits="userSpaceOnUse"
+         x=".3"
+         y="25.2"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix417" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x=".3"
+       y="25.2"
+       width="19.1"
+       height="16.6"
+       id="ab">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBD6.png"
+         xlink:href="9D0C2D9F3E99EBD6.png"
+         id="image420"
+         filter="url(#aa)"
+         transform="translate(.45 25.427)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#ab)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M5.1 25.4c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1H5.1z"
+       id="path422" />
+  </g>
+  <g
+     id="g424">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.2 8.4c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path426" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.3 8.6c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path428" />
+    <defs
+       id="defs430">
+      <filter
+         id="ac"
+         filterUnits="userSpaceOnUse"
+         x="173.4"
+         y="8.5"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix433" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="173.4"
+       y="8.5"
+       width="19.1"
+       height="16.6"
+       id="ad">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBE9.png"
+         xlink:href="9D0C2D9F3E99EBE9.png"
+         id="image436"
+         filter="url(#ac)"
+         transform="translate(173.747 8.716)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#ad)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.3 8.6c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path438" />
+  </g>
+  <g
+     id="g440">
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.2 25.1c-.1.2-4.7 8.1-4.8 8.3.1.2 4.7 8.1 4.8 8.3h9.6c.1-.2 4.7-8.1 4.8-8.3-.1-.2-4.7-8.1-4.8-8.3h-9.6z"
+       id="path442" />
+    <path
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.3 25.3c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path444" />
+    <defs
+       id="defs446">
+      <filter
+         id="ae"
+         filterUnits="userSpaceOnUse"
+         x="173.4"
+         y="25.1"
+         width="19.1"
+         height="16.6">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix449" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="173.4"
+       y="25.1"
+       width="19.1"
+       height="16.6"
+       id="af">
+      <image
+         sodipodi:absref="/home/kavith/GitHome/developer-studio/plugins/org.wso2.developerstudio.eclipse.platform.ui/welcomePageWebSite/9D0C2D9F3E99EBEA.png"
+         xlink:href="9D0C2D9F3E99EBEA.png"
+         id="image452"
+         filter="url(#ae)"
+         transform="translate(173.85 25.378)"
+         height="16.2"
+         width="18.8"
+         overflow="visible" />
+    </mask>
+    <path
+       mask="url(#af)"
+       fill="#FFF"
+       stroke="#DBDCDD"
+       stroke-width=".357"
+       d="M178.3 25.3c-.5.9-4.2 7.2-4.7 8.1.5.9 4.2 7.2 4.7 8.1h9.4c.5-.9 4.2-7.2 4.7-8.1-.5-.9-4.2-7.2-4.7-8.1h-9.4z"
+       id="path454" />
+  </g>
+  <g
+     id="g456">
+    <defs
+       id="defs458">
+      <path
+         id="ag"
+         d="M20.8 13.2l-6.9 11.9L20.8 37h13.7l6.9-11.9-6.9-11.9z" />
+    </defs>
+    <clipPath
+       id="ah">
+      <use
+         xlink:href="#ag"
+         overflow="visible"
+         id="use462" />
+    </clipPath>
+    <defs
+       id="defs1250">
+      <filter
+         id="am"
+         filterUnits="userSpaceOnUse"
+         x="21.3"
+         y="18.8"
+         width="12.8"
+         height="12.8">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix1253" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="21.3"
+       y="18.8"
+       width="12.8"
+       height="12.8"
+       id="an">
+      <path
+         d="M20.2 17.6h18.1v16.2H20.2z"
+         id="path1256"
+         filter="url(#am)"
+         fill="#FFF" />
+    </mask>
+    <g
+       mask="url(#an)"
+       id="g1258">
+      <circle
+         cx="27.7"
+         cy="25.2"
+         r="6.4"
+         id="circle1260"
+         fill="#F47B20"
+         d="m 34.100001,25.200001 c 0,3.534622 -2.865378,6.4 -6.4,6.4 -3.534623,0 -6.4,-2.865378 -6.4,-6.4 0,-3.534623 2.865377,-6.4 6.4,-6.4 3.534622,0 6.4,2.865377 6.4,6.4 z" />
+    </g>
+    <defs
+       id="defs1262">
+      <filter
+         id="ao"
+         filterUnits="userSpaceOnUse"
+         x="20.8"
+         y="18.3"
+         width="13.8"
+         height="13.8">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix1265" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="20.8"
+       y="18.3"
+       width="13.8"
+       height="13.8"
+       id="ap">
+      <path
+         d="M19.7 18.2H35v14.7H19.7z"
+         id="path1268"
+         filter="url(#ao)"
+         fill="#FFF" />
+    </mask>
+    <g
+       mask="url(#ap)"
+       id="g1270">
+      <path
+         d="M27.7 32.1c-3.8 0-6.9-3.1-6.9-6.9 0-3.8 3.1-6.9 6.9-6.9 3.8 0 6.9 3.1 6.9 6.9 0 3.8-3.1 6.9-6.9 6.9zm0-12.8c-3.2 0-5.9 2.6-5.9 5.9 0 3.2 2.6 5.9 5.9 5.9 3.2 0 5.9-2.6 5.9-5.9 0-3.2-2.7-5.9-5.9-5.9z"
+         id="path1272"
+         fill="#FFF" />
+    </g>
+    <defs
+       id="defs1274">
+      <filter
+         id="aq"
+         filterUnits="userSpaceOnUse"
+         x="21.8"
+         y="19.7"
+         width="11.9"
+         height="10">
+        <feColorMatrix
+           values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+           id="feColorMatrix1277" />
+      </filter>
+    </defs>
+    <mask
+       maskUnits="userSpaceOnUse"
+       x="21.8"
+       y="19.7"
+       width="11.9"
+       height="10"
+       id="ar">
+      <path
+         d="M21.2 17.6H37v14H21.2z"
+         id="path1280"
+         filter="url(#aq)"
+         fill="#FFF" />
+    </mask>
+    <g
+       mask="url(#ar)"
+       id="g1282">
+      <path
+         d="M29.2 29.8l-1.9-6.7-1.4 3.7h-4.1v-1.1h3.4l2.3-6 2 7.2.6-1.2h3.7v1.1h-3.1"
+         id="path1284"
+         fill="#231F20" />
+    </g>
+    <g
+       id="g1286"
+       transform="translate(-3.4664387,0.08253424)"
+       style="fill:#241f1c">
+      <path
+         d="M 34.7,37.3 H 20.6 l -7,-12.2 7,-12.2 h 14.1 l 7,12.2 -7,12.2 z M 20.9,36.7 H 34.3 L 41,25.1 34.3,13.5 H 20.9 l -6.7,11.6 6.7,11.6 z"
+         id="path1288"
+         inkscape:connector-curvature="0"
+         style="fill:#241f1c" />
+    </g>
+    <g
+       id="g1290">
+      <path
+         d="M55.9 13.2l-2.3 8.6h-2.2L50 16.3c-.1-.3-.1-.6-.1-1 0 .4-.1.7-.2 1l-1.5 5.5H46l-2.3-8.6h2.1l1.2 5.7c.1.2.1.6.1 1 0-.3.1-.6.2-1l1.6-5.7H51l1.4 5.8c.1.2.1.5.1.9 0-.3.1-.6.1-1l1.2-5.8h2.1zM56.6 21.5v-1.9c.3.3.7.5 1.1.7.4.1.8.2 1.2.2.2 0 .5 0 .6-.1.2 0 .3-.1.5-.2l.3-.3c.1-.1.1-.2.1-.3 0-.2 0-.3-.1-.5-.1-.1-.2-.3-.4-.4l-.6-.3c-.2-.1-.5-.2-.7-.3-.7-.3-1.2-.6-1.5-1-.3-.4-.5-.9-.5-1.5 0-.4.1-.8.3-1.2s.4-.6.7-.8c.3-.2.7-.4 1.1-.5.4-.1.8-.1 1.3-.1.4 0 .8 0 1.2.1.3.1.7.1 1 .2v1.8c-.1-.1-.3-.2-.5-.3-.2-.1-.3-.1-.5-.2s-.4-.1-.5-.1h-.5c-.2 0-.4 0-.6.1-.2 0-.3.1-.5.2l-.3.3c-.1.1-.1.2-.1.4 0 .1 0 .3.1.4l.3.3c.1.1.3.2.5.3.2.1.4.2.7.3.3.1.7.3.9.5.3.2.5.3.7.6s.3.4.5.7.2.6.2.9c0 .5-.1.9-.3 1.2s-.4.6-.7.8c-.3.2-.7.3-1.1.4-.5 0-.9.1-1.4.1-.5 0-.9 0-1.3-.1-.5-.1-.8-.2-1.2-.4zM67.6 22c-1.2 0-2.2-.4-3-1.2-.8-.8-1.2-1.9-1.2-3.1 0-1.4.4-2.5 1.2-3.3.8-.8 1.8-1.3 3.1-1.3 1.2 0 2.2.4 3 1.2.8.8 1.1 1.9 1.1 3.2 0 1.4-.4 2.5-1.2 3.3-.7.8-1.7 1.2-3 1.2zm.1-7.3c-.7 0-1.2.3-1.6.8-.4.5-.6 1.2-.6 2 0 .9.2 1.5.6 2 .4.5.9.7 1.6.7.7 0 1.2-.2 1.6-.7.4-.5.6-1.2.6-2 0-.9-.2-1.6-.6-2.1-.4-.4-1-.7-1.6-.7zM75.1 20.2h3.5v1.6H73v-1.5l2.5-2.4c.5-.5.8-.9 1-1.2.2-.3.3-.7.3-1 0-.8-.4-1.2-1.3-1.2-.7 0-1.5.3-2.1.9v-1.7c.7-.5 1.6-.7 2.5-.7.9 0 1.6.2 2.1.7.5.4.7 1 .7 1.8 0 1-.6 2-1.8 3.1l-1.8 1.6z"
+         id="path1292"
+         fill="#F47B20" />
+    </g>
+    <g
+       id="g1294">
+      <path
+         d="M130.7 36.4v-2.7c.5.4 1 .7 1.6.9.6.2 1.1.3 1.7.3.3 0 .6 0 .9-.1.3-.1.5-.1.6-.3.2-.1.3-.2.4-.4.1-.1.1-.3.1-.5s-.1-.4-.2-.6-.3-.4-.6-.5c-.2-.2-.5-.3-.8-.5-.3-.1-.7-.3-1-.4-.9-.4-1.6-.9-2.1-1.4s-.7-1.2-.7-2.1c0-.6.1-1.2.4-1.6.3-.5.6-.8 1-1.1.4-.3.9-.5 1.5-.6.6-.1 1.2-.2 1.8-.2.6 0 1.2 0 1.7.1s.9.2 1.3.3v2.5c-.2-.1-.4-.3-.7-.4-.2-.1-.5-.2-.7-.3-.3-.1-.5-.1-.8-.2-.2 0-.5-.1-.7-.1-.3 0-.6 0-.8.1-.3.1-.5.1-.6.2-.2.1-.3.2-.4.4-.1.2-.1.3-.1.5s.1.4.2.5c.1.2.3.3.5.5.2.1.4.3.7.4.3.1.6.3 1 .4.5.2.9.4 1.3.6.4.2.7.5 1 .8.3.3.5.6.6 1 .1.4.2.8.2 1.3 0 .7-.1 1.2-.4 1.7-.3.5-.6.8-1 1.1s-.9.5-1.5.6c-.6.1-1.2.2-1.8.2-.7 0-1.3-.1-1.9-.2-.8.2-1.3.1-1.7-.2zM145.4 36.8c-.4.2-1 .3-1.8.3-1.9 0-2.8-1-2.8-2.9v-3.9h-1.4v-2h1.4v-1.9l2.7-.8v2.6h1.9v2h-1.9v3.5c0 .9.4 1.3 1.1 1.3.3 0 .6-.1.9-.2v2zM155.1 36.9h-2.7v-1.3c-.7 1-1.5 1.5-2.6 1.5-2 0-3-1.2-3-3.6v-5.2h2.7v5c0 1.2.5 1.8 1.4 1.8.5 0 .9-.2 1.1-.5.3-.3.4-.8.4-1.4v-4.9h2.7v8.6zM165.8 36.9h-2.7v-1.2c-.6.9-1.5 1.4-2.7 1.4-1.1 0-1.9-.4-2.6-1.1-.7-.8-1-1.8-1-3.2 0-1.4.4-2.6 1.1-3.4.7-.9 1.7-1.3 2.8-1.3 1.1 0 1.9.4 2.3 1.2v-5.1h2.7v12.7zm-2.6-4.2v-.6c0-.6-.2-1-.5-1.4-.3-.4-.7-.6-1.3-.6-.6 0-1 .2-1.4.7-.3.5-.5 1.1-.5 1.9 0 .8.2 1.3.5 1.8s.8.6 1.3.6 1-.2 1.3-.6c.4-.5.6-1.1.6-1.8zM169.3 26.9c-.4 0-.8-.1-1.1-.4-.3-.3-.4-.6-.4-1s.1-.7.4-1c.3-.3.7-.4 1.1-.4.5 0 .8.1 1.1.4s.4.6.4 1-.1.7-.4 1c-.3.3-.6.4-1.1.4zm1.3 7.1c0 .4.1.6.3.8.2.2.4.3.7.3h.4c.1 0 .3-.1.4-.1v1.9c-.3.1-.7.2-1 .2-.4.1-.7.1-1.1.1-.4 0-.7-.1-1-.2-.3-.1-.5-.3-.7-.5-.2-.2-.4-.5-.5-.8-.1-.3-.2-.7-.2-1.1v-6.3h2.6V34zM177.6 37.1c-1.4 0-2.6-.4-3.4-1.2-.8-.8-1.2-1.9-1.2-3.3s.4-2.5 1.3-3.3c.9-.8 2-1.2 3.5-1.2 1.4 0 2.6.4 3.4 1.2.8.8 1.2 1.9 1.2 3.2 0 1.4-.4 2.6-1.3 3.4-.8.8-2 1.2-3.5 1.2zm.1-7c-.6 0-1.1.2-1.5.6-.3.4-.5 1-.5 1.8 0 1.7.7 2.5 2 2.5s1.9-.9 1.9-2.5-.6-2.4-1.9-2.4z"
+         id="path1296"
+         fill="#F47B20" />
+    </g>
+    <g
+       id="g1298">
+      <path
+         d="M45 36.9V24.8h4.3c4.3 0 6.4 2 6.4 5.9 0 1.9-.6 3.4-1.8 4.5-1.2 1.1-2.7 1.7-4.7 1.7H45zm2.8-9.8v7.6h1.3c1.2 0 2.1-.4 2.8-1.1.7-.7 1-1.7 1-2.9s-.3-2.1-1-2.7-1.6-1-2.8-1h-1.3zM65.2 33.4h-5.6c.1 1.3.9 1.9 2.4 1.9.9 0 1.8-.2 2.5-.7v1.9c-.8.4-1.8.6-3.1.6-1.4 0-2.5-.4-3.2-1.2-.8-.8-1.2-1.8-1.2-3.2 0-1.4.4-2.6 1.2-3.4.8-.8 1.9-1.3 3.1-1.3 1.3 0 2.2.4 2.9 1.1.7.7 1 1.8 1 3v1.3zm-2.4-1.7c0-1.2-.5-1.9-1.5-1.9-.4 0-.8.2-1.1.5-.3.4-.5.8-.6 1.3h3.2zM75 28.3l-3.2 8.6h-3l-3.1-8.6h2.8l1.5 5.3c.2.6.3 1.1.3 1.5 0-.4.1-.9.3-1.5l1.5-5.4H75zM83.7 33.4h-5.6c.1 1.3.9 1.9 2.4 1.9.9 0 1.8-.2 2.5-.7v1.9c-.8.4-1.8.6-3.1.6-1.4 0-2.5-.4-3.2-1.2s-1.2-1.8-1.2-3.2c0-1.4.4-2.6 1.2-3.4.8-.8 1.9-1.3 3.1-1.3 1.3 0 2.2.4 2.9 1.1s1 1.8 1 3v1.3zm-2.4-1.7c0-1.2-.5-1.9-1.5-1.9-.4 0-.8.2-1.1.5-.3.4-.5.8-.6 1.3h3.2zM87.9 34c0 .4.1.6.3.8.2.2.4.3.7.3h.4c.1 0 .3-.1.4-.1v1.9c-.3.1-.7.2-1 .2-.4.1-.7.1-1.1.1-.4 0-.7-.1-1-.2-.3-.1-.5-.3-.7-.5-.2-.2-.4-.5-.5-.8-.1-.3-.2-.7-.2-1.1V24.1h2.6V34zM94.9 37.1c-1.4 0-2.6-.4-3.4-1.2-.8-.8-1.2-1.9-1.2-3.3s.4-2.5 1.3-3.3c.9-.8 2-1.2 3.5-1.2 1.4 0 2.6.4 3.4 1.2.8.8 1.2 1.9 1.2 3.2 0 1.4-.4 2.6-1.3 3.4s-2 1.2-3.5 1.2zm.1-7c-.6 0-1.1.2-1.5.6-.3.4-.5 1-.5 1.8 0 1.7.7 2.5 2 2.5s1.9-.9 1.9-2.5-.6-2.4-1.9-2.4zM104.1 35.9v5h-2.7V28.3h2.7v1.3c.7-1 1.6-1.5 2.8-1.5 1.1 0 2 .4 2.6 1.1.6.8.9 1.8.9 3.1 0 1.4-.4 2.6-1.1 3.5-.7.9-1.7 1.3-2.8 1.3-1.1 0-1.9-.4-2.4-1.2zm-.1-3.5v.7c0 .6.2 1.1.5 1.5.3.4.7.6 1.2.6.6 0 1.1-.2 1.4-.7s.5-1.1.5-2c0-1.5-.6-2.3-1.8-2.3-.5 0-1 .2-1.3.6-.3.3-.5.9-.5 1.6zM119.8 33.4h-5.6c.1 1.3.9 1.9 2.4 1.9.9 0 1.8-.2 2.5-.7v1.9c-.8.4-1.8.6-3.1.6-1.4 0-2.5-.4-3.2-1.2s-1.2-1.8-1.2-3.2c0-1.4.4-2.6 1.2-3.4.8-.8 1.9-1.3 3.1-1.3 1.3 0 2.2.4 2.9 1.1.7.7 1 1.8 1 3v1.3zm-2.5-1.7c0-1.2-.5-1.9-1.5-1.9-.4 0-.8.2-1.1.5-.3.4-.5.8-.6 1.3h3.2zM127 30.7c-.3-.2-.7-.3-1.1-.3-.6 0-1 .2-1.4.6-.3.4-.5 1-.5 1.7v4.1h-2.7v-8.6h2.7v1.6c.4-1.2 1.2-1.8 2.3-1.8.3 0 .5 0 .7.1v2.6z"
+         id="path1300"
+         fill="#231F20" />
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3007"
+       sodipodi:sides="6"
+       sodipodi:cx="-2.8571429"
+       sodipodi:cy="360.93362"
+       sodipodi:r1="127.93493"
+       sodipodi:r2="110.7949"
+       sodipodi:arg1="-1.0571903"
+       sodipodi:arg2="-0.53359155"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 60.000001,249.50506 125.0714,359.65522 62.214255,471.08379 -65.714286,472.36219 -130.78568,362.21202 -67.928541,250.78346 z"
+       transform="matrix(0.10955051,0,0,0.10947177,24.240818,-14.294608)" />
+    <g
+       transform="matrix(0.70215287,0,0,0.68404508,-34.237541,22.030333)"
+       id="g3321">
+      <circle
+         style="fill:#f47b20"
+         sodipodi:ry="8.691"
+         sodipodi:rx="8.691"
+         sodipodi:cy="4.1919999"
+         sodipodi:cx="82.075996"
+         d="m 90.766996,4.1919999 c 0,4.7999068 -3.891093,8.6910001 -8.691,8.6910001 -4.799906,0 -8.691,-3.8910933 -8.691,-8.6910001 0,-4.79990674 3.891094,-8.691 8.691,-8.691 4.799907,0 8.691,3.89109326 8.691,8.691 z"
+         id="circle3274-5"
+         r="8.691"
+         cy="4.1919999"
+         cx="82.075996" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3276"
+         d="m 90.804,3.776 -0.01,-0.115 h -0.115 c -0.53,-10e-4 -1.061,0 -1.594,0 -0.531,0 -1.062,0 -1.593,0 h -0.073 l -0.035,0.063 c -0.402,0.711 -0.798,1.425 -1.193,2.14 L 85.843,6.49 C 85.242,5.036 84.645,3.582 84.048,2.127 c -0.63,-1.535 -1.26,-3.07 -1.895,-4.603 l -0.11,-0.266 -0.119,0.262 C 81.468,-1.475 81.016,-0.467 80.565,0.541 79.945,1.924 79.304,3.353 78.66,4.753 77.763,4.745 76.866,4.746 75.965,4.747 75.142,4.748 74.317,4.749 73.49,4.743 L 73.362,4.742 73.364,4.87 c 0.004,0.278 0.044,0.554 0.083,0.821 l 0.021,0.148 h 0.108 c 1.432,-0.002 2.863,-0.002 4.293,-0.001 h 1.512 l 0.034,-0.073 c 0.44,-0.972 0.878,-1.947 1.316,-2.921 0.421,-0.938 0.842,-1.875 1.267,-2.811 0.643,1.552 1.279,3.106 1.917,4.661 0.558,1.359 1.115,2.719 1.677,4.077 L 85.69,9.008 85.817,8.784 C 86.393,7.759 86.964,6.73 87.536,5.702 l 0.528,-0.951 c 0.876,0 1.751,0 2.625,0 h 0.115 l 0.01,-0.115 c 0.02,-0.253 0.018,-0.526 -0.01,-0.86 z" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         id="path3282"
+         d="m 81.274,-6.595 c 1.743,-0.113 3.52,0.152 5.121,0.864 3.276,1.389 5.746,4.501 6.343,8.011 0.419,2.347 0.048,4.832 -1.074,6.939 -1.465,2.814 -4.231,4.91 -7.342,5.546 -2.047,0.43 -4.217,0.261 -6.168,-0.498 -1.884,-0.728 -3.556,-1.996 -4.76,-3.617 -1.276,-1.699 -2.032,-3.785 -2.128,-5.908 -0.145,-2.528 0.646,-5.1 2.194,-7.105 1.841,-2.443 4.761,-4.028 7.814,-4.232 z m -1.297,2.448 c -2.324,0.573 -4.367,2.172 -5.489,4.285 -0.785,1.439 -1.099,3.101 -1.022,4.731 h 0.024 c 0.004,0.283 0.047,0.565 0.088,0.846 0.455,2.707 2.287,5.133 4.77,6.303 1.988,0.968 4.358,1.12 6.453,0.409 1.752,-0.574 3.295,-1.744 4.35,-3.254 C 90.085,7.845 90.62,6.247 90.689,4.627 90.713,4.346 90.703,4.066 90.68,3.786 90.597,2.149 90.041,0.536 89.084,-0.795 87.98,-2.348 86.346,-3.514 84.518,-4.053 83.049,-4.491 81.462,-4.526 79.977,-4.147 z" />
+    </g>
+  </g>
+</svg>

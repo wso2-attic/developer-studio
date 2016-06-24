@@ -52,6 +52,8 @@ public class WelcomePage extends ViewPart {
 			new GetWizardDescriptionFunction(browser);
 			new GetWizardIconDataFunction(browser);
 			browser.setUrl(getWelcomePage());
+			browser.refresh();
+
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
 		} catch (IOException e) {
