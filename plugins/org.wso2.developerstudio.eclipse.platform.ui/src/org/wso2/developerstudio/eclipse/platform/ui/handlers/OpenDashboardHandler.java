@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorReference;
@@ -33,21 +34,29 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.AppearancePreperance;
 
 public class OpenDashboardHandler extends AbstractHandler {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
-	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.ui.welcome.WelcomePage";
+	static String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.ui.welcome.WelcomePage";
 	static final String J2EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
 		try {
+			IPreferenceStore preferenceStore = WorkbenchToolkit.getPreferenceStore();
+			if (preferenceStore.getString(AppearancePreperance.DASHBOARD_PREFERNCES)
+					.equals(AppearancePreperance.SWT_VIEW)) {
+				OpenDashboardHandler.DASHBOARD_VIEW_ID="org.wso2.developerstudio.eclipse.dashboard";
+			}
 			hideIntroView();
 			hideDashboards();
 			PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE_ID, window);
+			
 			page.openEditor(new NullEditorInput(), DASHBOARD_VIEW_ID);
 		} catch (Exception e) {
 			log.error("Cannot open dashboard", e);

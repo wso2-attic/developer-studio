@@ -16,6 +16,7 @@ import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
@@ -24,6 +25,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.WebEngineUtils;
 
 public class WelcomePageEditor extends EditorPart {
 	
@@ -72,17 +74,6 @@ public class WelcomePageEditor extends EditorPart {
 			new GetWizardDescriptionFunction(browser);
 			new GetWizardIconDataFunction(browser);
 			browser.setUrl(getWelcomePage());
-			browser.addProgressListener(new ProgressListener() {	
-				@Override
-				public void completed(ProgressEvent arg0) {
-					browser.execute("setTimeout(function(){setViewPortFullScreen(400);},500);");
-				}
-
-				@Override
-				public void changed(ProgressEvent arg0) {
-					// TODO Auto-generated method stub	
-				}
-			});
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
 		} catch (IOException e) {
@@ -104,7 +95,7 @@ public class WelcomePageEditor extends EditorPart {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
-		Browser browser = new Browser(parent, SWT.NONE);
+		Browser browser = new Browser(parent, WebEngineUtils.getBrowserType());
 		GridData data = new GridData();
 		data.horizontalAlignment = GridData.FILL;
 		data.verticalAlignment = GridData.FILL;

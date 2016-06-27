@@ -21,18 +21,23 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import org.apache.axis2.jaxws.util.SoapUtils;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.ProgressEvent;
+import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.part.ViewPart;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.WebEngineUtils;
 
 public class WelcomePage extends ViewPart {
 
@@ -51,9 +56,8 @@ public class WelcomePage extends ViewPart {
 			new GetDashboardWizardContributionsFunction(browser);
 			new GetWizardDescriptionFunction(browser);
 			new GetWizardIconDataFunction(browser);
+			System.out.println("Start load page.");
 			browser.setUrl(getWelcomePage());
-			browser.refresh();
-
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
 		} catch (IOException e) {
@@ -62,20 +66,23 @@ public class WelcomePage extends ViewPart {
 	}
 
 	private String getWelcomePage() throws URISyntaxException, IOException {
+		System.out.println("Inside get welcome page");
 		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
 		URL webAppURL = bundle.getEntry(WELCOME_PAGE_WEB_SITE_FOLDER);
 		URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
 		URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
 		File resolvedWebAppFolder = new File(resolvedFolderURI);
 		File resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML);
+		System.out.println("end get welcome page");
 		return resolvedWebAppIndex.getAbsolutePath();
 	}
 
 	private Browser createBrowser(Composite parent) {
+		System.out.println("Creat browser started");
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
-		Browser browser = new Browser(parent, SWT.NONE);
+		Browser browser = new Browser(parent, WebEngineUtils.getBrowserType());
 		GridData data = new GridData();
 		data.horizontalAlignment = GridData.FILL;
 		data.verticalAlignment = GridData.FILL;
@@ -83,6 +90,7 @@ public class WelcomePage extends ViewPart {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		browser.setLayoutData(data);
+		System.out.println("End browser created");
 		return browser;
 	}
 
@@ -90,5 +98,4 @@ public class WelcomePage extends ViewPart {
 	public void setFocus() {
 		// TODO Auto-generated method stub
 	}
-
 }
