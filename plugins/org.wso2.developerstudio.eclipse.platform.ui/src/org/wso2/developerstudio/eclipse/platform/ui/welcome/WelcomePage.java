@@ -56,7 +56,6 @@ public class WelcomePage extends ViewPart {
 			new GetDashboardWizardContributionsFunction(browser);
 			new GetWizardDescriptionFunction(browser);
 			new GetWizardIconDataFunction(browser);
-			System.out.println("Start load page.");
 			browser.setUrl(getWelcomePage());
 		} catch (URISyntaxException e) {
 			log.error("Error while intializing Welcome Page", e);
@@ -66,19 +65,16 @@ public class WelcomePage extends ViewPart {
 	}
 
 	private String getWelcomePage() throws URISyntaxException, IOException {
-		System.out.println("Inside get welcome page");
 		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
 		URL webAppURL = bundle.getEntry(WELCOME_PAGE_WEB_SITE_FOLDER);
 		URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
 		URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
 		File resolvedWebAppFolder = new File(resolvedFolderURI);
 		File resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML);
-		System.out.println("end get welcome page");
 		return resolvedWebAppIndex.getAbsolutePath();
 	}
 
 	private Browser createBrowser(Composite parent) {
-		System.out.println("Creat browser started");
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
@@ -90,7 +86,6 @@ public class WelcomePage extends ViewPart {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		browser.setLayoutData(data);
-		System.out.println("End browser created");
 		return browser;
 	}
 
