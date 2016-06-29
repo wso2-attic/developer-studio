@@ -77,7 +77,7 @@ function loadWelcomeNodes() {
 
 var welcomeNodeArray = loadWelcomeNodes();
 
-welcomeNodeArray.push({title: "Common", nodes: [
+welcomeNodeArray.push({title: "Other", nodes: [
     {title: '', wizardID: 'org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard'},
     {title: '', wizardID: 'org.wso2.developerstudio.eclipse.distribution.project'},
     {title: '', wizardID: 'org.eclipse.wst.server.ui.new.server'}
