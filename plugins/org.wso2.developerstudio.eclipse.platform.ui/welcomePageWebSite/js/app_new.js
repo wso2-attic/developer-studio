@@ -252,6 +252,9 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         setTimeout(function () {
             var count = 0;
             welcomeNode.nodes.forEach(function (childNode) {
+                if(GetWizardDescription(childNode.wizardID) == null){
+                    return;
+                }
                 var color = colorOrange2;
                 if (count % 2 == 0) {
                     color = colorOrange;
