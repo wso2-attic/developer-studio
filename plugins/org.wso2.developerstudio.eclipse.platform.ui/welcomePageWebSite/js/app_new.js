@@ -77,16 +77,26 @@ function loadWelcomeNodes() {
 
 var welcomeNodeArray = loadWelcomeNodes();
 
-welcomeNodeArray.push({title: "Other", nodes: [
-    {title: '', wizardID: 'org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard'},
-    {title: '', wizardID: 'org.wso2.developerstudio.eclipse.distribution.project'}
-]});
+var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
+
+if((GetWizardDescription(mavenWizard) != null)){
+    welcomeNodeArray.push({title: "Maven", nodes: [
+        {title: '', wizardID: mavenWizard}
+    ]});
+}
+
+if((GetWizardDescription(cappWizard) != null)){
+    welcomeNodeArray.push({title: "CApp", nodes: [
+        {title: '', wizardID: cappWizard}
+    ]});
+}
 
 function toRadians(angle) {
     return angle * (Math.PI / 180);
 }
 
-var angleOffset = getRandomArbitrary(toRadians(360), toRadians(20));
+var angleOffset = toRadians(-45);
 var anglePerMainItem = toRadians(360) / (welcomeNodeArray.length);
 
 
@@ -299,18 +309,25 @@ welcomeNodeArray.forEach(function (welcomeNode) {
             });
         }, animationDuration + 250);
     };
-
-    circle.click(expandNodes);
-    welcomeNode.text.click(expandNodes).hover(function () {
-        if (selectedNode != welcomeNode) {
-            circle.animate({strokeWidth: 10}, 200);
-        }
-    }, function () {
-        if (selectedNode != welcomeNode) {
-            circle.animate({strokeWidth: 0}, 200);
-        }
-    });
-
+    if(welcomeNode.nodes.length === 1){
+        circle.click(function(){
+            OpenIDEWizard(welcomeNode.nodes[0].wizardID);
+        });
+        welcomeNode.text.click(function(){
+            OpenIDEWizard(welcomeNode.nodes[0].wizardID);
+        });
+    }else{
+        circle.click(expandNodes);
+        welcomeNode.text.click(expandNodes).hover(function () {
+            if (selectedNode != welcomeNode) {
+                circle.animate({strokeWidth: 10}, 200);
+            }
+        }, function () {
+            if (selectedNode != welcomeNode) {
+                circle.animate({strokeWidth: 0}, 200);
+            }
+        });
+    }
     if ($("#pageRow").width() < 80) {
         location.reload();
     }
