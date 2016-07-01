@@ -72,6 +72,75 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+							<execution>
+									<id>prepare-embedded-linux64-version</id>
+									<phase>package</phase>
+									<goals>
+											<goal>run</goal>
+									</goals>
+									<configuration>
+											<tasks>
+												  <mkdir dir="${project.basedir}/macTemp"/>
+													<unzip src="${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip" dest="${project.basedir}/target/products"/>
+													<move todir="${project.basedir}/macTemp/DeveloperStudio.app">
+	 													<fileset dir="${project.basedir}/target/products/Eclipse.app"/>
+ 													</move>
+													<chmod dir="${project.basedir}/macTemp/DeveloperStudio.app" perm="777"/>
+													<delete file ="${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip"/>
+													<zip destfile="${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip"
+															 basedir="${project.basedir}/macTemp" />
+
+											</tasks>
+									</configuration>
+							</execution>
+					</executions>
+			</plugin>
+			<plugin>
+			 <groupId>com.coderplus.maven.plugins</groupId>
+			 <artifactId>copy-rename-maven-plugin</artifactId>
+			 <version>1.0</version>
+			 <executions>
+				 <execution>
+					 <id>rename-file</id>
+					 <phase>install</phase>
+					 <goals>
+						 <goal>rename</goal>
+					 </goals>
+					 <configuration>
+						 <fileSets>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86_64.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-linux-gtk-x86_64-${product.version}.zip</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-linux.gtk.x86.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-linux-gtk-x86-${product.version}.zip</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-macosx.cocoa.x86_64.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-macosx-cocoa-x86_64-${product.version}.zip</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-win32.win32.x86.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-win32-x86-${product.version}.zip</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-win32.win32.x86.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-win32-x86-${product.version}.zip</destinationFile>
+								</fileSet>
+								<fileSet>
+									<sourceFile>${project.basedir}/target/products/WSO2-Developer-Studio-win32.win32.x86_64.zip</sourceFile>
+									<destinationFile>${project.basedir}/target/products/WSO2-Developer-Studio-${product.id}-win32-x86_64-${product.version}.zip</destinationFile>
+								</fileSet>
+							</fileSets>
+					 </configuration>
+				 </execution>
+			 </executions>
+		 </plugin>
 		</plugins>
 	</build>
 </project>
