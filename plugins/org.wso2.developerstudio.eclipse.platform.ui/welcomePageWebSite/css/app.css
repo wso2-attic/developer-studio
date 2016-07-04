@@ -69,8 +69,9 @@ body{
 
 .title{
     cursor: pointer;
-    color: #ffffff;
-    background-color: red;
+
+    stroke-width: 0px;
+    stroke: #181818;
 }
 
 .centerCircle{

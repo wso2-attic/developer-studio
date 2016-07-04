@@ -120,15 +120,14 @@ $(window).resize(function () {
     location.reload();
 });
 
-var addCenteredText = function (x, y, text, dx, dy) {
-    if (dx > 0 && dy > 0) {
-        return svgArea.text(x, y, text)
-            .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0, dx: dx, dy: dy})
-            .addClass('title');
-    }
-    return svgArea.text(x, y, text)
+var addCenteredText = function (x, y, node) {
+
+    node.text =  svgArea.text(x, y + 15, node.title)
         .attr({"text-anchor": "middle", "font-size": "15px", filter: "", opacity: 0})
         .addClass('title');
+    node.image = addImageForWizard(x, y, 20, 20, -10, -20, node.nodes[0].wizardID).insertAfter(node.text)
+                    .addClass("handPointer");
+
 };
 
 var centerCircle = svgArea.circle(cx, cy, cr);
@@ -215,7 +214,7 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         .insertBefore(centerCircle)
         .attr({strokeWidth: 10, stroke: colorBorder, strokeLinecap: "round", opacity: 100, filter: ""})
         .animate({x1: cx, y1: cy, x2: line2Endpoint.x, y2: line2Endpoint.y }, animationDuration);
-    welcomeNode.text = addCenteredText(line2Endpoint.x, line2Endpoint.y, welcomeNode.title);
+    addCenteredText(line2Endpoint.x, line2Endpoint.y, welcomeNode);
     var circle = svgArea.circle(line1Endpoint.x, line1Endpoint.y, cr)
         .insertBefore(welcomeNode.text)
         .attr({fill: colorOrange, stroke: colorBorder, strokeWidth: 0})
@@ -230,7 +229,9 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         })
         .animate({ cx: line2Endpoint.x, cy: line2Endpoint.y}, animationDuration, null, function () {
             welcomeNode.text.animate({opacity: 100}, 400);
+            welcomeNode.image.animate({opacity: 100}, 400);
         })
+
         .addClass("childCircle");
     line.data("dataNode", welcomeNode);
     circle.data("dataNode", welcomeNode);
@@ -316,8 +317,12 @@ welcomeNodeArray.forEach(function (welcomeNode) {
         welcomeNode.text.click(function(){
             OpenIDEWizard(welcomeNode.nodes[0].wizardID);
         });
+        welcomeNode.image.click(function(){
+            OpenIDEWizard(welcomeNode.nodes[0].wizardID);
+        });
     }else{
         circle.click(expandNodes);
+        welcomeNode.image.click(expandNodes);
         welcomeNode.text.click(expandNodes).hover(function () {
             if (selectedNode != welcomeNode) {
                 circle.animate({strokeWidth: 10}, 200);
@@ -357,6 +362,7 @@ function hideUnselectedNodes() {
             if (node != selectedNode) {
                 node.circle.animate({opacity: 0}, animationDuration);
                 node.text.animate({opacity: 0}, animationDuration);
+                node.image.animate({opacity: 0}, animationDuration);
             }
         });
     }
@@ -371,6 +377,7 @@ function showUnselectedNodes() {
         if (node != selectedNode) {
             node.circle.animate({opacity: 100}, animationDuration);
             node.text.animate({opacity: 100}, animationDuration);
+            node.image.animate({opacity: 100}, animationDuration);
         }
     });
 }
