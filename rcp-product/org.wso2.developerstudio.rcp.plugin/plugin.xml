@@ -71,4 +71,24 @@
         <configExtension content="intro/welcome.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>
     </extension>
+     <extension point="org.eclipse.ui.splashHandlers">
+
+      <splashHandler
+
+            class="org.wso2.developerstudio.rcp.plugin.handler.SplashHandler"
+
+            id="org.wso2.developerstudio.rcp.plugin.handler.id">
+
+      </splashHandler>
+
+      <splashHandlerProductBinding
+
+            productId="org.wso2.developerstudio.rcp.plugin.devstudio"
+
+            splashId="org.wso2.developerstudio.rcp.plugin.handler.id">
+
+      </splashHandlerProductBinding>
+
+   </extension>
+
 </plugin>

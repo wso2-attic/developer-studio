@@ -285,7 +285,6 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.equinox.p2.extras.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.m2e.feature"/>
-      <feature id="org.eclipse.jdt"/>
       <feature id="org.eclipse.emf.ecore.edit"/>
       <feature id="org.eclipse.wst.xml_core.feature"/>
       <feature id="org.eclipse.wst.xml_ui.feature"/>
@@ -332,6 +331,7 @@ Please visit : http://wso2.com/products/developer-studio/
       <feature id="org.eclipse.jst.web_userdoc.feature"/>
       <feature id="org.wso2.developerstudio.kernel.feature"/>
       <feature id="org.eclipse.pde" version="3.11.2.v20160212-1500"/>
+      <feature id="org.eclipse.jdt" version="3.11.2.v20160212-1500"/>
    </features>
 
    <configurations>
