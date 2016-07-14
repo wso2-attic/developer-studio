@@ -19,11 +19,15 @@ package org.wso2.developerstudio.eclipse.platform.ui.startup;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.WebEngineUtils;
 
 public class Initializer {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public static void start() {
+		WebEngineUtils.resolveXULRunnerPath();
 	}
+
+	
 
 }

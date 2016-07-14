@@ -3,7 +3,6 @@
 <plugin>
    <extension-point id="org.wso2.developerstudio.platfom.ui.resourceManger" name="ResourceManager" schema="schema/org.wso2.developerstudio.platfom.ui.resourceManger.exsd"/>
    <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
-
     <extension point="org.eclipse.ui.startup">
         <startup class="org.wso2.developerstudio.eclipse.platform.ui.startup.PlatformStartup"/>
     </extension>
@@ -25,6 +24,9 @@
               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
           <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.capp" name="WSO2 Plugin Preferences"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage"
+               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
+          <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appearance" name="WSO2 Dashboard Preferences"
+              class="org.wso2.developerstudio.eclipse.platform.ui.preferences.AppearancePreperance"
                category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.kernel.update.preferences" name="Check for Updates"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage"
@@ -276,5 +278,23 @@
         </objectContribution>
     </extension>
     -->
-
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.wso2.developerstudio.eclipse.rcp.views"
+            name="WSO2"/>
+      <view
+            id="org.wso2.developerstudio.eclipse.rcp.dashboard"
+            name="WSO2 Developer Studio"
+            icon="icons/icon-16.gif"
+            class="org.wso2.developerstudio.eclipse.platform.ui.welcome.WelcomePage"
+            category="org.wso2.developerstudio.eclipse.rcp.views"
+            allowMultiple="false"/>
+   </extension>
+	<extension point="org.eclipse.ui.editors">
+        <editor
+                class="org.wso2.developerstudio.eclipse.platform.ui.welcome.WelcomePageEditor"
+                id="org.wso2.developerstudio.eclipse.ui.welcome.WelcomePage"
+                name="Developer Studio Dashboard"></editor>
+    </extension>
 </plugin>
