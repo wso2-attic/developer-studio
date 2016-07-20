@@ -16,21 +16,35 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Version;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public static final String KERNEL_SAMPLES_GIT = "https://github.com/wso2/tooling-templates.git";
 	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
-	// http://product-dist.wso2.com/p2/developer-studio-kernel/
-	public static final String currentDevSVersion = "4.1.0";
-	public static final String nextDevSVersion = "4.2.0";
-	public static final String DEFAULT_RELEASE_SITE = "http://product-dist.wso2.com/p2/developer-studio-kernel/"
-			+ currentDevSVersion + "/releases/";
-	public static final String DEFAULT_UPDATE_SITE = "http://product-dist.wso2.com/p2/developer-studio-kernel/"
-			+ currentDevSVersion + "/updates/";
+	public static final String P2_DIST_ROOT = "http://product-dist.wso2.com/p2/developer-studio-kernel/";
+	
+	// set default versions
+	public static String currentDevSVersion = "4.2.0";
+	public static String nextDevSVersion = "4.3.0";
+	public static String DEFAULT_RELEASE_SITE = P2_DIST_ROOT + currentDevSVersion + "/releases/";
+	public static String DEFAULT_UPDATE_SITE = P2_DIST_ROOT + currentDevSVersion + "/updates/";
+
+	static {
+		// fetch devs kernel platform ui plugin version automatically and updadte URLs
+		Version version = Platform.getBundle(PREFERENCES_PLUGIN_ID).getVersion();
+		String currentKernelMinorVersion = version.getMajor() + "." + version.getMinor() + ".0";
+		String nextKernelMinorVersion = version.getMajor() + "." + (version.getMinor() + 1) + ".0";
+		currentDevSVersion = currentKernelMinorVersion;
+		nextDevSVersion = nextKernelMinorVersion;
+		DEFAULT_RELEASE_SITE = P2_DIST_ROOT + currentDevSVersion + "/releases/";
+		DEFAULT_UPDATE_SITE = P2_DIST_ROOT + currentDevSVersion + "/updates/";
+	}
+	
 
 	/*
 	 * (non-Javadoc)
