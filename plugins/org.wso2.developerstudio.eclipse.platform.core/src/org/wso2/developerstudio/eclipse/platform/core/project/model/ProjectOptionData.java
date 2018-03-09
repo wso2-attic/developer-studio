@@ -59,7 +59,6 @@ public class ProjectOptionData {
 	private boolean textMultiline;
 	private boolean addListnner;
 	private String toolTip;
-	private int height = 0;
 
 	// for composite
 	private ICompositeProvider iCompositeProvider;
@@ -138,10 +137,6 @@ public class ProjectOptionData {
 
 	public void setTextMultiline(boolean textMultiline) {
 		this.textMultiline = textMultiline;
-	}
-
-	public void setTextboxHeight(int height) {
-		this.height = height;
 	}
 
 	public void setAddListnner(boolean addListnner) {
@@ -258,7 +253,4 @@ public class ProjectOptionData {
 		return toolTip;
 	}
 
-	public int getTextboxHeight() {
-		return height;
-	}
 }
