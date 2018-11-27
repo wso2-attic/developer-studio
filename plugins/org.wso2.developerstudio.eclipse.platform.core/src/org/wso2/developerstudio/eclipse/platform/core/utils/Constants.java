@@ -45,7 +45,8 @@ public class Constants extends NLS {
 	public static final String COMMON_TEMPLATE_TYPE = "synapse/template";
 	public static final String JAVA_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 
-	public static final double MINIMUM_REQUIRED_JAVA_VERSION = 1.7;
+	public static final double MINIMUM_REQUIRED_JAVA_VERSION = 1.8;
+	public static final double MAXIMUM_SUPPORTED_JAVA_VERSION = 1.8;
 
 	// String constant value declaration, these values loaded from
 	// constants.properties file at run time
