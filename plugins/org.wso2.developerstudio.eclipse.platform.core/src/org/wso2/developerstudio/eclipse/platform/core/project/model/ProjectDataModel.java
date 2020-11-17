@@ -63,6 +63,16 @@ public abstract class ProjectDataModel extends Observable {
 	private Map<String, String> dockerEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesPortParameters = new HashMap<String, String>();
+	private IProject nestedCreationProject;
+
+	
+	public IProject getNestedCreationProject() {
+		return nestedCreationProject;
+	}
+
+	public void setNestedCreationProject(IProject nestedMMMCreationParent) {
+		this.nestedCreationProject = nestedMMMCreationParent;
+	}
 
 	public IProject getSelectedCompositeProjectOnCreation() {
 		return selectedCompositeProjectOnCreation;
@@ -239,7 +249,7 @@ public abstract class ProjectDataModel extends Observable {
 
 	public MavenInfo getMavenInfo() {
 		if (mavenInfo == null) {
-			mavenInfo = new MavenInfo(getGroupId(), getProjectName(), "1.0.0");
+			mavenInfo = new MavenInfo(getGroupId(), getProjectName(), "1.0.0-SNAPSHOT");
 		}
 		return mavenInfo;
 	}
@@ -289,7 +299,8 @@ public abstract class ProjectDataModel extends Observable {
 			return getProjectName();
 		} else if (key.equalsIgnoreCase("import.file")) {
 			return getImportFile();
-		}
+		} 
+
 		return null;
 	}
 
@@ -311,7 +322,8 @@ public abstract class ProjectDataModel extends Observable {
 			setProjectName(data.toString());
 		} else if (key.equalsIgnoreCase("import.file")) {
 			setImportFile((File) data);
-		}
+		} 
+
 		return false;
 	}
 
